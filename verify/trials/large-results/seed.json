@@ -1,0 +1,10 @@
+{
+  "counts": {
+    "decision": 627,
+    "experience": 717,
+    "fact": 819,
+    "rule": 885
+  },
+  "revised": 36,
+  "archive_sha256": "62f05268f1b7561a4ab47bd28a977020bc4174bd7b8256deccce9bd0e04e3a62"
+}

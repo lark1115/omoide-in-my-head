@@ -1,6 +1,7 @@
 """Make anonymous grading tickets and score each in an independent, tool-less session."""
 
 import argparse
+import hashlib
 import json
 import random
 import re
@@ -65,25 +66,47 @@ def neutral(text):
     )
     text = re.sub(r"\b(?:workshop )?ledger\b", "record", text, flags=re.I)
     text = re.sub(
-        r"\bm\d{3}\b|\b[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\b", "", text
+        r"\bw-[0-9a-f]{16}\b|\bm\d{3}\b|\b[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\b",
+        "",
+        text,
+    )
+    # Runtime diagnostics can include private host paths. Never forward one to a grader.
+    text = re.sub(
+        r"/(?:Users|Volumes|private|var/folders|tmp)/[^\s,;\x22\x27\`）)]+",
+        "[path]",
+        text,
     )
     return text.replace("台帳", "記録").strip()
 
 
 def blind(study):
+    edits = (
+        read(study / "editorial-edits.json")
+        if (study / "editorial-edits.json").exists()
+        else {}
+    )
+    prior = (
+        {p["ticket"]: p["answer"] for p in read(study / "blind.json")}
+        if (study / "blind.json").exists()
+        else {}
+    )
     mapping = read(study / "tickets.json") if (study / "tickets.json").exists() else {}
     seen = set(mapping.values())
     for path in sorted((study / "transcripts").glob("*.json")):
         if path.stem not in seen:
             mapping[secrets.token_hex(12)] = path.stem
-    write(study / "tickets.json", mapping)
     packets = []
+    final_mapping = {}
     for ticket, stem in sorted(mapping.items()):
         trial = read(study / "transcripts" / (stem + ".json"))
-        packets.append(
-            dict(ticket=ticket, prompt=trial["prompt"], answer=neutral(trial["answer"]))
-        )
-    write(study / "blind.json", packets)
+        answer = neutral(trial["answer"])
+        answer = edits.get(hashlib.sha256(answer.encode()).hexdigest(), answer)
+        if ticket in prior and prior[ticket] != answer:
+            ticket = secrets.token_hex(12)
+        final_mapping[ticket] = stem
+        packets.append(dict(ticket=ticket, prompt=trial["prompt"], answer=answer))
+    write(study / "tickets.json", final_mapping)
+    write(study / "blind.json", sorted(packets, key=lambda p: p["ticket"]))
 
 
 def score(study, jobs):
@@ -117,14 +140,17 @@ def score(study, jobs):
                 )
             )
             for attempt in range(3):
-                process = subprocess.run(
-                    CODEX + ["--output-schema", str(schema), "-"],
-                    cwd=cwd,
-                    text=True,
-                    input=RUBRIC + "\n" + json.dumps(payload, ensure_ascii=False),
-                    capture_output=True,
-                    timeout=180,
-                )
+                try:
+                    process = subprocess.run(
+                        CODEX + ["--output-schema", str(schema), "-"],
+                        cwd=cwd,
+                        text=True,
+                        input=RUBRIC + "\n" + json.dumps(payload, ensure_ascii=False),
+                        capture_output=True,
+                        timeout=180,
+                    )
+                except subprocess.TimeoutExpired:
+                    continue
                 records = [
                     json.loads(l)
                     for l in process.stdout.splitlines()

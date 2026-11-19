@@ -1,0 +1,1577 @@
+[
+  {
+    "opportunity": "T01",
+    "arm": "device",
+    "call": 1,
+    "status": "tool_timeout",
+    "elapsed_ms": 8005.66,
+    "observed_pool": null,
+    "judge_error": null,
+    "path_metadata_exposed": true,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 21.34,
+    "replay_pool": 962
+  },
+  {
+    "opportunity": "T01",
+    "arm": "device",
+    "call": 6,
+    "status": "invalid_input",
+    "elapsed_ms": 1431.65,
+    "observed_pool": null,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "no usable reply"
+  },
+  {
+    "opportunity": "T01",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "failed",
+    "elapsed_ms": 5327.51,
+    "observed_pool": 962,
+    "judge_error": "judge exited unsuccessfully",
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 220.41,
+    "replay_pool": 962,
+    "adapter_candidates": 962,
+    "separate_provider_probe": "TypeSafe HTTP 400",
+    "probe_usage": null,
+    "probe_ms": 191.97
+  },
+  {
+    "opportunity": "T01",
+    "arm": "device_jev",
+    "call": 4,
+    "status": "used",
+    "elapsed_ms": 132.53,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 170.83,
+    "replay_pool": 0,
+    "adapter_candidates": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "receipt_basis": "identical same-size receipts"
+  },
+  {
+    "opportunity": "T02",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 8.47,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 10.87,
+    "replay_pool": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T02",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "tool_timeout",
+    "elapsed_ms": 8004.73,
+    "observed_pool": null,
+    "judge_error": null,
+    "path_metadata_exposed": true,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 180.28,
+    "replay_pool": 0,
+    "adapter_candidates": 0,
+    "separate_provider_probe": "ok",
+    "probe_usage": null,
+    "probe_ms": 6.41
+  },
+  {
+    "opportunity": "T04",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 12.67,
+    "observed_pool": 383,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 17.05,
+    "replay_pool": 383,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T04",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "tool_timeout",
+    "elapsed_ms": 8008.33,
+    "observed_pool": null,
+    "judge_error": null,
+    "path_metadata_exposed": true,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 159.47,
+    "replay_pool": 383,
+    "adapter_candidates": 383,
+    "separate_provider_probe": "ok",
+    "probe_usage": {
+      "input_tokens": 52146,
+      "output_tokens": 7171
+    },
+    "probe_ms": 415.86
+  },
+  {
+    "opportunity": "T05",
+    "arm": "device",
+    "call": 1,
+    "status": "tool_timeout",
+    "elapsed_ms": 8005.18,
+    "observed_pool": null,
+    "judge_error": null,
+    "path_metadata_exposed": true,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 100.09,
+    "replay_pool": 647
+  },
+  {
+    "opportunity": "T05",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "failed",
+    "elapsed_ms": 6676.51,
+    "observed_pool": 647,
+    "judge_error": "judge exited unsuccessfully",
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 197.71,
+    "replay_pool": 647,
+    "adapter_candidates": 647,
+    "separate_provider_probe": "TypeSafe HTTP 400",
+    "probe_usage": null,
+    "probe_ms": 184.8
+  },
+  {
+    "opportunity": "T05",
+    "arm": "device_jev",
+    "call": 4,
+    "status": "used",
+    "elapsed_ms": 116.36,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "action index",
+    "offline_replay_ms": 305.07,
+    "replay_pool": 0,
+    "adapter_candidates": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "receipt_basis": "identical same-size receipts"
+  },
+  {
+    "opportunity": "T06",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 9.0,
+    "observed_pool": 26,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 8.59,
+    "replay_pool": 26,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T06",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "tool_timeout",
+    "elapsed_ms": 8005.49,
+    "observed_pool": null,
+    "judge_error": null,
+    "path_metadata_exposed": true,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 182.48,
+    "replay_pool": 26,
+    "adapter_candidates": 26,
+    "separate_provider_probe": "ok",
+    "probe_usage": {
+      "input_tokens": 4622,
+      "output_tokens": 462
+    },
+    "probe_ms": 157.95
+  },
+  {
+    "opportunity": "T07",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 7334.31,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 7.53,
+    "replay_pool": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T07",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 6190.22,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 141.75,
+    "replay_pool": 0,
+    "adapter_candidates": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "receipt_basis": "identical same-size receipts"
+  },
+  {
+    "opportunity": "T08",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 9.2,
+    "observed_pool": 25,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 10.45,
+    "replay_pool": 25,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T08",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 4999.31,
+    "observed_pool": 25,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 147.39,
+    "replay_pool": 25,
+    "adapter_candidates": 25,
+    "actual_tokens": {
+      "input_tokens": 4470,
+      "output_tokens": 444
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T10",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 8.73,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 7.9,
+    "replay_pool": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T10",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 467.55,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 170.91,
+    "replay_pool": 0,
+    "adapter_candidates": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "receipt_basis": "identical same-size receipts"
+  },
+  {
+    "opportunity": "T11",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 7.4,
+    "observed_pool": 1,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "action index",
+    "offline_replay_ms": 9.63,
+    "replay_pool": 1,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T11",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "invalid_input",
+    "elapsed_ms": 4.24,
+    "observed_pool": null,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "no usable reply"
+  },
+  {
+    "opportunity": "T12",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 9.64,
+    "observed_pool": 12,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 11.15,
+    "replay_pool": 12,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T12",
+    "arm": "device",
+    "call": 4,
+    "status": "not_configured",
+    "elapsed_ms": 16.96,
+    "observed_pool": 1,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 9.89,
+    "replay_pool": 1,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T12",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 129.24,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 144.42,
+    "replay_pool": 0,
+    "adapter_candidates": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "receipt_basis": "identical same-size receipts"
+  },
+  {
+    "opportunity": "T13",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 8.0,
+    "observed_pool": 2,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 21.47,
+    "replay_pool": 2,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T13",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 283.54,
+    "observed_pool": 2,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 143.17,
+    "replay_pool": 2,
+    "adapter_candidates": 2,
+    "actual_tokens": {
+      "input_tokens": 520,
+      "output_tokens": 38
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T14",
+    "arm": "device",
+    "call": 2,
+    "status": "not_configured",
+    "elapsed_ms": 7.75,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "action index",
+    "offline_replay_ms": 8.32,
+    "replay_pool": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T14",
+    "arm": "device_jev",
+    "call": 2,
+    "status": "used",
+    "elapsed_ms": 143.71,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "action index",
+    "offline_replay_ms": 141.96,
+    "replay_pool": 0,
+    "adapter_candidates": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "receipt_basis": "identical same-size receipts"
+  },
+  {
+    "opportunity": "T15",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 10.9,
+    "observed_pool": 13,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 8.23,
+    "replay_pool": 13,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T15",
+    "arm": "device",
+    "call": 4,
+    "status": "not_configured",
+    "elapsed_ms": 8.09,
+    "observed_pool": 13,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 11.93,
+    "replay_pool": 13,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T15",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 503.11,
+    "observed_pool": 13,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 139.05,
+    "replay_pool": 13,
+    "adapter_candidates": 13,
+    "actual_tokens": {
+      "input_tokens": 2076,
+      "output_tokens": 228
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T16",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 16.24,
+    "observed_pool": 313,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 11.07,
+    "replay_pool": 313,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T16",
+    "arm": "device_jev",
+    "call": 2,
+    "status": "used",
+    "elapsed_ms": 552.31,
+    "observed_pool": 313,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 175.46,
+    "replay_pool": 313,
+    "adapter_candidates": 313,
+    "actual_tokens": {
+      "input_tokens": 42425,
+      "output_tokens": 5841
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T18",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 47.67,
+    "observed_pool": 43,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 11.14,
+    "replay_pool": 43,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T18",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 346.71,
+    "observed_pool": 43,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 199.36,
+    "replay_pool": 43,
+    "adapter_candidates": 43,
+    "actual_tokens": {
+      "input_tokens": 6829,
+      "output_tokens": 768
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T19",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 13.51,
+    "observed_pool": 22,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 12.45,
+    "replay_pool": 22,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T19",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 543.7,
+    "observed_pool": 22,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 195.19,
+    "replay_pool": 22,
+    "adapter_candidates": 22,
+    "actual_tokens": {
+      "input_tokens": 3262,
+      "output_tokens": 390
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T21",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 39.58,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 9.91,
+    "replay_pool": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T21",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 138.17,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 200.9,
+    "replay_pool": 0,
+    "adapter_candidates": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "receipt_basis": "identical same-size receipts"
+  },
+  {
+    "opportunity": "T22",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 23.71,
+    "observed_pool": 148,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 15.37,
+    "replay_pool": 148,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T22",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 402.88,
+    "observed_pool": 147,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 176.28,
+    "replay_pool": 147,
+    "adapter_candidates": 147,
+    "actual_tokens": {
+      "input_tokens": 24965,
+      "output_tokens": 2687
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T24",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 25.64,
+    "observed_pool": 417,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 128.43,
+    "replay_pool": 417,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T24",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 666.58,
+    "observed_pool": 417,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 165.92,
+    "replay_pool": 417,
+    "adapter_candidates": 417,
+    "actual_tokens": {
+      "input_tokens": 60194,
+      "output_tokens": 7817
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T25",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 25.27,
+    "observed_pool": 939,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 19.43,
+    "replay_pool": 939,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T25",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "failed",
+    "elapsed_ms": 478.13,
+    "observed_pool": 939,
+    "judge_error": "judge exited unsuccessfully",
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 190.49,
+    "replay_pool": 939,
+    "adapter_candidates": 939,
+    "separate_provider_probe": "TypeSafe HTTP 400",
+    "probe_usage": null,
+    "probe_ms": 194.97
+  },
+  {
+    "opportunity": "T25",
+    "arm": "device_jev",
+    "call": 3,
+    "status": "invalid_input",
+    "elapsed_ms": 6.05,
+    "observed_pool": null,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "no usable reply"
+  },
+  {
+    "opportunity": "T25",
+    "arm": "device_jev",
+    "call": 5,
+    "status": "used",
+    "elapsed_ms": 160.03,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 225.32,
+    "replay_pool": 0,
+    "adapter_candidates": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "receipt_basis": "identical same-size receipts"
+  },
+  {
+    "opportunity": "T27",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 13.29,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 9.98,
+    "replay_pool": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T27",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 154.92,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 152.62,
+    "replay_pool": 0,
+    "adapter_candidates": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "receipt_basis": "identical same-size receipts"
+  },
+  {
+    "opportunity": "T28",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 28.22,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 7.12,
+    "replay_pool": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T28",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 369.6,
+    "observed_pool": 34,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 152.15,
+    "replay_pool": 34,
+    "adapter_candidates": 34,
+    "actual_tokens": {
+      "input_tokens": 5476,
+      "output_tokens": 606
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T29",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 19.65,
+    "observed_pool": 15,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 10.46,
+    "replay_pool": 15,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T29",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "failed",
+    "elapsed_ms": 450.38,
+    "observed_pool": 938,
+    "judge_error": "judge exited unsuccessfully",
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 280.1,
+    "replay_pool": 938,
+    "adapter_candidates": 938,
+    "separate_provider_probe": "TypeSafe HTTP 400",
+    "probe_usage": null,
+    "probe_ms": 209.92
+  },
+  {
+    "opportunity": "T30",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 16.69,
+    "observed_pool": 334,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 11.73,
+    "replay_pool": 334,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T30",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 563.58,
+    "observed_pool": 334,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 162.04,
+    "replay_pool": 334,
+    "adapter_candidates": 334,
+    "actual_tokens": {
+      "input_tokens": 45076,
+      "output_tokens": 6240
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T31",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 17.95,
+    "observed_pool": 334,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 12.49,
+    "replay_pool": 334,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T31",
+    "arm": "device",
+    "call": 3,
+    "status": "invalid_input",
+    "elapsed_ms": 3.3,
+    "observed_pool": null,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "no usable reply"
+  },
+  {
+    "opportunity": "T31",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "failed",
+    "elapsed_ms": 1841.83,
+    "observed_pool": 938,
+    "judge_error": "judge exited unsuccessfully",
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 190.66,
+    "replay_pool": 938,
+    "adapter_candidates": 938,
+    "separate_provider_probe": "TypeSafe HTTP 400",
+    "probe_usage": null,
+    "probe_ms": 180.98
+  },
+  {
+    "opportunity": "T31",
+    "arm": "device_jev",
+    "call": 4,
+    "status": "invalid_input",
+    "elapsed_ms": 3.69,
+    "observed_pool": null,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "no usable reply"
+  },
+  {
+    "opportunity": "T32",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 10.35,
+    "observed_pool": 59,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 9.87,
+    "replay_pool": 59,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T32",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 324.24,
+    "observed_pool": 60,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 142.47,
+    "replay_pool": 60,
+    "adapter_candidates": 60,
+    "actual_tokens": {
+      "input_tokens": 10048,
+      "output_tokens": 1074
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T33",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 17.36,
+    "observed_pool": 645,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 15.95,
+    "replay_pool": 645,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T33",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "failed",
+    "elapsed_ms": 651.53,
+    "observed_pool": 645,
+    "judge_error": "judge exited unsuccessfully",
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 327.08,
+    "replay_pool": 645,
+    "adapter_candidates": 645,
+    "separate_provider_probe": "TypeSafe HTTP 400",
+    "probe_usage": null,
+    "probe_ms": 180.77
+  },
+  {
+    "opportunity": "T35",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 15.71,
+    "observed_pool": 645,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 28.66,
+    "replay_pool": 645,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T35",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "failed",
+    "elapsed_ms": 381.96,
+    "observed_pool": 962,
+    "judge_error": "judge exited unsuccessfully",
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 542.32,
+    "replay_pool": 962,
+    "adapter_candidates": 962,
+    "separate_provider_probe": "TypeSafe HTTP 400",
+    "probe_usage": null,
+    "probe_ms": 213.46
+  },
+  {
+    "opportunity": "T36",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 7.85,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 8.82,
+    "replay_pool": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T36",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 134.49,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 194.49,
+    "replay_pool": 0,
+    "adapter_candidates": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "receipt_basis": "identical same-size receipts"
+  },
+  {
+    "opportunity": "T37",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 16.66,
+    "observed_pool": 645,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 16.51,
+    "replay_pool": 645,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T37",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "failed",
+    "elapsed_ms": 365.95,
+    "observed_pool": 645,
+    "judge_error": "judge exited unsuccessfully",
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 226.77,
+    "replay_pool": 645,
+    "adapter_candidates": 645,
+    "separate_provider_probe": "TypeSafe HTTP 400",
+    "probe_usage": null,
+    "probe_ms": 183.71
+  },
+  {
+    "opportunity": "T38",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 35.6,
+    "observed_pool": 25,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 8.36,
+    "replay_pool": 25,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T38",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 120.45,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 140.95,
+    "replay_pool": 0,
+    "adapter_candidates": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "receipt_basis": "identical same-size receipts"
+  },
+  {
+    "opportunity": "T39",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 16.21,
+    "observed_pool": 646,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 16.24,
+    "replay_pool": 646,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T39",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "failed",
+    "elapsed_ms": 387.76,
+    "observed_pool": 646,
+    "judge_error": "judge exited unsuccessfully",
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 223.2,
+    "replay_pool": 646,
+    "adapter_candidates": 646,
+    "separate_provider_probe": "TypeSafe HTTP 400",
+    "probe_usage": null,
+    "probe_ms": 193.57
+  },
+  {
+    "opportunity": "T41",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 10.82,
+    "observed_pool": 335,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 9.84,
+    "replay_pool": 335,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T41",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 493.58,
+    "observed_pool": 335,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 154.23,
+    "replay_pool": 335,
+    "adapter_candidates": 335,
+    "actual_tokens": {
+      "input_tokens": 41856,
+      "output_tokens": 6259
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T42",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 10.88,
+    "observed_pool": 242,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 95.82,
+    "replay_pool": 242,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T42",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 492.94,
+    "observed_pool": 263,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 191.65,
+    "replay_pool": 263,
+    "adapter_candidates": 263,
+    "actual_tokens": {
+      "input_tokens": 35884,
+      "output_tokens": 4891
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T43",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 11.86,
+    "observed_pool": 84,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 9.37,
+    "replay_pool": 84,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T43",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 328.56,
+    "observed_pool": 84,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 153.96,
+    "replay_pool": 84,
+    "adapter_candidates": 84,
+    "actual_tokens": {
+      "input_tokens": 10693,
+      "output_tokens": 1506
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T44",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 8.87,
+    "observed_pool": 18,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 9.66,
+    "replay_pool": 18,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T44",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 296.38,
+    "observed_pool": 18,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 145.29,
+    "replay_pool": 18,
+    "adapter_candidates": 18,
+    "actual_tokens": {
+      "input_tokens": 3074,
+      "output_tokens": 318
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T45",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 8.38,
+    "observed_pool": 1,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 7.88,
+    "replay_pool": 1,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T45",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 277.96,
+    "observed_pool": 1,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 139.81,
+    "replay_pool": 1,
+    "adapter_candidates": 1,
+    "actual_tokens": {
+      "input_tokens": 412,
+      "output_tokens": 21
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T46",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 16.63,
+    "observed_pool": 541,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 25.04,
+    "replay_pool": 541,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T46",
+    "arm": "device",
+    "call": 3,
+    "status": "not_configured",
+    "elapsed_ms": 9.33,
+    "observed_pool": 13,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 8.29,
+    "replay_pool": 13,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T46",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "failed",
+    "elapsed_ms": 334.28,
+    "observed_pool": 541,
+    "judge_error": "judge exited unsuccessfully",
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 169.42,
+    "replay_pool": 541,
+    "adapter_candidates": 541,
+    "separate_provider_probe": "TypeSafe HTTP 400",
+    "probe_usage": null,
+    "probe_ms": 159.47
+  },
+  {
+    "opportunity": "T46",
+    "arm": "device_jev",
+    "call": 3,
+    "status": "used",
+    "elapsed_ms": 282.64,
+    "observed_pool": 13,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 158.72,
+    "replay_pool": 13,
+    "adapter_candidates": 13,
+    "actual_tokens": {
+      "input_tokens": 2431,
+      "output_tokens": 228
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T47",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 8.1,
+    "observed_pool": 22,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 8.08,
+    "replay_pool": 22,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T47",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 296.12,
+    "observed_pool": 22,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index plus action index",
+    "offline_replay_ms": 161.44,
+    "replay_pool": 22,
+    "adapter_candidates": 22,
+    "actual_tokens": {
+      "input_tokens": 3192,
+      "output_tokens": 390
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  },
+  {
+    "opportunity": "T48",
+    "arm": "device",
+    "call": 1,
+    "status": "not_configured",
+    "elapsed_ms": 30.02,
+    "observed_pool": 0,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 8.59,
+    "replay_pool": 0,
+    "actual_tokens": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  {
+    "opportunity": "T48",
+    "arm": "device_jev",
+    "call": 1,
+    "status": "used",
+    "elapsed_ms": 465.03,
+    "observed_pool": 294,
+    "judge_error": null,
+    "path_metadata_exposed": false,
+    "rules_path": "lexical index",
+    "offline_replay_ms": 220.24,
+    "replay_pool": 294,
+    "adapter_candidates": 294,
+    "actual_tokens": {
+      "input_tokens": 39829,
+      "output_tokens": 5480
+    },
+    "receipt_basis": "candidate count and nonoverlapping call order"
+  }
+]

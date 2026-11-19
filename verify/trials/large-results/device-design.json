@@ -1,0 +1,8 @@
+{
+  "binary_sha256": "aaaa1bcbf9a7cd8c6739c26f8b1ba137ed412e6b7154eb5ed9c28b858ee2f9d8",
+  "adapter_sha256": "49abef0997fce6325d486261ba737730d6db8ecd3c6584ab6777cbc3b8c57eee",
+  "model": "jev-1.14.0",
+  "threshold": 0.6,
+  "port_ms": 6800,
+  "adapter_ms": 5800
+}

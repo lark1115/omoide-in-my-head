@@ -64,9 +64,9 @@ DEVICE = [
 ]
 
 
-def serve():
+def serve(*, ledger_tools=LEDGER, ledger_call=None):
     records = json.loads(Path(os.environ["TRIAL_ARCHIVE"]).read_text())
-    tools = LEDGER + (DEVICE if "TRIAL_DB" in os.environ else [])
+    tools = ledger_tools + (DEVICE if "TRIAL_DB" in os.environ else [])
     definitions = {t["name"]: t for t in tools}
 
     def call(name, args):
@@ -77,6 +77,8 @@ def serve():
             or not set(spec["required"]) <= args.keys()
         ):
             raise ValueError("invalid tool arguments")
+        if ledger_call and name.startswith("ledger_"):
+            return ledger_call(name, args, records)
         if not all(isinstance(v, str) for v in args.values()):
             raise ValueError("expected string arguments")
         if name == "ledger_list":
@@ -94,6 +96,19 @@ def serve():
         else:
             for key, value in args.items():
                 cli += ["--" + key, value]
+        if name == "recall" and os.environ.get("TRIAL_JUDGE_SOCKET"):
+            cli += [
+                "--judge",
+                sys.executable,
+                "--judge-arg",
+                str(Path(__file__).with_name("jev_bridge.py")),
+                "--judge-arg",
+                os.environ["TRIAL_JUDGE_SOCKET"],
+                "--timeout-ms",
+                "6800",
+                "--threshold",
+                "0.60",
+            ]
         proc = subprocess.run(
             cli,
             capture_output=True,
@@ -127,7 +142,10 @@ def serve():
             try:
                 raw = call(p["name"], p.get("arguments", {}))
                 error = False
-            except (KeyError, ValueError, subprocess.TimeoutExpired) as exc:
+            except subprocess.TimeoutExpired:
+                raw = compact({"error": "lookup exceeded the eight-second tool budget"})
+                error = True
+            except (KeyError, ValueError) as exc:
                 raw = compact({"error": str(exc)})
                 error = True
             result = {"content": [{"type": "text", "text": raw}], "isError": error}
