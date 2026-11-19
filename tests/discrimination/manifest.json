@@ -25,6 +25,27 @@
   "action_target_only": 16,
   "sha256": {
     "rules.jsonl": "04a787c5d104686ad0c721d6016b34c1a6266b257262939e1cb8aa5cf585b56f",
-    "queries.jsonl": "cefaeb046c1371724721287ee85a3dba3e4947720956693026881c598c3fc10b"
+    "queries.jsonl": "cefaeb046c1371724721287ee85a3dba3e4947720956693026881c598c3fc10b",
+    "holdout2.jsonl": "23ff3d039b86aa89e3b8519b86914f4c00f98f284dd6437a9a0228944a580e97"
+  },
+  "holdout2": {
+    "queries": 80,
+    "by_overlap": {
+      "partial": 22,
+      "shared": 39,
+      "zero": 19
+    },
+    "by_required_count": {
+      "0": 20,
+      "1": 46,
+      "2": 8,
+      "3": 6
+    },
+    "none_by_overlap": {
+      "partial": 4,
+      "shared": 14,
+      "zero": 2
+    },
+    "action_target_only": 10
   }
 }
