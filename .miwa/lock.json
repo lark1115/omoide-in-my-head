@@ -1,0 +1,76 @@
+{
+  "edges": {
+    "desc:doc:DOC-OMOIDE": {
+      "from": "sha256:5e04475af4698fb4434a93c95cb9f33d6966432ca5fde0bce0f022c5dcb88cd3",
+      "to": "sha256:1b7b15c7dbb09e1e576a4f51168c471014fb1b54f03dc265516bc203fcaaa5b3",
+      "by": "human",
+      "at": "2026-11-19T19:06:06Z"
+    },
+    "doc-req:DOC-OMOIDE:REQ-DEC-1": {
+      "from": "sha256:1b7b15c7dbb09e1e576a4f51168c471014fb1b54f03dc265516bc203fcaaa5b3",
+      "to": "sha256:4d5d103eb65cd508b1fa8af24e58857857a098cbceb722a29f207b28febc84cb",
+      "by": "human",
+      "at": "2026-11-19T19:06:06Z"
+    },
+    "doc-req:DOC-OMOIDE:REQ-HOT-1": {
+      "from": "sha256:1b7b15c7dbb09e1e576a4f51168c471014fb1b54f03dc265516bc203fcaaa5b3",
+      "to": "sha256:37adbfa3f43de26aeff29bc5f6ea1dec47157d8eac631f0f7d87a41310dea10c",
+      "by": "human",
+      "at": "2026-11-19T19:06:06Z"
+    },
+    "doc-req:DOC-OMOIDE:REQ-INTEG-1": {
+      "from": "sha256:1b7b15c7dbb09e1e576a4f51168c471014fb1b54f03dc265516bc203fcaaa5b3",
+      "to": "sha256:41d486bea025bda0b949504da4d23f3c061155cda9cbdfebd060c2cbc72470f8",
+      "by": "human",
+      "at": "2026-11-19T19:06:06Z"
+    },
+    "doc-req:DOC-OMOIDE:REQ-JUDGE-1": {
+      "from": "sha256:1b7b15c7dbb09e1e576a4f51168c471014fb1b54f03dc265516bc203fcaaa5b3",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "at": "2026-11-19T19:06:06Z"
+    },
+    "doc-req:DOC-OMOIDE:REQ-MEASURE-1": {
+      "from": "sha256:1b7b15c7dbb09e1e576a4f51168c471014fb1b54f03dc265516bc203fcaaa5b3",
+      "to": "sha256:46371975afc0f52318e2912097cf77135572b78b072b6d89482b15d3b48b9854",
+      "by": "human",
+      "at": "2026-11-19T19:06:06Z"
+    },
+    "doc-req:DOC-OMOIDE:REQ-PROMO-1": {
+      "from": "sha256:1b7b15c7dbb09e1e576a4f51168c471014fb1b54f03dc265516bc203fcaaa5b3",
+      "to": "sha256:c74e30beef6e8c37e8774b4363b79608eda0701043ca90a1c8d83a34c3c6ed10",
+      "by": "human",
+      "at": "2026-11-19T19:06:06Z"
+    },
+    "doc-req:DOC-OMOIDE:REQ-REC-1": {
+      "from": "sha256:1b7b15c7dbb09e1e576a4f51168c471014fb1b54f03dc265516bc203fcaaa5b3",
+      "to": "sha256:b9b311a040834880363422784c8ea5dda1fac3dbaaad42d7d2851fd010a7dee4",
+      "by": "human",
+      "at": "2026-11-19T19:06:06Z"
+    },
+    "doc-req:DOC-OMOIDE:REQ-RECALL-1": {
+      "from": "sha256:1b7b15c7dbb09e1e576a4f51168c471014fb1b54f03dc265516bc203fcaaa5b3",
+      "to": "sha256:1c54f4c21f94cd4f65977eb11b64876c713ea603727da27d6dd1d3370009ed67",
+      "by": "human",
+      "at": "2026-11-19T19:06:06Z"
+    },
+    "doc-req:DOC-OMOIDE:REQ-RES-1": {
+      "from": "sha256:1b7b15c7dbb09e1e576a4f51168c471014fb1b54f03dc265516bc203fcaaa5b3",
+      "to": "sha256:935718492eaa69c7b07e9935999a0ab45aced13d4e35510d432f26fc56d19c45",
+      "by": "human",
+      "at": "2026-11-19T19:06:06Z"
+    },
+    "doc-req:DOC-OMOIDE:REQ-RULE-1": {
+      "from": "sha256:1b7b15c7dbb09e1e576a4f51168c471014fb1b54f03dc265516bc203fcaaa5b3",
+      "to": "sha256:dd644e20b10cf2da16fc470e6eefab7f1bd06a4132ea853dd370c7481b411cb1",
+      "by": "human",
+      "at": "2026-11-19T19:06:06Z"
+    },
+    "doc-req:DOC-OMOIDE:REQ-STORE-1": {
+      "from": "sha256:1b7b15c7dbb09e1e576a4f51168c471014fb1b54f03dc265516bc203fcaaa5b3",
+      "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
+      "by": "human",
+      "at": "2026-11-19T19:06:06Z"
+    }
+  }
+}
