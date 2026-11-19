@@ -1,0 +1,183 @@
+{
+  "scene": "S10",
+  "records": [
+    {
+      "id": "s10-reed-words",
+      "kind": "utterance",
+      "text": "葦籠は青紐で結ぶ。 Tie reed hampers with blue cord.",
+      "target": "reed",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s10-reed",
+      "kind": "rule",
+      "source": "s10-reed-words",
+      "text": "葦籠は青紐で結ぶ。 Tie reed hampers with blue cord.",
+      "action": "tie",
+      "target": "reed",
+      "scene": "籠を結ぶ tying hampers"
+    },
+    {
+      "id": "s10-rush-words",
+      "kind": "utterance",
+      "text": "藺草籠は白紐で結ぶ。 Tie rush hampers with white cord.",
+      "target": "rush",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s10-rush",
+      "kind": "rule",
+      "source": "s10-rush-words",
+      "text": "藺草籠は白紐で結ぶ。 Tie rush hampers with white cord.",
+      "action": "tie",
+      "target": "rush",
+      "scene": "籠を結ぶ tying hampers",
+      "relation": {
+        "to": "s10-reed",
+        "type": "unrelated"
+      }
+    },
+    {
+      "id": "s10-rival-words",
+      "kind": "utterance",
+      "text": "葦籠には緑紐を使う案。 Green cord proposed for reed hampers.",
+      "target": "reed",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s10-rival",
+      "kind": "rule",
+      "source": "s10-rival-words",
+      "text": "葦籠には緑紐を使う案。 Green cord proposed for reed hampers.",
+      "action": "tie",
+      "target": "reed",
+      "scene": "籠を結ぶ tying hampers",
+      "relation": {
+        "to": "s10-reed",
+        "type": "uncertain"
+      }
+    }
+  ],
+  "cases": [
+    {
+      "id": "s10-conflict-ja",
+      "language": "ja",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "この籠を結ぶ",
+        "action": "tie",
+        "target": "reed"
+      },
+      "expect": {
+        "must": [
+          "s10-reed",
+          "s10-rival"
+        ],
+        "must_not": [
+          "s10-rush"
+        ],
+        "fields": {
+          "s10-reed": {
+            "state": "current",
+            "source": "s10-reed-words"
+          },
+          "s10-rival": {
+            "state": "pending",
+            "source": "s10-rival-words"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "該当する現行版と未解決の食い違いを別状態で返す（REQ-RECALL-1(h), REQ-RULE-1(g)）。"
+    },
+    {
+      "id": "s10-different-ja",
+      "language": "ja",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "scene": "この籠を結ぶ",
+        "action": "tie",
+        "target": "rush"
+      },
+      "expect": {
+        "must": [
+          "s10-rush"
+        ],
+        "must_not": [
+          "s10-reed",
+          "s10-rival"
+        ],
+        "fields": {
+          "s10-rush": {
+            "state": "current",
+            "source": "s10-rush-words"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "同じ動詞でも別対象の現行指示と判断待ちは流用しない（REQ-RECALL-1(c)(d)）。"
+    },
+    {
+      "id": "s10-conflict-en",
+      "language": "en",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "Tie this hamper",
+        "action": "tie",
+        "target": "reed"
+      },
+      "expect": {
+        "must": [
+          "s10-reed",
+          "s10-rival"
+        ],
+        "must_not": [
+          "s10-rush"
+        ],
+        "fields": {
+          "s10-reed": {
+            "state": "current",
+            "source": "s10-reed-words"
+          },
+          "s10-rival": {
+            "state": "pending",
+            "source": "s10-rival-words"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "該当する現行版と未解決の食い違いを別状態で返す（REQ-RECALL-1(h), REQ-RULE-1(g)）。"
+    },
+    {
+      "id": "s10-different-en",
+      "language": "en",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "scene": "Tie this hamper",
+        "action": "tie",
+        "target": "rush"
+      },
+      "expect": {
+        "must": [
+          "s10-rush"
+        ],
+        "must_not": [
+          "s10-reed",
+          "s10-rival"
+        ],
+        "fields": {
+          "s10-rush": {
+            "state": "current",
+            "source": "s10-rush-words"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "同じ動詞でも別対象の現行指示と判断待ちは流用しない（REQ-RECALL-1(c)(d)）。"
+    }
+  ]
+}

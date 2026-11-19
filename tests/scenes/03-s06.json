@@ -1,0 +1,217 @@
+{
+  "scene": "S6",
+  "records": [
+    {
+      "id": "s06-cover-words",
+      "kind": "utterance",
+      "text": "発酵中は布を掛ける。 Cover resting dough with linen. 表面の乾燥を防ぐため。密閉容器は対象外。 Prevent drying; skip sealed tubs.",
+      "target": "bakehouse",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s06-cover",
+      "kind": "rule",
+      "source": "s06-cover-words",
+      "text": "発酵中は布を掛ける。 Cover resting dough with linen.",
+      "scene": "発酵 resting dough",
+      "action": "cover",
+      "purpose": "表面の乾燥を防ぐ",
+      "exceptions": [
+        "密閉容器"
+      ]
+    },
+    {
+      "id": "s06-tag-words",
+      "kind": "utterance",
+      "text": "籠番号札。 Number baskets.",
+      "target": "bakehouse",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s06-tag",
+      "kind": "rule",
+      "source": "s06-tag-words",
+      "text": "籠番号札。 Number baskets.",
+      "scene": "籠番号 basket numbering",
+      "action": "number"
+    },
+    {
+      "id": "s06-chime-words",
+      "kind": "utterance",
+      "text": "鐘響一度。 Ring once. 開店の合図。 Opening signal.",
+      "target": "bakehouse",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s06-chime",
+      "kind": "rule",
+      "source": "s06-chime-words",
+      "text": "鐘響一度。 Ring once.",
+      "scene": "開店 opening",
+      "action": "ring",
+      "purpose": "開店の合図"
+    }
+  ],
+  "cases": [
+    {
+      "id": "s06-known-ja",
+      "language": "ja",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "発酵中の生地に布を掛ける理由は？",
+        "action": "cover"
+      },
+      "expect": {
+        "must": [
+          "s06-cover"
+        ],
+        "must_not": [
+          "s06-tag"
+        ],
+        "fields": {
+          "s06-cover": {
+            "purpose": "表面の乾燥を防ぐ",
+            "exceptions": [
+              "密閉容器"
+            ]
+          }
+        },
+        "meta": {}
+      },
+      "reason": "記録済みの目的と適用除外をそのまま返す（REQ-RECALL-1(b)）。"
+    },
+    {
+      "id": "s06-known-en",
+      "language": "en",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "Why cover resting dough?",
+        "action": "cover"
+      },
+      "expect": {
+        "must": [
+          "s06-cover"
+        ],
+        "must_not": [
+          "s06-tag"
+        ],
+        "fields": {
+          "s06-cover": {
+            "purpose": "表面の乾燥を防ぐ",
+            "exceptions": [
+              "密閉容器"
+            ]
+          }
+        },
+        "meta": {}
+      },
+      "reason": "記録済みの目的と適用除外をそのまま返す（REQ-RECALL-1(b)）。"
+    },
+    {
+      "id": "s06-unknown-ja",
+      "language": "ja",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "scene": "籠番号の目的と例外は？",
+        "action": "number"
+      },
+      "expect": {
+        "must": [
+          "s06-tag"
+        ],
+        "must_not": [
+          "s06-cover"
+        ],
+        "fields": {
+          "s06-tag": {
+            "purpose": "unknown",
+            "exceptions": "unknown"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "未記録の目的と例外はそれぞれ不明であり、別の決まりから借りない（REQ-RULE-1(b), REQ-RECALL-1(b)）。"
+    },
+    {
+      "id": "s06-unknown-en",
+      "language": "en",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "scene": "Why number baskets, and when can numbering be skipped?",
+        "action": "number"
+      },
+      "expect": {
+        "must": [
+          "s06-tag"
+        ],
+        "must_not": [
+          "s06-cover"
+        ],
+        "fields": {
+          "s06-tag": {
+            "purpose": "unknown",
+            "exceptions": "unknown"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "未記録の目的と例外はそれぞれ不明であり、別の決まりから借りない（REQ-RULE-1(b), REQ-RECALL-1(b)）。"
+    },
+    {
+      "id": "s06-one-missing-ja",
+      "language": "ja",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "scene": "開店の鐘を鳴らす理由と例外",
+        "action": "ring"
+      },
+      "expect": {
+        "must": [
+          "s06-chime"
+        ],
+        "must_not": [
+          "s06-cover"
+        ],
+        "fields": {
+          "s06-chime": {
+            "purpose": "開店の合図",
+            "exceptions": "unknown"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "例外だけが未記録なら目的は保ち、例外だけを不明と返す（REQ-RECALL-1(b)）。"
+    },
+    {
+      "id": "s06-one-missing-en",
+      "language": "en",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "scene": "Purpose and exceptions for the opening chime",
+        "action": "ring"
+      },
+      "expect": {
+        "must": [
+          "s06-chime"
+        ],
+        "must_not": [
+          "s06-cover"
+        ],
+        "fields": {
+          "s06-chime": {
+            "purpose": "開店の合図",
+            "exceptions": "unknown"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "例外だけが未記録なら目的は保ち、例外だけを不明と返す（REQ-RECALL-1(b)）。"
+    }
+  ]
+}

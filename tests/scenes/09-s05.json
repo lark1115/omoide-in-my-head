@@ -1,0 +1,189 @@
+{
+  "scene": "S5",
+  "records": [
+    {
+      "id": "s05-count",
+      "kind": "experience",
+      "text": "灰棚の丸皿を十二枚数えた。 Counted twelve round plates on the ash shelf.",
+      "target": "ash-shelf",
+      "at": "2040-04-19T09:00:00Z"
+    },
+    {
+      "id": "s05-done",
+      "kind": "fact",
+      "source": "s05-count",
+      "text": "丸皿の棚卸し完了。 Round-plate inventory complete.",
+      "target": "ash-shelf",
+      "scope": [
+        "round"
+      ],
+      "period": "2040-W16",
+      "evidence": "s05-count",
+      "certainty": "verified"
+    }
+  ],
+  "cases": [
+    {
+      "id": "s05-partial-ja",
+      "language": "ja",
+      "polarity": "positive",
+      "query": {
+        "op": "completion",
+        "scene": "食器を数え終わった範囲は？",
+        "target": "ash-shelf",
+        "scope": [
+          "round",
+          "oval"
+        ],
+        "period": "2040-W16"
+      },
+      "expect": {
+        "must": [
+          "s05-done"
+        ],
+        "must_not": [],
+        "fields": {
+          "s05-done": {
+            "scope": [
+              "round"
+            ],
+            "evidence": "s05-count"
+          }
+        },
+        "meta": {
+          "unproven_scope": [
+            "oval"
+          ]
+        }
+      },
+      "reason": "重なる範囲と証拠を返し、未記録の楕円皿は未完扱いにする（REQ-DEC-1(g)(h)）。"
+    },
+    {
+      "id": "s05-period-ja",
+      "language": "ja",
+      "polarity": "negative",
+      "query": {
+        "op": "completion",
+        "scene": "食器を数え終わった範囲は？",
+        "target": "ash-shelf",
+        "scope": [
+          "round"
+        ],
+        "period": "2040-W17"
+      },
+      "expect": {
+        "must": [],
+        "must_not": [
+          "s05-done"
+        ],
+        "fields": {},
+        "meta": {}
+      },
+      "reason": "対象または期間が異なる棚卸しを完了として返さない（REQ-DEC-1(g)）。"
+    },
+    {
+      "id": "s05-target-ja",
+      "language": "ja",
+      "polarity": "negative",
+      "query": {
+        "op": "completion",
+        "scene": "食器を数え終わった範囲は？",
+        "target": "elm-shelf",
+        "scope": [
+          "round"
+        ],
+        "period": "2040-W16"
+      },
+      "expect": {
+        "must": [],
+        "must_not": [
+          "s05-done"
+        ],
+        "fields": {},
+        "meta": {}
+      },
+      "reason": "対象または期間が異なる棚卸しを完了として返さない（REQ-DEC-1(g)）。"
+    },
+    {
+      "id": "s05-partial-en",
+      "language": "en",
+      "polarity": "positive",
+      "query": {
+        "op": "completion",
+        "scene": "Which crockery is already tallied?",
+        "target": "ash-shelf",
+        "scope": [
+          "round",
+          "oval"
+        ],
+        "period": "2040-W16"
+      },
+      "expect": {
+        "must": [
+          "s05-done"
+        ],
+        "must_not": [],
+        "fields": {
+          "s05-done": {
+            "scope": [
+              "round"
+            ],
+            "evidence": "s05-count"
+          }
+        },
+        "meta": {
+          "unproven_scope": [
+            "oval"
+          ]
+        }
+      },
+      "reason": "重なる範囲と証拠を返し、未記録の楕円皿は未完扱いにする（REQ-DEC-1(g)(h)）。"
+    },
+    {
+      "id": "s05-period-en",
+      "language": "en",
+      "polarity": "negative",
+      "query": {
+        "op": "completion",
+        "scene": "Which crockery is already tallied?",
+        "target": "ash-shelf",
+        "scope": [
+          "round"
+        ],
+        "period": "2040-W17"
+      },
+      "expect": {
+        "must": [],
+        "must_not": [
+          "s05-done"
+        ],
+        "fields": {},
+        "meta": {}
+      },
+      "reason": "対象または期間が異なる棚卸しを完了として返さない（REQ-DEC-1(g)）。"
+    },
+    {
+      "id": "s05-target-en",
+      "language": "en",
+      "polarity": "negative",
+      "query": {
+        "op": "completion",
+        "scene": "Which crockery is already tallied?",
+        "target": "elm-shelf",
+        "scope": [
+          "round"
+        ],
+        "period": "2040-W16"
+      },
+      "expect": {
+        "must": [],
+        "must_not": [
+          "s05-done"
+        ],
+        "fields": {},
+        "meta": {}
+      },
+      "reason": "対象または期間が異なる棚卸しを完了として返さない（REQ-DEC-1(g)）。"
+    }
+  ]
+}

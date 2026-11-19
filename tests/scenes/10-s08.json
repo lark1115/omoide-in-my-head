@@ -1,0 +1,111 @@
+{
+  "scene": "S8",
+  "records": [
+    {
+      "id": "s08-report",
+      "kind": "utterance",
+      "text": "粉袋の縫い合わせを頼んだ。 A seam repair was requested for the flour sack.",
+      "target": "bakehouse",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s08-request",
+      "kind": "fact",
+      "source": "s08-report",
+      "text": "縫い合わせを依頼済み。 Seam repair requested.",
+      "target": "flour-sack",
+      "certainty": "reported",
+      "claim": "requested"
+    }
+  ],
+  "cases": [
+    {
+      "id": "s08-reported-ja",
+      "language": "ja",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "粉袋の依頼記録を見たい",
+        "target": "flour-sack"
+      },
+      "expect": {
+        "must": [
+          "s08-request"
+        ],
+        "must_not": [],
+        "fields": {
+          "s08-request": {
+            "certainty": "reported",
+            "claim": "requested"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "受けた話を伝聞の依頼として取り出せる（REQ-DEC-1(d)(e)）。"
+    },
+    {
+      "id": "s08-unconfirmed-ja",
+      "language": "ja",
+      "polarity": "negative",
+      "query": {
+        "op": "verification",
+        "scene": "粉袋は直った？",
+        "target": "flour-sack",
+        "claim": "repaired"
+      },
+      "expect": {
+        "must": [],
+        "must_not": [],
+        "fields": {},
+        "meta": {
+          "verified": false
+        }
+      },
+      "reason": "依頼の記録は修理が済んだ証拠にならない（REQ-DEC-1(e)）。"
+    },
+    {
+      "id": "s08-reported-en",
+      "language": "en",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "What was reported about the flour sack?",
+        "target": "flour-sack"
+      },
+      "expect": {
+        "must": [
+          "s08-request"
+        ],
+        "must_not": [],
+        "fields": {
+          "s08-request": {
+            "certainty": "reported",
+            "claim": "requested"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "受けた話を伝聞の依頼として取り出せる（REQ-DEC-1(d)(e)）。"
+    },
+    {
+      "id": "s08-unconfirmed-en",
+      "language": "en",
+      "polarity": "negative",
+      "query": {
+        "op": "verification",
+        "scene": "Has the flour sack been mended?",
+        "target": "flour-sack",
+        "claim": "repaired"
+      },
+      "expect": {
+        "must": [],
+        "must_not": [],
+        "fields": {},
+        "meta": {
+          "verified": false
+        }
+      },
+      "reason": "依頼の記録は修理が済んだ証拠にならない（REQ-DEC-1(e)）。"
+    }
+  ]
+}
