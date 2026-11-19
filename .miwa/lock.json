@@ -50,9 +50,9 @@
     },
     "doc-req:DOC-OMOIDE:REQ-RECALL-1": {
       "from": "sha256:aa73b6976ce9833d583ee62df3b358b6831e53d943ebabba0b744e126776b8bc",
-      "to": "sha256:a1a6f9ad164ecf14abbb3616c4fcea6474c5a66e998928eb030000f16aa91522",
+      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
       "by": "human",
-      "at": "2026-11-19T19:12:18Z"
+      "at": "2026-11-19T19:41:07Z"
     },
     "doc-req:DOC-OMOIDE:REQ-RES-1": {
       "from": "sha256:aa73b6976ce9833d583ee62df3b358b6831e53d943ebabba0b744e126776b8bc",
@@ -74,17 +74,15 @@
     },
     "test-req:crates/omoide-core/tests/properties::additional_candidate_preserves_pair_order:REQ-RECALL-1": {
       "from": "sha256:8823ee46d58e6700efc5fa868b795c18c061a6f7e9fc791d99dfdae139f15a0d",
-      "to": "sha256:a1a6f9ad164ecf14abbb3616c4fcea6474c5a66e998928eb030000f16aa91522",
+      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
       "by": "human",
-      "reason": "Stage one: record the tested SQLite contract, lexical recall, CLI round trip and Linux verification",
-      "at": "2026-11-19T19:26:44Z"
+      "at": "2026-11-19T19:41:07Z"
     },
     "test-req:crates/omoide-core/tests/properties::japanese_windows_and_exact_words:REQ-RECALL-1": {
       "from": "sha256:23fa19d18e9bfe00c3a293fc09e6552dd36bf93e6052d04f3a91d866720f4675",
-      "to": "sha256:a1a6f9ad164ecf14abbb3616c4fcea6474c5a66e998928eb030000f16aa91522",
+      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
       "by": "human",
-      "reason": "Stage one: record the tested SQLite contract, lexical recall, CLI round trip and Linux verification",
-      "at": "2026-11-19T19:26:44Z"
+      "at": "2026-11-19T19:41:07Z"
     },
     "test-req:crates/omoide-core/tests/properties::registration_table:REQ-RULE-1": {
       "from": "sha256:45969828fadbaaa371cd82dabb8921a9726878f4f0b9e9e0d8b9c0c3fd8037f3",
@@ -95,10 +93,9 @@
     },
     "test-req:crates/omoide-core/tests/properties::tokens_are_normalized_and_ignore_separators:REQ-RECALL-1": {
       "from": "sha256:83ea5ea4f2c6de200260d51946231624105f258a40186ece626e225feb6e3bce",
-      "to": "sha256:a1a6f9ad164ecf14abbb3616c4fcea6474c5a66e998928eb030000f16aa91522",
+      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
       "by": "human",
-      "reason": "Stage one: record the tested SQLite contract, lexical recall, CLI round trip and Linux verification",
-      "at": "2026-11-19T19:26:44Z"
+      "at": "2026-11-19T19:41:07Z"
     },
     "test-req:crates/omoide-store/src/tests::contention_kill_and_replay:REQ-STORE-1": {
       "from": "sha256:cb763cfa280bb16dc85ac766b40c5045032b2960cf86e3987d37136e0aca8b1e",
@@ -193,10 +190,9 @@
     },
     "test-req:crates/omoide/tests/roundtrip::output_budget_pages_and_restarts_after_write:REQ-RECALL-1": {
       "from": "sha256:39721cb24e5070620257f506fcc00d609725f143ebb5ba905aeecb4dabe3f840",
-      "to": "sha256:a1a6f9ad164ecf14abbb3616c4fcea6474c5a66e998928eb030000f16aa91522",
+      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
       "by": "human",
-      "reason": "Stage one: record the tested SQLite contract, lexical recall, CLI round trip and Linux verification",
-      "at": "2026-11-19T19:26:44Z"
+      "at": "2026-11-19T19:41:07Z"
     }
   }
 }
