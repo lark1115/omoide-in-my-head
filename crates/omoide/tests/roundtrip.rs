@@ -342,3 +342,56 @@ fn strongest_qualifying_rule_survives_its_own_relative_cut() {
     assert_eq!(response["results"][0]["id"], a["id"]);
     assert_eq!(response["state"], "found");
 }
+
+// [REQ-JUDGE-1]
+#[test]
+fn provisional_judge_scores_share_the_page_after_confirmed_rows() {
+    let f = Fixture::new("Invented workshop");
+    for i in 0..12 {
+        let result = f.add(&format!("item{i}"), &format!("scene{i}"), &[]);
+        assert!(result["version_id"].is_string());
+    }
+    let script = f.path.with_file_name("score.py");
+    std::fs::write(&script,"import json, sys\nreq=json.load(sys.stdin)\nprint(json.dumps({'answers':[{'version_id':r['version_id'],'score':1 if r['text'] in ('item0','item1','item2') else float(sys.argv[1])} for r in req['candidates']]}))").unwrap();
+    let query = |score| {
+        f.recall(&[
+            "--scene",
+            "unfamiliar",
+            "--judge",
+            "python3",
+            "--judge-arg",
+            script.to_str().unwrap(),
+            "--judge-arg",
+            score,
+            "--threshold",
+            "0.6",
+        ])
+    };
+    let high = query("0.29");
+    let both = query("0.30");
+    assert_eq!(high["results"], both["results"]);
+    assert_eq!(high["results"].as_array().unwrap().len(), 3);
+    assert_eq!(high["candidates"], serde_json::json!([]));
+    assert_eq!(both["state"], "found");
+    assert_eq!(
+        both["candidate_guidance"],
+        "Not confirmed to apply; read with show before using."
+    );
+    let short = both["candidates"].as_array().unwrap();
+    assert!(!short.is_empty());
+    assert_eq!(
+        short.len() + both["candidates_remaining"].as_u64().unwrap() as usize,
+        9
+    );
+    assert!(both.to_string().len() < 4000);
+    for r in short {
+        assert!(r.get("source_id").is_none());
+        assert!(
+            both["results"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .all(|c| c["version_id"] != r["version_id"])
+        );
+    }
+}

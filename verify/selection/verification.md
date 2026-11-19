@@ -20,3 +20,13 @@ Eight separate source-literal mutations compiled and failed the CLI tests. The t
 The original core mutation run included an intermediate coverage-only module. Excluding that module gives 69 caught and four unviable. All 21 mutants in the final selection module were then caught, yielding 90 caught and four unviable on the final core source. No scored survivor or timeout.
 
 The full binary pass over judge.rs and search.rs generated 68 mutants. It caught 67 and missed one substitution of multiplication for addition when computing the best rule score. A new CLI test checks a three-word trigger within a four-hit rule. Multiplication makes its relative threshold exceed its own score. A targeted cargo-mutants rerun caught the survivor. Across the two changed binary files all 68 mutations are now caught.
+
+## Two-tier confirmation
+
+The two-tier product was frozen at d4ed3303e25b903efdce01b29800f7933f4e3fc1 before loading holdout2. All four arms completed 80 queries exactly once. Both live judge arms succeeded on all 80. No even-numbered query from the first discrimination set was rerun for this change.
+
+The workspace suite passed 108 tests. The three known S1 core misses passed through the live Jev adapter at 0.60. Confirmed-page priority, two probability boundaries, disjoint tier membership, the first sentence and short-field allowlist, UTF-8 including the final newline, and the count of omitted candidates have direct coverage. The page property varied candidate counts and multibyte text lengths. The relation, interruption and hot-file contract harnesses passed. The unchanged frozen scene adapter still evaluates the confirmed result list.
+
+Eleven independent literal/field substitutions all compiled and failed targeted tests. Six exchanged short-reference fields (id/version_id, kind/target, actions/scene in both directions). One extracted the sentence from scene instead of text. The other four changed candidates_only to none, routed confirmed records from candidate scores, routed candidates from confirmed scores, and changed the public guidance field name. The core mutation run found 99 variants, caught 94 and rejected five at compile time.
+
+The two changed binary files had 67 variants, 66 caught and one unviable (the replacement attempted to construct a default judge reply without a Default implementation). Neither run had a survivor or timeout.

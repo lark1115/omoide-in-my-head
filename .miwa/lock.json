@@ -640,6 +640,13 @@
       "reason": "Record the revised two-tier recall contract and its tests",
       "at": "2026-11-19T23:08:18Z"
     },
+    "test-req:crates/omoide/tests/roundtrip::provisional_judge_scores_share_the_page_after_confirmed_rows:REQ-JUDGE-1": {
+      "from": "sha256:51b3f9aa92931023e156d82061eb8cab16e68c72973120b505aa75fb293987b0",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Verify tentative evidence never displaces confirmed page records",
+      "at": "2026-11-19T23:12:04Z"
+    },
     "test-req:crates/omoide/tests/roundtrip::strongest_qualifying_rule_survives_its_own_relative_cut:REQ-RECALL-1": {
       "from": "sha256:e749a73b9021c491ad95e7d5898b519065670d36f93ada4ccc1a84242bda53a9",
       "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",

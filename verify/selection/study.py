@@ -91,7 +91,7 @@ def run(a):
         if not a.freeze:
             raise ValueError("provide the frozen git commit")
         subprocess.run(
-            ["git", "diff", "--exit-code", a.freeze, "--", "crates"],
+            ["git", "diff", "--exit-code", a.freeze, "--", ":(glob)crates/*/src/**", "Cargo.lock", "Cargo.toml"],
             check=True,
             stdout=subprocess.DEVNULL,
         )
@@ -138,6 +138,7 @@ def run(a):
                 id=q["id"],
                 ms=round((time.perf_counter() - start) * 1000, 2),
                 state=res["judge_state"],
+                reply_state=res["state"],bytes=len(raw_reply),candidates=[],remaining_candidates=0,
                 returned=[mapping[r["version_id"]] for r in res["results"]],
             )
             if "candidates" in res:

@@ -1,0 +1,80 @@
+{"id": "H001", "ms": 10.83, "state": "not_configured", "reply_state": "found", "bytes": 3885, "candidates": [], "remaining_candidates": 0, "returned": ["R070", "R008", "R055", "R050", "R034", "R019"]}
+{"id": "H002", "ms": 23.57, "state": "not_configured", "reply_state": "found", "bytes": 3465, "candidates": [], "remaining_candidates": 0, "returned": ["R018", "R017", "R034", "R033", "R008"]}
+{"id": "H003", "ms": 13.89, "state": "not_configured", "reply_state": "found", "bytes": 3894, "candidates": [], "remaining_candidates": 0, "returned": ["R034", "R033", "R051", "R040", "R038", "R037"]}
+{"id": "H004", "ms": 12.69, "state": "not_configured", "reply_state": "found", "bytes": 3930, "candidates": [], "remaining_candidates": 0, "returned": ["R042", "R071", "R063", "R041", "R011", "R069"]}
+{"id": "H005", "ms": 14.9, "state": "not_configured", "reply_state": "found", "bytes": 3778, "candidates": [], "remaining_candidates": 0, "returned": ["R064", "R063", "R046", "R045", "R044", "R072"]}
+{"id": "H006", "ms": 11.76, "state": "not_configured", "reply_state": "found", "bytes": 3744, "candidates": [], "remaining_candidates": 0, "returned": ["R016", "R071", "R013", "R067", "R063", "R060"]}
+{"id": "H007", "ms": 11.49, "state": "not_configured", "reply_state": "found", "bytes": 3846, "candidates": [], "remaining_candidates": 0, "returned": ["R068", "R056", "R036", "R033", "R024", "R007"]}
+{"id": "H008", "ms": 7.45, "state": "not_configured", "reply_state": "found", "bytes": 3913, "candidates": [], "remaining_candidates": 0, "returned": ["R039", "R033", "R050", "R049", "R040", "R038"]}
+{"id": "H009", "ms": 11.05, "state": "not_configured", "reply_state": "found", "bytes": 3997, "candidates": [], "remaining_candidates": 0, "returned": ["R055", "R051", "R056", "R052", "R034", "R033"]}
+{"id": "H010", "ms": 11.1, "state": "not_configured", "reply_state": "found", "bytes": 3778, "candidates": [], "remaining_candidates": 0, "returned": ["R024", "R002", "R070", "R068", "R001", "R039"]}
+{"id": "H011", "ms": 25.8, "state": "not_configured", "reply_state": "found", "bytes": 3774, "candidates": [], "remaining_candidates": 0, "returned": ["R014", "R013", "R065", "R057", "R044", "R043"]}
+{"id": "H012", "ms": 14.3, "state": "not_configured", "reply_state": "found", "bytes": 3932, "candidates": [], "remaining_candidates": 0, "returned": ["R026", "R025", "R028", "R027", "R071", "R042"]}
+{"id": "H013", "ms": 9.0, "state": "not_configured", "reply_state": "found", "bytes": 3693, "candidates": [], "remaining_candidates": 0, "returned": ["R046", "R045", "R041", "R062", "R061", "R060"]}
+{"id": "H014", "ms": 8.51, "state": "not_configured", "reply_state": "found", "bytes": 3697, "candidates": [], "remaining_candidates": 0, "returned": ["R072", "R071", "R056", "R055", "R054", "R053"]}
+{"id": "H015", "ms": 8.06, "state": "not_configured", "reply_state": "found", "bytes": 3405, "candidates": [], "remaining_candidates": 0, "returned": ["R002", "R001", "R033", "R024", "R008"]}
+{"id": "H016", "ms": 7.9, "state": "not_configured", "reply_state": "found", "bytes": 3728, "candidates": [], "remaining_candidates": 0, "returned": ["R017", "R024", "R072", "R018", "R022", "R021"]}
+{"id": "H017", "ms": 7.58, "state": "not_configured", "reply_state": "found", "bytes": 3766, "candidates": [], "remaining_candidates": 0, "returned": ["R064", "R063", "R062", "R061", "R060", "R059"]}
+{"id": "H018", "ms": 7.76, "state": "not_configured", "reply_state": "found", "bytes": 3871, "candidates": [], "remaining_candidates": 0, "returned": ["R045", "R044", "R043", "R042", "R064", "R048"]}
+{"id": "H019", "ms": 11.68, "state": "not_configured", "reply_state": "found", "bytes": 3428, "candidates": [], "remaining_candidates": 0, "returned": ["R058", "R057", "R063", "R060", "R059"]}
+{"id": "H020", "ms": 7.86, "state": "not_configured", "reply_state": "found", "bytes": 2020, "candidates": [], "remaining_candidates": 0, "returned": ["R066", "R016", "R015"]}
+{"id": "H021", "ms": 9.5, "state": "not_configured", "reply_state": "found", "bytes": 3717, "candidates": [], "remaining_candidates": 0, "returned": ["R022", "R021", "R017", "R024", "R023", "R004"]}
+{"id": "H022", "ms": 11.76, "state": "not_configured", "reply_state": "found", "bytes": 3481, "candidates": [], "remaining_candidates": 0, "returned": ["R034", "R033", "R036", "R018", "R017"]}
+{"id": "H023", "ms": 12.74, "state": "not_configured", "reply_state": "found", "bytes": 3686, "candidates": [], "remaining_candidates": 0, "returned": ["R070", "R036", "R055", "R054", "R053", "R056"]}
+{"id": "H024", "ms": 12.58, "state": "not_configured", "reply_state": "found", "bytes": 3426, "candidates": [], "remaining_candidates": 0, "returned": ["R063", "R042", "R041", "R071", "R064"]}
+{"id": "H025", "ms": 11.99, "state": "not_configured", "reply_state": "found", "bytes": 3868, "candidates": [], "remaining_candidates": 0, "returned": ["R010", "R009", "R016", "R071", "R067", "R063"]}
+{"id": "H026", "ms": 14.49, "state": "not_configured", "reply_state": "found", "bytes": 3720, "candidates": [], "remaining_candidates": 0, "returned": ["R032", "R029", "R069", "R065", "R064", "R063"]}
+{"id": "H027", "ms": 10.25, "state": "not_configured", "reply_state": "found", "bytes": 3743, "candidates": [], "remaining_candidates": 0, "returned": ["R070", "R068", "R036", "R035", "R055", "R049"]}
+{"id": "H028", "ms": 8.81, "state": "not_configured", "reply_state": "found", "bytes": 1472, "candidates": [], "remaining_candidates": 0, "returned": ["R056", "R055"]}
+{"id": "H029", "ms": 11.82, "state": "not_configured", "reply_state": "found", "bytes": 3677, "candidates": [], "remaining_candidates": 0, "returned": ["R004", "R003", "R007", "R008", "R038", "R037"]}
+{"id": "H030", "ms": 8.68, "state": "not_configured", "reply_state": "found", "bytes": 1980, "candidates": [], "remaining_candidates": 0, "returned": ["R067", "R024", "R023"]}
+{"id": "H031", "ms": 16.21, "state": "not_configured", "reply_state": "found", "bytes": 3806, "candidates": [], "remaining_candidates": 0, "returned": ["R032", "R031", "R028", "R027", "R026", "R025"]}
+{"id": "H032", "ms": 11.05, "state": "not_configured", "reply_state": "found", "bytes": 3468, "candidates": [], "remaining_candidates": 0, "returned": ["R047", "R041", "R042", "R063", "R058"]}
+{"id": "H033", "ms": 17.2, "state": "not_configured", "reply_state": "found", "bytes": 3817, "candidates": [], "remaining_candidates": 0, "returned": ["R060", "R059", "R063", "R062", "R061", "R058"]}
+{"id": "H034", "ms": 11.61, "state": "not_configured", "reply_state": "found", "bytes": 3496, "candidates": [], "remaining_candidates": 0, "returned": ["R050", "R049", "R034", "R002", "R001"]}
+{"id": "H035", "ms": 11.94, "state": "not_configured", "reply_state": "found", "bytes": 3675, "candidates": [], "remaining_candidates": 0, "returned": ["R019", "R024", "R070", "R068", "R051", "R071"]}
+{"id": "H036", "ms": 16.65, "state": "not_configured", "reply_state": "found", "bytes": 3736, "candidates": [], "remaining_candidates": 0, "returned": ["R039", "R038", "R003", "R002", "R072", "R071"]}
+{"id": "H037", "ms": 11.41, "state": "not_configured", "reply_state": "found", "bytes": 3762, "candidates": [], "remaining_candidates": 0, "returned": ["R011", "R071", "R067", "R063", "R047", "R043"]}
+{"id": "H038", "ms": 24.65, "state": "not_configured", "reply_state": "found", "bytes": 3378, "candidates": [], "remaining_candidates": 0, "returned": ["R064", "R063", "R060", "R059", "R058"]}
+{"id": "H039", "ms": 15.89, "state": "not_configured", "reply_state": "found", "bytes": 3947, "candidates": [], "remaining_candidates": 0, "returned": ["R010", "R009", "R016", "R015", "R048", "R042"]}
+{"id": "H040", "ms": 11.92, "state": "not_configured", "reply_state": "found", "bytes": 1928, "candidates": [], "remaining_candidates": 0, "returned": ["R068", "R032", "R031"]}
+{"id": "H041", "ms": 13.62, "state": "not_configured", "reply_state": "found", "bytes": 3835, "candidates": [], "remaining_candidates": 0, "returned": ["R036", "R039", "R003", "R033", "R007", "R072"]}
+{"id": "H042", "ms": 17.08, "state": "not_configured", "reply_state": "found", "bytes": 3850, "candidates": [], "remaining_candidates": 0, "returned": ["R050", "R049", "R056", "R055", "R071", "R054"]}
+{"id": "H043", "ms": 15.3, "state": "not_configured", "reply_state": "found", "bytes": 1982, "candidates": [], "remaining_candidates": 0, "returned": ["R065", "R008", "R007"]}
+{"id": "H044", "ms": 12.51, "state": "not_configured", "reply_state": "found", "bytes": 3886, "candidates": [], "remaining_candidates": 0, "returned": ["R067", "R071", "R063", "R060", "R059", "R058"]}
+{"id": "H045", "ms": 10.06, "state": "not_configured", "reply_state": "found", "bytes": 3932, "candidates": [], "remaining_candidates": 0, "returned": ["R063", "R027", "R064", "R060", "R059", "R058"]}
+{"id": "H046", "ms": 9.69, "state": "not_configured", "reply_state": "found", "bytes": 3934, "candidates": [], "remaining_candidates": 0, "returned": ["R044", "R043", "R042", "R041", "R048", "R047"]}
+{"id": "H047", "ms": 9.97, "state": "not_configured", "reply_state": "found", "bytes": 3755, "candidates": [], "remaining_candidates": 0, "returned": ["R070", "R068", "R072", "R034", "R024", "R066"]}
+{"id": "H048", "ms": 13.82, "state": "not_configured", "reply_state": "found", "bytes": 3785, "candidates": [], "remaining_candidates": 0, "returned": ["R068", "R049", "R007", "R004", "R070", "R050"]}
+{"id": "H049", "ms": 11.33, "state": "not_configured", "reply_state": "found", "bytes": 3753, "candidates": [], "remaining_candidates": 0, "returned": ["R024", "R023", "R022", "R068", "R050", "R049"]}
+{"id": "H050", "ms": 12.71, "state": "not_configured", "reply_state": "found", "bytes": 1979, "candidates": [], "remaining_candidates": 0, "returned": ["R069", "R040", "R039"]}
+{"id": "H051", "ms": 13.67, "state": "not_configured", "reply_state": "found", "bytes": 3743, "candidates": [], "remaining_candidates": 0, "returned": ["R048", "R044", "R043", "R063", "R046", "R045"]}
+{"id": "H052", "ms": 8.58, "state": "not_configured", "reply_state": "found", "bytes": 3837, "candidates": [], "remaining_candidates": 0, "returned": ["R064", "R063", "R041", "R062", "R061", "R060"]}
+{"id": "H053", "ms": 12.24, "state": "not_configured", "reply_state": "found", "bytes": 3828, "candidates": [], "remaining_candidates": 0, "returned": ["R012", "R011", "R071", "R064", "R063", "R060"]}
+{"id": "H054", "ms": 10.49, "state": "not_configured", "reply_state": "found", "bytes": 3942, "candidates": [], "remaining_candidates": 0, "returned": ["R033", "R072", "R052", "R039", "R034", "R024"]}
+{"id": "H055", "ms": 13.09, "state": "not_configured", "reply_state": "none", "bytes": 278, "candidates": [], "remaining_candidates": 0, "returned": []}
+{"id": "H056", "ms": 14.16, "state": "not_configured", "reply_state": "found", "bytes": 3691, "candidates": [], "remaining_candidates": 0, "returned": ["R056", "R053", "R055", "R054", "R051", "R023"]}
+{"id": "H057", "ms": 9.39, "state": "not_configured", "reply_state": "found", "bytes": 3903, "candidates": [], "remaining_candidates": 0, "returned": ["R025", "R044", "R032", "R026", "R071", "R065"]}
+{"id": "H058", "ms": 10.12, "state": "not_configured", "reply_state": "found", "bytes": 3939, "candidates": [], "remaining_candidates": 0, "returned": ["R042", "R016", "R064", "R063", "R048", "R044"]}
+{"id": "H059", "ms": 10.21, "state": "not_configured", "reply_state": "found", "bytes": 3942, "candidates": [], "remaining_candidates": 0, "returned": ["R032", "R026", "R025", "R031", "R011", "R042"]}
+{"id": "H060", "ms": 7.74, "state": "not_configured", "reply_state": "found", "bytes": 1954, "candidates": [], "remaining_candidates": 0, "returned": ["R070", "R048", "R047"]}
+{"id": "H061", "ms": 10.42, "state": "not_configured", "reply_state": "found", "bytes": 3866, "candidates": [], "remaining_candidates": 0, "returned": ["R055", "R050", "R049", "R072", "R056", "R039"]}
+{"id": "H062", "ms": 10.28, "state": "not_configured", "reply_state": "found", "bytes": 3669, "candidates": [], "remaining_candidates": 0, "returned": ["R005", "R006", "R072", "R004", "R002", "R066"]}
+{"id": "H063", "ms": 9.45, "state": "not_configured", "reply_state": "found", "bytes": 3745, "candidates": [], "remaining_candidates": 0, "returned": ["R022", "R021", "R023", "R034", "R067", "R056"]}
+{"id": "H064", "ms": 9.2, "state": "not_configured", "reply_state": "found", "bytes": 3351, "candidates": [], "remaining_candidates": 0, "returned": ["R064", "R063", "R043", "R041", "R032"]}
+{"id": "H065", "ms": 9.8, "state": "not_configured", "reply_state": "found", "bytes": 3794, "candidates": [], "remaining_candidates": 0, "returned": ["R044", "R042", "R048", "R046", "R045", "R043"]}
+{"id": "H066", "ms": 10.94, "state": "not_configured", "reply_state": "found", "bytes": 3932, "candidates": [], "remaining_candidates": 0, "returned": ["R064", "R063", "R062", "R058", "R057", "R061"]}
+{"id": "H067", "ms": 43.4, "state": "not_configured", "reply_state": "found", "bytes": 3907, "candidates": [], "remaining_candidates": 0, "returned": ["R066", "R053", "R034", "R033", "R023", "R056"]}
+{"id": "H068", "ms": 22.84, "state": "not_configured", "reply_state": "found", "bytes": 1427, "candidates": [], "remaining_candidates": 0, "returned": ["R024", "R023"]}
+{"id": "H069", "ms": 17.73, "state": "not_configured", "reply_state": "found", "bytes": 3817, "candidates": [], "remaining_candidates": 0, "returned": ["R035", "R036", "R040", "R037", "R003", "R033"]}
+{"id": "H070", "ms": 8.32, "state": "not_configured", "reply_state": "found", "bytes": 2051, "candidates": [], "remaining_candidates": 0, "returned": ["R071", "R056", "R055"]}
+{"id": "H071", "ms": 10.86, "state": "not_configured", "reply_state": "found", "bytes": 3951, "candidates": [], "remaining_candidates": 0, "returned": ["R044", "R042", "R041", "R071", "R067", "R063"]}
+{"id": "H072", "ms": 9.56, "state": "not_configured", "reply_state": "found", "bytes": 3833, "candidates": [], "remaining_candidates": 0, "returned": ["R063", "R025", "R014", "R071", "R067", "R064"]}
+{"id": "H073", "ms": 8.6, "state": "not_configured", "reply_state": "found", "bytes": 3705, "candidates": [], "remaining_candidates": 0, "returned": ["R069", "R065", "R064", "R063", "R062", "R061"]}
+{"id": "H074", "ms": 10.09, "state": "not_configured", "reply_state": "found", "bytes": 3704, "candidates": [], "remaining_candidates": 0, "returned": ["R072", "R070", "R066", "R055", "R049", "R022"]}
+{"id": "H075", "ms": 8.39, "state": "not_configured", "reply_state": "found", "bytes": 1417, "candidates": [], "remaining_candidates": 0, "returned": ["R031", "R015"]}
+{"id": "H076", "ms": 8.39, "state": "not_configured", "reply_state": "found", "bytes": 3868, "candidates": [], "remaining_candidates": 0, "returned": ["R007", "R001", "R036", "R035", "R002", "R055"]}
+{"id": "H077", "ms": 7.29, "state": "not_configured", "reply_state": "found", "bytes": 3979, "candidates": [], "remaining_candidates": 0, "returned": ["R067", "R042", "R041", "R071", "R064", "R063"]}
+{"id": "H078", "ms": 8.36, "state": "not_configured", "reply_state": "found", "bytes": 3696, "candidates": [], "remaining_candidates": 0, "returned": ["R032", "R030", "R016", "R071", "R067", "R063"]}
+{"id": "H079", "ms": 12.13, "state": "not_configured", "reply_state": "found", "bytes": 3934, "candidates": [], "remaining_candidates": 0, "returned": ["R042", "R041", "R044", "R043", "R048", "R047"]}
+{"id": "H080", "ms": 8.41, "state": "not_configured", "reply_state": "found", "bytes": 2083, "candidates": [], "remaining_candidates": 0, "returned": ["R072", "R064", "R063"]}
