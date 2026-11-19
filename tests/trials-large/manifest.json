@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "seed": "loam-workshop-archive-v1",
+  "file_format": "canonical-jsonl-utf8-lf",
+  "rows": 3048,
+  "families": {
+    "bulk": 2340,
+    "closed-lot": 120,
+    "original": 48,
+    "rehearsal": 144,
+    "report": 216,
+    "revision": 36,
+    "sibling": 144
+  },
+  "kinds": {
+    "decision": 627,
+    "experience": 717,
+    "fact": 819,
+    "rule": 885
+  },
+  "archive_bytes": 778731,
+  "archive_sha256": "62f05268f1b7561a4ab47bd28a977020bc4174bd7b8256deccce9bd0e04e3a62",
+  "frozen_inputs": {
+    "memory.json": "b0e77ed895eb03dc482cfb49e5d38d7cb34d99c42c2d33b39131aeb992a65455",
+    "opportunities.json": "6612ee4958e57eb17c36af8826468ca11adfec6cd5f4a47adb9cf87d34fbffd6",
+    "hot.txt": "2cb4d6d36cd231d44748f79626431bdfc5024260ded45aacc3b45a961c4e1480",
+    "grading/key.json": "7b0ca7abeba4047dfd52f5cea146fdcdc4fbfa1b99e53d7fd22e2007b77a04e6",
+    "grading/examples.json": "a4d45c4ed9b78a316141ccfeb66e07b68b44b3e90aa480f53cec1ca3c3649659"
+  },
+  "scope_sha256": "c74e25645fd1741ee207e3514fb6cd4b1571473f6c796f82b1bd1ee620df129b",
+  "per_session_bytes": 24576,
+  "per_page_bytes": 4096,
+  "max_rows_per_page": 8,
+  "opportunities": 48,
+  "excluded_from_condition": [],
+  "headline": 44,
+  "planned_trials": 144,
+  "scope_comparisons": 144000,
+  "maximum_witness_bytes": 5806
+}
