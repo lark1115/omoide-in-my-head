@@ -1,0 +1,15 @@
+docs:
+- docs
+requirements:
+- req
+tests:
+- crates
+diff_base: main
+judge:
+  threshold: 0.9
+  max_body_bytes: 200000
+rust:
+  test_attributes: []
+exclude: []
+index:
+- docs
