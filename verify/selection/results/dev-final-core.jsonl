@@ -1,0 +1,76 @@
+{"id": "Q001", "ms": 8.91, "state": "not_configured", "returned": ["R001", "R002"]}
+{"id": "Q003", "ms": 12.06, "state": "not_configured", "returned": ["R004", "R003"]}
+{"id": "Q005", "ms": 10.34, "state": "not_configured", "returned": ["R008", "R007", "R005"]}
+{"id": "Q007", "ms": 12.15, "state": "not_configured", "returned": ["R007"]}
+{"id": "Q009", "ms": 14.76, "state": "not_configured", "returned": ["R065"]}
+{"id": "Q011", "ms": 34.54, "state": "not_configured", "returned": ["R007", "R008"]}
+{"id": "Q013", "ms": 10.33, "state": "not_configured", "returned": ["R067", "R071", "R069", "R065", "R064", "R063"]}
+{"id": "Q015", "ms": 10.44, "state": "not_configured", "returned": []}
+{"id": "Q017", "ms": 14.04, "state": "not_configured", "returned": ["R010", "R009"]}
+{"id": "Q019", "ms": 11.34, "state": "not_configured", "returned": ["R011", "R071", "R042", "R012", "R067", "R063"]}
+{"id": "Q021", "ms": 11.2, "state": "not_configured", "returned": ["R016", "R015", "R013"]}
+{"id": "Q023", "ms": 30.08, "state": "not_configured", "returned": ["R015"]}
+{"id": "Q025", "ms": 9.73, "state": "not_configured", "returned": ["R066"]}
+{"id": "Q027", "ms": 10.98, "state": "not_configured", "returned": ["R016", "R015", "R010", "R071", "R028"]}
+{"id": "Q029", "ms": 11.85, "state": "not_configured", "returned": ["R066"]}
+{"id": "Q031", "ms": 11.05, "state": "not_configured", "returned": ["R016", "R011", "R032"]}
+{"id": "Q033", "ms": 9.01, "state": "not_configured", "returned": ["R017"]}
+{"id": "Q035", "ms": 11.23, "state": "not_configured", "returned": ["R024", "R070", "R068"]}
+{"id": "Q037", "ms": 6.9, "state": "not_configured", "returned": ["R024", "R023", "R021"]}
+{"id": "Q039", "ms": 7.81, "state": "not_configured", "returned": ["R023", "R024"]}
+{"id": "Q041", "ms": 9.59, "state": "not_configured", "returned": ["R067"]}
+{"id": "Q043", "ms": 9.72, "state": "not_configured", "returned": ["R024", "R019", "R023"]}
+{"id": "Q045", "ms": 7.19, "state": "not_configured", "returned": ["R067", "R063", "R071", "R064", "R047", "R042"]}
+{"id": "Q047", "ms": 7.28, "state": "not_configured", "returned": ["R020", "R024", "R023", "R022", "R021", "R019"]}
+{"id": "Q049", "ms": 7.56, "state": "not_configured", "returned": ["R025", "R026"]}
+{"id": "Q051", "ms": 7.07, "state": "not_configured", "returned": ["R027", "R026", "R025", "R065", "R064", "R063"]}
+{"id": "Q053", "ms": 6.51, "state": "not_configured", "returned": ["R032", "R031", "R029"]}
+{"id": "Q055", "ms": 7.73, "state": "not_configured", "returned": ["R031"]}
+{"id": "Q057", "ms": 6.85, "state": "not_configured", "returned": []}
+{"id": "Q059", "ms": 11.07, "state": "not_configured", "returned": ["R032", "R026", "R031"]}
+{"id": "Q061", "ms": 11.42, "state": "not_configured", "returned": []}
+{"id": "Q063", "ms": 8.09, "state": "not_configured", "returned": ["R032", "R031", "R028"]}
+{"id": "Q065", "ms": 7.88, "state": "not_configured", "returned": ["R033"]}
+{"id": "Q067", "ms": 6.73, "state": "not_configured", "returned": ["R036"]}
+{"id": "Q069", "ms": 5.77, "state": "not_configured", "returned": ["R040", "R039", "R037"]}
+{"id": "Q071", "ms": 6.75, "state": "not_configured", "returned": ["R039", "R002", "R001"]}
+{"id": "Q073", "ms": 7.22, "state": "not_configured", "returned": ["R069"]}
+{"id": "Q075", "ms": 7.45, "state": "not_configured", "returned": ["R033", "R034", "R039", "R040"]}
+{"id": "Q077", "ms": 7.02, "state": "not_configured", "returned": ["R064", "R063", "R025", "R069", "R058"]}
+{"id": "Q079", "ms": 13.83, "state": "not_configured", "returned": ["R040", "R038", "R037", "R033"]}
+{"id": "Q081", "ms": 9.71, "state": "not_configured", "returned": ["R041", "R042"]}
+{"id": "Q083", "ms": 8.14, "state": "not_configured", "returned": ["R044", "R043", "R014", "R013", "R071", "R067"]}
+{"id": "Q085", "ms": 6.36, "state": "not_configured", "returned": ["R048", "R047", "R045"]}
+{"id": "Q087", "ms": 6.58, "state": "not_configured", "returned": ["R047"]}
+{"id": "Q089", "ms": 7.28, "state": "not_configured", "returned": []}
+{"id": "Q091", "ms": 6.79, "state": "not_configured", "returned": ["R042", "R041", "R048", "R043", "R047", "R046"]}
+{"id": "Q093", "ms": 6.33, "state": "not_configured", "returned": []}
+{"id": "Q095", "ms": 7.13, "state": "not_configured", "returned": ["R047", "R042", "R048", "R044", "R043", "R041"]}
+{"id": "Q097", "ms": 6.36, "state": "not_configured", "returned": ["R049", "R050"]}
+{"id": "Q099", "ms": 5.94, "state": "not_configured", "returned": []}
+{"id": "Q101", "ms": 5.0, "state": "not_configured", "returned": ["R056", "R055", "R053"]}
+{"id": "Q103", "ms": 6.38, "state": "not_configured", "returned": ["R055"]}
+{"id": "Q105", "ms": 6.5, "state": "not_configured", "returned": ["R063", "R060", "R058", "R057", "R015"]}
+{"id": "Q107", "ms": 7.96, "state": "not_configured", "returned": ["R056", "R050", "R049", "R055"]}
+{"id": "Q109", "ms": 7.85, "state": "not_configured", "returned": ["R071", "R067", "R063", "R047", "R042", "R041"]}
+{"id": "Q111", "ms": 17.17, "state": "not_configured", "returned": ["R053", "R055", "R056", "R054"]}
+{"id": "Q113", "ms": 8.88, "state": "not_configured", "returned": ["R058", "R057"]}
+{"id": "Q115", "ms": 6.93, "state": "not_configured", "returned": ["R064", "R063", "R060", "R059", "R062", "R061"]}
+{"id": "Q117", "ms": 5.61, "state": "not_configured", "returned": ["R064", "R063", "R061"]}
+{"id": "Q119", "ms": 6.71, "state": "not_configured", "returned": ["R063"]}
+{"id": "Q121", "ms": 6.46, "state": "not_configured", "returned": ["R072"]}
+{"id": "Q123", "ms": 7.19, "state": "not_configured", "returned": ["R064", "R063", "R057", "R058"]}
+{"id": "Q125", "ms": 7.69, "state": "not_configured", "returned": []}
+{"id": "Q127", "ms": 6.97, "state": "not_configured", "returned": ["R063", "R064"]}
+{"id": "Q129", "ms": 6.99, "state": "not_configured", "returned": ["R001", "R002"]}
+{"id": "Q131", "ms": 7.03, "state": "not_configured", "returned": ["R010", "R009"]}
+{"id": "Q133", "ms": 7.83, "state": "not_configured", "returned": ["R017"]}
+{"id": "Q135", "ms": 7.19, "state": "not_configured", "returned": ["R025", "R026"]}
+{"id": "Q137", "ms": 11.94, "state": "not_configured", "returned": ["R033", "R034"]}
+{"id": "Q139", "ms": 9.3, "state": "not_configured", "returned": ["R042", "R041"]}
+{"id": "Q141", "ms": 7.95, "state": "not_configured", "returned": ["R049", "R050"]}
+{"id": "Q143", "ms": 7.09, "state": "not_configured", "returned": ["R057", "R058"]}
+{"id": "Q145", "ms": 7.45, "state": "not_configured", "returned": []}
+{"id": "Q147", "ms": 7.8, "state": "not_configured", "returned": ["R018", "R017", "R024", "R023", "R022", "R021"]}
+{"id": "Q149", "ms": 7.43, "state": "not_configured", "returned": ["R033"]}
+{"id": "Q151", "ms": 7.53, "state": "not_configured", "returned": ["R053", "R056", "R055", "R054", "R023"]}

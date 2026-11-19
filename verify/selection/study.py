@@ -114,7 +114,7 @@ def run(a):
                 env.update(
                     STUDY_ADAPTER=str(a.adapter.resolve()),
                     STUDY_CAPTURE=str(capture),
-                    JEV_TIMEOUT_MS="9000",
+                    JEV_TIMEOUT_MS=str(a.adapter_ms),
                 )
                 args += [
                     "--judge",
@@ -124,7 +124,7 @@ def run(a):
                     "--judge-arg",
                     "judge",
                     "--timeout-ms",
-                    "10000",
+                    str(a.port_ms),
                     "--threshold",
                     str(a.threshold),
                 ]
@@ -156,6 +156,8 @@ if __name__ == "__main__":
     p.add_argument("output", type=Path)
     p.add_argument("--adapter", type=Path)
     p.add_argument("--threshold", type=float, default=0.5)
+    p.add_argument("--port-ms", type=int, default=10000)
+    p.add_argument("--adapter-ms", type=int, default=9000)
     p.add_argument("--freeze")
     p.add_argument("--prefilter", choices=["structured", "loose"])
     run(p.parse_args())

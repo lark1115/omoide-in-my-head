@@ -72,6 +72,20 @@
       "by": "human",
       "at": "2026-11-19T19:07:41Z"
     },
+    "test-req:crates/omoide-core/src/selection:tests:both_boundaries_are_inclusive:REQ-RECALL-1": {
+      "from": "sha256:e076bc3c89004a62ebfd7371c5e6e72d9b387e8c114fb8e178a3c023ad557282",
+      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "by": "human",
+      "reason": "Record applicability selection tests and decision ADR-0002",
+      "at": "2026-11-19T22:55:10Z"
+    },
+    "test-req:crates/omoide-core/src/selection:tests:trigger_excludes_shared_words_and_single_characters:REQ-RECALL-1": {
+      "from": "sha256:01d4ccc7864ac2862bb2d51ebcaf8ad0481e5b5fd7131d0b37d2c597cdc981a4",
+      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "by": "human",
+      "reason": "Record applicability selection tests and decision ADR-0002",
+      "at": "2026-11-19T22:55:10Z"
+    },
     "test-req:crates/omoide-core/tests/properties::additional_candidate_preserves_pair_order:REQ-RECALL-1": {
       "from": "sha256:4b4f466bb9819a29b4142109f649caf5687bdacbe90dac7338e54913fee26cf2",
       "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
@@ -600,6 +614,27 @@
       "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
       "by": "human",
       "at": "2026-11-19T19:41:07Z"
+    },
+    "test-req:crates/omoide/tests/roundtrip::strongest_qualifying_rule_survives_its_own_relative_cut:REQ-RECALL-1": {
+      "from": "sha256:e749a73b9021c491ad95e7d5898b519065670d36f93ada4ccc1a84242bda53a9",
+      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "by": "human",
+      "reason": "Exercise the relative cutoff against its strongest candidate",
+      "at": "2026-11-19T23:01:09Z"
+    },
+    "test-req:crates/omoide/tests/roundtrip::target_and_action_words_do_not_supply_extra_trigger_evidence:REQ-RECALL-1": {
+      "from": "sha256:bc9ae0d3bb98a8a35e173dd81edbed32598af4f494b9e0aaa7dc4894d40eeaa4",
+      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "by": "human",
+      "reason": "Record applicability selection tests and decision ADR-0002",
+      "at": "2026-11-19T22:55:10Z"
+    },
+    "test-req:crates/omoide/tests/roundtrip::weak_lexical_match_and_structured_judge_candidates:REQ-JUDGE-1": {
+      "from": "sha256:686830be07bef5d472e242b2402f6e0201ccab217f67eac3b14f21544c6a7e1a",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Record applicability selection tests and decision ADR-0002",
+      "at": "2026-11-19T22:55:10Z"
     },
     "test-req:crates/omoide/tests/stage_four::cap_includes_markers_exactly_and_optional_rows_stay_searchable:REQ-HOT-1": {
       "from": "sha256:610ede0571c53c6dbe0791c259182493d0b577ddc9d566877adceeb596bae72d",

@@ -261,7 +261,7 @@ fn linux_release_resource_budget() {
     );
 }
 
-// [REQ-RECALL-1] [REQ-JUDGE-1]
+// [REQ-JUDGE-1]
 #[test]
 fn weak_lexical_match_and_structured_judge_candidates() {
     let f = Fixture::new("Invented workshop instructions");
@@ -309,4 +309,35 @@ fn weak_lexical_match_and_structured_judge_candidates() {
         assert_eq!(rows.len(), expected_count);
         assert!(rows.iter().any(|r| r["id"] == a["id"]));
     }
+}
+
+// [REQ-RECALL-1]
+#[test]
+fn target_and_action_words_do_not_supply_extra_trigger_evidence() {
+    let f = Fixture::new("Label workshop supplies");
+    let a = f.add("violet copper linen", "violet copper", &[]);
+    let b = f.add(
+        "spruce ash",
+        "spruce ash",
+        &["--target", "spruce", "--action", "ash"],
+    );
+    assert_ne!(a["id"], b["id"]);
+    let response = f.recall(&["--scene", "violet copper linen spruce ash"]);
+    let ids: Vec<_> = response["results"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|r| &r["id"])
+        .collect();
+    assert_eq!(ids, vec![&a["id"]]);
+}
+
+// [REQ-RECALL-1]
+#[test]
+fn strongest_qualifying_rule_survives_its_own_relative_cut() {
+    let f = Fixture::new("Packing materials");
+    let a = f.add("linen copper brass felt", "linen copper brass", &[]);
+    let response = f.recall(&["--scene", "linen copper brass felt"]);
+    assert_eq!(response["results"][0]["id"], a["id"]);
+    assert_eq!(response["state"], "found");
 }
