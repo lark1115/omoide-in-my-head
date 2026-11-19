@@ -1,0 +1,136 @@
+{
+  "scene": "S4",
+  "records": [
+    {
+      "id": "s04-location",
+      "kind": "utterance",
+      "text": "貸し型の引換票は琥珀の引き出し。 The mold voucher is in the amber drawer.",
+      "target": "bakehouse",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s04-voucher",
+      "kind": "fact",
+      "source": "s04-location",
+      "text": "貸し型の引換票の所在。 Location of the mold voucher.",
+      "target": "mold",
+      "location": "amber-drawer",
+      "certainty": "reported"
+    },
+    {
+      "id": "s04-inspection",
+      "kind": "experience",
+      "text": "琥珀の引き出しで票の封筒を現認。 Saw the voucher envelope in the amber drawer.",
+      "at": "2040-04-19T08:00:00Z",
+      "target": "mold"
+    },
+    {
+      "id": "s04-observed",
+      "kind": "fact",
+      "source": "s04-inspection",
+      "text": "引換票の封筒がある。 The voucher envelope is present.",
+      "target": "mold",
+      "certainty": "verified",
+      "location": "amber-drawer",
+      "evidence": "s04-inspection"
+    }
+  ],
+  "cases": [
+    {
+      "id": "s04-found-ja",
+      "language": "ja",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "借りる焼き型の票なんて持ってたっけ？",
+        "target": "mold"
+      },
+      "expect": {
+        "must": [
+          "s04-voucher",
+          "s04-observed"
+        ],
+        "must_not": [],
+        "fields": {
+          "s04-voucher": {
+            "location": "amber-drawer"
+          },
+          "s04-observed": {
+            "certainty": "verified",
+            "evidence": "s04-inspection"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "渡済みの物の所在と現認した記録を引き、値の開示を要しない（REQ-REC-1(g), REQ-DEC-1(d)(h)）。"
+    },
+    {
+      "id": "s04-missing-ja",
+      "language": "ja",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "scene": "貸し秤の票はある？",
+        "target": "scale"
+      },
+      "expect": {
+        "must": [],
+        "must_not": [
+          "s04-voucher",
+          "s04-observed"
+        ],
+        "fields": {},
+        "meta": {}
+      },
+      "reason": "別の貸出品の引換票を存在の根拠にしない（REQ-DEC-1(f)）。"
+    },
+    {
+      "id": "s04-found-en",
+      "language": "en",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "Can we redeem our borrowed tin?",
+        "target": "mold"
+      },
+      "expect": {
+        "must": [
+          "s04-voucher",
+          "s04-observed"
+        ],
+        "must_not": [],
+        "fields": {
+          "s04-voucher": {
+            "location": "amber-drawer"
+          },
+          "s04-observed": {
+            "certainty": "verified",
+            "evidence": "s04-inspection"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "渡済みの物の所在と現認した記録を引き、値の開示を要しない（REQ-REC-1(g), REQ-DEC-1(d)(h)）。"
+    },
+    {
+      "id": "s04-missing-en",
+      "language": "en",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "scene": "Where is the scale voucher?",
+        "target": "scale"
+      },
+      "expect": {
+        "must": [],
+        "must_not": [
+          "s04-voucher",
+          "s04-observed"
+        ],
+        "fields": {},
+        "meta": {}
+      },
+      "reason": "別の貸出品の引換票を存在の根拠にしない（REQ-DEC-1(f)）。"
+    }
+  ]
+}

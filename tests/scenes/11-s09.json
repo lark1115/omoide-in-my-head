@@ -1,0 +1,201 @@
+{
+  "scene": "S9",
+  "records": [
+    {
+      "id": "s09-legacy-words",
+      "kind": "utterance",
+      "text": "冬箱は青い留め具。 Winter boxes take blue clasps.",
+      "target": "bakehouse",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s09-legacy",
+      "kind": "rule",
+      "source": "s09-legacy-words",
+      "text": "冬箱は青い留め具。 Winter boxes take blue clasps.",
+      "scene": "冬箱 winter boxes",
+      "action": "clasp"
+    },
+    {
+      "id": "s09-active-words",
+      "kind": "utterance",
+      "text": "冬箱は赤い留め具。 Winter boxes take red clasps.",
+      "target": "bakehouse",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s09-active",
+      "kind": "rule",
+      "source": "s09-active-words",
+      "text": "冬箱は赤い留め具。 Winter boxes take red clasps.",
+      "scene": "冬箱 winter boxes",
+      "action": "clasp",
+      "relation": {
+        "type": "revision",
+        "to": "s09-legacy"
+      },
+      "pinned": true
+    }
+  ],
+  "cases": [
+    {
+      "id": "s09-bounded-ja",
+      "language": "ja",
+      "polarity": "positive",
+      "query": {
+        "op": "section",
+        "question": "冬箱の今の留め方"
+      },
+      "expect": {
+        "must": [
+          "s09-active"
+        ],
+        "must_not": [
+          "s09-legacy"
+        ],
+        "fields": {},
+        "meta": {
+          "max_section_bytes": 768
+        }
+      },
+      "reason": "記憶が増えても印込みの節は上限内で、置き換え済みの決まりは載らない（REQ-HOT-1(b)(d)(f)）。",
+      "before_query": "grow_and_export"
+    },
+    {
+      "id": "s09-recover-ja",
+      "language": "ja",
+      "polarity": "positive",
+      "query": {
+        "op": "history",
+        "record": "s09-active",
+        "question": "冬箱の今の留め方"
+      },
+      "expect": {
+        "must": [
+          "s09-legacy",
+          "s09-active"
+        ],
+        "must_not": [],
+        "fields": {
+          "s09-legacy": {
+            "state": "superseded",
+            "successor": "s09-active"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "現在の節に載らない旧版も履歴を指定すれば参照できる（REQ-REC-1(e), REQ-HOT-1(g)）。",
+      "before_query": "grow_and_export"
+    },
+    {
+      "id": "s09-not-current-ja",
+      "language": "ja",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "scene": "冬箱の今の留め方",
+        "action": "clasp"
+      },
+      "expect": {
+        "must": [
+          "s09-active"
+        ],
+        "must_not": [
+          "s09-legacy"
+        ],
+        "fields": {},
+        "meta": {}
+      },
+      "reason": "古い記録が履歴に残っても通常結果に混入しない（REQ-REC-1(e)）。",
+      "before_query": "grow_and_export"
+    },
+    {
+      "id": "s09-bounded-en",
+      "language": "en",
+      "polarity": "positive",
+      "query": {
+        "op": "section",
+        "question": "Which clasp is current for winter boxes?"
+      },
+      "expect": {
+        "must": [
+          "s09-active"
+        ],
+        "must_not": [
+          "s09-legacy"
+        ],
+        "fields": {},
+        "meta": {
+          "max_section_bytes": 768
+        }
+      },
+      "reason": "記憶が増えても印込みの節は上限内で、置き換え済みの決まりは載らない（REQ-HOT-1(b)(d)(f)）。",
+      "before_query": "grow_and_export"
+    },
+    {
+      "id": "s09-recover-en",
+      "language": "en",
+      "polarity": "positive",
+      "query": {
+        "op": "history",
+        "record": "s09-active",
+        "question": "Which clasp is current for winter boxes?"
+      },
+      "expect": {
+        "must": [
+          "s09-legacy",
+          "s09-active"
+        ],
+        "must_not": [],
+        "fields": {
+          "s09-legacy": {
+            "state": "superseded",
+            "successor": "s09-active"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "現在の節に載らない旧版も履歴を指定すれば参照できる（REQ-REC-1(e), REQ-HOT-1(g)）。",
+      "before_query": "grow_and_export"
+    },
+    {
+      "id": "s09-not-current-en",
+      "language": "en",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "scene": "Which clasp is current for winter boxes?",
+        "action": "clasp"
+      },
+      "expect": {
+        "must": [
+          "s09-active"
+        ],
+        "must_not": [
+          "s09-legacy"
+        ],
+        "fields": {},
+        "meta": {}
+      },
+      "reason": "古い記録が履歴に残っても通常結果に混入しない（REQ-REC-1(e)）。",
+      "before_query": "grow_and_export"
+    }
+  ],
+  "preparations": {
+    "grow_and_export": [
+      {
+        "op": "seed_experiences",
+        "count": 600,
+        "id_prefix": "s09-crumb",
+        "text": "店休日に焼き見本を並べた。 Practice loaves were arranged on the closed counter."
+      },
+      {
+        "op": "initialize_section",
+        "limit_bytes": 768
+      },
+      {
+        "op": "export_section"
+      }
+    ]
+  }
+}

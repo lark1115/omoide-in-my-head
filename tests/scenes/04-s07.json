@@ -1,0 +1,139 @@
+{
+  "scene": "S7",
+  "records": [
+    {
+      "id": "s07-grant",
+      "kind": "utterance",
+      "text": "展示用なら銀色の包み紙を使ってよい。ただし雨の日は使わない。 Silver wrap is allowed for display only, except on rainy days.",
+      "target": "bakehouse",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s07-summary",
+      "kind": "fact",
+      "source": "s07-grant",
+      "text": "展示なら銀紙可。 Silver wrap for displays.",
+      "certainty": "reported"
+    },
+    {
+      "id": "s07-note",
+      "kind": "utterance",
+      "text": "見本の箱は空です。 The sample box is empty.",
+      "target": "bakehouse",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s07-sample",
+      "kind": "fact",
+      "source": "s07-note",
+      "text": "箱見本の中身。 Sample box contents.",
+      "certainty": "reported"
+    }
+  ],
+  "cases": [
+    {
+      "id": "s07-trace-ja",
+      "language": "ja",
+      "polarity": "positive",
+      "query": {
+        "op": "sources",
+        "record": "s07-summary",
+        "question": "銀紙の展示条件の元の言葉"
+      },
+      "expect": {
+        "must": [
+          "s07-grant"
+        ],
+        "must_not": [
+          "s07-note"
+        ],
+        "fields": {
+          "s07-grant": {
+            "text": "展示用なら銀色の包み紙を使ってよい。ただし雨の日は使わない。 Silver wrap is allowed for display only, except on rainy days.",
+            "at": "2040-04-19T06:00:00Z",
+            "target": "bakehouse"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "要約から条件節を含む元発言の全文・時点・対象までたどれる（REQ-REC-1(b)(c)）。"
+    },
+    {
+      "id": "s07-reverse-ja",
+      "language": "ja",
+      "polarity": "negative",
+      "query": {
+        "op": "sources",
+        "record": "s07-sample",
+        "question": "箱見本の情報はどの発言から？"
+      },
+      "expect": {
+        "must": [
+          "s07-note"
+        ],
+        "must_not": [
+          "s07-grant"
+        ],
+        "fields": {
+          "s07-note": {
+            "text": "見本の箱は空です。 The sample box is empty."
+          }
+        },
+        "meta": {}
+      },
+      "reason": "箱の要約からたどる出典は箱についての発言だけで、銀紙の許可を混ぜない（REQ-REC-1(b)(c)）。"
+    },
+    {
+      "id": "s07-trace-en",
+      "language": "en",
+      "polarity": "positive",
+      "query": {
+        "op": "sources",
+        "record": "s07-summary",
+        "question": "What words qualify the silver display wrap?"
+      },
+      "expect": {
+        "must": [
+          "s07-grant"
+        ],
+        "must_not": [
+          "s07-note"
+        ],
+        "fields": {
+          "s07-grant": {
+            "text": "展示用なら銀色の包み紙を使ってよい。ただし雨の日は使わない。 Silver wrap is allowed for display only, except on rainy days.",
+            "at": "2040-04-19T06:00:00Z",
+            "target": "bakehouse"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "要約から条件節を含む元発言の全文・時点・対象までたどれる（REQ-REC-1(b)(c)）。"
+    },
+    {
+      "id": "s07-reverse-en",
+      "language": "en",
+      "polarity": "negative",
+      "query": {
+        "op": "sources",
+        "record": "s07-sample",
+        "question": "Which statement supports the sample-box detail?"
+      },
+      "expect": {
+        "must": [
+          "s07-note"
+        ],
+        "must_not": [
+          "s07-grant"
+        ],
+        "fields": {
+          "s07-note": {
+            "text": "見本の箱は空です。 The sample box is empty."
+          }
+        },
+        "meta": {}
+      },
+      "reason": "箱の要約からたどる出典は箱についての発言だけで、銀紙の許可を混ぜない（REQ-REC-1(b)(c)）。"
+    }
+  ]
+}

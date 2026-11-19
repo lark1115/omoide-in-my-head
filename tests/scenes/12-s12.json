@@ -1,0 +1,150 @@
+{
+  "scene": "S12",
+  "records": [
+    {
+      "id": "s12-sieve-words",
+      "kind": "utterance",
+      "text": "栗粉は細目でふるう。 Sift chestnut flour with a fine mesh.",
+      "target": "bakehouse",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s12-sieve",
+      "kind": "rule",
+      "source": "s12-sieve-words",
+      "text": "栗粉は細目でふるう。 Sift chestnut flour with a fine mesh.",
+      "action": "sift",
+      "scene": "栗粉 chestnut flour"
+    }
+  ],
+  "cases": [
+    {
+      "id": "s12-no-key-ja",
+      "language": "ja",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "栗粉をふるう",
+        "judge": "no-key"
+      },
+      "expect": {
+        "must": [
+          "s12-sieve"
+        ],
+        "must_not": [],
+        "fields": {},
+        "meta": {
+          "judge_state": "unconfigured"
+        }
+      },
+      "reason": "判定器未設定または障害でも基本検索の結果を返し、判定器の状態を別に示す（REQ-JUDGE-1(b)(c)(d)）。"
+    },
+    {
+      "id": "s12-timeout-ja",
+      "language": "ja",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "栗粉をふるう",
+        "judge": "timeout"
+      },
+      "expect": {
+        "must": [
+          "s12-sieve"
+        ],
+        "must_not": [],
+        "fields": {},
+        "meta": {
+          "judge_state": "failed"
+        }
+      },
+      "reason": "判定器未設定または障害でも基本検索の結果を返し、判定器の状態を別に示す（REQ-JUDGE-1(b)(c)(d)）。"
+    },
+    {
+      "id": "s12-no-match-ja",
+      "language": "ja",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "scene": "栗粉の袋を塗装",
+        "judge": "valid-empty"
+      },
+      "expect": {
+        "must": [],
+        "must_not": [
+          "s12-sieve"
+        ],
+        "fields": {},
+        "meta": {
+          "judge_state": "used",
+          "result_count": 0
+        }
+      },
+      "reason": "正常判定の該当なしと障害を区別する（REQ-JUDGE-1(c)(d)）。"
+    },
+    {
+      "id": "s12-no-key-en",
+      "language": "en",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "Sift chestnut flour",
+        "judge": "no-key"
+      },
+      "expect": {
+        "must": [
+          "s12-sieve"
+        ],
+        "must_not": [],
+        "fields": {},
+        "meta": {
+          "judge_state": "unconfigured"
+        }
+      },
+      "reason": "判定器未設定または障害でも基本検索の結果を返し、判定器の状態を別に示す（REQ-JUDGE-1(b)(c)(d)）。"
+    },
+    {
+      "id": "s12-timeout-en",
+      "language": "en",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "Sift chestnut flour",
+        "judge": "timeout"
+      },
+      "expect": {
+        "must": [
+          "s12-sieve"
+        ],
+        "must_not": [],
+        "fields": {},
+        "meta": {
+          "judge_state": "failed"
+        }
+      },
+      "reason": "判定器未設定または障害でも基本検索の結果を返し、判定器の状態を別に示す（REQ-JUDGE-1(b)(c)(d)）。"
+    },
+    {
+      "id": "s12-no-match-en",
+      "language": "en",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "scene": "Paint the chestnut flour sacks",
+        "judge": "valid-empty"
+      },
+      "expect": {
+        "must": [],
+        "must_not": [
+          "s12-sieve"
+        ],
+        "fields": {},
+        "meta": {
+          "judge_state": "used",
+          "result_count": 0
+        }
+      },
+      "reason": "正常判定の該当なしと障害を区別する（REQ-JUDGE-1(c)(d)）。"
+    }
+  ]
+}

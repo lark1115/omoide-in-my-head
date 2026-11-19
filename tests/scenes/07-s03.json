@@ -1,0 +1,155 @@
+{
+  "scene": "S3",
+  "records": [
+    {
+      "id": "s03-cutoff",
+      "kind": "utterance",
+      "text": "窯市の受付を正午で閉める。 Close oven-fair reservations at noon.",
+      "target": "oven-fair",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s03-noon",
+      "kind": "decision",
+      "source": "s03-cutoff",
+      "text": "窯市の受付締切。 Reservation cutoff.",
+      "target": "oven-fair",
+      "at": "2040-04-19T06:00:00Z",
+      "speech": "directive",
+      "decision": "decided"
+    },
+    {
+      "id": "s03-maybe",
+      "kind": "utterance",
+      "text": "灯市の締切を朝にする案。 A morning cutoff is proposed for the lantern fair.",
+      "target": "lantern-fair",
+      "at": "2040-04-20T06:00:00Z"
+    },
+    {
+      "id": "s03-morning",
+      "kind": "decision",
+      "source": "s03-maybe",
+      "text": "灯市の受付締切案。 Proposed cutoff.",
+      "target": "lantern-fair",
+      "at": "2040-04-20T06:00:00Z",
+      "speech": "proposal",
+      "decision": "pending"
+    }
+  ],
+  "cases": [
+    {
+      "id": "s03-settled-ja",
+      "language": "ja",
+      "polarity": "positive",
+      "query": {
+        "op": "decision",
+        "scene": "受付終了は決定した？",
+        "target": "oven-fair"
+      },
+      "expect": {
+        "must": [
+          "s03-noon"
+        ],
+        "must_not": [
+          "s03-morning"
+        ],
+        "fields": {
+          "s03-noon": {
+            "target": "oven-fair",
+            "at": "2040-04-19T06:00:00Z",
+            "decision": "decided",
+            "speech": "directive",
+            "source": "s03-cutoff",
+            "source_text": "窯市の受付を正午で閉める。 Close oven-fair reservations at noon."
+          }
+        },
+        "meta": {}
+      },
+      "reason": "決定済みの対象・時点・発言種別・原文を返す（REQ-DEC-1(a)(b)）。"
+    },
+    {
+      "id": "s03-open-ja",
+      "language": "ja",
+      "polarity": "negative",
+      "query": {
+        "op": "decision",
+        "scene": "受付終了は決定した？",
+        "target": "lantern-fair"
+      },
+      "expect": {
+        "must": [
+          "s03-morning"
+        ],
+        "must_not": [
+          "s03-noon"
+        ],
+        "fields": {
+          "s03-morning": {
+            "decision": "pending",
+            "speech": "proposal",
+            "source": "s03-maybe"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "別の市の提案を了承済みの締切として返さない（REQ-DEC-1(b)(c)）。"
+    },
+    {
+      "id": "s03-settled-en",
+      "language": "en",
+      "polarity": "positive",
+      "query": {
+        "op": "decision",
+        "scene": "Did we settle the reservation cutoff?",
+        "target": "oven-fair"
+      },
+      "expect": {
+        "must": [
+          "s03-noon"
+        ],
+        "must_not": [
+          "s03-morning"
+        ],
+        "fields": {
+          "s03-noon": {
+            "target": "oven-fair",
+            "at": "2040-04-19T06:00:00Z",
+            "decision": "decided",
+            "speech": "directive",
+            "source": "s03-cutoff",
+            "source_text": "窯市の受付を正午で閉める。 Close oven-fair reservations at noon."
+          }
+        },
+        "meta": {}
+      },
+      "reason": "決定済みの対象・時点・発言種別・原文を返す（REQ-DEC-1(a)(b)）。"
+    },
+    {
+      "id": "s03-open-en",
+      "language": "en",
+      "polarity": "negative",
+      "query": {
+        "op": "decision",
+        "scene": "Did we settle the reservation cutoff?",
+        "target": "lantern-fair"
+      },
+      "expect": {
+        "must": [
+          "s03-morning"
+        ],
+        "must_not": [
+          "s03-noon"
+        ],
+        "fields": {
+          "s03-morning": {
+            "decision": "pending",
+            "speech": "proposal",
+            "source": "s03-maybe"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "別の市の提案を了承済みの締切として返さない（REQ-DEC-1(b)(c)）。"
+    }
+  ]
+}

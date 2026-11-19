@@ -1,0 +1,97 @@
+{
+  "scene": "S2",
+  "records": [
+    {
+      "id": "s02-stamp-words",
+      "kind": "utterance",
+      "text": "三角包みに葉の印を押す。 Stamp a leaf on triangular parcels.",
+      "target": "三角包み",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s02-stamp",
+      "kind": "rule",
+      "source": "s02-stamp-words",
+      "text": "三角包みに葉の印を押す。 Stamp a leaf on triangular parcels.",
+      "scene": "包みの仕上げ",
+      "actions": [
+        "刻印",
+        "stamp"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "s02-bound-ja",
+      "language": "ja",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "action": "刻印"
+      },
+      "expect": {
+        "must": [
+          "s02-stamp"
+        ],
+        "must_not": [],
+        "fields": {},
+        "meta": {}
+      },
+      "reason": "場面文が空でも結び付いた動作から決まりを引ける（REQ-RECALL-1(a)(d)）。"
+    },
+    {
+      "id": "s02-other-ja",
+      "language": "ja",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "action": "計量"
+      },
+      "expect": {
+        "must": [],
+        "must_not": [
+          "s02-stamp"
+        ],
+        "fields": {},
+        "meta": {}
+      },
+      "reason": "別動作だけを指定した照会は刻印の決まりに該当しない（REQ-RECALL-1(d)）。"
+    },
+    {
+      "id": "s02-bound-en",
+      "language": "en",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "action": "stamp"
+      },
+      "expect": {
+        "must": [
+          "s02-stamp"
+        ],
+        "must_not": [],
+        "fields": {},
+        "meta": {}
+      },
+      "reason": "場面文が空でも結び付いた動作から決まりを引ける（REQ-RECALL-1(a)(d)）。"
+    },
+    {
+      "id": "s02-other-en",
+      "language": "en",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "action": "weigh"
+      },
+      "expect": {
+        "must": [],
+        "must_not": [
+          "s02-stamp"
+        ],
+        "fields": {},
+        "meta": {}
+      },
+      "reason": "別動作だけを指定した照会は刻印の決まりに該当しない（REQ-RECALL-1(d)）。"
+    }
+  ]
+}

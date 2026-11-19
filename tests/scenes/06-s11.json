@@ -1,0 +1,248 @@
+{
+  "scene": "S11",
+  "records": [
+    {
+      "id": "s11-old-words",
+      "kind": "utterance",
+      "text": "盆を棚の上段に戻す。 Return trays to the upper shelf.",
+      "target": "bakehouse",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s11-old",
+      "kind": "rule",
+      "source": "s11-old-words",
+      "text": "盆を棚の上段に戻す。 Return trays to the upper shelf.",
+      "scene": "盆の返却 return trays",
+      "action": "shelve"
+    },
+    {
+      "id": "s11-revision",
+      "kind": "utterance",
+      "text": "盆は中央段へ戻す。 Return trays to the middle shelf.",
+      "target": "bakehouse",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s11-abandoned",
+      "kind": "utterance",
+      "text": "盆は窓辺に戻す案。 Put trays by the window.",
+      "target": "bakehouse",
+      "at": "2040-04-19T06:00:00Z"
+    }
+  ],
+  "cases": [
+    {
+      "id": "s11-current-ja",
+      "language": "ja",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "盆を返す手順",
+        "action": "shelve"
+      },
+      "expect": {
+        "must": [
+          "s11-new"
+        ],
+        "must_not": [
+          "s11-interrupted",
+          "s11-old"
+        ],
+        "fields": {
+          "s11-new": {
+            "state": "current",
+            "source": "s11-revision"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "再起動・同一要求の再送後は確定した版だけが有効で、元の発言も一致する（REQ-STORE-1(b)(e)(f)）。",
+      "before_query": "interleaving"
+    },
+    {
+      "id": "s11-history-ja",
+      "language": "ja",
+      "polarity": "negative",
+      "query": {
+        "op": "history",
+        "record": "s11-new",
+        "question": "盆を返す手順"
+      },
+      "expect": {
+        "must": [
+          "s11-old",
+          "s11-new"
+        ],
+        "must_not": [
+          "s11-interrupted"
+        ],
+        "fields": {
+          "s11-old": {
+            "state": "superseded",
+            "successor": "s11-new",
+            "source": "s11-old-words"
+          }
+        },
+        "meta": {
+          "exact_versions": 2
+        }
+      },
+      "reason": "途中停止した版は履歴に混入せず、確定した旧版と新版は一つずつ残る（REQ-REC-1(d)(e), REQ-STORE-1(f)）。",
+      "before_query": "interleaving"
+    },
+    {
+      "id": "s11-usage-fault-ja",
+      "language": "ja",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "scene": "盆を返す手順",
+        "action": "shelve",
+        "fault": "fail_usage_accounting"
+      },
+      "expect": {
+        "must": [
+          "s11-old"
+        ],
+        "must_not": [],
+        "fields": {
+          "s11-old": {
+            "state": "current",
+            "source": "s11-old-words"
+          }
+        },
+        "meta": {
+          "survives_restart": true
+        }
+      },
+      "reason": "回数の記録だけ失敗しても検索結果と規則本体は残る（REQ-PROMO-1(i)）。"
+    },
+    {
+      "id": "s11-current-en",
+      "language": "en",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "How should trays be put back?",
+        "action": "shelve"
+      },
+      "expect": {
+        "must": [
+          "s11-new"
+        ],
+        "must_not": [
+          "s11-interrupted",
+          "s11-old"
+        ],
+        "fields": {
+          "s11-new": {
+            "state": "current",
+            "source": "s11-revision"
+          }
+        },
+        "meta": {}
+      },
+      "reason": "再起動・同一要求の再送後は確定した版だけが有効で、元の発言も一致する（REQ-STORE-1(b)(e)(f)）。",
+      "before_query": "interleaving"
+    },
+    {
+      "id": "s11-history-en",
+      "language": "en",
+      "polarity": "negative",
+      "query": {
+        "op": "history",
+        "record": "s11-new",
+        "question": "How should trays be put back?"
+      },
+      "expect": {
+        "must": [
+          "s11-old",
+          "s11-new"
+        ],
+        "must_not": [
+          "s11-interrupted"
+        ],
+        "fields": {
+          "s11-old": {
+            "state": "superseded",
+            "successor": "s11-new",
+            "source": "s11-old-words"
+          }
+        },
+        "meta": {
+          "exact_versions": 2
+        }
+      },
+      "reason": "途中停止した版は履歴に混入せず、確定した旧版と新版は一つずつ残る（REQ-REC-1(d)(e), REQ-STORE-1(f)）。",
+      "before_query": "interleaving"
+    },
+    {
+      "id": "s11-usage-fault-en",
+      "language": "en",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "scene": "How should trays be put back?",
+        "action": "shelve",
+        "fault": "fail_usage_accounting"
+      },
+      "expect": {
+        "must": [
+          "s11-old"
+        ],
+        "must_not": [],
+        "fields": {
+          "s11-old": {
+            "state": "current",
+            "source": "s11-old-words"
+          }
+        },
+        "meta": {
+          "survives_restart": true
+        }
+      },
+      "reason": "回数の記録だけ失敗しても検索結果と規則本体は残る（REQ-PROMO-1(i)）。"
+    }
+  ],
+  "preparations": {
+    "interleaving": [
+      {
+        "op": "prepare_revision",
+        "actor": "left",
+        "base": "s11-old",
+        "id": "s11-new",
+        "source": "s11-revision"
+      },
+      {
+        "op": "prepare_revision",
+        "actor": "right",
+        "base": "s11-old",
+        "id": "s11-interrupted",
+        "source": "s11-abandoned"
+      },
+      {
+        "op": "start_uncommitted_write",
+        "actor": "right"
+      },
+      {
+        "op": "interrupt_before_commit",
+        "actor": "right"
+      },
+      {
+        "op": "commit",
+        "actor": "left",
+        "request": "revision-once"
+      },
+      {
+        "op": "lose_reply_and_restart",
+        "actor": "left"
+      },
+      {
+        "op": "retry",
+        "actor": "left",
+        "request": "revision-once"
+      }
+    ]
+  }
+}

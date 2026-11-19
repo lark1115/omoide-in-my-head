@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "total_cases": 62,
+  "scenes": [
+    {
+      "scene": "S1",
+      "file": "01-s01.json",
+      "cases": 8,
+      "levels": {
+        "shared": 2,
+        "partial": 2,
+        "zero": 4
+      }
+    },
+    {
+      "scene": "S2",
+      "file": "02-s02.json",
+      "cases": 4,
+      "levels": {}
+    },
+    {
+      "scene": "S6",
+      "file": "03-s06.json",
+      "cases": 6,
+      "levels": {}
+    },
+    {
+      "scene": "S7",
+      "file": "04-s07.json",
+      "cases": 4,
+      "levels": {}
+    },
+    {
+      "scene": "S10",
+      "file": "05-s10.json",
+      "cases": 4,
+      "levels": {}
+    },
+    {
+      "scene": "S11",
+      "file": "06-s11.json",
+      "cases": 6,
+      "levels": {}
+    },
+    {
+      "scene": "S3",
+      "file": "07-s03.json",
+      "cases": 4,
+      "levels": {}
+    },
+    {
+      "scene": "S4",
+      "file": "08-s04.json",
+      "cases": 4,
+      "levels": {}
+    },
+    {
+      "scene": "S5",
+      "file": "09-s05.json",
+      "cases": 6,
+      "levels": {}
+    },
+    {
+      "scene": "S8",
+      "file": "10-s08.json",
+      "cases": 4,
+      "levels": {}
+    },
+    {
+      "scene": "S9",
+      "file": "11-s09.json",
+      "cases": 6,
+      "levels": {}
+    },
+    {
+      "scene": "S12",
+      "file": "12-s12.json",
+      "cases": 6,
+      "levels": {}
+    }
+  ]
+}

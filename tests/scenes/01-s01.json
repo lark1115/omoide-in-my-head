@@ -1,0 +1,186 @@
+{
+  "scene": "S1",
+  "records": [
+    {
+      "id": "s01-cool-words",
+      "kind": "utterance",
+      "text": "焼成後は網棚へ移す。 After baking transfer loaves onto a rack.",
+      "target": "bakehouse",
+      "at": "2040-04-19T06:00:00Z"
+    },
+    {
+      "id": "s01-cool",
+      "kind": "rule",
+      "source": "s01-cool-words",
+      "text": "焼成後は網棚へ移す。 After baking transfer loaves onto a rack.",
+      "scene": "焼成後 after baking",
+      "action": "冷却 cooling"
+    }
+  ],
+  "cases": [
+    {
+      "id": "s01-key-ja",
+      "language": "ja",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "焼成後のパンを網棚へ移す手順は？"
+      },
+      "expect": {
+        "must": [
+          "s01-cool"
+        ],
+        "must_not": [],
+        "fields": {},
+        "meta": {
+          "lookup_calls": 1
+        }
+      },
+      "reason": "焼き上がりの放熱場面では初回から網棚の決まりを引く（REQ-RECALL-1(e), REQ-RULE-1(d)）。",
+      "level": "shared"
+    },
+    {
+      "id": "s01-key-en",
+      "language": "en",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "After baking, which rack takes the loaves?"
+      },
+      "expect": {
+        "must": [
+          "s01-cool"
+        ],
+        "must_not": [],
+        "fields": {},
+        "meta": {
+          "lookup_calls": 1
+        }
+      },
+      "reason": "焼き上がりの放熱場面では初回から網棚の決まりを引く（REQ-RECALL-1(e), REQ-RULE-1(d)）。",
+      "level": "shared"
+    },
+    {
+      "id": "s01-part-ja",
+      "language": "ja",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "焼きたてが蒸れない置き場所は？"
+      },
+      "expect": {
+        "must": [
+          "s01-cool"
+        ],
+        "must_not": [],
+        "fields": {},
+        "meta": {
+          "lookup_calls": 1
+        }
+      },
+      "reason": "焼き上がりの放熱場面では初回から網棚の決まりを引く（REQ-RECALL-1(e), REQ-RULE-1(d)）。",
+      "level": "partial"
+    },
+    {
+      "id": "s01-part-en",
+      "language": "en",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "Where should warm loaves rest before wrapping?"
+      },
+      "expect": {
+        "must": [
+          "s01-cool"
+        ],
+        "must_not": [],
+        "fields": {},
+        "meta": {
+          "lookup_calls": 1
+        }
+      },
+      "reason": "焼き上がりの放熱場面では初回から網棚の決まりを引く（REQ-RECALL-1(e), REQ-RULE-1(d)）。",
+      "level": "partial"
+    },
+    {
+      "id": "s01-zero-ja",
+      "language": "ja",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "熱々パンの底が蒸れそう"
+      },
+      "expect": {
+        "must": [
+          "s01-cool"
+        ],
+        "must_not": [],
+        "fields": {},
+        "meta": {
+          "lookup_calls": 1
+        }
+      },
+      "reason": "焼き上がりの放熱場面では初回から網棚の決まりを引く（REQ-RECALL-1(e), REQ-RULE-1(d)）。",
+      "level": "zero"
+    },
+    {
+      "id": "s01-zero-en",
+      "language": "en",
+      "polarity": "positive",
+      "query": {
+        "op": "recall",
+        "scene": "Fresh baguettes need airflow underneath."
+      },
+      "expect": {
+        "must": [
+          "s01-cool"
+        ],
+        "must_not": [],
+        "fields": {},
+        "meta": {
+          "lookup_calls": 1
+        }
+      },
+      "reason": "焼き上がりの放熱場面では初回から網棚の決まりを引く（REQ-RECALL-1(e), REQ-RULE-1(d)）。",
+      "level": "zero"
+    },
+    {
+      "id": "s01-unrelated-ja",
+      "language": "ja",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "scene": "小麦粉保管庫？"
+      },
+      "expect": {
+        "must": [],
+        "must_not": [
+          "s01-cool"
+        ],
+        "fields": {},
+        "meta": {}
+      },
+      "reason": "生の穀物の保管には焼成後の放熱指示を適用しない（REQ-RECALL-1(c)）。",
+      "level": "zero"
+    },
+    {
+      "id": "s01-unrelated-en",
+      "language": "en",
+      "polarity": "negative",
+      "query": {
+        "op": "recall",
+        "scene": "Where should raw grain be stored?"
+      },
+      "expect": {
+        "must": [],
+        "must_not": [
+          "s01-cool"
+        ],
+        "fields": {},
+        "meta": {}
+      },
+      "reason": "生の穀物の保管には焼成後の放熱指示を適用しない（REQ-RECALL-1(c)）。",
+      "level": "zero"
+    }
+  ]
+}
