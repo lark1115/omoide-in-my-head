@@ -5,7 +5,7 @@ from datetime import datetime
 import subprocess
 
 
-def populate(binary, records, db):
+def populate(binary, records, db, *, expected_count=48):
     def cli(args):
         p = subprocess.run(
             [binary, "--db", db, *args], text=True, capture_output=True, check=True
@@ -22,8 +22,21 @@ def populate(binary, records, db):
         return result["id"]
 
     by_id = {}
+    versions = {}
+    predecessor = {r["successor"]: r["id"] for r in records if r.get("successor")}
+
+    def depth(r):
+        key = r["id"]
+        seen = set()
+        while key in predecessor:
+            if key in seen:
+                raise ValueError("revision cycle")
+            seen.add(key)
+            key = predecessor[key]
+        return len(seen)
+
     # Register evidence first; the ledger order remains the frozen order.
-    ordered = sorted(records, key=lambda r: r["kind"] != "experience")
+    ordered = sorted(records, key=lambda r: (r["kind"] != "experience", depth(r)))
     for r in ordered:
         target = ["--target", r["target"]]
         at = (
@@ -42,13 +55,16 @@ def populate(binary, records, db):
             else []
         )
         if r["kind"] == "experience":
-            result = cli(["event", "add", "--text", r["text"], *at, *target])
+            period = ["--period", r["period"]] if "period" in r else []
+            result = cli(["event", "add", "--text", r["text"], *at, *target, *period])
         else:
             if r.get("evidence"):
                 source = by_id[r["evidence"]]
             else:
                 speaker = (
-                    "user" if r["source_role"] == "workshop owner" else "shift helper"
+                    "user"
+                    if r.get("source_role", "workshop owner") == "workshop owner"
+                    else r["source_role"]
                 )
                 source = add(
                     cli(
@@ -93,7 +109,12 @@ def populate(binary, records, db):
                             r["speech"]
                         ],
                         "--state",
-                        r["state"],
+                        "decided" if r["state"] == "superseded" else r["state"],
+                        *(
+                            ["--revises", versions[predecessor[r["id"]]]]
+                            if r["id"] in predecessor
+                            else []
+                        ),
                         *at,
                     ]
                 )
@@ -103,5 +124,7 @@ def populate(binary, records, db):
                     args += ["--evidence", source, "--verified-how", r["method"]]
                 result = cli(args)
         by_id[r["id"]] = add(result, r["id"])
-    assert len(by_id) == len(records) == 48
+        versions[r["id"]] = result.get("version_id", result["id"])
+    if len(by_id) != expected_count or len(records) != expected_count:
+        raise ValueError("registered archive count mismatch")
     return index

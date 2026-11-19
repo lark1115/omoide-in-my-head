@@ -130,13 +130,16 @@ def clean_env():
     return env
 
 
-def trial(study, binary, claude, op, arm, timeout):
+def trial(
+    study, binary, claude, op, arm, timeout, *, ledger_tools=LEDGER, server_options=None
+):
     path = study / "transcripts" / f"{op['id']}-{arm}.json"
     if path.exists():
         return read(path)["completion"]
     hot = (DATA / "hot.txt").read_bytes().decode() if arm != "no_device" else ""
     system = SYSTEM[op["language"]] + ("\n\n" + hot if hot else "")
-    tools = LEDGER + (DEVICE if arm == "device" else [])
+    has_device = arm in ("device", "device_jev")
+    tools = ledger_tools + (DEVICE if has_device else [])
     exposed = ["mcp__workshop__" + t["name"] for t in tools]
     with tempfile.TemporaryDirectory(prefix="workshop-") as name:
         cwd = Path(name)
@@ -145,7 +148,8 @@ def trial(study, binary, claude, op, arm, timeout):
             "TRIAL_ARCHIVE": str(study / "ledger.json"),
             "TRIAL_TOOL_LOG": str(log),
         }
-        if arm == "device":
+        server_env.update(server_options or {})
+        if has_device:
             with (
                 sqlite3.connect(study / "baseline.db") as original,
                 sqlite3.connect(cwd / "workshop.db") as db,
@@ -333,19 +337,43 @@ def main():
     if ROOT in study.parents:
         raise ValueError("keep private transcripts and mapping outside the checkout")
     prepare(study, binary, claude, opts.timeout)
+    run_schedule(study, binary, claude, opts.timeout, opts.jobs, half=opts.half)
+
+
+def run_schedule(
+    study,
+    binary,
+    claude,
+    timeout,
+    jobs,
+    *,
+    half=None,
+    ledger_tools=LEDGER,
+    arm_env=None,
+    variants=None,
+):
     rows = {r["id"]: r for r in read(DATA / "opportunities.json")}
     schedule = [
-        p
-        for p in read(study / "allocation.json")
-        if not opts.half or p["half"] == opts.half
+        p for p in read(study / "allocation.json") if not half or p["half"] == half
     ]
     stop = threading.Event()
 
     def run_op(p):
         for arm in p["arms"]:
+            if variants is not None and arm not in variants:
+                continue
             if stop.is_set():
                 break
-            outcome = trial(study, binary, claude, rows[p["id"]], arm, opts.timeout)
+            outcome = trial(
+                study,
+                binary,
+                claude,
+                rows[p["id"]],
+                arm,
+                timeout,
+                ledger_tools=ledger_tools,
+                server_options=(arm_env or {}).get(arm),
+            )
             print(p["id"], arm, outcome, flush=True)
             if outcome != "complete":
                 record = read(study / "transcripts" / f"{p['id']}-{arm}.json")
@@ -357,7 +385,7 @@ def main():
                 ):
                     stop.set()
 
-    with ThreadPoolExecutor(max_workers=opts.jobs) as pool:
+    with ThreadPoolExecutor(max_workers=jobs) as pool:
         list(pool.map(run_op, schedule))
     if stop.is_set():
         raise SystemExit(

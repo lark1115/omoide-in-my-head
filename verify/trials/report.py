@@ -51,16 +51,30 @@ def observe(t, key, hot_ids, index):
             else []
         )
         got = {
-            index[r["id"]]
+            index[r.get("version_id", r["id"])]
             for r in records
-            if isinstance(r, dict) and r.get("id") in index
+            if isinstance(r, dict) and r.get("version_id", r.get("id")) in index
         }
         hits.update(got)
         if arrived is None and got & required:
             arrived = e["at"]
+        tentative = (
+            {
+                index[r["version_id"]]
+                for r in data.get("candidates", [])
+                if r.get("version_id") in index
+            }
+            if isinstance(data, dict)
+            else set()
+        )
         deliveries.append(
             {
                 "ids": sorted(got),
+                "candidate_ids": sorted(tentative),
+                "required_candidate": bool(tentative & required),
+                "judge_state": data.get("judge_state")
+                if isinstance(data, dict)
+                else None,
                 "before_action": None if action is None else e["at"] < action,
                 "bytes": len(text.encode()),
                 "error": e["error"],
@@ -103,7 +117,7 @@ def observe(t, key, hot_ids, index):
     return observation, audit
 
 
-def report(study, output, binary):
+def report(study, output, binary, *, variants=ARMS):
     import subprocess
 
     tickets = read(study / "tickets.json")
@@ -134,33 +148,39 @@ def report(study, output, binary):
         )
     for key in keys:
         arms = [r["arm"] for r in rows if r["opportunity"] == key]
-        if arms and sorted(arms) != sorted(ARMS):
+        if arms and sorted(arms) != sorted(variants):
             raise ValueError("incomplete comparison")
     output.mkdir(exist_ok=True, parents=True)
     write(output / "blinded.json", packets)
     write(output / "grades.json", grades)
     write(output / "observed.json", rows)
     write(study / "observations.json", observations)
-    evaluated = json.loads(
-        subprocess.check_output(
-            [
-                binary,
-                "eval",
-                "run",
-                "--scene",
-                "S2",
-                "--trials",
-                study / "observations.json",
-            ]
+    # The product schema supports three arm names. Evaluate the Jev variant as a
+    # separate device group and keep its experimental label in the published output.
+    batches = {"ordinary": [r for r in observations if r["variant"] != "device_jev"]}
+    if "device_jev" in variants:
+        batches["device_jev"] = [
+            dict(r, variant="device")
+            for r in observations
+            if r["variant"] == "device_jev"
+        ]
+    results = {}
+    for name, batch in batches.items():
+        path = study / ("eval-" + name + ".json")
+        write(path, batch)
+        result = json.loads(
+            subprocess.check_output(
+                [binary, "eval", "run", "--scene", "S2", "--trials", path]
+            )
         )
-    )
-    write(output / "eval.json", evaluated["observations"])
+        results[name] = result["observations"]
+    write(output / "eval.json", results if len(results) > 1 else results["ordinary"])
     lines = [
         "| Cohort or mistake | Arm | Pass | Known mistake | Other failure | Cannot tell |",
         "|---|---|---:|---:|---:|---:|",
     ]
     for typ in ["primary + control", *sorted({r["type"] for r in rows})]:
-        for arm in ARMS:
+        for arm in variants:
             counts = Counter(
                 r["label"]
                 for r in rows
@@ -181,11 +201,14 @@ def report(study, output, binary):
         "| Baseline → comparison (44 pairs) | Both pass | Failure → pass | Pass → failure | Neither passes |",
         "|---|---:|---:|---:|---:|",
     ]
-    for a, b in [
+    pairs = [
         ("no_device", "device"),
         ("no_device", "hot_only"),
         ("hot_only", "device"),
-    ]:
+    ]
+    if "device_jev" in variants:
+        pairs.extend((arm, "device_jev") for arm in ARMS)
+    for a, b in pairs:
         side = lambda arm: {
             r["opportunity"]: r["label"] == "pass"
             for r in rows
@@ -219,7 +242,7 @@ def report(study, output, binary):
         "| Arm (all 48) | Called | Any reply before action | Relevant lookup before action | Added bytes | Common ledger bytes | Input tokens incl. cache |",
         "|---|---:|---:|---:|---:|---:|---:|",
     ]
-    for arm in ARMS:
+    for arm in variants:
         group = [r for r in rows if r["arm"] == arm]
         values = [
             sum(r["called"] for r in group),
