@@ -1,6 +1,7 @@
 """Run the frozen scenes in fresh processes. Unmet expectations exit nonzero."""
 import argparse
 import json
+import sqlite3
 import subprocess
 import tempfile
 from contextlib import ExitStack
@@ -57,9 +58,24 @@ def register(binary, db, records):
                 relation = record["relation"]
                 kind = {"uncertain": "unsure", "revision": "restated"}.get(relation["type"], relation["type"])
                 args += choose(invoke(binary, db, args), ids[relation["to"]], kind)
-        elif record["kind"] == "fact":
-            args = ["fact", "add", "--source", ids[record["source"]]["id"], "--text",
-                    record["text"], "--certainty", record["certainty"]]
+        elif record["kind"] in ("fact","decision","experience"):
+            kind=record["kind"]
+            args={"fact":["fact","add"],"decision":["decide"],"experience":["event","add"]}[kind]
+            args += ["--text",record["text"]]
+            for key in ("target","certainty","claim","location","period"):
+                if key in record:
+                    args += ["--"+key,record[key]]
+            if "source" in record:
+                args += ["--source",ids[record["source"]]["id"]]
+            if "evidence" in record:
+                args += ["--evidence",ids[record["evidence"]]["id"]]
+            if "at" in record:
+                at=datetime.fromisoformat(record["at"].replace("Z","+00:00"))
+                args+=["--at",str(int(at.timestamp()*1000))]
+            for scope in record.get("scope",[]):
+                args+=["--scope",scope]
+            if kind=="decision":
+                args+=["--speech",{"directive":"instruction","proposal":"proposal"}[record["speech"]],"--state",record["decision"]]
         else:
             raise ValueError(record["kind"])
         result = invoke(binary, db, args)
@@ -99,12 +115,28 @@ def prepare(binary, fault_binary, db, scene, case, ids):
 
 def observe(binary, db, query, ids):
     op = query["op"]
-    if op == "recall":
+    if op in ("recall","decision","verification","completion"):
         args = ["recall"]
-        for key in ("scene", "action", "target"):
+        for key in ("scene", "action", "target","period","claim"):
             if key in query:
                 args += ["--" + key, query[key]]
-        result = invoke(binary, db, args)
+        if op != "recall":
+            args+=["--kind","decision" if op=="decision" else "fact"]
+        for scope in query.get("scope",[]):
+            args+=["--scope",scope]
+        if query.get("fault")=="fail_usage_accounting":
+            # A real SQLite writer blocks only the observational write under WAL.
+            with sqlite3.connect(db) as locker:
+                locker.execute("BEGIN IMMEDIATE")
+                result=invoke(binary,db,args)
+                assert result["accounting"]=="unlogged"
+            restarted=invoke(binary,db,args)
+            assert restarted["accounting"]=="recorded"
+            survives=result["results"]==restarted["results"] and all(
+                invoke(binary,db,["show",version(row)])["record"]["id"]==row["id"] for row in result["results"])
+        else:
+            result=invoke(binary,db,args)
+            survives=False
         rows = list(result["results"])
         for row in result["results"]:
             for pair in row.get("unresolved_conflicts", []):
@@ -113,7 +145,7 @@ def observe(binary, db, query, ids):
                     assert record["source_id"] == source["id"]
                     assert invoke(binary, db, ["show", source["id"]])["record"]["text"] == source["text"]
                     rows.append(record)
-        return rows, {"lookup_calls": 1}, result["candidate_count"]
+        return rows, {**result,"lookup_calls":1,"survives_restart":survives},result["candidate_count"]
     if op == "sources":
         shown = invoke(binary, db, ["show", version(ids[query["record"]])])
         return shown["sources"], {}, None
@@ -128,8 +160,12 @@ def evaluate(case, rows, meta, ids):
     found = {}
     for r in rows:
         item = dict(r)
-        if "source_id" in r:
+        if r.get("source_id") is not None:
             item["source"] = reverse[r["source_id"]]
+        if r.get("evidence") in reverse:
+            item["evidence"]=reverse[r["evidence"]]
+        if r.get("speech")=="instruction":
+            item["speech"]="directive"
         if r.get("successor"):
             item["successor"] = reverse[r["successor"]]
         if "created" in r:
@@ -153,22 +189,25 @@ def evaluate(case, rows, meta, ids):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("binary", type=Path)
-    parser.add_argument("--stage", choices=(1, 2), type=int, default=1)
+    parser.add_argument("--stage", choices=(1, 2, 3), type=int, default=1)
     parser.add_argument("--fault-binary", type=Path)
     opts = parser.parse_args()
     binary = opts.binary.resolve()
     manifest = json.loads((SCENES / "manifest.json").read_text())
     active = {"S1", "S2", "S6"}
-    if opts.stage == 2:
+    if opts.stage >= 2:
         active.update({"S7", "S10", "S11"})
+    if opts.stage==3:
+        active.update({"S3","S4","S5","S8"})
     failures = 0
     for entry in manifest["scenes"]:
         if entry["scene"] not in active:
-            print(entry["scene"], "NOT RUN", entry["cases"], "cases")
+            for c in json.loads((SCENES/entry["file"]).read_text())["cases"]:
+                print(c["id"],"NOT RUN")
             continue
         scene = json.loads((SCENES / entry["file"]).read_text())
         for case in scene["cases"]:
-            if "fault" in case["query"] or ("before_query" in case and not opts.fault_binary):
+            if ("fault" in case["query"] and opts.stage<3) or ("before_query" in case and not opts.fault_binary):
                 print(case["id"], "NOT RUN")
                 continue
             with tempfile.TemporaryDirectory() as directory:

@@ -1,8 +1,8 @@
-"""During stage two, permit only the exact deferred no-test findings."""
+"""During stage three, permit only the exact deferred no-test findings."""
 import json
 import subprocess
 
-deferred = {"REQ-PROMO-1", "REQ-HOT-1", "REQ-MEASURE-1"}
+deferred = {"REQ-HOT-1"}
 out = subprocess.check_output(["miwa", "check", "--format", "json"])
 findings = json.loads(out)["findings"]
 actual = {(f["kind"], f["target"]) for f in findings}

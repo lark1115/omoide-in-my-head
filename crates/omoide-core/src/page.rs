@@ -11,17 +11,41 @@ pub fn page(
     capped: bool,
     results: &[Json],
 ) -> Result<Json, String> {
+    with_metadata(
+        cursor,
+        rev,
+        0,
+        count,
+        capped,
+        results,
+        &serde_json::Map::new(),
+    )
+}
+pub fn with_metadata(
+    cursor: Option<&str>,
+    rev: i64,
+    usage: i64,
+    count: usize,
+    capped: bool,
+    results: &[Json],
+    metadata: &serde_json::Map<String, Json>,
+) -> Result<Json, String> {
+    let key = if usage == 0 {
+        rev.to_string()
+    } else {
+        format!("{rev}.{usage}")
+    };
     let mut start = 0;
     let mut restarted = false;
     if let Some(token) = cursor {
         let (r, i) = token
             .split_once(':')
             .ok_or_else(|| "invalid cursor".to_owned())?;
-        let r: i64 = r
-            .parse()
-            .map_err(|_| "invalid cursor revision".to_owned())?;
+        let (data, uses) = r.split_once('.').unwrap_or((r, "0"));
+        let revision = data.parse::<i64>().map_err(|_| "invalid cursor revision")?;
+        let usage_revision = uses.parse::<i64>().map_err(|_| "invalid usage revision")?;
         let i: usize = i.parse().map_err(|_| "invalid cursor offset".to_owned())?;
-        if rev == r {
+        if rev == revision && usage == usage_revision {
             if i > results.len() {
                 return Err("cursor out of range".to_owned());
             }
@@ -31,7 +55,7 @@ pub fn page(
         }
     }
     let envelope = |items: &[Json], next: usize| {
-        json!({
+        let mut payload = json!({
             "state": if results.is_empty() { "none" } else { "found" },
             "judge_state": "not_configured",
             "results": items,
@@ -40,10 +64,15 @@ pub fn page(
             "candidates_truncated": capped,
             "more_search_available": capped,
             "remaining": results.len()-next,
-            "cursor": (next<results.len()).then(||format!("{rev}:{next}")),
+            "cursor": (next<results.len()).then(||format!("{key}:{next}")),
             "restarted": restarted,
-        })
+        });
+        payload.as_object_mut().unwrap().extend(metadata.clone());
+        payload
     };
+    if !fits(&envelope(&[], start)) {
+        return Err("query metadata exceeds output budget".into());
+    }
     let mut items = Vec::new();
     for item in &results[start..] {
         items.push(item.clone());

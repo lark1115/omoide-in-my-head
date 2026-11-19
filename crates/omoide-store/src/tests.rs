@@ -227,8 +227,8 @@ fn migrate_v1_preserves_identity_index_sources_and_receipts() {
         assert_eq!(
             sets[0][0],
             [
-                Value::Integer(2),
-                Value::Integer(8),
+                Value::Integer(3),
+                Value::Integer(9),
                 Value::Integer(2),
                 Value::Text("fixture".into())
             ]
@@ -241,5 +241,44 @@ fn migrate_v1_preserves_identity_index_sources_and_receipts() {
             sets[2][0],
             ["digest", "original result"].map(|v| Value::Text(v.into()))
         );
+    }
+}
+
+// [REQ-STORE-1]
+#[test]
+fn migrate_v2_summary_preserves_source_and_builds_search_index() {
+    let dir = tempfile::tempdir().unwrap();
+    let path = dir.path().join("memory.db");
+    let old = Connection::open(&path).unwrap();
+    old.execute_batch(include_str!("schema_v2.sql")).unwrap();
+    old.execute_batch(
+        "INSERT INTO meta VALUES(1,4,7,2,'fixture');
+        INSERT INTO utterances VALUES('original','all the conditions','user',12,'workshop');
+        INSERT INTO facts VALUES('summary','ＰＡＰＥＲ 紙箱','original','reported','press',13);
+        INSERT INTO receipts VALUES('old-request','old-digest','old-result');",
+    )
+    .unwrap();
+    drop(old);
+    for _ in 0..2 {
+        let mut db = Sqlite::open(&path, false).unwrap();
+        let rows=db.read_batch(&[
+            sql("SELECT schema_version,revision,usage_revision FROM meta"),
+            sql("SELECT m.id,m.record_id,m.source,m.created FROM memories m JOIN evidence_index ON evidence_index.rowid=m.rowid WHERE evidence_index MATCH 'words:paper'"),
+            receipt("old-request")
+        ]).unwrap();
+        assert_eq!(
+            rows[0][0],
+            [Value::Integer(3), Value::Integer(5), Value::Integer(7)]
+        );
+        assert_eq!(
+            rows[1][0],
+            [
+                Value::Text("summary".into()),
+                Value::Text("summary".into()),
+                Value::Text("original".into()),
+                Value::Integer(13)
+            ]
+        );
+        assert_eq!(rows[2][0][1], Value::Text("old-result".into()));
     }
 }

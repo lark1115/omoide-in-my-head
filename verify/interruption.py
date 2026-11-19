@@ -7,9 +7,10 @@ from contextlib import contextmanager
 
 
 @contextmanager
-def stopped_before_commit(binary, db, args):
+def stopped_before_commit(binary, db, args, *, call_log=False):
     """Yield only once the real CLI has inserted its receipt but has not committed."""
-    env = {**os.environ, "OMOIDE_TEST_STOP_BEFORE_COMMIT": "1"}
+    hook = "OMOIDE_TEST_STOP_CALL_LOG" if call_log else "OMOIDE_TEST_STOP_BEFORE_COMMIT"
+    env = {**os.environ, hook: "1"}
     child = subprocess.Popen([binary, "--db", db, *args], env=env, stdout=subprocess.DEVNULL)
     try:
         deadline = time.monotonic() + 15

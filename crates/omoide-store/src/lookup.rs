@@ -9,7 +9,7 @@ fn s(v: &str) -> Value {
 fn val(v: Option<&str>) -> Value {
     v.map_or(Value::Null, s)
 }
-pub const RULE: &str = "json_object('id',r.id,'version_id',r.version,'kind','rule','state',r.state,'text',r.body,'scene',r.scene,'aliases',json(r.aliases),'actions',json(r.actions),'target',r.target,'purpose',r.purpose,'exclusion',r.exclusion,'source_id',r.source,'created',r.created,'successor',r.successor,'parent_id',r.parent_id,'pending_against',r.pending_against)";
+pub const RULE: &str = "json_object('id',r.id,'version_id',r.version,'kind','rule','state',r.state,'text',r.body,'scene',r.scene,'aliases',json(r.aliases),'actions',json(r.actions),'target',r.target,'purpose',r.purpose,'exclusion',r.exclusion,'source_id',r.source,'created',r.created,'used_count',(SELECT count(*) FROM notices n WHERE n.version=r.version AND n.kind='used'),'successor',r.successor,'parent_id',r.parent_id,'pending_against',r.pending_against)";
 pub const SOURCE: &str = "json_object('id',u.id,'kind','utterance','text',u.body,'speaker',u.speaker,'target',u.target,'created',u.created)";
 const ELIGIBLE: &str = "r.state='current' AND (?1 IS NULL OR r.target IS NULL OR r.target=?1) AND (r.exclusion IS NULL OR r.exclusion IS NOT ?1)";
 pub fn expression(t: &Tokens) -> String {

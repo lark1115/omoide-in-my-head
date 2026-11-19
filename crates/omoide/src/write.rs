@@ -15,7 +15,7 @@ use uuid::Uuid;
 fn id() -> String {
     Uuid::new_v4().to_string()
 }
-fn now() -> Result<i64> {
+pub fn now() -> Result<i64> {
     SystemTime::now()
         .duration_since(UNIX_EPOCH)
         .map(|d| d.as_millis() as i64)
@@ -76,14 +76,47 @@ pub(crate) fn create_rule(
     }
     changes
 }
-pub fn apply(db: &mut impl Store, command: &Command, op: &str) -> Result<Json> {
-    nonempty(op)?;
-    let input = serde_json::to_vec(command).map_err(|e| Error::Input(e.to_string()))?;
-    if input.len() > 1_900_000 || op.len() > 4096 {
+fn validate_size(input_bytes: usize, id_bytes: usize) -> Result<()> {
+    if input_bytes > 1_900_000 || id_bytes > 4096 {
         return Err(Error::Input("input exceeds storage limits".into()));
     }
-    let hash = digest(input);
+    Ok(())
+}
+fn retry_revision(elapsed: Duration) -> Result<()> {
+    if elapsed >= Duration::from_secs(5) {
+        return Err(Error::Busy);
+    }
+    thread::sleep(Duration::from_millis(2));
+    Ok(())
+}
+pub fn apply(
+    db: &mut impl Store,
+    command: &Command,
+    op: &str,
+    opportunity: Option<&str>,
+    call_id: &str,
+) -> Result<Json> {
+    nonempty(op)?;
+    let input = serde_json::to_vec(command).map_err(|e| Error::Input(e.to_string()))?;
+    validate_size(input.len(), op.len())?;
+    let notice = command.notice();
+    let hash = if let Some((kind, n, outcome)) = notice {
+        digest(json!([kind, n.version, n.action, n.from_call, outcome, opportunity]).to_string())
+    } else {
+        digest(input)
+    };
     let mut queries = vec![revision(), receipt(op)];
+    if let Some((_, n, _)) = notice {
+        queries[0] = q("SELECT usage_revision FROM meta WHERE singleton=1", vec![]);
+        queries.push(q("SELECT target,actions FROM rules WHERE version=?1 UNION ALL SELECT target,'[]' FROM memories WHERE id=?1",vec![s(&n.version)]));
+        if let Some(from) = &n.from_call {
+            queries.push(q(
+                "SELECT opportunity FROM calls WHERE id=? AND kind='recall' AND EXISTS(
+                SELECT 1 FROM json_each(calls.records) WHERE json_extract(value,'$.version_id')=?)",
+                vec![s(from), s(&n.version)],
+            ));
+        }
+    }
     match command {
         Command::Init => queries.push(q("SELECT store_id FROM meta WHERE singleton=1", vec![])),
         Command::Say { text, speaker, .. } => {
@@ -116,13 +149,19 @@ pub fn apply(db: &mut impl Store, command: &Command, op: &str) -> Result<Json> {
             }
         }
         Command::Fact {
-            command: FactCommand::Add {
-                source: id, text, ..
-            },
-        } => {
-            nonempty(text)?;
-            queries.push(source(id));
+            command: FactCommand::Add { source: id, .. },
+        } => queries.push(omoide_store::evidence::origin(id)),
+        Command::Decide(d) => {
+            queries.push(source(&d.source));
+            if let Some(old) = &d.revises {
+                queries.push(q("SELECT record_id FROM memories WHERE id=? AND kind='decision' AND json_extract(details,'$.decision')!='revised'",vec![s(old)]));
+            }
         }
+        Command::Event { .. }
+        | Command::Used(_)
+        | Command::Acted(_)
+        | Command::Outcome { .. }
+        | Command::Corrected(_) => (),
         Command::Resolve { pending, .. } => {
             queries.push(q("SELECT p.id,c.version,p.target FROM rules p JOIN rules c ON c.version=p.pending_against WHERE p.version=? AND p.state='pending' AND c.state='current'",vec![s(pending)]));
             queries.push(relations::conflicts(pending));
@@ -184,40 +223,32 @@ pub fn apply(db: &mut impl Store, command: &Command, op: &str) -> Result<Json> {
             Command::Resolve { pending, keep } => {
                 relations::resolve(&sets[2], &sets[3], &sets[4], pending, keep, op)?
             }
-            Command::Fact {
-                command:
-                    FactCommand::Add {
-                        source,
-                        text,
-                        target,
-                        certainty,
-                    },
-            } => {
-                required_record(&sets[2])?;
-                (
-                    vec![q(
-                        "INSERT INTO facts(id,body,source,certainty,target,created) VALUES(?,?,?,?,?,?)",
-                        vec![
-                            s(&rid),
-                            s(text),
-                            s(source),
-                            s(certainty),
-                            opt(target),
-                            Value::Integer(time),
-                        ],
-                    )],
-                    json!({"state":"stored","kind":"fact","id":rid,"operation_id":op}),
-                )
+            Command::Fact { .. } | Command::Decide(_) | Command::Event { .. } => {
+                crate::memory::insert(command, (&rid, &vid), time, &sets[2..], op)?
             }
+            Command::Used(_)
+            | Command::Acted(_)
+            | Command::Corrected(_)
+            | Command::Outcome { .. } => crate::activity::notice(
+                notice.unwrap(),
+                &sets[2],
+                sets.get(3),
+                op,
+                time,
+                opportunity,
+                call_id,
+            )?,
             _ => unreachable!(),
         };
         changes.push(save_receipt(op, &hash, &result.to_string()));
-        match db.exec_batch(&guarded(rev, changes)) {
+        let batch = if notice.is_some() {
+            omoide_store::guarded_usage(rev, changes)
+        } else {
+            guarded(rev, changes)
+        };
+        match db.exec_batch(&batch) {
             Ok(()) => return Ok(result),
-            Err(Error::Revision) if start.elapsed() < Duration::from_secs(5) => {
-                thread::sleep(Duration::from_millis(2))
-            }
-            Err(Error::Revision) => return Err(Error::Busy),
+            Err(Error::Revision) => retry_revision(start.elapsed())?,
             Err(e) => return Err(e),
         }
     }
@@ -232,6 +263,23 @@ mod tests {
 
     // [REQ-STORE-1]
     #[test]
+    fn command_size_and_retry_deadline_boundaries() {
+        assert!(validate_size(1_900_000, 4096).is_ok());
+        assert!(validate_size(1_900_001, 4096).is_err());
+        assert!(validate_size(1, 4097).is_err());
+        assert!(retry_revision(Duration::from_millis(4999)).is_ok());
+        assert!(matches!(
+            retry_revision(Duration::from_secs(5)),
+            Err(Error::Busy)
+        ));
+        assert!(matches!(
+            retry_revision(Duration::from_secs(6)),
+            Err(Error::Busy)
+        ));
+    }
+
+    // [REQ-STORE-1]
+    #[test]
     fn racing_registration_rechecks_neighbors_before_activation() {
         let dir = tempfile::tempdir().unwrap();
         let path = dir.path().join("race.db");
@@ -239,7 +287,7 @@ mod tests {
         db.initialize("fixture", &[]).unwrap();
         let source =
             Cli::parse_from(["omoide", "say", "--text", "A synthetic instruction"]).command;
-        let source_id = apply(&mut db, &source, "source").unwrap()["id"]
+        let source_id = apply(&mut db, &source, "source", None, "source-call").unwrap()["id"]
             .as_str()
             .unwrap()
             .to_owned();
@@ -271,7 +319,7 @@ mod tests {
                 if !self.injected {
                     self.injected = true;
                     assert_eq!(
-                        apply(&mut self.writer, self.rule, "winner")?["state"],
+                        apply(&mut self.writer, self.rule, "winner", None, "winner-call")?["state"],
                         "activated"
                     );
                 }
@@ -287,7 +335,7 @@ mod tests {
             rule: &rule,
             injected: false,
         };
-        let result = apply(&mut race, &rule, "loser").unwrap();
+        let result = apply(&mut race, &rule, "loser", None, "loser-call").unwrap();
         assert_eq!(result["state"], "near_rules");
         let counts = race
             .reader

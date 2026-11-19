@@ -34,9 +34,9 @@ omoide recall --action ignite --target 工房
 - 再送に備え、変更には最初から `--operation-id` を指定してください。返事が届かなければ同じ ID と同じ入力で送り直すと、確定済みの結果を取得できます。同じ ID で入力が違えば失敗します。省略時は ID を自動生成して返します。
 - `rule add` の `activated` は登録済みです。`near_rules` は未登録で、近い決まり、元の発言、版の並びの要約値を返します。比較を終える手順は次節にあります。
 - 動作名・対象・適用除外は完全一致です。対象を省いた規則は全対象に使えます。対象を指定しない問い合わせは対象不明として、対象つきの規則も対象名と一緒に返します。対象を指定すると、別の対象向けの規則は返りません。適用除外の文は結果にも残るため、完全一致で除外されなかった範囲は呼び出し側が判断します。目的や除外を省くと検索時に `unknown` を返します。
-- 場面検索は NFKC と小文字化、日本語の二字組、単字の問い合わせ、英数字の語を使います。動作一致を優先し、語の一致割合、登録時刻、ID の順で比較します。意味だけが同じ言い換えは取りこぼすため、登録時に別の表現を `--alias` で複数添えられます。
+- 場面検索は NFKC と小文字化、日本語の二字組、単字の問い合わせ、英数字の語を使います。動作名に結びついた規則を先に返します。次に本文一致、利用者の確定した決定・検証済みの事実、語の一致割合、明示された使用回数（最大32）、時刻、識別子を比較します。同じ半減期では経過時間による減衰と登録時刻の新しさの順は同じです。意味だけが同じ言い換えは取りこぼすため、登録時に別の表現を `--alias` で複数添えられます。
 - `recall` は `state`（`found` / `none`）、判定器の `judge_state`（現在は `not_configured`）、採点対象数 `candidate_count` と一致数 `matched_count` を別々に返します。今の規則が `--scan-limit`（既定500件）以下なら場面検索で全件を採点し、超えた場合は全文索引から `--fts-limit`（既定500件）まで取得します。打ち切りは `candidates_truncated` で確認できます。動作の一致は別に取得します。
-- 問い合わせ結果は改行込みで4,000バイト以内です。続きは同じ問い合わせに `--cursor` を添えます。保存の版が変わると `restarted` が真になり先頭から返します。`truncated` の本文は `show` で全体を読んでから使います。条件欄だけで上限を超える場合はエラーです。
+- 問い合わせ結果は改行込みで4,000バイト以内です。続きは同じ問い合わせに `--cursor` を添えます。保存の版または使用回数の版が変わると `restarted` が真になり先頭から返します。`truncated` の本文は `show` で全体を読んでから使います。条件欄だけで上限を超える場合はエラーです。
 - 保存する文に秘密を含めないでください。機密物は安全な保管先の参照だけを登録します。装置は本文から秘密を検出しません。
 
 [要求](docs/requirements.md)、[保存の契約と設計](docs/adr/0001-layout-store-commands.md)、[エージェントが一巡する手順](AGENTS.md)
@@ -65,9 +65,49 @@ omoide recall --action ignite --target 工房
 
 `omoide show ID --history` は同じ記録 ID の各版、その状態、後継、出どころを返します。版 ID を指定した通常の `show` はその版の本文を返します。証拠の全文を含む食い違いが4,000バイトに収まらない場合は、エラーにある版 ID を `show` で開きます。
 
-発言を要約した事実は `omoide fact add --source 発言ID --text '要約' --certainty reported` で登録し、返った ID を `show` で読みます。確かさの省略値は `unknown` です。この段階の事実は ID で参照できます。事実の検索・検証済みの証拠は後続段階で扱います。
+## 決定・事実・経験を記録する
 
-段階1の SQLite ファイルは、段階2の CLI が最初に開く際に1トランザクションで形式2へ移行します。記録・版・発言の ID、全文索引の対応、確定済み操作の受け取りを引き継ぎます。移行後は段階2以降の CLI を使ってください。切り戻しが必要な場合は事前に SQLite のバックアップ機能でコピーを作成します。
+```sh
+source_id=$(omoide say --text '印刷見本の受付は正午に締める。' | jq -er .id)
+decision=$(omoide decide --source "$source_id" --text '見本の受付締切' --target 印刷室 \
+  --speech instruction --state decided)
+omoide recall --kind decision --scene '受付の締切' --target 印刷室
+```
+
+発言種別は `instruction` または `proposal`、決定状態は `pending`、`decided`、`revised` です。両方を明示します。出どころは利用者の元発言が必要です。判断待ちは承諾を意味しません。明示的な変更では、新しい元発言を用意し、同じ decide に `--revises 旧版のversion_id` を添えます。記録 ID は維持し、旧版を revised にして通常検索から外します。`show 記録ID --history` で版ごとの元発言を確認できます。
+
+```sh
+observation=$(omoide event add --text '作業台で丸い版を数えた。' --target 印刷室 | jq -er .id)
+omoide fact add --source "$observation" --text '丸い版の棚卸が済んだ' \
+  --certainty verified --target 印刷室 --verified-where 作業台 --evidence "$observation" \
+  --scope 丸 --period 今週 --claim counted
+omoide recall --kind fact --scene '棚卸の範囲' --target 印刷室 \
+  --scope 丸 --scope 角 --period 今週 --claim counted
+```
+
+- 経験は `event add` で保存し、出来事の本文・対象・時点を持ちます。時点は Unix ミリ秒の `--at` で指定でき、省略時は記録時刻です。
+- 事実は発言または経験を出どころにします。確かさは伝聞の `reported`、検証済みの `verified`（別表記 `self-verified`）、不明の `unknown`（既定）です。検証済みには場所・時刻・方法と証拠の参照が必要です。`--verified-where`、`--verified-when`、`--verified-how`、`--evidence` で指定します。元の経験があれば、その記録済みの対象・時刻・観察本文・ID を省略欄に使います。`--location` は物の所在も記録します。
+- `--claim` は完全一致する主張名です。依頼と受領確認、入力と利用可能の確認には別の主張名・記録を使います（例 `requested` / `delivered`、`entered` / `usable`）。照会に `--claim` があれば、`verified` はその主張の確認状況を返します。対象・期間を指定していない照会で、特定の対象・期間だけの記録を一般的な確認に使いません。`--scope` は複数指定でき、明示範囲のうち検証済みの証拠がないものが `unproven_scope` に残ります。
+- 決定・事実・経験は常に全文索引を使います。対象指定時は対象名も独立した索引から引きます。結果には `match_basis: lexical`（本文の語が一致）または `target_only`（対象だけ一致）が付きます。対象だけの候補は本文一致の後で、利用者の確定した決定・検証済みの事実、時刻、ID の順です。規則を対象名だけで発動することはありません。範囲と期間は順位付けの前に絞ります。索引の候補上限は規則群とそれ以外の群に別々に適用します。各ページの `remaining` は採点範囲内の残数で、索引段階の打ち切りは `candidates_truncated` が示します。
+
+## 使用の知らせと計測
+
+```sh
+reply=$(omoide recall --action ignite --target 工房 --opportunity-id kiln-start-1)
+version=$(printf '%s\n' "$reply" | jq -er '.results[0].version_id')
+call=$(printf '%s\n' "$reply" | jq -er .call_id)
+omoide used --version "$version" --from-call "$call" --notice-id use-1
+omoide acted --version "$version" --action ignite --opportunity-id kiln-start-1 --notice-id acted-1
+omoide outcome --version "$version" --result success --opportunity-id kiln-start-1 --notice-id outcome-1
+omoide stats --correction-threshold 2
+```
+
+- 返したことは呼び出しログに、実際の採用は `used`、実行は `acted`、成否は `outcome --result success|failure`、指摘は `corrected` に分けます。同じ知らせの再送には同じ notice ID を使います。operation ID と両方指定する場合は同じ値を使います。確定済みの版への知らせは保存できますが、古い版が通常検索に戻ることはありません。
+- 照会を引き継ぐ `--from-call` は、その版を返した実在の recall の ID です。機会 ID は元の照会から継承でき、両方に指定する場合は一致が必要です。動作名は規則に一つだけ結びつく場合は省略でき、複数なら `acted` に明示します。通知の確定ごとに使用回数側の版を一度だけ進めます。
+- stats は現行の各規則について、登録後の指摘と、その規則の動作・対象に対応する機会数を返します。機会は ID つきの recall または acted によって観測します。同じ機会の指摘・動作は各1回、機会 ID のない指摘は通知 ID ごとに数えます。機会が0なら `not_measured`。指摘が指定回数（既定2）以上なら `check_candidates` に載せます。
+- SQLite の `calls` に成功した呼び出しの ID、種別、開始時刻、経過マイクロ秒、返した ID・版 ID、改行込みの出力バイト数、機会と動作を保存します。問い合わせ本文の既定は NULL です。必要な照会だけ `--log-query` を付けるか、`OMOIDE_LOG_QUERY=true` を設定します。書き込み不能なら本体の結果を返して警告し、recall では `accounting: unlogged` を示します。記録前の停止でも、確定済みの本体と受け取りは残ります。
+
+段階1・2の SQLite は初回に1トランザクションで形式3へ移行します。発言・規則・事実・受け取りを維持し、既存の事実から検索索引を構築します。切り戻しが必要な場合は事前に SQLite のバックアップ機能でコピーを作成してください。
 
 ## ローカル検証
 
@@ -80,12 +120,12 @@ cargo build --locked --release
 python3 verify/stage_one_scenes.py target/release/omoide
 ```
 
-場面の採点は未達があれば非ゼロで終了します。段階1〜2の全対象を試すには、次のコマンドで中断位置を制御できる検証用 CLI を別途ビルドします。既定のビルドには中断機能は入りません。
+場面の採点は未達があれば非ゼロで終了します。段階1〜3の全対象を試すには、次のコマンドで中断位置を制御できる検証用 CLI を別途ビルドします。既定のビルドには中断機能は入りません。
 
 ```sh
 cargo build --locked --features fault-injection --target-dir target/fault
-python3 verify/stage_one_scenes.py target/release/omoide --stage 2 --fault-binary target/fault/debug/omoide
+python3 verify/stage_one_scenes.py target/release/omoide --stage 3 --fault-binary target/fault/debug/omoide
 python3 verify/relations_contract.py target/release/omoide target/fault/debug/omoide
 ```
 
-Linux では Python 3 と GNU time を用意し、`python3 verify/measure.py target/release/omoide` で1万件の計測を再実行できます。
+Linux では Python 3 と GNU time を用意し、`python3 verify/measure.py target/release/omoide` で規則1万件を、同じ命令に `--dataset mixed` を添えて事実・経験各5千件の計測を再実行できます。

@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS meta (
  singleton INTEGER PRIMARY KEY CHECK(singleton=1), revision INTEGER NOT NULL, usage_revision INTEGER NOT NULL,
- schema_version INTEGER NOT NULL CHECK(schema_version=2), store_id TEXT NOT NULL
+ schema_version INTEGER NOT NULL CHECK(schema_version=3), store_id TEXT NOT NULL
 );
 CREATE TABLE IF NOT EXISTS revision_guard(ok INTEGER NOT NULL);
 CREATE TABLE IF NOT EXISTS source_guard(ok INTEGER NOT NULL);
@@ -22,5 +22,3 @@ CREATE INDEX IF NOT EXISTS exception_parent ON rules(parent_id) WHERE parent_id 
 CREATE INDEX IF NOT EXISTS pending_base ON rules(pending_against) WHERE state='pending';
 CREATE TABLE IF NOT EXISTS extra_sources(version TEXT NOT NULL REFERENCES rules(version),
     source TEXT NOT NULL REFERENCES utterances(id), PRIMARY KEY(version,source));
-CREATE TABLE IF NOT EXISTS facts(id TEXT PRIMARY KEY NOT NULL,body TEXT NOT NULL,source TEXT NOT NULL REFERENCES utterances(id),
-    certainty TEXT NOT NULL CHECK(certainty IN ('unknown','reported')),target TEXT,created INTEGER NOT NULL);
