@@ -1,9 +1,13 @@
 mod activity;
 mod args;
 mod db;
+mod eval;
+mod hot;
+mod judge;
 mod memory;
 mod relations;
 mod search;
+mod skills;
 mod write;
 use args::{Cli, Command};
 use clap::Parser;
@@ -12,6 +16,9 @@ use serde_json::{Value, json};
 use std::process::ExitCode;
 use uuid::Uuid;
 fn run(cli: &Cli, op: &str) -> db::Result<Value> {
+    if let Command::Eval { command } = &cli.command {
+        return eval::run(command);
+    }
     let clock = std::time::Instant::now();
     let at = write::now()?;
     let call_id = cli
@@ -45,6 +52,8 @@ fn run(cli: &Cli, op: &str) -> db::Result<Value> {
         ready
     } else {
         match &cli.command {
+            Command::Hot { command } => hot::run(&mut db, command, &cli.db)?,
+            Command::Repeated { min } => skills::repeated(&mut db, *min)?,
             Command::Show { id, history } => db::show(&mut db, id, *history)?,
             Command::Stats {
                 correction_threshold,

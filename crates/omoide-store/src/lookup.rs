@@ -9,8 +9,13 @@ fn s(v: &str) -> Value {
 fn val(v: Option<&str>) -> Value {
     v.map_or(Value::Null, s)
 }
-pub const RULE: &str = "json_object('id',r.id,'version_id',r.version,'kind','rule','state',r.state,'text',r.body,'scene',r.scene,'aliases',json(r.aliases),'actions',json(r.actions),'target',r.target,'purpose',r.purpose,'exclusion',r.exclusion,'source_id',r.source,'created',r.created,'used_count',(SELECT count(*) FROM notices n WHERE n.version=r.version AND n.kind='used'),'successor',r.successor,'parent_id',r.parent_id,'pending_against',r.pending_against)";
+pub const RULE: &str = "json_object('id',r.id,'version_id',r.version,'kind',r.kind,'state',r.state,'text',r.body,'scene',r.scene,'aliases',json(r.aliases),'actions',json(r.actions),'target',r.target,'purpose',r.purpose,'exclusion',r.exclusion,'source_id',r.source,'created',r.created,'pinned',r.pinned,'reference',r.reference,'failure_count',CASE WHEN r.kind='skill' THEN (SELECT count(*) FROM notices n WHERE n.version=r.version AND n.kind='outcome' AND n.outcome='failure') ELSE 0 END,'consecutive_failures',r.failure_streak,'used_count',(SELECT count(*) FROM notices n WHERE n.version=r.version AND n.kind='used'),'successor',r.successor,'parent_id',r.parent_id,'pending_against',r.pending_against)";
 pub const SOURCE: &str = "json_object('id',u.id,'kind','utterance','text',u.body,'speaker',u.speaker,'target',u.target,'created',u.created)";
+pub fn procedure_source(alias: &str) -> String {
+    SOURCE
+        .replace("'utterance'", "u.origin_kind")
+        .replace("u.", &format!("{alias}."))
+}
 const ELIGIBLE: &str = "r.state='current' AND (?1 IS NULL OR r.target IS NULL OR r.target=?1) AND (r.exclusion IS NULL OR r.exclusion IS NOT ?1)";
 pub fn expression(t: &Tokens) -> String {
     t.words
@@ -29,29 +34,36 @@ pub fn expression(t: &Tokens) -> String {
         .collect::<Vec<_>>()
         .join(" OR ")
 }
-pub fn candidates(
+pub fn candidate_queries(
     terms: &Tokens,
     target: Option<&str>,
     action: Option<&str>,
     scan_limit: u32,
     fts_limit: u32,
+    kind: Option<&str>,
+    judge: bool,
 ) -> Vec<Statement> {
+    let eligible = match kind {
+        Some("skill") => format!("{ELIGIBLE} AND r.kind='skill'"),
+        Some("rule") => format!("{ELIGIBLE} AND r.kind='rule'"),
+        _ => ELIGIBLE.into(),
+    };
     let expr = expression(terms);
     let mut queries = vec![
         revision(),
         q(
             format!(
-                "SELECT {RULE} FROM action_links a JOIN rules r ON r.version=a.version WHERE {ELIGIBLE} AND a.action=?2"
+                "SELECT {RULE} FROM action_links a JOIN rules r ON r.version=a.version WHERE {eligible} AND a.action=?2"
             ),
             vec![val(target), val(action)],
         ),
         q(
             format!(
-                "SELECT {RULE} FROM rules r WHERE {ELIGIBLE} AND ?2 AND (SELECT count(*) FROM rules WHERE state='current')<=?3"
+                "SELECT {RULE} FROM rules r WHERE {eligible} AND ?2 AND (SELECT count(*) FROM rules WHERE state='current')<=?3"
             ),
             vec![
                 val(target),
-                Value::Integer(i64::from(!expr.is_empty())),
+                Value::Integer(i64::from(judge || !expr.is_empty())),
                 Value::Integer(scan_limit.into()),
             ],
         ),
@@ -60,7 +72,7 @@ pub fn candidates(
         let sql = format!(
             "SELECT {RULE}
             FROM rule_index JOIN rules r ON r.rowid=rule_index.rowid
-            WHERE {ELIGIBLE}
+            WHERE {eligible}
               AND (SELECT count(*) FROM rules WHERE state='current')>?2
               AND rule_index MATCH ?3
             ORDER BY rank,r.id LIMIT ?4"
@@ -88,7 +100,8 @@ pub fn near_query(t: &Tokens, actions_json: &str) -> Statement {
     }
     q(
         format!(
-            "SELECT {RULE},{SOURCE} FROM rules r JOIN utterances u ON u.id=r.source WHERE r.state='current' AND ({where_sql}) ORDER BY r.version"
+            "SELECT {RULE},{source} FROM rules r JOIN origins u ON u.id=r.source WHERE r.state='current' AND r.kind='rule' AND ({where_sql}) ORDER BY r.version",
+            source = procedure_source("u")
         ),
         args,
     )
@@ -123,10 +136,11 @@ pub fn linked_rules(target: Option<&str>, action: Option<&str>, terms: &Tokens) 
     let exceptions=q(format!("{families} SELECT {RULE} FROM rules r
         WHERE r.state='current' AND r.parent_id IS NOT NULL AND {} AND r.parent_id IN families ORDER BY r.version",eligible_scope("r")),args.clone());
     let pending = RULE.replace("r.", "p.");
-    let pending_source = SOURCE.replace("u.", "v.");
-    let conflicts=q(format!("{families} SELECT {RULE},{SOURCE},{pending},{pending_source}
+    let pending_source = procedure_source("v");
+    let source = procedure_source("u");
+    let conflicts=q(format!("{families} SELECT {RULE},{source},{pending},{pending_source}
         FROM rules p JOIN rules r ON r.version=p.pending_against
-        JOIN utterances u ON u.id=r.source JOIN utterances v ON v.id=p.source
+        JOIN origins u ON u.id=r.source JOIN origins v ON v.id=p.source
         WHERE p.state='pending' AND r.state='current' AND {} AND {} AND r.id IN families ORDER BY p.version",
         eligible_scope("p"),eligible_scope("r")),args);
     [exceptions, conflicts]

@@ -42,17 +42,22 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
         return Err(Error::Input("fts limit must be positive".into()));
     }
     let terms = tokens(query.scene.as_deref().unwrap_or_default());
-    let include_rules = query.kind.as_deref().is_none_or(|k| k == "rule")
+    let include_rules = query
+        .kind
+        .as_deref()
+        .is_none_or(|k| matches!(k, "rule" | "skill"))
         && query.scope.is_empty()
         && query.period.is_none()
         && query.claim.is_none();
     let mut queries = if include_rules {
-        omoide_store::lookup::candidates(
+        omoide_store::lookup::candidate_queries(
             &terms,
             query.target.as_deref(),
             query.action.as_deref(),
             query.scan_limit,
             query.fts_limit,
+            query.kind.as_deref(),
+            query.judging.judge.is_some(),
         )
     } else {
         vec![omoide_store::revision()]
@@ -207,9 +212,47 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
             terms,
         }
     });
+    let mut ranked = rank(&terms, candidates);
+    let mut judge_state = "not_configured";
+    let mut judge_error = None;
+    if query.judging.judge.is_some() {
+        let input = json!({"scene":query.scene,"action":query.action,"target":query.target});
+        match crate::judge::ask(&query.judging, &input, &pool) {
+            Ok(scores) => {
+                judge_state = "used";
+                ranked = pool
+                    .iter()
+                    .filter_map(|(id, (action, r))| {
+                        let hits = *scores.get(r["version_id"].as_str().unwrap())?;
+                        Some(omoide_core::Rank {
+                            id,
+                            action: *action,
+                            target_only: false,
+                            priority: r["decision"] == "decided" || r["certainty"] == "verified",
+                            hits,
+                            uses: r["used_count"].as_u64().unwrap_or(0).min(32) as u32,
+                            created: r["created"].as_i64().unwrap_or(0),
+                        })
+                    })
+                    .collect();
+                ranked.sort();
+            }
+            Err(message) => {
+                judge_state = "failed";
+                judge_error = Some(message);
+            }
+        }
+    }
+    // Direct action lookup admits skills too; only an action-bound rule has the first ranking key.
+    for key in &mut ranked {
+        if pool[key.id].1["kind"] == "skill" {
+            key.action = false;
+        }
+    }
+    ranked.sort();
     let mut results = Vec::new();
     let mut visited = std::collections::BTreeSet::new();
-    for entry in rank(&terms, candidates) {
+    for entry in ranked {
         let mut stack = vec![&pool[entry.id].1];
         while let Some(record) = stack.pop() {
             let id = record["id"].as_str().unwrap();
@@ -221,6 +264,13 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
                 if query.target.is_some() {
                     continue;
                 }
+            }
+            if query
+                .kind
+                .as_deref()
+                .is_some_and(|kind| record["kind"] != kind)
+            {
+                continue;
             }
             let mut item = record.clone();
             if let Some(pairs) = conflicts.get(id) {
@@ -236,6 +286,10 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
         }
     }
     let mut meta = serde_json::Map::new();
+    meta.insert("judge_state".into(), json!(judge_state));
+    if let Some(err) = judge_error {
+        meta.insert("judge_error".into(), json!(err));
+    }
     meta.insert("call_id".into(), json!(call_id));
     meta.insert("accounting".into(), json!("recorded"));
     // Keep scoped evidence visible when a target or period is unknown, without

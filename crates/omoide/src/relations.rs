@@ -116,6 +116,9 @@ pub fn plan(
         let old_id = record["id"].as_str().unwrap();
         match outcome {
             AddSource => {
+                if rule.pinned {
+                    changes.push(q("UPDATE rules SET pinned=1 WHERE version=?", vec![s(old)]));
+                }
                 changes.push(q("INSERT INTO extra_sources(version,source) SELECT ?1,?2 WHERE ?2<>(SELECT source FROM rules WHERE version=?1) ON CONFLICT(version,source) DO NOTHING",vec![s(old),s(&rule.source)]));
                 return Ok(Plan::Write(
                     changes,
@@ -176,6 +179,13 @@ pub fn plan(
         ));
     }
     changes.extend(create_rule(rule, id, version, time, state, parent, base));
+    if matches!(outcome, Replace | Pending) && selected.is_some_and(|n| n["record"]["pinned"] == 1)
+    {
+        changes.push(q(
+            "UPDATE rules SET pinned=1 WHERE version=?",
+            vec![s(version)],
+        ));
+    }
     let mut result =
         json!({"state":result_state,"kind":"rule","id":id,"version_id":version,"operation_id":op});
     if let Some(current) = evidence {
@@ -231,6 +241,6 @@ pub fn resolve(
     };
     Ok((
         changes,
-        json!({"state":"resolved","kind":"rule","id":id,"version_id":current,"operation_id":op}),
+        json!({"state":"resolved","kind":if keep=="pending"{text(&r[4])?}else{text(&r[3])?},"id":id,"version_id":current,"operation_id":op}),
     ))
 }

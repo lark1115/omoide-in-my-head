@@ -35,7 +35,7 @@ omoide recall --action ignite --target 工房
 - `rule add` の `activated` は登録済みです。`near_rules` は未登録で、近い決まり、元の発言、版の並びの要約値を返します。比較を終える手順は次節にあります。
 - 動作名・対象・適用除外は完全一致です。対象を省いた規則は全対象に使えます。対象を指定しない問い合わせは対象不明として、対象つきの規則も対象名と一緒に返します。対象を指定すると、別の対象向けの規則は返りません。適用除外の文は結果にも残るため、完全一致で除外されなかった範囲は呼び出し側が判断します。目的や除外を省くと検索時に `unknown` を返します。
 - 場面検索は NFKC と小文字化、日本語の二字組、単字の問い合わせ、英数字の語を使います。動作名に結びついた規則を先に返します。次に本文一致、利用者の確定した決定・検証済みの事実、語の一致割合、明示された使用回数（最大32）、時刻、識別子を比較します。同じ半減期では経過時間による減衰と登録時刻の新しさの順は同じです。意味だけが同じ言い換えは取りこぼすため、登録時に別の表現を `--alias` で複数添えられます。
-- `recall` は `state`（`found` / `none`）、判定器の `judge_state`（現在は `not_configured`）、採点対象数 `candidate_count` と一致数 `matched_count` を別々に返します。今の規則が `--scan-limit`（既定500件）以下なら場面検索で全件を採点し、超えた場合は全文索引から `--fts-limit`（既定500件）まで取得します。打ち切りは `candidates_truncated` で確認できます。動作の一致は別に取得します。
+- `recall` は `state`（`found` / `none`）、判定器の `judge_state`（`not_configured` / `used` / `failed`）、採点対象数 `candidate_count` と一致数 `matched_count` を別々に返します。今の規則が `--scan-limit`（既定500件）以下なら場面検索で全件を採点し、超えた場合は全文索引から `--fts-limit`（既定500件）まで取得します。打ち切りは `candidates_truncated` で確認できます。動作の一致は別に取得します。
 - 問い合わせ結果は改行込みで4,000バイト以内です。続きは同じ問い合わせに `--cursor` を添えます。保存の版または使用回数の版が変わると `restarted` が真になり先頭から返します。`truncated` の本文は `show` で全体を読んでから使います。条件欄だけで上限を超える場合はエラーです。
 - 保存する文に秘密を含めないでください。機密物は安全な保管先の参照だけを登録します。装置は本文から秘密を検出しません。
 
@@ -107,7 +107,63 @@ omoide stats --correction-threshold 2
 - stats は現行の各規則について、登録後の指摘と、その規則の動作・対象に対応する機会数を返します。機会は ID つきの recall または acted によって観測します。同じ機会の指摘・動作は各1回、機会 ID のない指摘は通知 ID ごとに数えます。機会が0なら `not_measured`。指摘が指定回数（既定2）以上なら `check_candidates` に載せます。
 - SQLite の `calls` に成功した呼び出しの ID、種別、開始時刻、経過マイクロ秒、返した ID・版 ID、改行込みの出力バイト数、機会と動作を保存します。問い合わせ本文の既定は NULL です。必要な照会だけ `--log-query` を付けるか、`OMOIDE_LOG_QUERY=true` を設定します。書き込み不能なら本体の結果を返して警告し、recall では `accounting: unlogged` を示します。記録前の停止でも、確定済みの本体と受け取りは残ります。
 
-段階1・2の SQLite は初回に1トランザクションで形式3へ移行します。発言・規則・事実・受け取りを維持し、既存の事実から検索索引を構築します。切り戻しが必要な場合は事前に SQLite のバックアップ機能でコピーを作成してください。
+段階1〜3の SQLite は初回に1トランザクションで形式4へ移行します。発言・規則・事実・受け取りを維持し、既存の事実から検索索引を構築します。切り戻しが必要な場合は事前に SQLite のバックアップ機能でコピーを作成してください。
+
+## 常に読み込む節
+
+```sh
+omoide hot init AGENTS.md --limit-bytes 2048
+omoide hot export AGENTS.md --limit-bytes 2048
+omoide hot status AGENTS.md --limit-bytes 2048
+```
+
+init はマーカーがなければファイルの末尾に節を用意し、その時点の現行版を入れます。export は既存の開始・終了マーカーの間を更新します。上限は開始・終了マーカー、ヘッダー、末尾改行込みの UTF-8 バイト数で、既定は4,096です。改行やタグを含む登録文は1行のデータにエスケープします。対象・適用除外・スキルの参照先があれば同行に残します。`rule add --pinned` で固定した規則を先に全件入れ、残りは使用回数・新しさ・版 ID 順に、行全体が入るものを採ります。固定分が上限を超えた場合は超過バイト数を返し、ファイルは変更しません。入らなかったものも recall で探せます。
+
+同じファイルの書き手は隣の `.omoide.lock` を共有します。ロック内で対象を読み、同じディレクトリの一時ファイルに書きます。SQLite の書き込み予約を取って保存 ID・データ版・使用版を再照合し、一致する間に rename します。競合中は読み直し、継続する場合は失敗を返します。破損または重複したマーカーを持つファイルは更新しません。status は保存 ID、両方の版、上限と書式から作った設定ダイジェストを比較します。
+
+編集者がロックを使わず同時に書いた内容は保護できません。強制終了で未公開の一時ファイルが残る場合があります。更新前から続いている会話がすでに読み込んだ指示は取り消せません。新しい会話が参照するファイルの節だけが更新されます。
+
+## 判定器を指定する
+
+`recall --judge 実行ファイル --judge-arg 引数` で外部プロセスを明示します。引数は複数回指定でき、シェルを経由しません。未設定時は従来の語彙採点を使います。起動した判定器は現在の OS 環境を継承し、標準入力に問い合わせ（scene、action、target）と候補一覧（version_id、本文、場面、別表現）の JSON を受け取ります。設定した実行ファイルにこの内容を渡してよい場合にだけ使ってください。装置にネットワーククライアントはありません。
+
+```json
+{"answers":[{"version_id":"入力で受け取った版ID","score":0.85}]}
+```
+
+空でない返事は各候補をちょうど一度含み、点は0〜1です。`{"answers":[]}` は正常な「該当なし」です。採用の下限は `--threshold`（既定0.5、以上を採用）。同点なら従来の優先条件で決めます。小規模なら対象に合う全現行規則・スキルを渡すため、語の重なりがなくても候補を選べます。時間・出力上限は `--timeout-ms`（既定1,000）、`--output-bytes`（既定262,144）。失敗時は `judge_state=failed` と理由を付け、元の結果を返します。正常な空結果は `judge_state=used` と `matched_count=0` です。
+
+## 経験をスキルにする
+
+```sh
+first=$(omoide event add --text '搬入口で留め金を点検した' --target 工房 | jq -er .id)
+second=$(omoide event add --text '搬入口で留め金を点検した' --target 工房 | jq -er .id)
+omoide repeated --min 2
+proposal=$(omoide skill propose --source "$first" --source "$second" --scene '資材の搬入' \
+  --action unload --target 工房 --text '留め金を点検する' --reference manual/receiving.md)
+omoide skill confirm "$(printf '%s\n' "$proposal" | jq -er .version_id)"
+```
+
+repeated は同じ対象と同じ正規化語集合を持つ経験を集めます。意味だけが同じ別の語までは判定しません。候補には1件以上の実在する重複のない経験 ID が必要です。候補の本文は呼び出し側が作ります。confirm で近い現行規則が返った場合は、規則登録と同じ `--relation`、`--against`、`--near-digest` を使います。same は経験を既存規則の出典に加え、restated は旧版を置き換え、exception は対象を指定した例外にします。unsure は判断待ちです。利用者が resolve で採る側を決めるまでスキルを有効にしません。
+
+検索・節に載せるのは現行のスキルです。採用した版には used、実行の結果には outcome を送ります。検索結果の failure_count はその版の失敗総数、consecutive_failures は連続失敗数です。成功を通知すると連続数が0になります。既定では自動降格しません。`outcome --demote-after N` または `OMOIDE_DEMOTE_AFTER` が正なら、N回以上連続して失敗した現行スキルを候補に戻します。この変更と通知・受け取りは同時に確定します。
+
+## オフライン評価
+
+```sh
+cargo build --locked --release
+cargo build --locked --features fault-injection --target-dir target/fault
+target/release/omoide eval run --scenes tests/scenes --fault-binary target/fault/debug/omoide > report.json
+target/release/omoide eval diff before.json report.json --allow accepted.json
+```
+
+eval run は Python 3 標準ライブラリを使う同梱アダプターを起動し、各ケースを独立した DB と新しい CLI プロセスで試します。通常の登録・検索・書き出しには Python は不要です。JSON の各ケースには pass / not_met / not_run、返った記録、意味を保った観測値、返したバイト数を記録します。評価そのものが完了すれば未達も含めて正常終了します。中断可能な CLI がない場合は、故障位置が必要なケースを not_run と表示します。
+
+`eval diff BUILD_A BUILD_B --builds` は同一の登録済みデータベースのバックアップを各ビルド用に複製し、同じケースと設定で比較します。S11 の中断位置を試す場合は `--before-fault` と `--after-fault` に各ビルドの検証用 CLI を指定します。保存済み JSON の比較もできます。認める差は例えば `[{"case":"example","field":"bytes","before":210,"after":224}]` のように、ケース、項目、前後の値を指定します。結果は allowed と unexplained に分かれます。
+
+S1 の比較では通常の eval run に対し、`--scene S1 --oracle` は固定正解表を使った経路試験、`--scene S1 --aliases tests/support/s1-registration-aliases.json` は登録文から辞書で作った別表現だけの検索です。正解表の結果をモデル品質の測定には使いません。S12 の検証用コマンドは tests/support/deterministic_judge.py です。
+
+`eval run --trials trials.json` は装置あり・なし・節のみの観測も集計します。入力は試行の JSON 配列です。各行に opportunity、variant（device / no_device / hot_only）、called、delivered_at、acted_at、used、action、corrected、実際に足した文字列 added_input を渡します。両時刻は同じ単位で、観測不能なら null。装置が呼ばれなかった機会も分母に残します。到着と動作の順序が分からない場合は unknown で、間に合った使用に数えません。追加量は入力文字列の実際の UTF-8 バイト数です。公開例と試験には架空の場面だけを使ってください。
 
 ## ローカル検証
 
@@ -117,15 +173,16 @@ cargo clippy --locked --workspace --all-targets -- -D warnings
 cargo test --locked --workspace
 python3 verify/check_miwa.py
 cargo build --locked --release
-python3 verify/stage_one_scenes.py target/release/omoide
+target/release/omoide eval run --scene S2
 ```
 
-場面の採点は未達があれば非ゼロで終了します。段階1〜3の全対象を試すには、次のコマンドで中断位置を制御できる検証用 CLI を別途ビルドします。既定のビルドには中断機能は入りません。
+全段階の固定場面と故障試験は、上のオフライン評価の手順で実行します。故障注入の CLI は別途ビルドします。既定のビルドには中断機能は入りません。
 
 ```sh
 cargo build --locked --features fault-injection --target-dir target/fault
-python3 verify/stage_one_scenes.py target/release/omoide --stage 3 --fault-binary target/fault/debug/omoide
+target/release/omoide eval run --fault-binary target/fault/debug/omoide
 python3 verify/relations_contract.py target/release/omoide target/fault/debug/omoide
+python3 verify/hot_contract.py target/release/omoide target/fault/debug/omoide
 ```
 
 Linux では Python 3 と GNU time を用意し、`python3 verify/measure.py target/release/omoide` で規則1万件を、同じ命令に `--dataset mixed` を添えて事実・経験各5千件の計測を再実行できます。

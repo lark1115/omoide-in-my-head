@@ -56,7 +56,7 @@ pub fn origin(id: &str) -> Statement {
 }
 pub fn migrate(tx: &Connection) -> Result<(), Error> {
     tx.execute_batch("ALTER TABLE meta RENAME TO old_meta;")?;
-    tx.execute_batch(include_str!("schema.sql"))?;
+    tx.execute_batch(include_str!("schema_v3.sql"))?;
     tx.execute_batch(include_str!("evidence.sql"))?;
     tx.execute_batch(
         "INSERT INTO meta SELECT singleton,revision+1,usage_revision,3,store_id FROM old_meta;
@@ -110,4 +110,14 @@ pub fn candidates(filter: Filter<'_>) -> Statement {
       ORDER BY lexical DESC, CASE WHEN lexical=0 THEN (json_extract(m.details,'$.decision') IS 'decided' OR json_extract(m.details,'$.certainty') IS 'verified') ELSE 0 END DESC,
         relevance,m.created DESC,m.id LIMIT ?8"),
       vec![s(&lexical),s(&subject),opt(filter.target),opt(filter.kind),opt(filter.period),s(filter.scope_json),opt(filter.claim),Value::Integer(i64::from(filter.limit)+1)])
+}
+
+#[cfg(test)]
+mod tests {
+    // [REQ-RECALL-1]
+    #[test]
+    fn target_tokens_preserve_distinct_utf8_bytes() {
+        assert_eq!(super::subject("A紙"), "t41e7b499");
+        assert_ne!(super::subject("A"), super::subject("a"));
+    }
 }
