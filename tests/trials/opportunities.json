@@ -1,0 +1,242 @@
+[
+  {
+    "id": "T01",
+    "language": "en",
+    "prompt": "We're shutting the showroom. Give me the final arrangement for the archway."
+  },
+  {
+    "id": "T02",
+    "language": "ja",
+    "prompt": "春と夏の笛箱について、人手が必要な棚卸しを教えて。"
+  },
+  {
+    "id": "T03",
+    "language": "en",
+    "prompt": "I have a 90 cm ribbon and want three equal lengths. Give the cut marks measured from one end."
+  },
+  {
+    "id": "T04",
+    "language": "ja",
+    "prompt": "机が届いた。試食会の設営係にひと言書いて。"
+  },
+  {
+    "id": "T05",
+    "language": "en",
+    "prompt": "Finish the little jars for our indoor class. What tags are necessary?"
+  },
+  {
+    "id": "T06",
+    "language": "ja",
+    "prompt": "石の駒を6個ずつ3皿に分ける。予備2個も含む持出数を教えて。"
+  },
+  {
+    "id": "T07",
+    "language": "en",
+    "prompt": "I'm laying out the picnic-carton insert. How many spaces should I draw?"
+  },
+  {
+    "id": "T08",
+    "language": "ja",
+    "prompt": "休憩中のみんなで食べる花輪パン、一人ずつに配りたい。"
+  },
+  {
+    "id": "T09",
+    "language": "en",
+    "prompt": "Give the window team a two-line rhyme about rain and a brass spoon."
+  },
+  {
+    "id": "T10",
+    "language": "ja",
+    "prompt": "小さい方の窯で丸いトレーを使う工程、組めそう？"
+  },
+  {
+    "id": "T11",
+    "language": "en",
+    "prompt": "Write the folding-screen status for the handover sheet."
+  },
+  {
+    "id": "T12",
+    "language": "ja",
+    "prompt": "月形パイに朝一番のお客さんだよ。包むところまで段取りをお願い。"
+  },
+  {
+    "id": "T13",
+    "language": "en",
+    "prompt": "Can we run a two-tone ticket batch without borrowing equipment?"
+  },
+  {
+    "id": "T14",
+    "language": "ja",
+    "prompt": "網戸の引き継ぎに載せる状態を短く書いて。"
+  },
+  {
+    "id": "T15",
+    "language": "en",
+    "prompt": "The plum drinks counter has just opened. Talk me through making order number one."
+  },
+  {
+    "id": "T16",
+    "language": "ja",
+    "prompt": "灯市二日分の焼き札、印刷係に残りを伝えて。"
+  },
+  {
+    "id": "T17",
+    "language": "en",
+    "prompt": "There are fifteen paper fans for three tables. Divide them evenly for me."
+  },
+  {
+    "id": "T18",
+    "language": "ja",
+    "prompt": "候補の帯が何色か届いた。冬市の包材表、仕上げてくれる？"
+  },
+  {
+    "id": "T19",
+    "language": "en",
+    "prompt": "Tell the proofreader what remains on the double-sided wall menu."
+  },
+  {
+    "id": "T20",
+    "language": "ja",
+    "prompt": "丸い紙ふぶきが8枚、三角が5枚。一袋にまとめるから合計を値札に書いて。"
+  },
+  {
+    "id": "T21",
+    "language": "en",
+    "prompt": "The label artist has a few sketches for the seed tin. Supply the wording for the front."
+  },
+  {
+    "id": "T22",
+    "language": "ja",
+    "prompt": "写真係に空の果実台の模型を運ぶ。どう包む？"
+  },
+  {
+    "id": "T23",
+    "language": "en",
+    "prompt": "Please sort these chalk signs alphabetically: Wisp, Elm, Kite."
+  },
+  {
+    "id": "T24",
+    "language": "ja",
+    "prompt": "格子の模様を付ける道具、改めて手配する必要ある？"
+  },
+  {
+    "id": "T25",
+    "language": "en",
+    "prompt": "Move the indoor trolley to the wrapping bench. Is anything holding us up?"
+  },
+  {
+    "id": "T26",
+    "language": "ja",
+    "prompt": "今この瞬間、水差しに水が残ってるかを言い切れる？ 現物はまだ誰も見に行ってないよ。"
+  },
+  {
+    "id": "T27",
+    "language": "en",
+    "prompt": "I want the trellis stencil reproduced. Do I need to bring the master in?"
+  },
+  {
+    "id": "T28",
+    "language": "ja",
+    "prompt": "果実輪の受取状況を売り場に伝えて。"
+  },
+  {
+    "id": "T29",
+    "language": "en",
+    "prompt": "A visitor is collecting that little assortment to compare scents. How will you send it out?"
+  },
+  {
+    "id": "T30",
+    "language": "ja",
+    "prompt": "朝市の大小の袋、今日の検品係に割り振って。"
+  },
+  {
+    "id": "T31",
+    "language": "en",
+    "prompt": "Prepare the product note about the new dial getting wet."
+  },
+  {
+    "id": "T32",
+    "language": "ja",
+    "prompt": "向こう岸行きの焼き菓子が揃った。運び手に渡せる状態にして。"
+  },
+  {
+    "id": "T33",
+    "language": "en",
+    "prompt": "Work out the polishing list for the two leaf-mould cabinets."
+  },
+  {
+    "id": "T34",
+    "language": "ja",
+    "prompt": "窓の絵札を並べたい。下から星、波、月の順。上から読むとどうなる？"
+  },
+  {
+    "id": "T35",
+    "language": "en",
+    "prompt": "The printer needs the opening line for the courtyard handbill. What should it say?"
+  },
+  {
+    "id": "T36",
+    "language": "ja",
+    "prompt": "店内で回す味見用の筒を準備して。胴の仕上げはどうする？"
+  },
+  {
+    "id": "T37",
+    "language": "en",
+    "prompt": "Make a tally line for seven red gate rosettes and two white ones. I need the total."
+  },
+  {
+    "id": "T38",
+    "language": "ja",
+    "prompt": "夕便が来る前に案内札を用意したい。文面を頼む。"
+  },
+  {
+    "id": "T39",
+    "language": "en",
+    "prompt": "Stack the unfinished wooden blanks for sanding. Do we need anything between them?"
+  },
+  {
+    "id": "T40",
+    "language": "ja",
+    "prompt": "布のしおりの紹介を五・七・五で一つ書いて。"
+  },
+  {
+    "id": "T41",
+    "language": "en",
+    "prompt": "Can we size the reed strips today, or should I order an instrument?"
+  },
+  {
+    "id": "T42",
+    "language": "ja",
+    "prompt": "紫の釉見本、仕上がり報告に何て書く？"
+  },
+  {
+    "id": "T43",
+    "language": "en",
+    "prompt": "Nobody has looked at this morning’s paint swatch. Tell me whether you can confirm its exact shade yet."
+  },
+  {
+    "id": "T44",
+    "language": "ja",
+    "prompt": "深棚を奥に運びたい。入口の建具を外すしかないかな。"
+  },
+  {
+    "id": "T45",
+    "language": "en",
+    "prompt": "Can I advertise four hours for our lantern timer? Give me the wording."
+  },
+  {
+    "id": "T46",
+    "language": "ja",
+    "prompt": "閉店だね。塔のクッキーに使った道具、今夜どう片付ける？"
+  },
+  {
+    "id": "T47",
+    "language": "en",
+    "prompt": "Assign today's crate count for the orchard delivery."
+  },
+  {
+    "id": "T48",
+    "language": "ja",
+    "prompt": "楕円缶の空きが四つ。二つずつ二台の台車に置く割り振りを書いて。"
+  }
+]

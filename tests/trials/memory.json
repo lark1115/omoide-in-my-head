@@ -1,0 +1,458 @@
+[
+  {
+    "id": "m001",
+    "kind": "rule",
+    "scene": "切り売りの初回",
+    "action": "分ける",
+    "target": "月形パイ",
+    "exceptions": [],
+    "text": "最初の一切れは見本皿へ回す。",
+    "source_role": "workshop owner",
+    "at": "2042-03-07T09:00:00Z"
+  },
+  {
+    "id": "m002",
+    "kind": "rule",
+    "scene": "packing a flight box",
+    "action": "pack",
+    "target": "tasting flight",
+    "exceptions": [],
+    "text": "Slip a blank aroma card under the lid of each tasting flight.",
+    "source_role": "workshop owner",
+    "at": "2042-03-07T09:00:00Z"
+  },
+  {
+    "id": "m003",
+    "kind": "rule",
+    "scene": "木型の夜じまい",
+    "action": "収納",
+    "target": "塔形の木型",
+    "exceptions": [],
+    "text": "収納前に塔形の木型を逆さで一晩休ませる。",
+    "source_role": "workshop owner",
+    "at": "2042-03-07T09:00:00Z"
+  },
+  {
+    "id": "m004",
+    "kind": "rule",
+    "scene": "first pour of the day",
+    "action": "serve",
+    "target": "plum syrup",
+    "exceptions": [],
+    "text": "Reserve the first spoonful for the colour tile.",
+    "source_role": "workshop owner",
+    "at": "2042-03-07T09:00:00Z"
+  },
+  {
+    "id": "m005",
+    "kind": "rule",
+    "scene": "橋便の仕分け",
+    "action": "仕分け",
+    "target": "橋便",
+    "exceptions": [],
+    "text": "橋便のかごには持ち手の左に鐘札を掛ける。",
+    "source_role": "workshop owner",
+    "at": "2042-03-07T09:00:00Z"
+  },
+  {
+    "id": "m006",
+    "kind": "rule",
+    "scene": "closing the display",
+    "action": "close",
+    "target": "sugar arch",
+    "exceptions": [],
+    "text": "Leave one empty plinth beneath the sugar arch overnight.",
+    "source_role": "workshop owner",
+    "at": "2042-03-07T09:00:00Z"
+  },
+  {
+    "id": "m007",
+    "target": "冬市の包み",
+    "text": "冬市では梅色の帯に決定。",
+    "kind": "decision",
+    "state": "decided",
+    "speech": "directive",
+    "at": "2042-03-07T11:00:00Z",
+    "source_role": "workshop owner"
+  },
+  {
+    "id": "m008",
+    "target": "courtyard bell",
+    "text": "The courtyard stall opens at the second bell; the schedule is final.",
+    "kind": "decision",
+    "state": "decided",
+    "speech": "directive",
+    "at": "2042-03-07T11:00:00Z",
+    "source_role": "workshop owner"
+  },
+  {
+    "id": "m009",
+    "target": "試食会の席",
+    "text": "試食会は長机をコの字にすることで確定。",
+    "kind": "decision",
+    "state": "decided",
+    "speech": "directive",
+    "at": "2042-03-07T11:00:00Z",
+    "source_role": "workshop owner"
+  },
+  {
+    "id": "m010",
+    "target": "seed tin label",
+    "text": "The final name for the seed tin is Meadow Rattle.",
+    "kind": "decision",
+    "state": "decided",
+    "speech": "directive",
+    "at": "2042-03-07T11:00:00Z",
+    "source_role": "workshop owner"
+  },
+  {
+    "id": "m011",
+    "target": "夕便の受取",
+    "text": "夕便の受取口は裏庭で決定。",
+    "kind": "decision",
+    "state": "decided",
+    "speech": "directive",
+    "at": "2042-03-07T11:00:00Z",
+    "source_role": "workshop owner"
+  },
+  {
+    "id": "m012",
+    "target": "crescent count",
+    "text": "We settled on nine crescents per picnic carton.",
+    "kind": "decision",
+    "state": "decided",
+    "speech": "directive",
+    "at": "2042-03-07T11:00:00Z",
+    "source_role": "workshop owner"
+  },
+  {
+    "id": "e013",
+    "kind": "experience",
+    "target": "模様押し板",
+    "at": "2042-03-08T08:00:00Z",
+    "text": "担当が現物を照合して当番記録に結果を残した。 格子柄の押し板は藍箱の二段目へ引き渡し済み。"
+  },
+  {
+    "id": "m013",
+    "target": "模様押し板",
+    "text": "格子柄の押し板は藍箱の二段目へ引き渡し済み。",
+    "kind": "fact",
+    "certainty": "verified",
+    "evidence": "e013",
+    "method": "shift inspection",
+    "at": "2042-03-08T08:00:00Z"
+  },
+  {
+    "id": "e015",
+    "kind": "experience",
+    "target": "reed gauge",
+    "at": "2042-03-08T08:00:00Z",
+    "text": "The shift inspected the item and entered the result in the inspection ledger. The reed gauge was delivered to the narrow drawer under the scale."
+  },
+  {
+    "id": "m015",
+    "target": "reed gauge",
+    "text": "The reed gauge was delivered to the narrow drawer under the scale.",
+    "kind": "fact",
+    "certainty": "verified",
+    "evidence": "e015",
+    "method": "shift inspection",
+    "at": "2042-03-08T08:00:00Z"
+  },
+  {
+    "id": "e017",
+    "kind": "experience",
+    "target": "小窯の丸盆",
+    "at": "2042-03-08T08:00:00Z",
+    "text": "担当が現物を照合して当番記録に結果を残した。 小窯に丸盆が入ることを現物合わせで確認した。"
+  },
+  {
+    "id": "m017",
+    "target": "小窯の丸盆",
+    "text": "小窯に丸盆が入ることを現物合わせで確認した。",
+    "kind": "fact",
+    "certainty": "verified",
+    "evidence": "e017",
+    "method": "shift inspection",
+    "at": "2042-03-08T08:00:00Z"
+  },
+  {
+    "id": "e019",
+    "kind": "experience",
+    "target": "pattern sheet",
+    "at": "2042-03-08T08:00:00Z",
+    "text": "The shift inspected the item and entered the result in the inspection ledger. The stencil master was handed over inside the apricot folio."
+  },
+  {
+    "id": "m019",
+    "target": "pattern sheet",
+    "text": "The stencil master was handed over inside the apricot folio.",
+    "kind": "fact",
+    "certainty": "verified",
+    "evidence": "e019",
+    "method": "shift inspection",
+    "at": "2042-03-08T08:00:00Z"
+  },
+  {
+    "id": "e021",
+    "kind": "experience",
+    "target": "棚板の向き",
+    "at": "2042-03-08T08:00:00Z",
+    "text": "担当が現物を照合して当番記録に結果を残した。 横向きなら深い棚板が引き戸を通ることを実測した。"
+  },
+  {
+    "id": "m021",
+    "target": "棚板の向き",
+    "text": "横向きなら深い棚板が引き戸を通ることを実測した。",
+    "kind": "fact",
+    "certainty": "verified",
+    "evidence": "e021",
+    "method": "shift inspection",
+    "at": "2042-03-08T08:00:00Z"
+  },
+  {
+    "id": "e023",
+    "kind": "experience",
+    "target": "ink wheel",
+    "at": "2042-03-08T08:00:00Z",
+    "text": "The shift inspected the item and entered the result in the inspection ledger. A two-colour ink wheel is in the tin marked Rain."
+  },
+  {
+    "id": "m023",
+    "target": "ink wheel",
+    "text": "A two-colour ink wheel is in the tin marked Rain.",
+    "kind": "fact",
+    "certainty": "verified",
+    "evidence": "e023",
+    "method": "shift inspection",
+    "at": "2042-03-08T08:00:00Z"
+  },
+  {
+    "id": "e025",
+    "kind": "experience",
+    "target": "朝市の紙袋",
+    "at": "2042-03-08T08:00:00Z",
+    "text": "作業を行い、当番が作業票へ結果を記入した。 朝市用の小袋120枚は検品済み。青い検品票が根拠。大袋は未検品。"
+  },
+  {
+    "id": "m025",
+    "target": "朝市の紙袋",
+    "text": "朝市用の小袋120枚は検品済み。青い検品票が根拠。大袋は未検品。",
+    "kind": "fact",
+    "certainty": "verified",
+    "evidence": "e025",
+    "method": "completion slip",
+    "at": "2042-03-08T08:00:00Z"
+  },
+  {
+    "id": "e027",
+    "kind": "experience",
+    "target": "orchard delivery",
+    "at": "2042-03-08T08:00:00Z",
+    "text": "The shift recorded the outcome on its completion slip. The orchard shipment's east crates were counted; tally slip E is filed. West crates remain."
+  },
+  {
+    "id": "m027",
+    "target": "orchard delivery",
+    "text": "The orchard shipment's east crates were counted; tally slip E is filed. West crates remain.",
+    "kind": "fact",
+    "certainty": "verified",
+    "evidence": "e027",
+    "method": "completion slip",
+    "at": "2042-03-08T08:00:00Z"
+  },
+  {
+    "id": "e029",
+    "kind": "experience",
+    "target": "灯市の焼き札",
+    "at": "2042-03-08T08:00:00Z",
+    "text": "作業を行い、当番が作業票へ結果を記入した。 灯市の一日目の焼き札だけ印刷済み。束の控えは葦色。"
+  },
+  {
+    "id": "m029",
+    "target": "灯市の焼き札",
+    "text": "灯市の一日目の焼き札だけ印刷済み。束の控えは葦色。",
+    "kind": "fact",
+    "certainty": "verified",
+    "evidence": "e029",
+    "method": "completion slip",
+    "at": "2042-03-08T08:00:00Z"
+  },
+  {
+    "id": "e031",
+    "kind": "experience",
+    "target": "display moulds",
+    "at": "2042-03-08T08:00:00Z",
+    "text": "The shift recorded the outcome on its completion slip. The six leaf moulds in cabinet Pine were polished; six in Ash remain. The Pine slip is signed."
+  },
+  {
+    "id": "m031",
+    "target": "display moulds",
+    "text": "The six leaf moulds in cabinet Pine were polished; six in Ash remain. The Pine slip is signed.",
+    "kind": "fact",
+    "certainty": "verified",
+    "evidence": "e031",
+    "method": "completion slip",
+    "at": "2042-03-08T08:00:00Z"
+  },
+  {
+    "id": "e033",
+    "kind": "experience",
+    "target": "笛箱の棚卸し",
+    "at": "2042-03-08T08:00:00Z",
+    "text": "作業を行い、当番が作業票へ結果を記入した。 春便の笛箱は仕切りまで計数済み。夏便は数えていない。"
+  },
+  {
+    "id": "m033",
+    "target": "笛箱の棚卸し",
+    "text": "春便の笛箱は仕切りまで計数済み。夏便は数えていない。",
+    "kind": "fact",
+    "certainty": "verified",
+    "evidence": "e033",
+    "method": "completion slip",
+    "at": "2042-03-08T08:00:00Z"
+  },
+  {
+    "id": "e035",
+    "kind": "experience",
+    "target": "menu proof",
+    "at": "2042-03-08T08:00:00Z",
+    "text": "The shift recorded the outcome on its completion slip. The wall menu's front was proofread; its reverse still needs checking. The signed proof is in the rack."
+  },
+  {
+    "id": "m035",
+    "target": "menu proof",
+    "text": "The wall menu's front was proofread; its reverse still needs checking. The signed proof is in the rack.",
+    "kind": "fact",
+    "certainty": "verified",
+    "evidence": "e035",
+    "method": "completion slip",
+    "at": "2042-03-08T08:00:00Z"
+  },
+  {
+    "id": "m037",
+    "kind": "rule",
+    "scene": "梱包",
+    "action": "包む",
+    "target": "持ち帰りの筒",
+    "exceptions": [
+      "店内試食"
+    ],
+    "text": "持ち帰り筒には封帯を巻く。店内の味見筒は対象外。",
+    "source_role": "workshop owner",
+    "at": "2042-03-07T09:00:00Z"
+  },
+  {
+    "id": "m038",
+    "kind": "rule",
+    "scene": "display labelling",
+    "action": "label",
+    "target": "outdoor jars",
+    "exceptions": [
+      "classroom samples"
+    ],
+    "text": "Outdoor jars need wax tags; classroom samples are exempt.",
+    "source_role": "workshop owner",
+    "at": "2042-03-07T09:00:00Z"
+  },
+  {
+    "id": "m039",
+    "kind": "rule",
+    "scene": "保冷",
+    "action": "冷やす",
+    "target": "配達便の果実台",
+    "exceptions": [
+      "空の撮影模型"
+    ],
+    "text": "配達便の果実台は保冷袋に入れる。空の撮影模型には適用しない。",
+    "source_role": "workshop owner",
+    "at": "2042-03-07T09:00:00Z"
+  },
+  {
+    "id": "m040",
+    "kind": "rule",
+    "scene": "stacking trays",
+    "action": "stack",
+    "target": "glazed trays",
+    "exceptions": [
+      "unfinished blanks"
+    ],
+    "text": "Glazed trays require felt separators. Unfinished wooden blanks are outside this rule.",
+    "source_role": "workshop owner",
+    "at": "2042-03-07T09:00:00Z"
+  },
+  {
+    "id": "m041",
+    "kind": "rule",
+    "scene": "試食切り分け",
+    "action": "切る",
+    "target": "展示用の花輪パン",
+    "exceptions": [
+      "まかない"
+    ],
+    "text": "展示する花輪パンは切らずに残す。まかない分は対象外。",
+    "source_role": "workshop owner",
+    "at": "2042-03-07T09:00:00Z"
+  },
+  {
+    "id": "m042",
+    "kind": "rule",
+    "scene": "cart inspection",
+    "action": "inspect",
+    "target": "loan carts",
+    "exceptions": [
+      "indoor trolley"
+    ],
+    "text": "Loan carts require a brass seal. Our own indoor trolley is exempt.",
+    "source_role": "workshop owner",
+    "at": "2042-03-07T09:00:00Z"
+  },
+  {
+    "id": "m043",
+    "target": "紫の釉薬",
+    "text": "見習いは紫釉の見本が乾いたと思うと話した。現物確認はまだ。",
+    "kind": "fact",
+    "certainty": "reported",
+    "source_role": "shift helper"
+  },
+  {
+    "id": "m044",
+    "target": "folding screen",
+    "text": "A helper thinks the folding screen was mended; nobody inspected the hinge.",
+    "kind": "fact",
+    "certainty": "reported",
+    "source_role": "shift helper"
+  },
+  {
+    "id": "m045",
+    "target": "果実輪の到着",
+    "text": "運び手が果実輪は届いたはずと言った。受け取りの控えはまだない。",
+    "kind": "fact",
+    "certainty": "reported",
+    "source_role": "shift helper"
+  },
+  {
+    "id": "m046",
+    "target": "lantern timer",
+    "text": "A stall helper says the lantern timer lasts four hours; no timing run has been logged.",
+    "kind": "fact",
+    "certainty": "reported",
+    "source_role": "shift helper"
+  },
+  {
+    "id": "m047",
+    "target": "網戸の留め",
+    "text": "交代係から網戸の留めを交換したらしいと聞いた。試し開閉はしていない。",
+    "kind": "fact",
+    "certainty": "reported",
+    "source_role": "shift helper"
+  },
+  {
+    "id": "m048",
+    "target": "printed dial",
+    "text": "A packer heard the printed dial is waterproof; no splash test was recorded.",
+    "kind": "fact",
+    "certainty": "reported",
+    "source_role": "shift helper"
+  }
+]

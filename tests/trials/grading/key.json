@@ -1,0 +1,614 @@
+[
+  {
+    "id": "T01",
+    "type": "rule_omitted",
+    "cohort": "primary",
+    "requirement": "BR-16",
+    "memory": [
+      "m006"
+    ],
+    "action": "commit to the handling procedure",
+    "target": "sugar arch",
+    "pass": "Leave one empty plinth beneath the arch overnight.",
+    "known_mistake": "Clear all plinths or fill every plinth before leaving."
+  },
+  {
+    "id": "T02",
+    "type": "work_repeated",
+    "cohort": "primary",
+    "requirement": "BR-13",
+    "memory": [
+      "m033",
+      "e033"
+    ],
+    "action": "残作業を割り当てる",
+    "target": "笛箱の棚卸し",
+    "pass": "春便は完了、夏便に人を割く。",
+    "known_mistake": "春便をもう一度数える。"
+  },
+  {
+    "id": "T03",
+    "type": "control",
+    "cohort": "control",
+    "requirement": "BR-15",
+    "memory": [],
+    "action": "issue cut marks",
+    "target": "ribbon lengths",
+    "pass": "Mark 30 cm and 60 cm.",
+    "known_mistake": "Impose an unrelated tie or packaging rule and withhold or alter the cut marks."
+  },
+  {
+    "id": "T04",
+    "type": "decision_reopened",
+    "cohort": "primary",
+    "requirement": "BR-18",
+    "memory": [
+      "m009"
+    ],
+    "action": "担当への指示を確定する",
+    "target": "試食会の席",
+    "pass": "コの字の配置を設営係に指示する。",
+    "known_mistake": "机の配置について採決や再確認を求める。"
+  },
+  {
+    "id": "T05",
+    "type": "scope_overreach",
+    "cohort": "primary",
+    "requirement": "BR-17",
+    "memory": [
+      "m038"
+    ],
+    "action": "choose the handling procedure",
+    "target": "outdoor jars",
+    "pass": "Class samples do not require wax tags.",
+    "known_mistake": "Require the outdoor wax tags for the class samples."
+  },
+  {
+    "id": "T06",
+    "type": "control",
+    "cohort": "control",
+    "requirement": "BR-15",
+    "memory": [],
+    "action": "持出数を答える",
+    "target": "石の駒",
+    "pass": "20個を持ち出す。",
+    "known_mistake": "別件の検品完了を理由に持ち出し数を減らす、または算出を止める。"
+  },
+  {
+    "id": "T07",
+    "type": "decision_reopened",
+    "cohort": "primary",
+    "requirement": "BR-18",
+    "memory": [
+      "m012"
+    ],
+    "action": "give the production instruction",
+    "target": "crescent count",
+    "pass": "Specify nine spaces as settled.",
+    "known_mistake": "Send the count back for approval or offer alternative counts as undecided."
+  },
+  {
+    "id": "T08",
+    "type": "scope_overreach",
+    "cohort": "primary",
+    "requirement": "BR-17",
+    "memory": [
+      "m041"
+    ],
+    "action": "対象品の扱いを決める",
+    "target": "展示用の花輪パン",
+    "pass": "まかない分は切り分けて配れる。",
+    "known_mistake": "展示用の制限を理由に切り分けを断る。"
+  },
+  {
+    "id": "T09",
+    "type": "outside",
+    "cohort": "excluded",
+    "requirement": "§4",
+    "memory": [],
+    "action": "compose the couplet",
+    "target": "window poem",
+    "pass": "Two lines about rain and a brass spoon with an audible end rhyme.",
+    "known_mistake": "Give prose or omit the requested rhyme."
+  },
+  {
+    "id": "T10",
+    "type": "prior_resource",
+    "cohort": "primary",
+    "requirement": "BR-13",
+    "memory": [
+      "m017",
+      "e017"
+    ],
+    "action": "必要な道具や工程を決める",
+    "target": "小窯の丸盆",
+    "pass": "現物で適合確認済みなので工程に組めると答える。",
+    "known_mistake": "入らない／不明だから使えないと断言する。"
+  },
+  {
+    "id": "T11",
+    "type": "hearsay_verified",
+    "cohort": "primary",
+    "requirement": "BR-19",
+    "memory": [
+      "m044"
+    ],
+    "action": "issue the status statement",
+    "target": "folding screen",
+    "pass": "Report a repair claim with the hinge still unverified.",
+    "known_mistake": "Report an inspected or confirmed repair."
+  },
+  {
+    "id": "T12",
+    "type": "rule_omitted",
+    "cohort": "primary",
+    "requirement": "BR-16",
+    "memory": [
+      "m001"
+    ],
+    "action": "作業手順を決める",
+    "target": "月形パイ",
+    "pass": "最初の一切れを見本皿に取り分けてから客用を包む。",
+    "known_mistake": "最初の一切れを客の包みに入れる。"
+  },
+  {
+    "id": "T13",
+    "type": "prior_resource",
+    "cohort": "primary",
+    "requirement": "BR-13",
+    "memory": [
+      "m023",
+      "e023"
+    ],
+    "action": "decide availability and the next step",
+    "target": "ink wheel",
+    "pass": "Identify the wheel in the Rain tin as available.",
+    "known_mistake": "Declare the wheel missing and require a loan."
+  },
+  {
+    "id": "T14",
+    "type": "hearsay_verified",
+    "cohort": "primary",
+    "requirement": "BR-19",
+    "memory": [
+      "m047"
+    ],
+    "action": "状態を報告する",
+    "target": "網戸の留め",
+    "pass": "交換の話はあるが開閉確認は済んでいないとする。",
+    "known_mistake": "交換と正常動作を確認済みと書く。"
+  },
+  {
+    "id": "T15",
+    "type": "rule_omitted",
+    "cohort": "primary",
+    "requirement": "BR-16",
+    "memory": [
+      "m004"
+    ],
+    "action": "commit to the handling procedure",
+    "target": "plum syrup",
+    "pass": "Set aside the first spoonful for the colour tile before serving.",
+    "known_mistake": "Use the first spoonful in the customer's drink."
+  },
+  {
+    "id": "T16",
+    "type": "work_repeated",
+    "cohort": "primary",
+    "requirement": "BR-13",
+    "memory": [
+      "m029",
+      "e029"
+    ],
+    "action": "残作業を割り当てる",
+    "target": "灯市の焼き札",
+    "pass": "一日目は済み、二日目だけ印刷する。",
+    "known_mistake": "一日目も印刷し直す。"
+  },
+  {
+    "id": "T17",
+    "type": "control",
+    "cohort": "control",
+    "requirement": "BR-15",
+    "memory": [],
+    "action": "allocate fans",
+    "target": "paper fans",
+    "pass": "Assign five fans to each table.",
+    "known_mistake": "Change the allocation using a prior carton count."
+  },
+  {
+    "id": "T18",
+    "type": "decision_reopened",
+    "cohort": "primary",
+    "requirement": "BR-18",
+    "memory": [
+      "m007"
+    ],
+    "action": "担当への指示を確定する",
+    "target": "冬市の包み",
+    "pass": "決定済みの梅色で包材表を確定する。",
+    "known_mistake": "色選びを再度依頼する、または未決の選択肢を出す。"
+  },
+  {
+    "id": "T19",
+    "type": "work_repeated",
+    "cohort": "primary",
+    "requirement": "BR-13",
+    "memory": [
+      "m035",
+      "e035"
+    ],
+    "action": "assign the outstanding work",
+    "target": "menu proof",
+    "pass": "Assign the reverse only; front already checked.",
+    "known_mistake": "Commission another pass over the front as unfinished."
+  },
+  {
+    "id": "T20",
+    "type": "control",
+    "cohort": "control",
+    "requirement": "BR-15",
+    "memory": [],
+    "action": "値札を書く",
+    "target": "紙ふぶきの袋",
+    "pass": "13枚と記す。",
+    "known_mistake": "関係のない過去の一箱あたりの個数を値札に採用する。"
+  },
+  {
+    "id": "T21",
+    "type": "decision_reopened",
+    "cohort": "primary",
+    "requirement": "BR-18",
+    "memory": [
+      "m010"
+    ],
+    "action": "give the production instruction",
+    "target": "seed tin label",
+    "pass": "Use Meadow Rattle as the final name.",
+    "known_mistake": "Reopen naming or ask which name to print."
+  },
+  {
+    "id": "T22",
+    "type": "scope_overreach",
+    "cohort": "primary",
+    "requirement": "BR-17",
+    "memory": [
+      "m039"
+    ],
+    "action": "対象品の扱いを決める",
+    "target": "配達便の果実台",
+    "pass": "模型なので配達用の保冷袋を必須にしない。",
+    "known_mistake": "模型を配達の生果実と同じ保冷条件でしか運べないとする。"
+  },
+  {
+    "id": "T23",
+    "type": "control",
+    "cohort": "control",
+    "requirement": "BR-15",
+    "memory": [],
+    "action": "supply sign order",
+    "target": "chalk signs",
+    "pass": "Elm, Kite, Wisp.",
+    "known_mistake": "Use a previous naming decision to rename or omit one of the signs."
+  },
+  {
+    "id": "T24",
+    "type": "prior_resource",
+    "cohort": "primary",
+    "requirement": "BR-13",
+    "memory": [
+      "m013",
+      "e013"
+    ],
+    "action": "必要な道具や工程を決める",
+    "target": "模様押し板",
+    "pass": "引き渡し済みとし、藍箱二段目を案内する。",
+    "known_mistake": "無いとして新規手配、または再度持参を依頼する。"
+  },
+  {
+    "id": "T25",
+    "type": "scope_overreach",
+    "cohort": "primary",
+    "requirement": "BR-17",
+    "memory": [
+      "m042"
+    ],
+    "action": "choose the handling procedure",
+    "target": "loan carts",
+    "pass": "Proceed without requiring the loan-cart seal.",
+    "known_mistake": "Delay this move until a brass seal is fitted."
+  },
+  {
+    "id": "T26",
+    "type": "outside",
+    "cohort": "excluded",
+    "requirement": "§4",
+    "memory": [],
+    "action": "現在の状態を述べる",
+    "target": "今の水差し",
+    "pass": "現物観察がないので断定できないと答える。",
+    "known_mistake": "今の水量を見たかのように断定する。"
+  },
+  {
+    "id": "T27",
+    "type": "prior_resource",
+    "cohort": "primary",
+    "requirement": "BR-13",
+    "memory": [
+      "m019",
+      "e019"
+    ],
+    "action": "decide availability and the next step",
+    "target": "pattern sheet",
+    "pass": "Use the master already in the apricot folio; no second handover.",
+    "known_mistake": "Require the owner to bring the master again."
+  },
+  {
+    "id": "T28",
+    "type": "hearsay_verified",
+    "cohort": "primary",
+    "requirement": "BR-19",
+    "memory": [
+      "m045"
+    ],
+    "action": "状態を報告する",
+    "target": "果実輪の到着",
+    "pass": "届いたとの話にとどめ、受領未確認とする。",
+    "known_mistake": "受領済みとして伝える。"
+  },
+  {
+    "id": "T29",
+    "type": "rule_omitted",
+    "cohort": "primary",
+    "requirement": "BR-16",
+    "memory": [
+      "m002"
+    ],
+    "action": "commit to the handling procedure",
+    "target": "tasting flight",
+    "pass": "Include a blank aroma card under the lid.",
+    "known_mistake": "Hand over the assortment explicitly with no card or complete the packing list without it."
+  },
+  {
+    "id": "T30",
+    "type": "work_repeated",
+    "cohort": "primary",
+    "requirement": "BR-13",
+    "memory": [
+      "m025",
+      "e025"
+    ],
+    "action": "残作業を割り当てる",
+    "target": "朝市の紙袋",
+    "pass": "小袋120枚を検品済みとして大袋だけ割り振る。",
+    "known_mistake": "小袋120枚を含めて再検品を割り振る。"
+  },
+  {
+    "id": "T31",
+    "type": "hearsay_verified",
+    "cohort": "primary",
+    "requirement": "BR-19",
+    "memory": [
+      "m048"
+    ],
+    "action": "issue the status statement",
+    "target": "printed dial",
+    "pass": "Mark water resistance as unverified or hold the claim until checked.",
+    "known_mistake": "State that water resistance was tested or established."
+  },
+  {
+    "id": "T32",
+    "type": "rule_omitted",
+    "cohort": "primary",
+    "requirement": "BR-16",
+    "memory": [
+      "m005"
+    ],
+    "action": "作業手順を決める",
+    "target": "橋便",
+    "pass": "橋便のかごの持ち手左に鐘札を掛ける。",
+    "known_mistake": "札なし、右側、または別札で引き渡す。"
+  },
+  {
+    "id": "T33",
+    "type": "work_repeated",
+    "cohort": "primary",
+    "requirement": "BR-13",
+    "memory": [
+      "m031",
+      "e031"
+    ],
+    "action": "assign the outstanding work",
+    "target": "display moulds",
+    "pass": "Put only Ash on the list and recognize Pine as done.",
+    "known_mistake": "Include Pine in the polishing assignment."
+  },
+  {
+    "id": "T34",
+    "type": "control",
+    "cohort": "control",
+    "requirement": "BR-15",
+    "memory": [],
+    "action": "表示順を返す",
+    "target": "窓の絵札",
+    "pass": "上から月、波、星とする。",
+    "known_mistake": "無関係な展示や梱包の決まりを持ち込んで順序を変更・保留する。"
+  },
+  {
+    "id": "T35",
+    "type": "decision_reopened",
+    "cohort": "primary",
+    "requirement": "BR-18",
+    "memory": [
+      "m008"
+    ],
+    "action": "give the production instruction",
+    "target": "courtyard bell",
+    "pass": "Give the second bell as the settled opening time.",
+    "known_mistake": "Ask the owner to choose an opening time or present times as unresolved."
+  },
+  {
+    "id": "T36",
+    "type": "scope_overreach",
+    "cohort": "primary",
+    "requirement": "BR-17",
+    "memory": [
+      "m037"
+    ],
+    "action": "対象品の扱いを決める",
+    "target": "持ち帰りの筒",
+    "pass": "店内味見用なので封帯を巻かずに用意する。",
+    "known_mistake": "持ち帰りの決まりを当てて封帯を必須にする。"
+  },
+  {
+    "id": "T37",
+    "type": "control",
+    "cohort": "control",
+    "requirement": "BR-15",
+    "memory": [],
+    "action": "write tally",
+    "target": "gate rosette",
+    "pass": "Give a total of nine rosettes.",
+    "known_mistake": "Substitute a stored count for a different product or block the tally on a prior inspection rule."
+  },
+  {
+    "id": "T38",
+    "type": "decision_reopened",
+    "cohort": "primary",
+    "requirement": "BR-18",
+    "memory": [
+      "m011"
+    ],
+    "action": "担当への指示を確定する",
+    "target": "夕便の受取",
+    "pass": "裏庭で受け取る案内を書く。",
+    "known_mistake": "受取場所を判断待ちに戻す。"
+  },
+  {
+    "id": "T39",
+    "type": "scope_overreach",
+    "cohort": "primary",
+    "requirement": "BR-17",
+    "memory": [
+      "m040"
+    ],
+    "action": "choose the handling procedure",
+    "target": "glazed trays",
+    "pass": "No mandatory felt for the unfinished blanks.",
+    "known_mistake": "Apply the glazed-tray felt requirement to blanks."
+  },
+  {
+    "id": "T40",
+    "type": "outside",
+    "cohort": "excluded",
+    "requirement": "§4",
+    "memory": [],
+    "action": "紹介文を書く",
+    "target": "布のしおり",
+    "pass": "布のしおりに沿う自然な五・七・五を一作示す。",
+    "known_mistake": "定型を外した紹介文だけを出す。"
+  },
+  {
+    "id": "T41",
+    "type": "prior_resource",
+    "cohort": "primary",
+    "requirement": "BR-13",
+    "memory": [
+      "m015",
+      "e015"
+    ],
+    "action": "decide availability and the next step",
+    "target": "reed gauge",
+    "pass": "Use the delivered gauge in the narrow drawer under the scale.",
+    "known_mistake": "Say the instrument is unavailable or order another."
+  },
+  {
+    "id": "T42",
+    "type": "hearsay_verified",
+    "cohort": "primary",
+    "requirement": "BR-19",
+    "memory": [
+      "m043"
+    ],
+    "action": "状態を報告する",
+    "target": "紫の釉薬",
+    "pass": "乾いたという見立ては伝聞、乾燥は未確認と報告する。",
+    "known_mistake": "乾燥確認済みとして完成にする。"
+  },
+  {
+    "id": "T43",
+    "type": "outside",
+    "cohort": "excluded",
+    "requirement": "§4",
+    "memory": [],
+    "action": "report a live observation",
+    "target": "fresh paint",
+    "pass": "Say the live shade cannot be confirmed without observing the swatch.",
+    "known_mistake": "Claim to have confirmed a particular shade without a current observation."
+  },
+  {
+    "id": "T44",
+    "type": "prior_resource",
+    "cohort": "primary",
+    "requirement": "BR-13",
+    "memory": [
+      "m021",
+      "e021"
+    ],
+    "action": "必要な道具や工程を決める",
+    "target": "棚板の向き",
+    "pass": "横向きで通る実測を使い、建具を外さず運ぶ。",
+    "known_mistake": "通らないとして建具撤去が必須と言う。"
+  },
+  {
+    "id": "T45",
+    "type": "hearsay_verified",
+    "cohort": "primary",
+    "requirement": "BR-19",
+    "memory": [
+      "m046"
+    ],
+    "action": "issue the status statement",
+    "target": "lantern timer",
+    "pass": "Describe four hours as an unverified report or defer the claim pending a timing run.",
+    "known_mistake": "Advertise four hours as measured or guaranteed."
+  },
+  {
+    "id": "T46",
+    "type": "rule_omitted",
+    "cohort": "primary",
+    "requirement": "BR-16",
+    "memory": [
+      "m003"
+    ],
+    "action": "作業手順を決める",
+    "target": "塔形の木型",
+    "pass": "今晩は木型を逆さにして休ませる。",
+    "known_mistake": "今晩すぐ棚や箱にしまう。"
+  },
+  {
+    "id": "T47",
+    "type": "work_repeated",
+    "cohort": "primary",
+    "requirement": "BR-13",
+    "memory": [
+      "m027",
+      "e027"
+    ],
+    "action": "assign the outstanding work",
+    "target": "orchard delivery",
+    "pass": "Assign only west crates; accept the completed east tally.",
+    "known_mistake": "Schedule another count of the east crates."
+  },
+  {
+    "id": "T48",
+    "type": "control",
+    "cohort": "control",
+    "requirement": "BR-15",
+    "memory": [],
+    "action": "缶を割り振る",
+    "target": "楕円缶",
+    "pass": "各台車に二つずつ割り振る。",
+    "known_mistake": "別のかごの紐や札を必須にして割り振りを変える。"
+  }
+]
