@@ -70,51 +70,57 @@ impl Sqlite {
         if create {
             flags |= OpenFlags::SQLITE_OPEN_CREATE;
         }
-        let conn = Connection::open_with_flags(path, flags)?;
+        let mut conn = Connection::open_with_flags(path, flags)?;
         conn.busy_timeout(Duration::from_secs(2))?;
         conn.pragma_update(None, "foreign_keys", "ON")?;
         conn.set_limit(Limit::SQLITE_LIMIT_LENGTH, 2_000_000)?;
         conn.set_limit(Limit::SQLITE_LIMIT_SQL_LENGTH, 100_000)?;
         conn.set_limit(Limit::SQLITE_LIMIT_VARIABLE_NUMBER, 100)?;
+        if Self::schema_version(&conn)? == Some(1) {
+            let tx = conn.transaction_with_behavior(TransactionBehavior::Immediate)?;
+            if Self::schema_version(&tx)? == Some(1) {
+                tx.execute_batch(include_str!("migrate_v1_before.sql"))?;
+                tx.execute_batch(include_str!("schema.sql"))?;
+                tx.execute_batch(include_str!("migrate_v1_after.sql"))?;
+            }
+            tx.commit()?;
+        }
         Ok(Self { conn })
+    }
+    fn schema_version(conn: &Connection) -> Result<Option<i64>, Error> {
+        let populated: bool = conn.query_row(
+            "SELECT EXISTS(SELECT 1 FROM sqlite_schema WHERE type='table')",
+            [],
+            |r| r.get(0),
+        )?;
+        if !populated {
+            return Ok(None);
+        }
+        let v: i64 = conn.query_row(
+            "SELECT schema_version FROM meta WHERE singleton=1",
+            [],
+            |r| r.get(0),
+        )?;
+        if !matches!(v, 1 | 2) {
+            return Err(Error::Input(format!("unsupported store schema {v}")));
+        }
+        Ok(Some(v))
     }
     /// Bootstrap an empty file. The first logical write and its receipt commit with the schema.
     /// A competing initializer may finish first; in that case use the normal replay path.
     pub fn initialize(&mut self, store_id: &str, first_write: &[Statement]) -> Result<bool, Error> {
-        fn existing(conn: &Connection) -> Result<bool, Error> {
-            let tables: i64 = conn.query_row(
-                "SELECT count(*) FROM sqlite_schema WHERE type='table'",
-                [],
-                |r| r.get(0),
-            )?;
-            if tables == 0 {
-                return Ok(false);
-            }
-            if conn
-                .query_row(
-                    "SELECT schema_version FROM meta WHERE singleton=1",
-                    [],
-                    |r| r.get::<_, i64>(0),
-                )
-                .ok()
-                != Some(1)
-            {
-                return Err(Error::Input("unrecognized store or schema version".into()));
-            }
-            Ok(true)
-        }
-        if existing(&self.conn)? {
+        if Self::schema_version(&self.conn)?.is_some() {
             return Ok(false);
         }
         self.conn.pragma_update(None, "journal_mode", "WAL")?;
         let tx = self
             .conn
             .transaction_with_behavior(TransactionBehavior::Immediate)?;
-        if existing(&tx)? {
+        if Self::schema_version(&tx)?.is_some() {
             return Ok(false);
         }
         tx.execute_batch(include_str!("schema.sql"))?;
-        tx.execute("INSERT INTO meta VALUES(1,0,0,1,?)", [store_id])?;
+        tx.execute("INSERT INTO meta VALUES(1,0,0,2,?)", [store_id])?;
         for stmt in first_write {
             Self::write_statement(&tx, stmt)?;
         }
@@ -182,6 +188,16 @@ impl Sqlite {
             .transaction_with_behavior(TransactionBehavior::Immediate)?;
         for (i, s) in statements.iter().enumerate() {
             Self::write_statement(&tx, s)?;
+            // Used only by the opt-in process interruption harness; the default build has no hook.
+            #[cfg(all(unix, feature = "fault-injection"))]
+            if s.sql.starts_with("INSERT INTO receipts")
+                && std::env::var_os("OMOIDE_TEST_STOP_BEFORE_COMMIT").is_some()
+            {
+                // SAFETY: raise targets only this process; SIGSTOP has no signal handler.
+                unsafe {
+                    libc::raise(libc::SIGSTOP);
+                }
+            }
             after(i);
         }
         tx.commit()?;

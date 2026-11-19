@@ -31,9 +31,21 @@ pub enum Command {
         #[command(subcommand)]
         command: RuleCommand,
     },
+    Resolve {
+        /// Exact pending version, as returned by rule add.
+        pending: String,
+        #[arg(long, value_parser=["current","pending"])]
+        keep: String,
+    },
+    Fact {
+        #[command(subcommand)]
+        command: FactCommand,
+    },
     Recall(Query),
     Show {
         id: String,
+        #[arg(long)]
+        history: bool,
     },
 }
 #[derive(Subcommand, Serialize)]
@@ -58,6 +70,15 @@ pub struct Rule {
     pub purpose: Option<String>,
     #[arg(long)]
     pub exclude: Option<String>,
+    #[arg(long,value_parser=["same","restated","exception","unrelated","unsure"],requires_all=["against","near_digest"])]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub relation: Option<String>,
+    #[arg(long, requires = "relation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub against: Option<String>,
+    #[arg(long, requires = "relation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub near_digest: Option<String>,
 }
 #[derive(Args, Serialize)]
 pub struct Query {
@@ -73,4 +94,18 @@ pub struct Query {
     pub scan_limit: u32,
     #[arg(long, env = "OMOIDE_FTS_LIMIT", default_value_t = 500)]
     pub fts_limit: u32,
+}
+
+#[derive(Subcommand, Serialize)]
+pub enum FactCommand {
+    Add {
+        #[arg(long)]
+        source: String,
+        #[arg(long)]
+        text: String,
+        #[arg(long)]
+        target: Option<String>,
+        #[arg(long,default_value="unknown",value_parser=["reported","unknown"])]
+        certainty: String,
+    },
 }

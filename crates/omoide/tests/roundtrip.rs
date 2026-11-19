@@ -91,8 +91,11 @@ fn fresh_process_round_trip_preserves_source() {
         assert_eq!(record["exclusion"], "training");
         assert_eq!(record["source_id"], f.source);
     }
+    assert_eq!(
+        f.recall(&["--action", "seal"])["results"][0]["target"],
+        "workshop"
+    );
     for args in [
-        vec!["--action", "seal"],
         vec!["--action", "seal", "--target", "annex"],
         vec!["--action", "open", "--target", "workshop"],
     ] {

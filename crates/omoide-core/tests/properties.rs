@@ -60,3 +60,163 @@ fn registration_table() {
         );
     }
 }
+
+// [REQ-RECALL-1]
+#[test]
+fn character_channel_and_field_boundaries() {
+    for (word, single) in [
+        ("紙", true),
+        ("紙箱", false),
+        ("", false),
+        ("x", false),
+        ("1", false),
+    ] {
+        assert_eq!(single_japanese(word), single);
+    }
+    let doc = document("紙", "箱", &["折り方".into(), "CHECK".into()]);
+    assert_eq!(hits(&tokens("紙 箱 折り方 check"), &doc), 5);
+    assert_eq!(hits(&tokens("紙箱"), &doc), 0);
+}
+
+// [REQ-RULE-1]
+#[test]
+fn neighbors_by_action_or_two_distinct_terms() {
+    let candidate = tokens("red paper");
+    for (query, action, expected) in [
+        ("blue", false, false),
+        ("red red", false, false),
+        ("red paper", false, true),
+        ("blue", true, true),
+    ] {
+        assert_eq!(near_rule(&tokens(query), &candidate, action), expected);
+    }
+}
+
+// [REQ-RECALL-1]
+#[test]
+fn rank_orders_actions_then_coverage_and_breaks_ties() {
+    let records = [
+        ("d", "none", false, 9),
+        ("c", "red", false, 2),
+        ("b", "red", false, 2),
+        ("e", "red", false, 1),
+        ("f", "red paper", false, 1),
+        ("a", "none", true, 0),
+    ];
+    let result = rank(
+        &tokens("red paper"),
+        records
+            .into_iter()
+            .map(|(id, doc, action, created)| Candidate {
+                id,
+                terms: tokens(doc),
+                action,
+                created,
+            }),
+    );
+    assert_eq!(
+        result.iter().map(|r| r.id).collect::<Vec<_>>(),
+        ["a", "f", "b", "c", "e"]
+    );
+    for pair in result.windows(2) {
+        assert_eq!(
+            pair[0].partial_cmp(&pair[1]),
+            Some(std::cmp::Ordering::Less)
+        );
+    }
+}
+
+// [REQ-RECALL-1]
+#[test]
+fn pages_keep_offsets_byte_budget_and_complete_sentences() {
+    use omoide_core::page::page;
+    use serde_json::json;
+    let make = |text: &str| json!({"id":"rule","version_id":"version","text":text});
+    let run = |cursor, records: &[_]| page(cursor, 7, records.len(), false, records);
+    let singleton = [make("")];
+    let base = run(None, &singleton).unwrap().to_string().len();
+    let exact = "a".repeat(3999 - base);
+    let output = run(None, &[make(&exact)]).unwrap();
+    assert_eq!(output.to_string().len(), 3999);
+    assert_eq!(output["results"][0]["text"], exact);
+    for extra in [1, 2, 9] {
+        let output = run(None, &[make(&(exact.clone() + &"a".repeat(extra)))]).unwrap();
+        assert_eq!(output["results"][0]["truncated"], true);
+        assert_eq!(output["results"][0]["text"], "");
+    }
+    let large = "紙。".to_owned() + &"b".repeat(5000) + ".";
+    let rows = [make("one"), make("two"), make(&large), make("four")];
+    let first = run(None, &rows).unwrap();
+    assert_eq!(first["remaining"], 2);
+    assert_eq!(first["cursor"], "7:2");
+    let second = run(Some("7:2"), &rows).unwrap();
+    assert_eq!(second["results"][0]["text"], "紙。");
+    assert_eq!(second["remaining"], 1);
+    assert_eq!(second["cursor"], "7:3");
+    let last = run(Some("7:3"), &rows).unwrap();
+    assert_eq!(last["results"][0]["text"], "four");
+    assert_eq!(run(Some("7:4"), &rows).unwrap()["results"], json!([]));
+    assert!(run(Some("7:5"), &rows).is_err());
+    assert_eq!(run(Some("6:3"), &rows).unwrap()["restarted"], true);
+    let huge =
+        json!({"id":"rule","version_id":"version","text":"body","condition":"c".repeat(4000)});
+    assert!(run(None, &[huge]).is_err());
+}
+
+// [REQ-RECALL-1]
+#[test]
+fn shortened_records_use_the_actual_next_cursor_and_largest_fitting_sentence() {
+    use serde_json::json;
+    // Independently serialize the expected page. Cursor length changes at the end
+    // of results and at ten records; those bytes also belong to the 4,000-byte cap.
+    for (offset, tail) in [(0usize, 0usize), (1, 0), (9, 1), (10, 9)] {
+        let total = offset + 1 + tail;
+        let next = offset + 1;
+        let expected = |record| {
+            json!({
+                "state":"found","judge_state":"not_configured","results":[record],"candidate_count":total,
+                "matched_count":total,"candidates_truncated":false,"more_search_available":false,
+                "remaining":tail,"cursor":(tail>0).then(||format!("7:{next}")),"restarted":false
+            })
+        };
+        let mut rows = vec![json!({"text":"other"}); total];
+        let cursor = format!("7:{offset}");
+        for byte_delta in -4isize..=4 {
+            let shortened = json!({"id":"r","version_id":"v","text":"","truncated":true});
+            let overhead = expected(shortened.clone()).to_string().len();
+            let prefix =
+                "a".repeat((3999isize - overhead as isize - 3 + byte_delta) as usize) + "。";
+            rows[offset] =
+                json!({"id":"r","version_id":"v","text":format!("{prefix}{}!", "x".repeat(4200))});
+            let mut maximal = shortened.clone();
+            maximal["text"] = json!(prefix);
+            let actual = omoide_core::page::page(Some(&cursor), 7, total, false, &rows).unwrap();
+            let wanted = if expected(maximal.clone()).to_string().len() < 4000 {
+                maximal
+            } else {
+                shortened.clone()
+            };
+            assert_eq!(actual, expected(wanted));
+            // Required metadata must fit even after removing every sentence.
+            let needed = 3999isize
+                - expected(json!({"id":"r","version_id":"v","text":"","truncated":true,"scope":""}))
+                    .to_string()
+                    .len() as isize
+                + byte_delta;
+            let scope = "s".repeat(needed as usize);
+            rows[offset] = json!({"id":"r","version_id":"v","text":"x".repeat(4200),"scope":scope});
+            let lookup = omoide_core::page::page(Some(&cursor), 7, total, false, &rows);
+            assert_eq!(lookup.is_ok(), byte_delta <= 0);
+        }
+    }
+}
+
+// [REQ-RECALL-1]
+#[test]
+fn oversized_inherited_conflict_identifies_original_evidence() {
+    let entry = serde_json::json!({"version_id":"child","text":"body","unresolved_conflicts":[
+        {"pending":{"record":{"version_id":"candidate"},"source":{"text":"紙".repeat(2000)}}}
+    ]});
+    let error = omoide_core::page::page(None, 1, 1, false, &[entry]).unwrap_err();
+    assert!(error.contains("child") && error.contains("candidate"));
+}

@@ -1,5 +1,6 @@
 mod args;
 mod db;
+mod relations;
 mod search;
 mod write;
 use args::{Cli, Command};
@@ -25,7 +26,7 @@ fn run(cli: &Cli, op: &str) -> db::Result<Value> {
         }
     }
     match &cli.command {
-        Command::Show { id } => db::show(&mut db, id),
+        Command::Show { id, history } => db::show(&mut db, id, *history),
         Command::Recall(q) => search::recall(&mut db, q),
         cmd => write::apply(&mut db, cmd, op),
     }

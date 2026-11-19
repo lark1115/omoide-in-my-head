@@ -59,10 +59,9 @@ fn missing_revision_fails_closed() {
 }
 // [REQ-STORE-1]
 #[test]
+#[ignore = "child entry point for contention_kill_and_replay"]
 fn process_worker() {
-    let Ok(path) = std::env::var("OMOIDE_TEST_DIR") else {
-        return;
-    };
+    let path = std::env::var("OMOIDE_TEST_DIR").expect("run through contention_kill_and_replay");
     let dir = Path::new(&path);
     let worker = std::env::var("OMOIDE_TEST_WORKER").unwrap();
     let mut db = Sqlite::open(&dir.join("test.db"), false).unwrap();
@@ -107,7 +106,7 @@ fn contention_kill_and_replay() {
     let mut db = setup(dir.path());
     let spawn = |id: &str| {
         Command::new(std::env::current_exe().unwrap())
-            .args(["--exact", "tests::process_worker"])
+            .args(["--ignored", "--exact", "tests::process_worker"])
             .env("OMOIDE_TEST_DIR", dir.path())
             .env("OMOIDE_TEST_WORKER", id)
             .stdout(Stdio::null())
@@ -166,6 +165,10 @@ fn initialization_rolls_back_schema_with_first_write() {
         db.initialize("aborted", &[sql("INSERT INTO source_guard VALUES(NULL)")])
             .is_err()
     );
+    let tables = db
+        .read_batch(&[sql("SELECT count(*) FROM sqlite_schema WHERE type='table'")])
+        .unwrap();
+    assert_eq!(integer(&tables[0][0]), 0);
     assert!(db.initialize("committed", &[]).unwrap());
     assert!(!db.initialize("ignored", &[]).unwrap());
 }
@@ -197,6 +200,46 @@ fn portable_limits_reject_the_whole_batch() {
         assert_eq!(
             integer(&db.read_batch(&[sql("SELECT n FROM counter")]).unwrap()[0][0]),
             0
+        );
+    }
+}
+
+// [REQ-STORE-1]
+#[test]
+fn migrate_v1_preserves_identity_index_sources_and_receipts() {
+    let dir = tempfile::tempdir().unwrap();
+    let path = dir.path().join("v1.db");
+    let old = Connection::open(&path).unwrap();
+    old.execute_batch(include_str!("../tests/schema_v1.sql"))
+        .unwrap();
+    old.execute_batch("INSERT INTO meta VALUES(1,7,2,1,'fixture');
+        INSERT INTO utterances VALUES('src','original','user',12,NULL);
+        INSERT INTO rules VALUES(71,'record','v1','current','paper','sort','[]','[\"file\"]',NULL,NULL,NULL,'src',13);
+        INSERT INTO rule_index(rowid,words,singles) VALUES(71,'paper sort','');
+        INSERT INTO action_links VALUES('file','record');
+        INSERT INTO receipts VALUES('first','digest','original result');").unwrap();
+    drop(old);
+    for _ in 0..2 {
+        let mut db = Sqlite::open(&path, false).unwrap();
+        let sets=db.read_batch(&[sql("SELECT schema_version,revision,usage_revision,store_id FROM meta"),
+            sql("SELECT r.id,r.version,r.source,a.action FROM rule_index JOIN rules r ON r.rowid=rule_index.rowid
+                 JOIN action_links a ON a.version=r.version WHERE rule_index MATCH 'paper'"),receipt("first")]).unwrap();
+        assert_eq!(
+            sets[0][0],
+            [
+                Value::Integer(2),
+                Value::Integer(8),
+                Value::Integer(2),
+                Value::Text("fixture".into())
+            ]
+        );
+        assert_eq!(
+            sets[1][0],
+            ["record", "v1", "src", "file"].map(|v| Value::Text(v.into()))
+        );
+        assert_eq!(
+            sets[2][0],
+            ["digest", "original result"].map(|v| Value::Text(v.into()))
         );
     }
 }
