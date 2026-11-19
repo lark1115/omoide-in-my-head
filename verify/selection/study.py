@@ -79,19 +79,22 @@ def judge():
 
 
 def run(a):
-    queries = [
-        q
-        for q in lines(DATA / "queries.jsonl")
-        if int(q["id"][1:]) % 2 == (a.split == "dev")
-    ]
-    if a.split == "test" and not a.freeze:
-        raise ValueError("provide the frozen git commit before TEST")
-    if (
-        a.split == "test"
-        and subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
-        != a.freeze
-    ):
-        raise ValueError("wrong frozen commit")
+    if a.split == "holdout2":
+        queries = lines(DATA / "holdout2.jsonl")
+    else:
+        queries = [
+            q
+            for q in lines(DATA / "queries.jsonl")
+            if int(q["id"][1:]) % 2 == (a.split == "dev")
+        ]
+    if a.split != "dev":
+        if not a.freeze:
+            raise ValueError("provide the frozen git commit")
+        subprocess.run(
+            ["git", "diff", "--exit-code", a.freeze, "--", "crates"],
+            check=True,
+            stdout=subprocess.DEVNULL,
+        )
     with tempfile.TemporaryDirectory() as td, a.output.open("x") as out:
         root = Path(td)
         db = root / "archive.db"
@@ -129,13 +132,21 @@ def run(a):
                     str(a.threshold),
                 ]
             start = time.perf_counter()
-            res = json.loads(subprocess.check_output(args, env=env))
+            raw_reply = subprocess.check_output(args, env=env)
+            res = json.loads(raw_reply)
             row = dict(
                 id=q["id"],
                 ms=round((time.perf_counter() - start) * 1000, 2),
                 state=res["judge_state"],
                 returned=[mapping[r["version_id"]] for r in res["results"]],
             )
+            if "candidates" in res:
+                row.update(
+                    candidates=[mapping[r["version_id"]] for r in res["candidates"]],
+                    remaining_candidates=res["candidates_remaining"],
+                    reply_state=res["state"],
+                    bytes=len(raw_reply),
+                )
             if capture.exists():
                 raw = json.loads(capture.read_text())
                 row.update(
@@ -151,7 +162,7 @@ if __name__ == "__main__":
     if sys.argv[1:] == ["judge"]:
         sys.exit(judge())
     p = argparse.ArgumentParser()
-    p.add_argument("split", choices=["dev", "test"])
+    p.add_argument("split", choices=["dev", "test", "holdout2"])
     p.add_argument("binary", type=Path)
     p.add_argument("output", type=Path)
     p.add_argument("--adapter", type=Path)

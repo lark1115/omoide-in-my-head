@@ -27,7 +27,7 @@ pub fn ask(
     config: &JudgeConfig,
     query: &Json,
     pool: &BTreeMap<String, (bool, Json)>,
-) -> Result<BTreeMap<String, usize>, String> {
+) -> Result<omoide_core::judge::Tiers, String> {
     let exe = config.judge.as_ref().ok_or("judge is not configured")?;
     let action_only =
         query["scene"].is_null() && query["target"].is_string() && query["action"].is_string();
@@ -99,7 +99,7 @@ pub fn ask(
     if !status.success() {
         return Err("judge exited unsuccessfully".into());
     }
-    omoide_core::judge::scores(&bytes, &ids, config.threshold)
+    omoide_core::judge::tiers(&bytes, &ids, config.threshold)
 }
 
 #[cfg(test)]

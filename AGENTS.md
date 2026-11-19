@@ -26,6 +26,7 @@
 | 条件 | 実行すること | 結果の意味 |
 |---|---|---|
 | 同じ保存先を使う新しい会話で、作業を始める前 | `omoide recall --scene 'これから行う作業'` を実行する。把握している動作名と対象は同じ命令に添える | `found` の各記録に対象と適用除外がある。対象未指定なら候補の対象を個別に確認する |
+| recall が candidates を返したとき | 採用を検討する候補の version_id で `omoide show VERSION_ID` を実行する | 本文・対象・条件・除外を照合してから使う。candidates_only は適用未確認 |
 | 決まりの条件や出どころを確認するとき | `omoide show ID` を実行する | `source.text` が原文で、`sources` が出どころ一覧 |
 | 版の変化を確かめるとき | `omoide show ID --history` を実行する | `history` で各版と元発言を対応づけられる |
 

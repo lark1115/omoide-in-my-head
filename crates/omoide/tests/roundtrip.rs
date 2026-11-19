@@ -275,13 +275,14 @@ fn weak_lexical_match_and_structured_judge_candidates() {
         "before opening",
         &["--action", "coat", "--target", "tray"],
     );
-    assert_eq!(
-        f.recall(&[
-            "--scene",
-            "amber brass tin jade felt linen cotton oil chalk"
-        ])["state"],
-        "none"
-    );
+    let tentative = f.recall(&[
+        "--scene",
+        "amber brass tin jade felt linen cotton oil chalk",
+    ]);
+    assert_eq!(tentative["state"], "candidates_only");
+    assert_eq!(tentative["results"], serde_json::json!([]));
+    assert_eq!(tentative["candidates"][0]["version_id"], b["version_id"]);
+    assert_eq!(tentative["candidates_remaining"], 0);
     let weak = f.recall(&["--scene", "amber brass tin jade felt linen cotton oil"]);
     assert_eq!(weak["results"][0]["id"], b["id"]);
     let path = f.path.with_file_name("judge.py");

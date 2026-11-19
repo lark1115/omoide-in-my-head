@@ -212,7 +212,7 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
             terms,
         }
     });
-    let mut ranked = rank(&terms, candidates);
+    let ranked = rank(&terms, candidates);
     let rule_triggers: BTreeMap<_, _> = ranked
         .iter()
         .filter(|r| pool[r.id].1["kind"] == "rule")
@@ -235,7 +235,7 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
         .filter_map(|r| rule_triggers.get(r.id).map(|t| r.hits as u128 + *t as u128))
         .max()
         .unwrap_or(0);
-    ranked.retain(|r| {
+    let (mut ranked, mut possible): (Vec<_>, Vec<_>) = ranked.into_iter().partition(|r| {
         r.action
             || rule_triggers.get(r.id).is_none_or(|trigger| {
                 omoide_core::selection::covers_query(r.hits, terms.words.len(), *trigger, best)
@@ -248,22 +248,25 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
         match crate::judge::ask(&query.judging, &input, &pool) {
             Ok(scores) => {
                 judge_state = "used";
-                ranked = pool
-                    .iter()
-                    .filter_map(|(id, (action, r))| {
-                        let hits = *scores.get(r["version_id"].as_str().unwrap())?;
-                        Some(omoide_core::Rank {
-                            id,
-                            action: *action,
-                            target_only: false,
-                            priority: r["decision"] == "decided" || r["certainty"] == "verified",
-                            hits,
-                            uses: r["used_count"].as_u64().unwrap_or(0).min(32) as u32,
-                            created: r["created"].as_i64().unwrap_or(0),
+                let ordered = |scores: &BTreeMap<String, usize>| {
+                    pool.iter()
+                        .filter_map(|(id, (action, r))| {
+                            let hits = *scores.get(r["version_id"].as_str().unwrap())?;
+                            Some(omoide_core::Rank {
+                                id,
+                                action: *action,
+                                target_only: false,
+                                priority: r["decision"] == "decided"
+                                    || r["certainty"] == "verified",
+                                hits,
+                                uses: r["used_count"].as_u64().unwrap_or(0).min(32) as u32,
+                                created: r["created"].as_i64().unwrap_or(0),
+                            })
                         })
-                    })
-                    .collect();
-                ranked.sort();
+                        .collect()
+                };
+                ranked = ordered(&scores.confirmed);
+                possible = ordered(&scores.candidates);
             }
             Err(message) => {
                 judge_state = "failed";
@@ -272,15 +275,21 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
         }
     }
     // Direct action lookup admits skills too; only an action-bound rule has the first ranking key.
-    for key in &mut ranked {
+    for key in ranked.iter_mut().chain(possible.iter_mut()) {
         if pool[key.id].1["kind"] == "skill" {
             key.action = false;
         }
     }
     ranked.sort();
+    possible.sort();
+    let mut candidates = Vec::new();
     let mut results = Vec::new();
     let mut visited = std::collections::BTreeSet::new();
-    for entry in ranked {
+    for (entry, confirmed) in ranked
+        .into_iter()
+        .map(|r| (r, true))
+        .chain(possible.into_iter().map(|r| (r, false)))
+    {
         let mut stack = vec![&pool[entry.id].1];
         while let Some(record) = stack.pop() {
             let id = record["id"].as_str().unwrap();
@@ -298,6 +307,10 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
                 .as_deref()
                 .is_some_and(|kind| record["kind"] != kind)
             {
+                continue;
+            }
+            if !confirmed {
+                candidates.push(record.clone());
                 continue;
             }
             let mut item = record.clone();
@@ -355,6 +368,16 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
             json!(fully_covered && results.iter().any(|r| proves(&r))),
         );
     }
+    meta.insert("candidates".into(), json!([]));
+    meta.insert(
+        "candidate_guidance".into(),
+        json!(omoide_core::tiers::GUIDANCE),
+    );
+    // Reserve a count as wide as any representable candidate count before selecting strict rows.
+    meta.insert("candidates_remaining".into(), json!(usize::MAX));
+    if results.is_empty() && !candidates.is_empty() {
+        meta.insert("state".into(), json!("candidates_only"));
+    }
     omoide_core::page::with_metadata(
         query.cursor.as_deref(),
         rev,
@@ -364,5 +387,9 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
         &results,
         &meta,
     )
+    .map(|mut page| {
+        page["candidates_remaining"] = json!(candidates.len());
+        omoide_core::tiers::append(page, &candidates)
+    })
     .map_err(Error::Input)
 }

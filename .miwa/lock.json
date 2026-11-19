@@ -50,9 +50,10 @@
     },
     "doc-req:DOC-OMOIDE:REQ-RECALL-1": {
       "from": "sha256:aa73b6976ce9833d583ee62df3b358b6831e53d943ebabba0b744e126776b8bc",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "at": "2026-11-19T19:41:07Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "doc-req:DOC-OMOIDE:REQ-RES-1": {
       "from": "sha256:aa73b6976ce9833d583ee62df3b358b6831e53d943ebabba0b744e126776b8bc",
@@ -72,33 +73,54 @@
       "by": "human",
       "at": "2026-11-19T19:07:41Z"
     },
+    "test-req:crates/omoide-core/src/judge:tier_tests:both_closed_lower_bounds_and_disjoint_membership:REQ-JUDGE-1": {
+      "from": "sha256:730ce08dba1e2f4569610d85842ad592a5f3cb90329830b97d18477d7c98affc",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
+    },
     "test-req:crates/omoide-core/src/selection:tests:both_boundaries_are_inclusive:REQ-RECALL-1": {
       "from": "sha256:e076bc3c89004a62ebfd7371c5e6e72d9b387e8c114fb8e178a3c023ad557282",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Record applicability selection tests and decision ADR-0002",
-      "at": "2026-11-19T22:55:10Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide-core/src/selection:tests:trigger_excludes_shared_words_and_single_characters:REQ-RECALL-1": {
       "from": "sha256:01d4ccc7864ac2862bb2d51ebcaf8ad0481e5b5fd7131d0b37d2c597cdc981a4",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Record applicability selection tests and decision ADR-0002",
-      "at": "2026-11-19T22:55:10Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
+    },
+    "test-req:crates/omoide-core/src/tiers:tests:only_identifiers_trigger_and_first_sentence:REQ-RECALL-1": {
+      "from": "sha256:2b7ecdbdfa50c591b8bbec7fb5340231c34d623304e7e417934d0149857d567d",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
+      "by": "human",
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
+    },
+    "test-req:crates/omoide-core/src/tiers:tests:summaries_fit_exactly_with_newline_or_stay_unreturned:REQ-RECALL-1": {
+      "from": "sha256:72be0ff5ad4700f12bc3be80f653823f7735c5c8bb46776b4b31d40a8f765a0f",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
+      "by": "human",
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide-core/tests/properties::additional_candidate_preserves_pair_order:REQ-RECALL-1": {
       "from": "sha256:4b4f466bb9819a29b4142109f649caf5687bdacbe90dac7338e54913fee26cf2",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
-      "at": "2026-11-19T20:31:51Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide-core/tests/properties::character_channel_and_field_boundaries:REQ-RECALL-1": {
       "from": "sha256:3af5164e3af88efd8addadeed3384caca581b76a1995285802c5239e831368b9",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
-      "at": "2026-11-19T19:54:53Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide-core/tests/properties::complete_replies_still_require_unique_ids_and_each_score_in_range:REQ-JUDGE-1": {
       "from": "sha256:b500fd25152bd8779ac17dc0bcf89126dfad62cc8e07843bbdb2fbdb523466d5",
@@ -109,9 +131,10 @@
     },
     "test-req:crates/omoide-core/tests/properties::japanese_windows_and_exact_words:REQ-RECALL-1": {
       "from": "sha256:23fa19d18e9bfe00c3a293fc09e6552dd36bf93e6052d04f3a91d866720f4675",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "at": "2026-11-19T19:41:07Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide-core/tests/properties::judge_is_all_or_nothing_except_explicit_empty:REQ-JUDGE-1": {
       "from": "sha256:98e69cfc025271007277204d44945f1d8f30de246331b604a93c3102cc698105",
@@ -129,24 +152,24 @@
     },
     "test-req:crates/omoide-core/tests/properties::oversized_inherited_conflict_identifies_original_evidence:REQ-RECALL-1": {
       "from": "sha256:12ee41ec28fd50f09e4a543d2b54ec3d731a441fbc908cb2d29e8fd665ef3cbc",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Trace stage two and oversized conflict evidence to executable checks",
-      "at": "2026-11-19T19:56:28Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide-core/tests/properties::pages_keep_offsets_byte_budget_and_complete_sentences:REQ-RECALL-1": {
       "from": "sha256:8b1bb1d7a39dcf2bde67408c5ff53e8db13a9a03216779e02c67adf6531caeec",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
-      "at": "2026-11-19T19:54:53Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide-core/tests/properties::rank_orders_actions_then_coverage_and_breaks_ties:REQ-RECALL-1": {
       "from": "sha256:52ba37766139bf0470ae595866857652e83f619cad4e3cc3268e48f3d58ed6e7",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
-      "at": "2026-11-19T20:31:51Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide-core/tests/properties::registration_table:REQ-RULE-1": {
       "from": "sha256:45969828fadbaaa371cd82dabb8921a9726878f4f0b9e9e0d8b9c0c3fd8037f3",
@@ -157,10 +180,10 @@
     },
     "test-req:crates/omoide-core/tests/properties::shortened_records_use_the_actual_next_cursor_and_largest_fitting_sentence:REQ-RECALL-1": {
       "from": "sha256:4469a45a29899567308b73a91fd188a1ecfc0a0537c43b062cdbe0d39e972116",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
-      "at": "2026-11-19T19:54:53Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide-core/tests/properties::target_evidence_priority_and_capped_usage_respect_applicability:REQ-PROMO-1": {
       "from": "sha256:add778a0b16160468be66e7b946ff8f4972605374f43dbb99bf70c8b444d0f02",
@@ -171,16 +194,17 @@
     },
     "test-req:crates/omoide-core/tests/properties::tokens_are_normalized_and_ignore_separators:REQ-RECALL-1": {
       "from": "sha256:83ea5ea4f2c6de200260d51946231624105f258a40186ece626e225feb6e3bce",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "at": "2026-11-19T19:41:07Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide-core/tests/properties::usage_revision_and_accounting_fields_are_in_the_actual_page_budget:REQ-RECALL-1": {
       "from": "sha256:278a2e29194418ab76fac1e86882ed08bc4de2fbe228ba2f18c78a7b0956648e",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
-      "at": "2026-11-19T20:31:51Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide-judge-jev/src/protocol:wire_tests:answers_must_be_a_named_object_not_an_array:REQ-JUDGE-1": {
       "from": "sha256:ae31dba93e56da01d18a8758bdaa5b52f7bd0eab33e1acd43ce173a00117fe02",
@@ -254,10 +278,10 @@
     },
     "test-req:crates/omoide-store/src/evidence:tests:target_tokens_preserve_distinct_utf8_bytes:REQ-RECALL-1": {
       "from": "sha256:ff5ecacd7f4d7bc7ac79319fecb3e2f4a8b5cd8566e70e44bcafb6a5e72194fc",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
-      "at": "2026-11-19T21:35:55Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide-store/src/tests::busy_and_locked_are_distinct_from_unknown_errors_and_fault_points_are_exact:REQ-STORE-1": {
       "from": "sha256:dec330a0a0293f4620d7541fe06de240ae467542296b1736d639da6e36a09d8b",
@@ -436,10 +460,10 @@
     },
     "test-req:crates/omoide/tests/evidence_activity::independent_candidate_caps_and_structured_filters:REQ-RECALL-1": {
       "from": "sha256:deb68aea075f4440060338986c37952254f90afb0b0230a670a11eea680ef506",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
-      "at": "2026-11-19T20:31:51Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::operation_limits_and_notice_identity:REQ-STORE-1": {
       "from": "sha256:6184a81aca761d9f3d3039082a53b78e09b12d23e66db6cfa72a94a296547174",
@@ -450,10 +474,10 @@
     },
     "test-req:crates/omoide/tests/evidence_activity::partial_proof_requires_verified_scope_and_exact_period:REQ-RECALL-1": {
       "from": "sha256:8d1031dc1f49bbc1fccbb93a17194a0db00e9c22a24317b7ff2cffb6d756f945",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
-      "at": "2026-11-19T20:31:51Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::reported_use_only_changes_order_within_applicable_records:REQ-PROMO-1": {
       "from": "sha256:3a4ddbef95b62f583518cbd90edad9b85f3a6fd80e7863dc2cbd4f2a8e1ca656",
@@ -471,10 +495,10 @@
     },
     "test-req:crates/omoide/tests/evidence_activity::rule_and_evidence_fts_limits_are_independent:REQ-RECALL-1": {
       "from": "sha256:246b95a884ea0f297d73addcc87688eb2998a90a3034bfd4e9d3c48d0dcc146a",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
-      "at": "2026-11-19T20:31:51Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::uncertain_target_or_period_does_not_turn_scoped_proof_into_global_confirmation:REQ-DEC-1": {
       "from": "sha256:1f1e87cac27db55b7f723924b72701367cf3c4acbe5d11f10e420da501c2d5d4",
@@ -527,10 +551,10 @@
     },
     "test-req:crates/omoide/tests/relations::exception_preserves_applicable_pending_evidence:REQ-RECALL-1": {
       "from": "sha256:b3bc9a882ed99a55391290edafa834e530250c20d7e0df86fbb13066d1aab6da",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
-      "at": "2026-11-19T19:54:53Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide/tests/relations::parent_and_child_scope_bounds_distinguish_global_from_named_targets:REQ-RULE-1": {
       "from": "sha256:f228ff8ca33c2fdaa03f65064c318b1fa7f83a5456fa33e8febe66fcb4075174",
@@ -562,10 +586,10 @@
     },
     "test-req:crates/omoide/tests/relations::scoped_exception_replaces_parent_only_for_specified_target:REQ-RECALL-1": {
       "from": "sha256:edd30df54592c9c33c8c17b277f27971ebc75cf30bccae97ff65bd52817fa24d",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
-      "at": "2026-11-19T19:54:53Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide/tests/relations::summary_fact_defaults_to_unknown_and_keeps_full_source:REQ-DEC-1": {
       "from": "sha256:ffaea3a043dd8758538a0831946d2bed87492b3e6c2b0ec9763e34fd28bfcc8b",
@@ -611,30 +635,31 @@
     },
     "test-req:crates/omoide/tests/roundtrip::output_budget_pages_and_restarts_after_write:REQ-RECALL-1": {
       "from": "sha256:39721cb24e5070620257f506fcc00d609725f143ebb5ba905aeecb4dabe3f840",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "at": "2026-11-19T19:41:07Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide/tests/roundtrip::strongest_qualifying_rule_survives_its_own_relative_cut:REQ-RECALL-1": {
       "from": "sha256:e749a73b9021c491ad95e7d5898b519065670d36f93ada4ccc1a84242bda53a9",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Exercise the relative cutoff against its strongest candidate",
-      "at": "2026-11-19T23:01:09Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide/tests/roundtrip::target_and_action_words_do_not_supply_extra_trigger_evidence:REQ-RECALL-1": {
       "from": "sha256:bc9ae0d3bb98a8a35e173dd81edbed32598af4f494b9e0aaa7dc4894d40eeaa4",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Record applicability selection tests and decision ADR-0002",
-      "at": "2026-11-19T22:55:10Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide/tests/roundtrip::weak_lexical_match_and_structured_judge_candidates:REQ-JUDGE-1": {
-      "from": "sha256:686830be07bef5d472e242b2402f6e0201ccab217f67eac3b14f21544c6a7e1a",
+      "from": "sha256:3afe5f4f9b1bce1d0ecf5a2ebde89d92990865c801458835a3c471dbade420b8",
       "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
       "by": "human",
-      "reason": "Record applicability selection tests and decision ADR-0002",
-      "at": "2026-11-19T22:55:10Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide/tests/stage_four::cap_includes_markers_exactly_and_optional_rows_stay_searchable:REQ-HOT-1": {
       "from": "sha256:610ede0571c53c6dbe0791c259182493d0b577ddc9d566877adceeb596bae72d",
@@ -652,10 +677,10 @@
     },
     "test-req:crates/omoide/tests/stage_four::current_skills_and_rules_obey_kind_filters_and_action_priority:REQ-RECALL-1": {
       "from": "sha256:de9c53bbd4bdebd873aa22f04f6493c776fdc88f0690af5660a11877b7f5b770",
-      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "to": "sha256:2573d9372c6c2c72fcd310d4dc4d9786eae508cdd71dba5d16f0038992d35711",
       "by": "human",
-      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
-      "at": "2026-11-19T21:35:55Z"
+      "reason": "Record the revised two-tier recall contract and its tests",
+      "at": "2026-11-19T23:08:18Z"
     },
     "test-req:crates/omoide/tests/stage_four::demotion_occurs_at_threshold_and_preserves_legacy_notice_fingerprints:REQ-PROMO-1": {
       "from": "sha256:5e363e3d46dc9e721bcbb8edaf0f71fb5658afe5652bd6b15784c00d44514c0f",
