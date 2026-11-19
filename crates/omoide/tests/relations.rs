@@ -296,3 +296,169 @@ fn exception_preserves_applicable_pending_evidence() {
         "disputed words"
     );
 }
+
+impl Db {
+    // Capture the schema, metadata (including revision), receipts, FTS shadow tables
+    // and all user tables. Compare logical rows, independent of WAL checkpoints.
+    fn snapshot(&self) -> Vec<(String, omoide_store::Rows)> {
+        use omoide_store::{Sqlite, Statement, Store, Value as SqlValue};
+        let mut store = Sqlite::open(&self.0.path().join("db"), false).unwrap();
+        let schema = store
+            .read_batch(&[Statement::new(
+                "SELECT name, sql FROM sqlite_schema WHERE type='table' ORDER BY name",
+                vec![],
+            )])
+            .unwrap()
+            .remove(0);
+        let names: Vec<_> = schema
+            .iter()
+            .map(|row| match &row[0] {
+                SqlValue::Text(name) => name.clone(),
+                _ => panic!("expected table name"),
+            })
+            .collect();
+        let queries = names
+            .iter()
+            .map(|name| {
+                Statement::new(
+                    format!("SELECT * FROM \"{}\"", name.replace('"', "\"\"")),
+                    vec![],
+                )
+            })
+            .collect::<Vec<_>>();
+        let mut result = vec![("sqlite_schema".into(), schema)];
+        result.extend(names.into_iter().zip(store.read_batch(&queries).unwrap()));
+        result
+    }
+    fn pending(&self, base: &Value, body: &str) -> Value {
+        let source = self.words(body);
+        let args = Db::rule(&source, body);
+        let near = self.ok(&args);
+        let result = self.ok(&finish(args, &near, base, "unsure"));
+        assert_eq!(result["state"], "pending");
+        result
+    }
+    fn assert_refused(&self, args: &[&str], message: &str) {
+        let before = self.snapshot();
+        let error = self.run(args, false);
+        assert_eq!(error["kind"], "invalid_input");
+        assert_eq!(error["message"], format!("invalid input: {message}"));
+        assert_eq!(self.snapshot(), before);
+    }
+    fn assert_version_state(&self, version: &Value, expected: &str) {
+        let record = &self.ok(&["show", field(version, "version_id")])["record"];
+        assert_eq!(record["version_id"], version["version_id"]);
+        assert_eq!(record["state"], expected);
+    }
+}
+
+// [REQ-RULE-1]
+#[test]
+fn restatement_waits_for_open_proposal_against_that_version() {
+    let db = Db::new();
+    let source = db.words("current words");
+    let current = db.ok(&Db::rule(&source, "base"));
+    let pending = db.pending(&current, "alternative");
+    let revision_source = db.words("new revision");
+    let args = Db::rule(&revision_source, "new revision");
+    let near = db.ok(&args);
+    let revision = finish(args, &near, &current, "restated");
+    db.assert_refused(
+        &revision,
+        "resolve pending conflicts before restating this version",
+    );
+    db.assert_version_state(&current, "current");
+    db.assert_version_state(&pending, "pending");
+    db.ok(&[
+        "resolve",
+        field(&pending, "version_id"),
+        "--keep",
+        "current",
+    ]);
+    assert_eq!(db.ok(&revision)["state"], "replaced");
+}
+
+// [REQ-RULE-1]
+#[test]
+fn adoption_waits_for_other_proposals_against_that_version() {
+    let db = Db::new();
+    let source = db.words("current words");
+    let current = db.ok(&Db::rule(&source, "base"));
+    let first = db.pending(&current, "alternative one");
+    let other = db.pending(&current, "alternative two");
+    let adopt = ["resolve", field(&first, "version_id"), "--keep", "pending"];
+    db.assert_refused(
+        &adopt,
+        "resolve other pending proposals against this version first",
+    );
+    db.assert_version_state(&current, "current");
+    for v in [&first, &other] {
+        db.assert_version_state(v, "pending");
+    }
+    db.ok(&["resolve", field(&other, "version_id"), "--keep", "current"]);
+    assert_eq!(db.ok(&adopt)["version_id"], first["version_id"]);
+}
+
+// [REQ-RULE-1]
+#[test]
+fn parent_and_child_scope_bounds_distinguish_global_from_named_targets() {
+    let db = Db::new();
+    let source = db.words("packing");
+    let base = db.ok(&Db::rule(&source, "base"));
+    let proposal = |base: &Value, relation: &str, target: Option<&str>, success| {
+        let mut args = Db::rule(&source, "changed instruction");
+        if let Some(target) = target {
+            args.extend(["--target", target]);
+        }
+        let near = db.ok(&args);
+        db.run(&finish(args, &near, base, relation), success)
+    };
+    let child = proposal(&base, "exception", Some("hall"), true);
+    // A global parent admits a child with any *named* target, but an exception must stay scoped.
+    let no_target = proposal(&child, "restated", None, false);
+    assert_eq!(
+        no_target["message"],
+        "invalid input: proposed target conflicts with a linked exception scope"
+    );
+    let moved = proposal(&child, "restated", Some("annex"), true);
+    // A parent's new scope must still contain its current child.
+    let excludes_child = proposal(&base, "restated", Some("hall"), false);
+    assert_eq!(
+        excludes_child["message"],
+        "invalid input: proposed target conflicts with a linked exception scope"
+    );
+    let bounded = proposal(&base, "restated", Some("annex"), true);
+    let outside = proposal(&bounded, "exception", Some("hall"), false);
+    assert_eq!(
+        outside["message"],
+        "invalid input: exception target is outside the parent scope"
+    );
+    let unchanged_scope = proposal(&moved, "restated", Some("annex"), true);
+    db.assert_version_state(&unchanged_scope, "current");
+    assert_eq!(
+        proposal(&bounded, "restated", None, true)["state"],
+        "replaced"
+    );
+}
+
+// [REQ-RULE-1]
+#[test]
+fn disjoint_targets_require_a_distinct_choice_from_an_open_conflict() {
+    let db = Db::new();
+    let source = db.words("packing");
+    let mut original = Db::rule(&source, "base");
+    original.extend(["--target", "east"]);
+    let current = db.ok(&original);
+    let mut draft = Db::rule(&source, "new instruction");
+    draft.extend(["--target", "west"]);
+    let near = db.ok(&draft);
+    let conflict = finish(draft.clone(), &near, &current, "unsure");
+    db.assert_refused(
+        &conflict,
+        "disjoint targets cannot form an applicable conflict",
+    );
+    assert_eq!(
+        db.ok(&finish(draft, &near, &current, "restated"))["state"],
+        "replaced"
+    );
+}

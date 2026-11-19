@@ -202,6 +202,13 @@
       "reason": "Stage one: record the tested SQLite contract, lexical recall, CLI round trip and Linux verification",
       "at": "2026-11-19T19:26:44Z"
     },
+    "test-req:crates/omoide/tests/relations::adoption_waits_for_other_proposals_against_that_version:REQ-RULE-1": {
+      "from": "sha256:2e8026012cf2897fba3e1a823cd845d4b3432e448fe3d6b214c03b1dbb976922",
+      "to": "sha256:55dabe1c257081847fa2ccbf1bb23ea3965c5797ef3e4f16dcb4f87fe123944e",
+      "by": "human",
+      "reason": "Cover both open-pending guards and distinguish parent/child scope decisions",
+      "at": "2026-11-19T20:08:22Z"
+    },
     "test-req:crates/omoide/tests/relations::competing_restatements_do_not_apply_a_choice_to_another_version:REQ-STORE-1": {
       "from": "sha256:af405c2d35aa21d88e101500ca641a487ed9d78929c210675c029d8fceadca67",
       "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
@@ -215,6 +222,13 @@
       "by": "human",
       "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
       "at": "2026-11-19T19:54:53Z"
+    },
+    "test-req:crates/omoide/tests/relations::disjoint_targets_require_a_distinct_choice_from_an_open_conflict:REQ-RULE-1": {
+      "from": "sha256:73ce356f9f56255b74a17ea576839b79aa7b5de75b66c9ad2084b421eca37214",
+      "to": "sha256:55dabe1c257081847fa2ccbf1bb23ea3965c5797ef3e4f16dcb4f87fe123944e",
+      "by": "human",
+      "reason": "Cover both open-pending guards and distinguish parent/child scope decisions",
+      "at": "2026-11-19T20:08:22Z"
     },
     "test-req:crates/omoide/tests/relations::exception_cannot_expand_past_its_parent_during_revision:REQ-RULE-1": {
       "from": "sha256:8dbb4b1ea2bd95276c9b4a4f6e6fc4d348b645be0ab35247a7d0e832c75ccab7",
@@ -230,12 +244,26 @@
       "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
       "at": "2026-11-19T19:54:53Z"
     },
+    "test-req:crates/omoide/tests/relations::parent_and_child_scope_bounds_distinguish_global_from_named_targets:REQ-RULE-1": {
+      "from": "sha256:f228ff8ca33c2fdaa03f65064c318b1fa7f83a5456fa33e8febe66fcb4075174",
+      "to": "sha256:55dabe1c257081847fa2ccbf1bb23ea3965c5797ef3e4f16dcb4f87fe123944e",
+      "by": "human",
+      "reason": "Cover both open-pending guards and distinguish parent/child scope decisions",
+      "at": "2026-11-19T20:08:22Z"
+    },
     "test-req:crates/omoide/tests/relations::pending_exposes_both_sources_and_requires_an_explicit_winner:REQ-RULE-1": {
       "from": "sha256:833a90a53ebd618d943dd8f0873144242163dd19c73028de1c087da81e36f5c6",
       "to": "sha256:55dabe1c257081847fa2ccbf1bb23ea3965c5797ef3e4f16dcb4f87fe123944e",
       "by": "human",
       "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
       "at": "2026-11-19T19:54:53Z"
+    },
+    "test-req:crates/omoide/tests/relations::restatement_waits_for_open_proposal_against_that_version:REQ-RULE-1": {
+      "from": "sha256:5b31a6295d18627d02f1b0f81b2de53bc938b52008cd69197c07d14099cc81b1",
+      "to": "sha256:55dabe1c257081847fa2ccbf1bb23ea3965c5797ef3e4f16dcb4f87fe123944e",
+      "by": "human",
+      "reason": "Cover both open-pending guards and distinguish parent/child scope decisions",
+      "at": "2026-11-19T20:08:22Z"
     },
     "test-req:crates/omoide/tests/relations::same_adds_evidence_without_creating_versions:REQ-REC-1": {
       "from": "sha256:bbd54c3e982838c094226f6963a26e5982d2fbe497a8ec5434694228fa0747d2",
