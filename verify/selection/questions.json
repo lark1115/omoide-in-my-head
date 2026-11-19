@@ -1,0 +1,12 @@
+{
+  "trigger": {
+    "question": "Does the described situation meet this rule's trigger?",
+    "yes": "The subject and circumstances satisfy the condition, even by paraphrase. A secondary handling or transport step can also be required.",
+    "no": "The trigger is missing, contradicted, or explicitly excluded. Similar objects, words or actions alone do not establish it."
+  },
+  "instruction": {
+    "question": "Is this instruction needed for any part of the described work?",
+    "yes": "The described object and task meet the rule's scene, including an implied or paraphrased condition. Several independent instructions can be needed.",
+    "no": "The object, task or condition differs, an exclusion applies, or the required condition is unknown."
+  }
+}

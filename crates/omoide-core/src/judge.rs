@@ -54,3 +54,44 @@ pub fn scores(
         })
         .collect())
 }
+
+pub struct Tiers {
+    pub confirmed: BTreeMap<String, usize>,
+    pub candidates: BTreeMap<String, usize>,
+}
+
+pub fn tiers(bytes: &[u8], ids: &BTreeSet<String>, threshold: f64) -> Result<Tiers, String> {
+    let confirmed = scores(bytes, ids, threshold)?;
+    let mut candidates = scores(bytes, ids, 0.30)?;
+    candidates.retain(|id, _| !confirmed.contains_key(id));
+    Ok(Tiers {
+        confirmed,
+        candidates,
+    })
+}
+
+#[cfg(test)]
+mod tier_tests {
+    use super::*;
+    // [REQ-JUDGE-1]
+    #[test]
+    fn both_closed_lower_bounds_and_disjoint_membership() {
+        let ids = ["a", "b", "c", "d", "e"]
+            .map(String::from)
+            .into_iter()
+            .collect();
+        let data=br#"{"answers":[{"version_id":"a","score":0.299},{"version_id":"b","score":0.30},{"version_id":"c","score":0.599},{"version_id":"d","score":0.6},{"version_id":"e","score":1.0}]}"#;
+        let result = tiers(data, &ids, 0.60).unwrap();
+        assert_eq!(
+            result.confirmed.keys().cloned().collect::<Vec<_>>(),
+            ["d", "e"]
+        );
+        assert_eq!(
+            result.candidates.keys().cloned().collect::<Vec<_>>(),
+            ["b", "c"]
+        );
+        assert!(result.candidates["b"] < result.candidates["c"]);
+        assert!(tiers(data, &ids, 0.20).unwrap().candidates.is_empty());
+        assert!(tiers(b"{}", &ids, 0.60).is_err());
+    }
+}

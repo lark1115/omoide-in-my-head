@@ -260,3 +260,138 @@ fn linux_release_resource_budget() {
             .success()
     );
 }
+
+// [REQ-JUDGE-1]
+#[test]
+fn weak_lexical_match_and_structured_judge_candidates() {
+    let f = Fixture::new("Invented workshop instructions");
+    let a = f.add(
+        "wrap in paper",
+        "after drying",
+        &["--action", "pack", "--target", "tray"],
+    );
+    let b = f.add(
+        "paint with amber",
+        "before opening",
+        &["--action", "coat", "--target", "tray"],
+    );
+    let tentative = f.recall(&[
+        "--scene",
+        "amber brass tin jade felt linen cotton oil chalk",
+    ]);
+    assert_eq!(tentative["state"], "candidates_only");
+    assert_eq!(tentative["results"], serde_json::json!([]));
+    assert_eq!(tentative["candidates"][0]["version_id"], b["version_id"]);
+    assert_eq!(tentative["candidates_remaining"], 0);
+    let weak = f.recall(&["--scene", "amber brass tin jade felt linen cotton oil"]);
+    assert_eq!(weak["results"][0]["id"], b["id"]);
+    let path = f.path.with_file_name("judge.py");
+    std::fs::write(&path, "import json,sys\nr=json.load(sys.stdin)\nprint(json.dumps({'answers':[{'version_id':c['version_id'],'score':1} for c in r['candidates']]}))\n").unwrap();
+    let judge = ["--judge", "python3", "--judge-arg", path.to_str().unwrap()];
+    for (query, expected_count) in [
+        (vec!["--action", "pack", "--target", "tray"], 1),
+        (vec!["--action", "pack"], 2),
+        (vec!["--scene", "different", "--target", "tray"], 2),
+        (
+            vec![
+                "--scene",
+                "different",
+                "--action",
+                "pack",
+                "--target",
+                "tray",
+            ],
+            2,
+        ),
+    ] {
+        let response = f.recall(&[query.as_slice(), &judge].concat());
+        assert_eq!(response["judge_state"], "used");
+        let rows = response["results"].as_array().unwrap();
+        assert_eq!(rows.len(), expected_count);
+        assert!(rows.iter().any(|r| r["id"] == a["id"]));
+    }
+}
+
+// [REQ-RECALL-1]
+#[test]
+fn target_and_action_words_do_not_supply_extra_trigger_evidence() {
+    let f = Fixture::new("Label workshop supplies");
+    let a = f.add("violet copper linen", "violet copper", &[]);
+    let b = f.add(
+        "spruce ash",
+        "spruce ash",
+        &["--target", "spruce", "--action", "ash"],
+    );
+    assert_ne!(a["id"], b["id"]);
+    let response = f.recall(&["--scene", "violet copper linen spruce ash"]);
+    let ids: Vec<_> = response["results"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|r| &r["id"])
+        .collect();
+    assert_eq!(ids, vec![&a["id"]]);
+}
+
+// [REQ-RECALL-1]
+#[test]
+fn strongest_qualifying_rule_survives_its_own_relative_cut() {
+    let f = Fixture::new("Packing materials");
+    let a = f.add("linen copper brass felt", "linen copper brass", &[]);
+    let response = f.recall(&["--scene", "linen copper brass felt"]);
+    assert_eq!(response["results"][0]["id"], a["id"]);
+    assert_eq!(response["state"], "found");
+}
+
+// [REQ-JUDGE-1]
+#[test]
+fn provisional_judge_scores_share_the_page_after_confirmed_rows() {
+    let f = Fixture::new("Invented workshop");
+    for i in 0..12 {
+        let result = f.add(&format!("item{i}"), &format!("scene{i}"), &[]);
+        assert!(result["version_id"].is_string());
+    }
+    let script = f.path.with_file_name("score.py");
+    std::fs::write(&script,"import json, sys\nreq=json.load(sys.stdin)\nprint(json.dumps({'answers':[{'version_id':r['version_id'],'score':1 if r['text'] in ('item0','item1','item2') else float(sys.argv[1])} for r in req['candidates']]}))").unwrap();
+    let query = |score| {
+        f.recall(&[
+            "--scene",
+            "unfamiliar",
+            "--judge",
+            "python3",
+            "--judge-arg",
+            script.to_str().unwrap(),
+            "--judge-arg",
+            score,
+            "--threshold",
+            "0.6",
+        ])
+    };
+    let high = query("0.29");
+    let both = query("0.30");
+    assert_eq!(high["results"], both["results"]);
+    assert_eq!(high["results"].as_array().unwrap().len(), 3);
+    assert_eq!(high["candidates"], serde_json::json!([]));
+    assert_eq!(both["state"], "found");
+    assert_eq!(
+        both["candidate_guidance"],
+        "Not confirmed to apply; read with show before using."
+    );
+    let short = both["candidates"].as_array().unwrap();
+    assert!(!short.is_empty());
+    assert_eq!(
+        short.len() + both["candidates_remaining"].as_u64().unwrap() as usize,
+        9
+    );
+    assert!(both.to_string().len() < 4000);
+    for r in short {
+        assert!(r.get("source_id").is_none());
+        assert!(
+            both["results"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .all(|c| c["version_id"] != r["version_id"])
+        );
+    }
+}
