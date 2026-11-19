@@ -17,7 +17,7 @@ fn additional_candidate_preserves_pair_order() {
     proptest!(|(q in "[abc ]{1,12}", a in "[abc ]{1,12}", b in "[abc ]{1,12}", c in "[abc ]{1,12}", actions in any::<[bool;3]>())| {
         let query=tokens(&q);
         let rows=[("a",&a),("b",&b),("c",&c)];
-        let candidates=||rows.iter().enumerate().map(|(i,(id,body))|Candidate{id,terms:tokens(body),created:i as i64,action:actions[i]});
+        let candidates=||rows.iter().enumerate().map(|(i,(id,body))|Candidate{id,target_only:false,priority:false,uses:0,terms:tokens(body),created:i as i64,action:actions[i]});
         let pair=rank(&query,candidates().take(2));
         let mut all=rank(&query,candidates());
         all.retain(|r|r.id!="c");
@@ -108,6 +108,9 @@ fn rank_orders_actions_then_coverage_and_breaks_ties() {
         records
             .into_iter()
             .map(|(id, doc, action, created)| Candidate {
+                target_only: false,
+                priority: false,
+                uses: 0,
                 id,
                 terms: tokens(doc),
                 action,
@@ -219,4 +222,61 @@ fn oversized_inherited_conflict_identifies_original_evidence() {
     ]});
     let error = omoide_core::page::page(None, 1, 1, false, &[entry]).unwrap_err();
     assert!(error.contains("child") && error.contains("candidate"));
+}
+
+// [REQ-PROMO-1]
+#[test]
+fn target_evidence_priority_and_capped_usage_respect_applicability() {
+    let query = tokens("one two");
+    let cases = [
+        ("a", true, false, false, 0, "none", 1),
+        ("b", false, false, true, 0, "one", 1),
+        ("c", false, false, false, 0, "one two", 1),
+        ("d", false, false, false, 43, "one", 1),
+        ("e", false, false, false, 32, "one", 2),
+        ("f", false, true, true, 0, "none", 1),
+        ("g", false, true, false, 32, "none", 2),
+        ("h", false, true, false, 0, "none", 3),
+        ("excluded", false, false, true, 100, "none", 9),
+    ];
+    let ranked = rank(
+        &query,
+        cases
+            .into_iter()
+            .map(
+                |(id, action, target_only, priority, uses, doc, created)| Candidate {
+                    id,
+                    action,
+                    target_only,
+                    priority,
+                    uses,
+                    terms: tokens(doc),
+                    created,
+                },
+            ),
+    );
+    assert_eq!(
+        ranked.iter().map(|r| r.id).collect::<Vec<_>>(),
+        ["a", "b", "c", "e", "d", "f", "h", "g"]
+    );
+    assert_eq!(ranked[4].uses, 32);
+    assert_eq!(ranked[2].hits, 2);
+}
+
+// [REQ-RECALL-1]
+#[test]
+fn usage_revision_and_accounting_fields_are_in_the_actual_page_budget() {
+    let mut meta = serde_json::Map::new();
+    meta.insert("call_id".into(), serde_json::json!("call"));
+    let rows = vec![serde_json::json!({"version_id":"v","text":"a".repeat(2200)}); 3];
+    let run = |cursor, usage| {
+        omoide_core::page::with_metadata(cursor, 8, usage, 3, false, &rows, &meta).unwrap()
+    };
+    assert_eq!(run(None, 1)["cursor"], "8.1:1");
+    assert_eq!(run(Some("8.1:1"), 1)["remaining"], 1);
+    assert_eq!(run(Some("8.1:1"), 2)["restarted"], true);
+    assert_eq!(run(Some("7.1:1"), 1)["restarted"], true);
+    assert_eq!(run(Some("8:1"), 0)["restarted"], false);
+    meta.insert("extra".into(), serde_json::json!("x".repeat(4000)));
+    assert!(omoide_core::page::with_metadata(None, 1, 1, 0, false, &[], &meta).is_err());
 }

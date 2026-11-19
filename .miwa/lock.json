@@ -73,10 +73,11 @@
       "at": "2026-11-19T19:07:41Z"
     },
     "test-req:crates/omoide-core/tests/properties::additional_candidate_preserves_pair_order:REQ-RECALL-1": {
-      "from": "sha256:8823ee46d58e6700efc5fa868b795c18c061a6f7e9fc791d99dfdae139f15a0d",
+      "from": "sha256:4b4f466bb9819a29b4142109f649caf5687bdacbe90dac7338e54913fee26cf2",
       "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
       "by": "human",
-      "at": "2026-11-19T19:41:07Z"
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
     },
     "test-req:crates/omoide-core/tests/properties::character_channel_and_field_boundaries:REQ-RECALL-1": {
       "from": "sha256:3af5164e3af88efd8addadeed3384caca581b76a1995285802c5239e831368b9",
@@ -113,11 +114,11 @@
       "at": "2026-11-19T19:54:53Z"
     },
     "test-req:crates/omoide-core/tests/properties::rank_orders_actions_then_coverage_and_breaks_ties:REQ-RECALL-1": {
-      "from": "sha256:00eaa96154c38d4269b43ad53c7961f3b89f91be80ccdd95f0efa6b742a9d2f9",
+      "from": "sha256:52ba37766139bf0470ae595866857652e83f619cad4e3cc3268e48f3d58ed6e7",
       "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
       "by": "human",
-      "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
-      "at": "2026-11-19T19:54:53Z"
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
     },
     "test-req:crates/omoide-core/tests/properties::registration_table:REQ-RULE-1": {
       "from": "sha256:45969828fadbaaa371cd82dabb8921a9726878f4f0b9e9e0d8b9c0c3fd8037f3",
@@ -133,11 +134,25 @@
       "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
       "at": "2026-11-19T19:54:53Z"
     },
+    "test-req:crates/omoide-core/tests/properties::target_evidence_priority_and_capped_usage_respect_applicability:REQ-PROMO-1": {
+      "from": "sha256:add778a0b16160468be66e7b946ff8f4972605374f43dbb99bf70c8b444d0f02",
+      "to": "sha256:c74e30beef6e8c37e8774b4363b79608eda0701043ca90a1c8d83a34c3c6ed10",
+      "by": "human",
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
+    },
     "test-req:crates/omoide-core/tests/properties::tokens_are_normalized_and_ignore_separators:REQ-RECALL-1": {
       "from": "sha256:83ea5ea4f2c6de200260d51946231624105f258a40186ece626e225feb6e3bce",
       "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
       "by": "human",
       "at": "2026-11-19T19:41:07Z"
+    },
+    "test-req:crates/omoide-core/tests/properties::usage_revision_and_accounting_fields_are_in_the_actual_page_budget:REQ-RECALL-1": {
+      "from": "sha256:278a2e29194418ab76fac1e86882ed08bc4de2fbe228ba2f18c78a7b0956648e",
+      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "by": "human",
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
     },
     "test-req:crates/omoide-store/src/tests::contention_kill_and_replay:REQ-STORE-1": {
       "from": "sha256:1832fa33cf5e78ce685f6cf0fecfb88c476372320fe996d972b957916d7403a6",
@@ -154,11 +169,18 @@
       "at": "2026-11-19T19:54:53Z"
     },
     "test-req:crates/omoide-store/src/tests::migrate_v1_preserves_identity_index_sources_and_receipts:REQ-STORE-1": {
-      "from": "sha256:0b1c5007c67ced2d2e19767fc17da4fc53794e47321b461014fd7f1c6c50cc92",
+      "from": "sha256:9d83d0d936cbe421911e7b1999aebe98e765ab0ce93a4ca5ac7350597a23a607",
       "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
       "by": "human",
-      "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
-      "at": "2026-11-19T19:54:53Z"
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
+    },
+    "test-req:crates/omoide-store/src/tests::migrate_v2_summary_preserves_source_and_builds_search_index:REQ-STORE-1": {
+      "from": "sha256:5393ecfdfaacdd808149332f72cf21d283cb5e536d7683c3d689b23bd1aeb3a9",
+      "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
+      "by": "human",
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
     },
     "test-req:crates/omoide-store/src/tests::missing_revision_fails_closed:REQ-STORE-1": {
       "from": "sha256:0120ac2bd0b742a1bccf5956cb6022f38bb94b28fbeee311cd3880b900eb775c",
@@ -195,12 +217,96 @@
       "reason": "Stage one: record the tested SQLite contract, lexical recall, CLI round trip and Linux verification",
       "at": "2026-11-19T19:26:44Z"
     },
-    "test-req:crates/omoide/src/write:tests:racing_registration_rechecks_neighbors_before_activation:REQ-STORE-1": {
-      "from": "sha256:b81f7ff727fc835a3f48ef9d944e0df9e1952cc881bd1aaab10262392c774faa",
+    "test-req:crates/omoide/src/write:tests:command_size_and_retry_deadline_boundaries:REQ-STORE-1": {
+      "from": "sha256:25a3ecc43c47cbf7a62a3d8ac295dfe258ca60adb9503faf6aa01b0beb8123f6",
       "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
       "by": "human",
-      "reason": "Stage one: record the tested SQLite contract, lexical recall, CLI round trip and Linux verification",
-      "at": "2026-11-19T19:26:44Z"
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
+    },
+    "test-req:crates/omoide/src/write:tests:racing_registration_rechecks_neighbors_before_activation:REQ-STORE-1": {
+      "from": "sha256:12be4ae366f091965c54bd572c172e8dff3cd7f37cb00f7415115a18c1c2a9e6",
+      "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
+      "by": "human",
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
+    },
+    "test-req:crates/omoide/tests/evidence_activity::decision_state_is_independent_of_speech_and_old_decisions_are_not_active:REQ-DEC-1": {
+      "from": "sha256:ec2f475a071315e6a53efb78437c6f2c18ee16a7fed3484e5c8807feb626ad29",
+      "to": "sha256:4d5d103eb65cd508b1fa8af24e58857857a098cbceb722a29f207b28febc84cb",
+      "by": "human",
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
+    },
+    "test-req:crates/omoide/tests/evidence_activity::distinguish_return_use_action_outcome_correction_and_opportunities:REQ-MEASURE-1": {
+      "from": "sha256:df5fa0451bd253020c25fdcfc4a721c89b204efaf1dae9857b1bcd30a38f3426",
+      "to": "sha256:46371975afc0f52318e2912097cf77135572b78b072b6d89482b15d3b48b9854",
+      "by": "human",
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
+    },
+    "test-req:crates/omoide/tests/evidence_activity::feedback_on_prior_versions_and_pending_only_actions_preserves_applicability:REQ-PROMO-1": {
+      "from": "sha256:1ae88cabe3b240daea7a1ffe612abac1bcaed94100918180548c1dac510a5cfe",
+      "to": "sha256:c74e30beef6e8c37e8774b4363b79608eda0701043ca90a1c8d83a34c3c6ed10",
+      "by": "human",
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
+    },
+    "test-req:crates/omoide/tests/evidence_activity::independent_candidate_caps_and_structured_filters:REQ-RECALL-1": {
+      "from": "sha256:deb68aea075f4440060338986c37952254f90afb0b0230a670a11eea680ef506",
+      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "by": "human",
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
+    },
+    "test-req:crates/omoide/tests/evidence_activity::operation_limits_and_notice_identity:REQ-STORE-1": {
+      "from": "sha256:6184a81aca761d9f3d3039082a53b78e09b12d23e66db6cfa72a94a296547174",
+      "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
+      "by": "human",
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
+    },
+    "test-req:crates/omoide/tests/evidence_activity::partial_proof_requires_verified_scope_and_exact_period:REQ-RECALL-1": {
+      "from": "sha256:8d1031dc1f49bbc1fccbb93a17194a0db00e9c22a24317b7ff2cffb6d756f945",
+      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "by": "human",
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
+    },
+    "test-req:crates/omoide/tests/evidence_activity::reported_use_only_changes_order_within_applicable_records:REQ-PROMO-1": {
+      "from": "sha256:3a4ddbef95b62f583518cbd90edad9b85f3a6fd80e7863dc2cbd4f2a8e1ca656",
+      "to": "sha256:c74e30beef6e8c37e8774b4363b79608eda0701043ca90a1c8d83a34c3c6ed10",
+      "by": "human",
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
+    },
+    "test-req:crates/omoide/tests/evidence_activity::revised_decision_keeps_both_sources_and_usage_cannot_revive_old_consent:REQ-DEC-1": {
+      "from": "sha256:e39281c269bf32ff424846856c6e3cc1a39e44f99c2177230f18481dc91f60df",
+      "to": "sha256:4d5d103eb65cd508b1fa8af24e58857857a098cbceb722a29f207b28febc84cb",
+      "by": "human",
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
+    },
+    "test-req:crates/omoide/tests/evidence_activity::rule_and_evidence_fts_limits_are_independent:REQ-RECALL-1": {
+      "from": "sha256:246b95a884ea0f297d73addcc87688eb2998a90a3034bfd4e9d3c48d0dcc146a",
+      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "by": "human",
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
+    },
+    "test-req:crates/omoide/tests/evidence_activity::uncertain_target_or_period_does_not_turn_scoped_proof_into_global_confirmation:REQ-DEC-1": {
+      "from": "sha256:1f1e87cac27db55b7f723924b72701367cf3c4acbe5d11f10e420da501c2d5d4",
+      "to": "sha256:4d5d103eb65cd508b1fa8af24e58857857a098cbceb722a29f207b28febc84cb",
+      "by": "human",
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
+    },
+    "test-req:crates/omoide/tests/evidence_activity::verification_requires_explicit_observation_and_does_not_promote_reports:REQ-DEC-1": {
+      "from": "sha256:414e25c88da8a9708974e5e0872969c6f0a35d33aaa06c1502816f329fb16364",
+      "to": "sha256:4d5d103eb65cd508b1fa8af24e58857857a098cbceb722a29f207b28febc84cb",
+      "by": "human",
+      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
+      "at": "2026-11-19T20:31:51Z"
     },
     "test-req:crates/omoide/tests/relations::adoption_waits_for_other_proposals_against_that_version:REQ-RULE-1": {
       "from": "sha256:2e8026012cf2897fba3e1a823cd845d4b3432e448fe3d6b214c03b1dbb976922",

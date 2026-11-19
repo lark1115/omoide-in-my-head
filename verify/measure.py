@@ -11,6 +11,7 @@ from pathlib import Path
 
 parser = argparse.ArgumentParser()
 parser.add_argument("binary", type=Path)
+parser.add_argument("--dataset",choices=["rules","mixed"],default="rules")
 parser.add_argument("--runs", type=int, default=31)
 args = parser.parse_args()
 binary = args.binary.resolve()
@@ -29,6 +30,16 @@ def seed(path):
             identifier = f"record-{i:04d}"
             action = f"check-{i:04d}"
             word = "zircon" if i == 0 else "packing"
+            if args.dataset=="mixed":
+                kind="fact" if i%2==0 else "experience"
+                details={"certainty":"reported"} if kind=="fact" else {}
+                source="source" if kind=="fact" else None
+                body=f"紙箱 {word}"
+                db.execute("INSERT INTO memories(rowid,id,record_id,kind,body,source,created,details) VALUES(?,?,?,?,?,?,?,?)",
+                           (i+1,identifier,identifier,kind,body,source,i,json.dumps(details)))
+                db.execute("INSERT INTO evidence_index(rowid,words,singles,subject) VALUES(?,?,?,'')",
+                           (i+1,body,"紙 箱"))
+                continue
             db.execute("""INSERT INTO rules(rowid,id,version,state,body,scene,aliases,actions,source,created)
                           VALUES(?,?,?,'current','紙箱',?,'[]',?,'source',?)""",
                        (i + 1, identifier, f"v-{i}", word, json.dumps([action]), i))
@@ -50,6 +61,8 @@ with tempfile.TemporaryDirectory() as directory:
     seed(path)
     print(platform.platform(), "binary bytes", binary.stat().st_size)
     for label, params in queries.items():
+        if args.dataset=="mixed" and label=="action":
+            continue
         first = sample(path, params)
         samples = [sample(path, params) for _ in range(args.runs)]
         times = sorted(row[0] for row in samples)

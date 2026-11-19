@@ -1,3 +1,4 @@
+pub mod evidence;
 pub mod lookup;
 pub use rusqlite::types::Value;
 use rusqlite::{Connection, OpenFlags, TransactionBehavior, limits::Limit, params_from_iter};
@@ -76,12 +77,15 @@ impl Sqlite {
         conn.set_limit(Limit::SQLITE_LIMIT_LENGTH, 2_000_000)?;
         conn.set_limit(Limit::SQLITE_LIMIT_SQL_LENGTH, 100_000)?;
         conn.set_limit(Limit::SQLITE_LIMIT_VARIABLE_NUMBER, 100)?;
-        if Self::schema_version(&conn)? == Some(1) {
+        if matches!(Self::schema_version(&conn)?, Some(1 | 2)) {
             let tx = conn.transaction_with_behavior(TransactionBehavior::Immediate)?;
             if Self::schema_version(&tx)? == Some(1) {
                 tx.execute_batch(include_str!("migrate_v1_before.sql"))?;
-                tx.execute_batch(include_str!("schema.sql"))?;
+                tx.execute_batch(include_str!("schema_v2.sql"))?;
                 tx.execute_batch(include_str!("migrate_v1_after.sql"))?;
+            }
+            if Self::schema_version(&tx)? == Some(2) {
+                evidence::migrate(&tx)?;
             }
             tx.commit()?;
         }
@@ -101,7 +105,7 @@ impl Sqlite {
             [],
             |r| r.get(0),
         )?;
-        if !matches!(v, 1 | 2) {
+        if !matches!(v, 1..=3) {
             return Err(Error::Input(format!("unsupported store schema {v}")));
         }
         Ok(Some(v))
@@ -120,7 +124,8 @@ impl Sqlite {
             return Ok(false);
         }
         tx.execute_batch(include_str!("schema.sql"))?;
-        tx.execute("INSERT INTO meta VALUES(1,0,0,2,?)", [store_id])?;
+        tx.execute_batch(include_str!("evidence.sql"))?;
+        tx.execute("INSERT INTO meta VALUES(1,0,0,3,?)", [store_id])?;
         for stmt in first_write {
             Self::write_statement(&tx, stmt)?;
         }
@@ -190,8 +195,10 @@ impl Sqlite {
             Self::write_statement(&tx, s)?;
             // Used only by the opt-in process interruption harness; the default build has no hook.
             #[cfg(all(unix, feature = "fault-injection"))]
-            if s.sql.starts_with("INSERT INTO receipts")
-                && std::env::var_os("OMOIDE_TEST_STOP_BEFORE_COMMIT").is_some()
+            if (s.sql.starts_with("INSERT INTO receipts")
+                && std::env::var_os("OMOIDE_TEST_STOP_BEFORE_COMMIT").is_some())
+                || (s.sql.starts_with("INSERT INTO calls")
+                    && std::env::var_os("OMOIDE_TEST_STOP_CALL_LOG").is_some())
             {
                 // SAFETY: raise targets only this process; SIGSTOP has no signal handler.
                 unsafe {
@@ -216,16 +223,24 @@ pub fn revision() -> Statement {
     Statement::new("SELECT revision FROM meta WHERE singleton=1", vec![])
 }
 pub fn guarded(rev: i64, changes: Vec<Statement>) -> Vec<Statement> {
+    guarded_column("revision", rev, changes)
+}
+pub fn guarded_usage(rev: i64, changes: Vec<Statement>) -> Vec<Statement> {
+    guarded_column("usage_revision", rev, changes)
+}
+fn guarded_column(column: &str, rev: i64, changes: Vec<Statement>) -> Vec<Statement> {
     let mut batch = vec![
         Statement::new(
-            "INSERT INTO revision_guard VALUES(CASE WHEN (SELECT revision FROM meta WHERE singleton=1)=? THEN 1 ELSE NULL END)",
+            format!(
+                "INSERT INTO revision_guard VALUES(CASE WHEN (SELECT {column} FROM meta WHERE singleton=1)=? THEN 1 ELSE NULL END)"
+            ),
             vec![Value::Integer(rev)],
         ),
         Statement::new("DELETE FROM revision_guard", vec![]),
     ];
     batch.extend(changes);
     batch.push(Statement::new(
-        "UPDATE meta SET revision=revision+1 WHERE singleton=1",
+        format!("UPDATE meta SET {column}={column}+1 WHERE singleton=1"),
         vec![],
     ));
     batch

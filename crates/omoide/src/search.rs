@@ -27,7 +27,7 @@ pub fn near(r: &Json, t: &Tokens, actions: &[String]) -> bool {
         .any(|a| actions.iter().any(|x| a.as_str() == Some(x)));
     near_rule(t, &doc, action_overlap)
 }
-pub fn recall(db: &mut impl Store, query: &Query) -> Result<Json> {
+pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json> {
     if query.scene.as_deref().unwrap_or_default().trim().is_empty()
         && query
             .action
@@ -42,21 +42,49 @@ pub fn recall(db: &mut impl Store, query: &Query) -> Result<Json> {
         return Err(Error::Input("fts limit must be positive".into()));
     }
     let terms = tokens(query.scene.as_deref().unwrap_or_default());
-    let mut queries = omoide_store::lookup::candidates(
-        &terms,
-        query.target.as_deref(),
-        query.action.as_deref(),
-        query.scan_limit,
-        query.fts_limit,
-    );
+    let include_rules = query.kind.as_deref().is_none_or(|k| k == "rule")
+        && query.scope.is_empty()
+        && query.period.is_none()
+        && query.claim.is_none();
+    let mut queries = if include_rules {
+        omoide_store::lookup::candidates(
+            &terms,
+            query.target.as_deref(),
+            query.action.as_deref(),
+            query.scan_limit,
+            query.fts_limit,
+        )
+    } else {
+        vec![omoide_store::revision()]
+    };
     let normal_len = queries.len();
-    queries.extend(omoide_store::lookup::linked_rules(
-        query.target.as_deref(),
-        query.action.as_deref(),
-        &terms,
+    if include_rules {
+        queries.extend(omoide_store::lookup::linked_rules(
+            query.target.as_deref(),
+            query.action.as_deref(),
+            &terms,
+        ));
+    }
+    let evidence_index = queries.len();
+    queries.push(omoide_store::evidence::candidates(
+        omoide_store::evidence::Filter {
+            terms: &terms,
+            target: query.target.as_deref(),
+            kind: query.kind.as_deref(),
+            period: query.period.as_deref(),
+            scope_json: &json!(query.scope).to_string(),
+            claim: query.claim.as_deref(),
+            limit: query.fts_limit,
+        },
+    ));
+    queries.push(q(
+        "SELECT usage_revision FROM meta WHERE singleton=1",
+        vec![],
     ));
     let sets = db.read_batch(&queries)?;
-    let (sets, links) = sets.split_at(normal_len);
+    let evidence = &sets[evidence_index];
+    let usage_revision = number(sets.last().unwrap())?;
+    let (sets, links) = sets[..evidence_index].split_at(normal_len);
     let rev = number(&sets[0])?;
     let mut pool = BTreeMap::new();
     let capped = sets
@@ -78,7 +106,7 @@ pub fn recall(db: &mut impl Store, query: &Query) -> Result<Json> {
     }
     let mut conflicts: BTreeMap<String, Vec<Json>> = BTreeMap::new();
     let mut alternate_text: BTreeMap<String, Vec<String>> = BTreeMap::new();
-    for row in &links[1] {
+    for row in links.get(1).into_iter().flatten() {
         let current = parse(&row[0])?;
         let pending = parse(&row[2])?;
         let id = current["id"].as_str().unwrap().to_owned();
@@ -109,8 +137,10 @@ pub fn recall(db: &mut impl Store, query: &Query) -> Result<Json> {
             "pending":{"record":pending,"source":parse(&row[3])?}}),
         );
     }
-    let exceptions = links[0]
-        .iter()
+    let exceptions = links
+        .first()
+        .into_iter()
+        .flatten()
         .map(|row| parse(&row[0]))
         .collect::<Result<Vec<_>>>()?;
     let mut children: BTreeMap<&str, Vec<&Json>> = BTreeMap::new();
@@ -141,6 +171,19 @@ pub fn recall(db: &mut impl Store, query: &Query) -> Result<Json> {
             }
         }
     }
+    let capped = capped || evidence.len() > query.fts_limit as usize;
+    for row in evidence.iter().take(query.fts_limit as usize) {
+        let mut record = parse(&row[0])?;
+        record["match_basis"] = json!(if int(&row[2])? == 1 {
+            "lexical"
+        } else {
+            "target_only"
+        });
+        if record["kind"] == "decision" {
+            record["source_text"] = parse(&row[1])?["text"].clone();
+        }
+        pool.insert(record["id"].as_str().unwrap().to_owned(), (false, record));
+    }
     let count = pool.len();
     let candidates = pool.iter().map(|(id, (action, record))| {
         let mut terms = stored_tokens(record);
@@ -154,6 +197,12 @@ pub fn recall(db: &mut impl Store, query: &Query) -> Result<Json> {
         Candidate {
             id,
             action: *action,
+            target_only: record["match_basis"] == "target_only",
+            priority: record["decision"] == "decided" || record["certainty"] == "verified",
+            uses: record["used_count"]
+                .as_u64()
+                .unwrap_or(0)
+                .min(u32::MAX.into()) as u32,
             created: record["created"].as_i64().unwrap_or_default(),
             terms,
         }
@@ -178,7 +227,7 @@ pub fn recall(db: &mut impl Store, query: &Query) -> Result<Json> {
                 item["unresolved_conflicts"] = json!(pairs);
             }
             for key in ["purpose", "exclusion"] {
-                if item[key].is_null() {
+                if item["kind"] == "rule" && item[key].is_null() {
                     item[key] = json!("unknown")
                 }
             }
@@ -186,6 +235,52 @@ pub fn recall(db: &mut impl Store, query: &Query) -> Result<Json> {
             results.push(item);
         }
     }
-    omoide_core::page::page(query.cursor.as_deref(), rev, count, capped, &results)
-        .map_err(Error::Input)
+    let mut meta = serde_json::Map::new();
+    meta.insert("call_id".into(), json!(call_id));
+    meta.insert("accounting".into(), json!("recorded"));
+    // Keep scoped evidence visible when a target or period is unknown, without
+    // turning that evidence into an unconditional verification of the query.
+    let proves = |r: &&Json| {
+        r["certainty"] == "verified"
+            && r["evidence"].is_string()
+            && r["target"]
+                .as_str()
+                .is_none_or(|target| Some(target) == query.target.as_deref())
+            && r["period"]
+                .as_str()
+                .is_none_or(|period| Some(period) == query.period.as_deref())
+    };
+    let mut fully_covered = true;
+    if !query.scope.is_empty() {
+        let covered: std::collections::BTreeSet<_> = results
+            .iter()
+            .filter(proves)
+            .filter_map(|r| r["scope"].as_array())
+            .flatten()
+            .filter_map(Json::as_str)
+            .collect();
+        let unproven: Vec<_> = query
+            .scope
+            .iter()
+            .filter(|s| !covered.contains(s.as_str()))
+            .collect();
+        fully_covered = unproven.is_empty();
+        meta.insert("unproven_scope".into(), json!(unproven));
+    }
+    if query.claim.is_some() {
+        meta.insert(
+            "verified".into(),
+            json!(fully_covered && results.iter().any(|r| proves(&r))),
+        );
+    }
+    omoide_core::page::with_metadata(
+        query.cursor.as_deref(),
+        rev,
+        usage_revision,
+        count,
+        capped,
+        &results,
+        &meta,
+    )
+    .map_err(Error::Input)
 }

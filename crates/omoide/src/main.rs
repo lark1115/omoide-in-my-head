@@ -1,5 +1,7 @@
+mod activity;
 mod args;
 mod db;
+mod memory;
 mod relations;
 mod search;
 mod write;
@@ -10,26 +12,65 @@ use serde_json::{Value, json};
 use std::process::ExitCode;
 use uuid::Uuid;
 fn run(cli: &Cli, op: &str) -> db::Result<Value> {
+    let clock = std::time::Instant::now();
+    let at = write::now()?;
+    let call_id = cli
+        .call_id
+        .clone()
+        .unwrap_or_else(|| Uuid::new_v4().to_string());
+    write::nonempty(&call_id)?;
+    if let Some(key) = &cli.opportunity_id {
+        write::nonempty(key)?;
+    }
     let init = matches!(cli.command, Command::Init);
     write::nonempty(op)?;
     if op.len() > 4096 {
         return Err(Error::Input("operation id too long".into()));
     }
     let mut db = Sqlite::open(&cli.db, init)?;
-    if init {
+    let initialized = if init {
         let store_id = Uuid::new_v4().to_string();
         let ready = json!({"state":"ready","store_id":store_id,"operation_id":op});
         let hash = db::digest(json!(Command::Init).to_string());
         let receipt = omoide_store::save_receipt(op, &hash, &ready.to_string());
         if db.initialize(&store_id, &omoide_store::guarded(0, vec![receipt]))? {
-            return Ok(ready);
+            Some(ready)
+        } else {
+            None
+        }
+    } else {
+        None
+    };
+    let mut result = if let Some(ready) = initialized {
+        ready
+    } else {
+        match &cli.command {
+            Command::Show { id, history } => db::show(&mut db, id, *history)?,
+            Command::Stats {
+                correction_threshold,
+            } => activity::stats(&mut db, *correction_threshold)?,
+            Command::Recall(query) => search::recall(&mut db, query, &call_id)?,
+            cmd => write::apply(&mut db, cmd, op, cli.opportunity_id.as_deref(), &call_id)?,
+        }
+    };
+    if let Err(err) = activity::log(
+        &mut db,
+        &cli.command,
+        &call_id,
+        &cli.opportunity_id,
+        at,
+        clock.elapsed().as_micros() as i64,
+        &result,
+    ) {
+        eprintln!(
+            "{}",
+            json!({"warning":"call_log_failed","message":err.to_string()})
+        );
+        if matches!(cli.command, Command::Recall(_)) {
+            result["accounting"] = json!("unlogged");
         }
     }
-    match &cli.command {
-        Command::Show { id, history } => db::show(&mut db, id, *history),
-        Command::Recall(q) => search::recall(&mut db, q),
-        cmd => write::apply(&mut db, cmd, op),
-    }
+    Ok(result)
 }
 fn main() -> ExitCode {
     let cli = match Cli::try_parse() {
@@ -43,9 +84,21 @@ fn main() -> ExitCode {
             return ExitCode::from(code as u8);
         }
     };
-    let op = cli
-        .operation_id
-        .clone()
+    let notice_id = cli
+        .command
+        .notice()
+        .and_then(|(_, n, _)| n.notice_id.clone());
+    if let (Some(id), Some(op)) = (&notice_id, &cli.operation_id)
+        && id != op
+    {
+        println!(
+            "{}",
+            json!({"state":"error","kind":"invalid_input","message":"notice and operation ids disagree"})
+        );
+        return ExitCode::FAILURE;
+    }
+    let op = notice_id
+        .or_else(|| cli.operation_id.clone())
         .unwrap_or_else(|| Uuid::new_v4().to_string());
     match run(&cli, &op) {
         Ok(v) => {

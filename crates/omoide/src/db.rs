@@ -61,16 +61,33 @@ pub fn show(db: &mut impl omoide_store::Store, id: &str, history: bool) -> Resul
         ),
         vec![s(id)],
     );
-    let fact = q(
-        format!(
-            "SELECT json_object('kind','fact','id',f.id,'text',f.body,'certainty',f.certainty,'created',f.created,'target',f.target,'source_id',f.source),{SOURCE} FROM facts f JOIN utterances u ON u.id=f.source WHERE f.id=?"
-        ),
-        vec![s(id)],
-    );
-    let sets = db.read_batch(&[source(id), versions, extra, fact])?;
-    if let Some(row) = sets[3].first() {
-        let source = parse(&row[1])?;
-        return Ok(json!({"record":parse(&row[0])?,"source":source,"sources":[source]}));
+    let sets = db.read_batch(&[
+        source(id),
+        versions,
+        extra,
+        omoide_store::evidence::show(id),
+    ])?;
+    if !sets[3].is_empty() {
+        let mut family = Vec::new();
+        for row in &sets[3] {
+            let record = parse(&row[0])?;
+            let entry = if row[1] == Value::Null {
+                json!({"record":record})
+            } else {
+                let source = parse(&row[1])?;
+                json!({"record":record,"source":source,"sources":[source]})
+            };
+            family.push(entry);
+        }
+        let mut result = family
+            .iter()
+            .find(|v| v["record"]["version_id"] == id)
+            .unwrap_or_else(|| family.last().unwrap())
+            .clone();
+        if history {
+            result["history"] = json!(family);
+        }
+        return Ok(result);
     }
     if sets[1].is_empty() {
         return Ok(json!({"record":required_record(&sets[0])?}));

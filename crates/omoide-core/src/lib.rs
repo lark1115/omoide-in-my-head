@@ -65,6 +65,9 @@ pub fn hits(query: &Tokens, doc: &Tokens) -> usize {
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Rank<'a> {
     pub action: bool,
+    pub target_only: bool,
+    pub priority: bool,
+    pub uses: u32,
     pub hits: usize,
     pub created: i64,
     pub id: &'a str,
@@ -73,13 +76,19 @@ impl Ord for Rank<'_> {
     fn cmp(&self, other: &Self) -> Ordering {
         (
             Reverse(self.action),
+            self.target_only,
+            Reverse(self.priority),
             Reverse(self.hits),
+            Reverse(self.uses),
             Reverse(self.created),
             self.id,
         )
             .cmp(&(
                 Reverse(other.action),
+                other.target_only,
+                Reverse(other.priority),
                 Reverse(other.hits),
+                Reverse(other.uses),
                 Reverse(other.created),
                 other.id,
             ))
@@ -138,6 +147,9 @@ pub fn near_rule(query: &Tokens, record: &Tokens, action_overlap: bool) -> bool 
 pub struct Candidate<'a> {
     pub id: &'a str,
     pub action: bool,
+    pub target_only: bool,
+    pub priority: bool,
+    pub uses: u32,
     pub created: i64,
     pub terms: Tokens,
 }
@@ -148,12 +160,19 @@ pub fn rank<'a>(
     let mut ranked = Vec::new();
     for candidate in candidates {
         let coverage = hits(query, &candidate.terms);
-        if candidate.action || coverage > 0 {
+        if candidate.action || coverage > 0 || candidate.target_only {
             ranked.push(Rank {
                 id: candidate.id,
                 created: candidate.created,
                 action: candidate.action,
                 hits: coverage,
+                target_only: candidate.target_only,
+                priority: candidate.priority,
+                uses: if candidate.target_only {
+                    0
+                } else {
+                    candidate.uses.min(32)
+                },
             });
         }
     }
