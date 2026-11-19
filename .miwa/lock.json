@@ -231,6 +231,20 @@
       "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
       "at": "2026-11-19T20:31:51Z"
     },
+    "test-req:crates/omoide/tests/evidence_activity::a_reported_fact_with_evidence_is_still_unproven_for_its_own_scope:REQ-DEC-1": {
+      "from": "sha256:c10ae28cac17b1ca2045d04c4f4624c4319fd5a26af2ee2b025a39572f7d0a16",
+      "to": "sha256:4d5d103eb65cd508b1fa8af24e58857857a098cbceb722a29f207b28febc84cb",
+      "by": "human",
+      "reason": "Verify reported-only scope and cross-kind owner decision ranking with deterministic CLI examples",
+      "at": "2026-11-19T20:45:42Z"
+    },
+    "test-req:crates/omoide/tests/evidence_activity::decided_and_verified_records_outrank_newer_reports_but_pending_decisions_do_not:REQ-DEC-1": {
+      "from": "sha256:8771329bceb96121659ae078818fdffb74788af02517ebdc9982981d04cf27e5",
+      "to": "sha256:4d5d103eb65cd508b1fa8af24e58857857a098cbceb722a29f207b28febc84cb",
+      "by": "human",
+      "reason": "Distinguish exact certainty levels, decision states and their independent priority keys",
+      "at": "2026-11-19T20:46:33Z"
+    },
     "test-req:crates/omoide/tests/evidence_activity::decision_state_is_independent_of_speech_and_old_decisions_are_not_active:REQ-DEC-1": {
       "from": "sha256:ec2f475a071315e6a53efb78437c6f2c18ee16a7fed3484e5c8807feb626ad29",
       "to": "sha256:4d5d103eb65cd508b1fa8af24e58857857a098cbceb722a29f207b28febc84cb",
@@ -239,11 +253,11 @@
       "at": "2026-11-19T20:31:51Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::distinguish_return_use_action_outcome_correction_and_opportunities:REQ-MEASURE-1": {
-      "from": "sha256:df5fa0451bd253020c25fdcfc4a721c89b204efaf1dae9857b1bcd30a38f3426",
+      "from": "sha256:082b003302577f529a969e505210e2efc06e6a5b5f6079bc6198459d310f256d",
       "to": "sha256:46371975afc0f52318e2912097cf77135572b78b072b6d89482b15d3b48b9854",
       "by": "human",
-      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
-      "at": "2026-11-19T20:31:51Z"
+      "reason": "Verify reported-only scope and cross-kind owner decision ranking with deterministic CLI examples",
+      "at": "2026-11-19T20:45:42Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::feedback_on_prior_versions_and_pending_only_actions_preserves_applicability:REQ-PROMO-1": {
       "from": "sha256:1ae88cabe3b240daea7a1ffe612abac1bcaed94100918180548c1dac510a5cfe",
@@ -302,11 +316,11 @@
       "at": "2026-11-19T20:31:51Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::verification_requires_explicit_observation_and_does_not_promote_reports:REQ-DEC-1": {
-      "from": "sha256:414e25c88da8a9708974e5e0872969c6f0a35d33aaa06c1502816f329fb16364",
+      "from": "sha256:bb0736d34ceb84363f914c6efa40752a66ad24c664e3e2e88ec812181605e119",
       "to": "sha256:4d5d103eb65cd508b1fa8af24e58857857a098cbceb722a29f207b28febc84cb",
       "by": "human",
-      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
-      "at": "2026-11-19T20:31:51Z"
+      "reason": "Cover exact claim identity as well as the verification verdict",
+      "at": "2026-11-19T20:47:13Z"
     },
     "test-req:crates/omoide/tests/relations::adoption_waits_for_other_proposals_against_that_version:REQ-RULE-1": {
       "from": "sha256:2e8026012cf2897fba3e1a823cd845d4b3432e448fe3d6b214c03b1dbb976922",

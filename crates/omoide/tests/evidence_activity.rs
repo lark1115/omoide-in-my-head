@@ -166,6 +166,7 @@ fn distinguish_return_use_action_outcome_correction_and_opportunities() {
         "chance",
     ]);
     d.ok(&["outcome", "--version", v, "--result", "failure"]);
+    assert_eq!(d.ok(&["stats"])["rules"][0]["corrections"], 0);
     for (notice, chance) in [("c1", "chance"), ("c2", "chance"), ("c3", "another")] {
         d.ok(&[
             "corrected",
@@ -177,9 +178,20 @@ fn distinguish_return_use_action_outcome_correction_and_opportunities() {
             chance,
         ]);
     }
+    // This opportunity exists only as an acted notice. The used-only opportunity is not an action.
+    d.ok(&[
+        "acted",
+        "--version",
+        v,
+        "--action",
+        "sort",
+        "--opportunity-id",
+        "action-only",
+    ]);
+    d.ok(&["used", "--version", v, "--opportunity-id", "used-only"]);
     let stats = d.ok(&["stats"]);
     let r = &stats["rules"][0];
-    assert_eq!(r["opportunities"], 1);
+    assert_eq!(r["opportunities"], 2);
     assert_eq!(r["corrections"], 2);
     assert_eq!(r["measurement"], "measured");
     assert_eq!(stats["check_candidates"], json!([id(&rule)]));
@@ -189,7 +201,7 @@ fn distinguish_return_use_action_outcome_correction_and_opportunities() {
     );
     assert_eq!(
         d.sql("SELECT usage_revision FROM meta")[0][0],
-        Cell::Integer(6)
+        Cell::Integer(8)
     );
     assert_eq!(
         d.sql("SELECT outcome FROM notices WHERE kind='outcome'")[0][0],
@@ -197,7 +209,7 @@ fn distinguish_return_use_action_outcome_correction_and_opportunities() {
     );
     let after = d.ok(&query);
     assert_eq!(after["accounting"], "unlogged");
-    assert_eq!(after["results"][0]["used_count"], 1);
+    assert_eq!(after["results"][0]["used_count"], 2);
 }
 
 // [REQ-DEC-1]
@@ -264,8 +276,12 @@ fn verification_requires_explicit_observation_and_does_not_promote_reports() {
         ])
     };
     assert_eq!(q("usable")["verified"], true);
-    assert_eq!(q("delivered")["verified"], false);
-    assert_eq!(q("requested")["verified"], false);
+    let delivery = q("delivered");
+    assert_eq!(delivery["verified"], false);
+    assert_eq!(delivery["results"], json!([]));
+    let request = q("requested");
+    assert_eq!(request["verified"], false);
+    assert_eq!(request["results"][0]["id"], id(&requested));
     let event = d.ok(&[
         "event",
         "add",
@@ -799,5 +815,125 @@ fn revised_decision_keeps_both_sources_and_usage_cannot_revive_old_consent() {
     assert_eq!(
         d.ok(&["show", version(&base)])["record"]["decision"],
         "revised"
+    );
+}
+
+// [REQ-DEC-1]
+#[test]
+fn a_reported_fact_with_evidence_is_still_unproven_for_its_own_scope() {
+    let d = Db::new();
+    let source = d.source();
+    let fact = d.ok(&[
+        "fact",
+        "add",
+        "--source",
+        &source,
+        "--text",
+        "plate count",
+        "--certainty",
+        "reported",
+        "--target",
+        "kiln",
+        "--scope",
+        "round",
+        "--period",
+        "spring",
+        "--claim",
+        "counted",
+        "--evidence",
+        "inventory-note",
+    ]);
+    let reply = d.ok(&[
+        "recall",
+        "--kind",
+        "fact",
+        "--scene",
+        "plate count",
+        "--target",
+        "kiln",
+        "--scope",
+        "round",
+        "--period",
+        "spring",
+        "--claim",
+        "counted",
+    ]);
+    let records = reply["results"].as_array().unwrap();
+    assert_eq!(records.len(), 1);
+    assert_eq!(records[0]["id"], id(&fact));
+    assert_eq!(records[0]["match_basis"], "lexical");
+    assert_eq!(records[0]["certainty"], "reported");
+    assert_eq!(records[0]["evidence"], "inventory-note");
+    assert_eq!(reply["verified"], false);
+    assert_eq!(reply["unproven_scope"], json!(["round"]));
+}
+
+// [REQ-DEC-1]
+#[test]
+fn decided_and_verified_records_outrank_newer_reports_but_pending_decisions_do_not() {
+    let d = Db::new();
+    let source = d.source();
+    // Equal lexical scores and usage. Both priority records are older than both ordinary records.
+    let decide = |state, at| {
+        d.ok(&[
+            "decide",
+            "--source",
+            &source,
+            "--text",
+            "binding",
+            "--target",
+            "workshop",
+            "--speech",
+            "instruction",
+            "--state",
+            state,
+            "--at",
+            at,
+        ])
+    };
+    let decided = decide("decided", "1");
+    let pending = decide("pending", "2");
+    let fact = d.ok(&[
+        "fact",
+        "add",
+        "--source",
+        &source,
+        "--text",
+        "binding",
+        "--target",
+        "workshop",
+        "--certainty",
+        "reported",
+        "--at",
+        "3",
+    ]);
+    let verified = d.ok(&[
+        "fact",
+        "add",
+        "--source",
+        &source,
+        "--text",
+        "binding",
+        "--target",
+        "workshop",
+        "--certainty",
+        "verified",
+        "--verified-where",
+        "bench",
+        "--verified-when",
+        "0",
+        "--verified-how",
+        "inspected",
+        "--evidence",
+        "inspection-note",
+        "--at",
+        "0",
+    ]);
+    let reply = d.ok(&["recall", "--scene", "binding", "--target", "workshop"]);
+    let records = reply["results"].as_array().unwrap();
+    assert!(records.iter().all(|r| r["match_basis"] == "lexical"));
+    assert_eq!(
+        records.iter().map(id).collect::<Vec<_>>(),
+        [id(&decided), id(&verified), id(&fact), id(&pending)]
     );
 }
