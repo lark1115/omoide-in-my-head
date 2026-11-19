@@ -49,27 +49,24 @@ def level(query, rules):
     return "partial" if partial else "zero"
 
 
-def summarize(rs, qs):
+def distribution(qs):
     return {
-        "format": 1,
-        "rules": len(rs),
         "queries": len(qs),
-        "variants": ["without_judge", "with_judge"],
         "by_overlap": dict(sorted(Counter(q["level"] for q in qs).items())),
         "by_required_count": dict(sorted(Counter(str(len(q["must"])) for q in qs).items())),
         "none_by_overlap": dict(sorted(Counter(q["level"] for q in qs if not q["must"]).items())),
         "action_target_only": sum(set(q["input"]) == {"action", "target"} for q in qs),
-        "sha256": {f: hashlib.sha256((ROOT / f).read_bytes()).hexdigest()
-                   for f in ("rules.jsonl", "queries.jsonl")},
     }
 
 
 def validate():
     rs = rows("rules.jsonl")
-    qs = rows("queries.jsonl")
+    original = rows("queries.jsonl")
+    holdout = rows("holdout2.jsonl")
+    qs = original + holdout
     ids = [item["id"] for item in rs + qs]
     require(len(set(ids)) == len(ids), "duplicate id")
-    require(60 <= len(rs) <= 80 and len(qs) >= 80, "corpus size")
+    require(len(rs) == 72 and len(original) == 152 and len(holdout) == 80, "corpus size")
     rules = {r["id"]: r for r in rs}
     for r in rs:
         require(all(r[k] for k in ("domain", "scene", "action", "text", "key_phrase")), r["id"])
@@ -90,14 +87,21 @@ def validate():
         require(q["level"] == level(q, rules), f"{tag}: incorrect overlap")
         require(bool(q["reason"].strip()) and len(q["reason"].splitlines()) == 1, tag)
     for side in ("must", "must_not"):
-        require({k for q in qs for k in q[side]} == set(rules), f"missing rule on {side}")
-    require({len(q["must"]) for q in qs} >= {0, 1, 2, 3}, "missing cardinality")
-    require({q["level"] for q in qs if not q["must"]} == {"shared", "partial", "zero"}, "none controls")
-    require({q["level"] for q in qs if q["must"]} == {"shared", "partial", "zero"}, "positive controls")
-    require(any("target" in q["input"] and not q["must"] for q in qs), "missing structured negative")
-    require(any("target" in q["input"] and q["must"] for q in qs), "missing structured positive")
-    require(summarize(rs, qs) == parse((ROOT / "manifest.json").read_text()), "manifest mismatch")
-    print(f"共有規則{len(rs)}件、照会{len(qs)}件の参照・難度・件数を確認")
+        require({k for q in original for k in q[side]} == set(rules), f"missing rule on {side}")
+    hashes = {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
+              for name in ("rules.jsonl", "queries.jsonl", "holdout2.jsonl")}
+    expected = {"format": 1, "rules": len(rs), **distribution(original),
+                "variants": ["without_judge", "with_judge"], "sha256": hashes,
+                "holdout2": distribution(holdout)}
+    require(expected == parse((ROOT / "manifest.json").read_text()), "manifest mismatch")
+    for batch in (original, holdout):
+        require({len(q["must"]) for q in batch} >= {0, 1, 2, 3}, "missing cardinality")
+        require({q["level"] for q in batch if not q["must"]} == {"shared", "partial", "zero"}, "none controls")
+        require({q["level"] for q in batch if q["must"]} == {"shared", "partial", "zero"}, "positive controls")
+        require(any("target" in q["input"] and not q["must"] for q in batch), "missing structured negative")
+        require(any("target" in q["input"] and q["must"] for q in batch), "missing structured positive")
+    print(f"共有規則{len(rs)}件、既存{len(original)}問、独立確認{len(holdout)}問を確認")
+
 
 
 if __name__ == "__main__":
