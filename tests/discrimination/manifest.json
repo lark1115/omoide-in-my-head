@@ -1,0 +1,30 @@
+{
+  "format": 1,
+  "rules": 72,
+  "queries": 152,
+  "variants": [
+    "without_judge",
+    "with_judge"
+  ],
+  "by_overlap": {
+    "partial": 41,
+    "shared": 80,
+    "zero": 31
+  },
+  "by_required_count": {
+    "0": 40,
+    "1": 88,
+    "2": 16,
+    "3": 8
+  },
+  "none_by_overlap": {
+    "partial": 16,
+    "shared": 16,
+    "zero": 8
+  },
+  "action_target_only": 16,
+  "sha256": {
+    "rules.jsonl": "04a787c5d104686ad0c721d6016b34c1a6266b257262939e1cb8aa5cf585b56f",
+    "queries.jsonl": "cefaeb046c1371724721287ee85a3dba3e4947720956693026881c598c3fc10b"
+  }
+}

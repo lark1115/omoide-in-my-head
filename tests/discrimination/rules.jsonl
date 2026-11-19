@@ -1,0 +1,72 @@
+{"id":"R001","domain":"舞台幕","target":"雨幕","action":"巻き取る","scene":"濡れた雨幕を片付けるとき","text":"芯に巻かず、吊って乾かす。","excludes":["乾燥済みの幕","縫い直し待ちの幕"],"key_phrase":"濡れた雨幕"}
+{"id":"R002","domain":"舞台幕","target":"雨幕","action":"巻き取る","scene":"乾いた雨幕を片付けるとき","text":"細芯へ最後まで巻く。","excludes":["湿っている幕","縫い直し待ちの幕"],"key_phrase":"乾いた雨幕"}
+{"id":"R003","domain":"舞台幕","target":"月幕","action":"巻き取る","scene":"月幕の絵の具が生乾きのとき","text":"表を上にして平らに置く。","excludes":["硬化済み"],"key_phrase":"絵の具が生乾き"}
+{"id":"R004","domain":"舞台幕","target":"月幕","action":"巻き取る","scene":"月幕の絵の具が硬化済みのとき","text":"絵を外にして太芯に巻く。","excludes":["塗膜が柔らかい場合"],"key_phrase":"絵の具が硬化済み"}
+{"id":"R005","domain":"舞台幕","target":"帆布幕","action":"巻き取る","scene":"帆布幕の収納時","text":"常に左から巻く。","excludes":[],"key_phrase":"帆布幕"}
+{"id":"R006","domain":"舞台幕","target":"紗幕","action":"巻き取る","scene":"紗幕の収納時","text":"常に右から巻く。","excludes":[],"key_phrase":"紗幕"}
+{"id":"R007","domain":"舞台幕","target":null,"action":"巻き取る","scene":"舞台幕を船倉渡しにするとき","text":"幕の名を木札に書いて添える。","excludes":["陸送"],"key_phrase":"船倉渡し"}
+{"id":"R008","domain":"舞台幕","target":null,"action":"巻き取る","scene":"二座共用の舞台幕を収納するとき","text":"両座の色の紐を箱に掛ける。","excludes":["単独使用"],"key_phrase":"二座共用"}
+{"id":"R009","domain":"pit instruments","target":"reed pipe","action":"tune","scene":"Tune a cold reed pipe before a performance.","text":"Sound the low G first.","excludes":["a warmed pipe","instrument under repair"],"key_phrase":"cold reed pipe"}
+{"id":"R010","domain":"pit instruments","target":"reed pipe","action":"tune","scene":"Tune a warm reed pipe before a performance.","text":"Sound the high D first.","excludes":["a cold pipe","instrument under repair"],"key_phrase":"warm reed pipe"}
+{"id":"R011","domain":"pit instruments","target":"glass bell","action":"tune","scene":"Tune a glass bell with a loop attached.","text":"Suspend it from the loop.","excludes":["a bare crown"],"key_phrase":"glass bell with a loop"}
+{"id":"R012","domain":"pit instruments","target":"glass bell","action":"tune","scene":"Tune a bare glass bell without a loop.","text":"Rest its foot on cork.","excludes":["a fitted loop"],"key_phrase":"bare glass bell"}
+{"id":"R013","domain":"pit instruments","target":"bronze gong","action":"tune","scene":"Tune the bronze gong.","text":"Face its rim toward the aisle.","excludes":[],"key_phrase":"bronze gong"}
+{"id":"R014","domain":"pit instruments","target":"copper gong","action":"tune","scene":"Tune the copper gong.","text":"Face its rim away from the aisle.","excludes":[],"key_phrase":"copper gong"}
+{"id":"R015","domain":"pit instruments","target":null,"action":"tune","scene":"Tune pit instruments for an outdoor rehearsal.","text":"Record the air temperature beside the pitch.","excludes":["indoor rehearsal"],"key_phrase":"outdoor rehearsal"}
+{"id":"R016","domain":"pit instruments","target":null,"action":"tune","scene":"Tune pit instruments for a guest conductor.","text":"Hand the conductor a duplicate pitch slip.","excludes":["resident conductor"],"key_phrase":"guest conductor"}
+{"id":"R017","domain":"人形の頭","target":"狐頭","action":"包む","scene":"耳を外した狐頭を包むとき","text":"耳の穴を紙栓でふさぐ。","excludes":["耳付き","展示に固定した頭"],"key_phrase":"耳を外した狐頭"}
+{"id":"R018","domain":"人形の頭","target":"狐頭","action":"包む","scene":"耳付きの狐頭を包むとき","text":"耳の間へ綿の棒を渡す。","excludes":["耳なし","展示に固定した頭"],"key_phrase":"耳付きの狐頭"}
+{"id":"R019","domain":"人形の頭","target":"魚頭","action":"包む","scene":"口が開く魚頭を包むとき","text":"顎の下へ半月形の当て布を敷く。","excludes":["固定口"],"key_phrase":"口が開く魚頭"}
+{"id":"R020","domain":"人形の頭","target":"魚頭","action":"包む","scene":"口固定の魚頭を包むとき","text":"口先を三角紙で覆う。","excludes":["可動口"],"key_phrase":"口固定の魚頭"}
+{"id":"R021","domain":"人形の頭","target":"鶴頭","action":"包む","scene":"鶴頭を包むとき","text":"くちばしを箱の手前に向ける。","excludes":[],"key_phrase":"鶴頭"}
+{"id":"R022","domain":"人形の頭","target":"鴉頭","action":"包む","scene":"鴉頭を包むとき","text":"くちばしを箱の奥に向ける。","excludes":[],"key_phrase":"鴉頭"}
+{"id":"R023","domain":"人形の頭","target":null,"action":"包む","scene":"徒歩巡業に出す人形の頭を包むとき","text":"袋に肩紐を二本付ける。","excludes":["車便"],"key_phrase":"徒歩巡業"}
+{"id":"R024","domain":"人形の頭","target":null,"action":"包む","scene":"修理返送する人形の頭を包むとき","text":"作業票を内ポケットに入れる。","excludes":["通常の移動"],"key_phrase":"修理返送"}
+{"id":"R025","domain":"cue cards","target":"entry card","action":"mark","scene":"Mark the first entry card of an act.","text":"Draw a solid circle on the edge.","excludes":["later entries","cards kept solely as archive facsimiles"],"key_phrase":"first entry card"}
+{"id":"R026","domain":"cue cards","target":"entry card","action":"mark","scene":"Mark a repeat entry card within the same act.","text":"Draw a hollow circle on the edge.","excludes":["first entrance","cards kept solely as archive facsimiles"],"key_phrase":"repeat entry card"}
+{"id":"R027","domain":"cue cards","target":"exit card","action":"mark","scene":"Mark an exit card for an unaccompanied exit.","text":"Add one short dash.","excludes":["paired exit"],"key_phrase":"unaccompanied exit"}
+{"id":"R028","domain":"cue cards","target":"exit card","action":"mark","scene":"Mark an exit card for a paired exit.","text":"Add two short dashes.","excludes":["solo exit"],"key_phrase":"paired exit"}
+{"id":"R029","domain":"cue cards","target":"silent card","action":"mark","scene":"Mark a silent card.","text":"Use silver pencil.","excludes":[],"key_phrase":"silent card"}
+{"id":"R030","domain":"cue cards","target":"sung card","action":"mark","scene":"Mark a sung card.","text":"Use black pencil.","excludes":[],"key_phrase":"sung card"}
+{"id":"R031","domain":"cue cards","target":null,"action":"mark","scene":"Mark a matinee copy of any cue card.","text":"Punch its top corner.","excludes":["evening copy"],"key_phrase":"matinee copy"}
+{"id":"R032","domain":"cue cards","target":null,"action":"mark","scene":"Mark cue cards filed with a loan script.","text":"Write the borrowing troupe's emblem on the back.","excludes":["house script"],"key_phrase":"loan script"}
+{"id":"R033","domain":"衣装小物","target":"絹襟","action":"乾かす","scene":"汗で湿った絹襟を乾かすとき","text":"輪にして平干しする。","excludes":["洗い直した直後","仕立て見本として台紙に固定した襟"],"key_phrase":"汗で湿った絹襟"}
+{"id":"R034","domain":"衣装小物","target":"絹襟","action":"乾かす","scene":"絹襟を水洗い直後に乾かすとき","text":"布張りの筒に掛ける。","excludes":["汗だけの湿り","仕立て見本として台紙に固定した襟"],"key_phrase":"水洗い直後"}
+{"id":"R035","domain":"衣装小物","target":"革帯","action":"乾かす","scene":"革帯の裏革が濡れたとき","text":"裏側を上にして乾かす。","excludes":["表のみ"],"key_phrase":"裏革が濡れた"}
+{"id":"R036","domain":"衣装小物","target":"革帯","action":"乾かす","scene":"革帯の表革だけ濡れたとき","text":"表側を上にして乾かす。","excludes":["裏側も湿ったもの"],"key_phrase":"表革だけ濡れた"}
+{"id":"R037","domain":"衣装小物","target":"麻帽","action":"乾かす","scene":"麻帽を乾かすとき","text":"頂を上にして木台に載せる。","excludes":[],"key_phrase":"麻帽"}
+{"id":"R038","domain":"衣装小物","target":"毛糸帽","action":"乾かす","scene":"毛糸帽を乾かすとき","text":"頂を下にして網へ載せる。","excludes":[],"key_phrase":"毛糸帽"}
+{"id":"R039","domain":"衣装小物","target":null,"action":"乾かす","scene":"衣装小物を夜干しするとき","text":"棚に星形の時刻札を置く。","excludes":["昼干し"],"key_phrase":"夜干し"}
+{"id":"R040","domain":"衣装小物","target":null,"action":"乾かす","scene":"染め試作の衣装小物を乾かすとき","text":"白い試験片を脇に敷く。","excludes":["製品の衣装"],"key_phrase":"染め試作"}
+{"id":"R041","domain":"shadow plates","target":"sun plate","action":"mount","scene":"Mount a notched sun plate in the shadow frame.","text":"Seat the notch on the left pin.","excludes":["smooth rim","plates reserved for alignment calibration"],"key_phrase":"notched sun plate"}
+{"id":"R042","domain":"shadow plates","target":"sun plate","action":"mount","scene":"Mount a smooth sun plate in the shadow frame.","text":"Hold it against the right stop.","excludes":["notched rim","plates reserved for alignment calibration"],"key_phrase":"smooth sun plate"}
+{"id":"R043","domain":"shadow plates","target":"cloud plate","action":"mount","scene":"Mount a painted cloud plate in the shadow frame.","text":"Face the pigment away from the lamp.","excludes":["unpainted plate"],"key_phrase":"painted cloud plate"}
+{"id":"R044","domain":"shadow plates","target":"cloud plate","action":"mount","scene":"Mount an unpainted cloud plate in the shadow frame.","text":"Face the maker's stamp toward the lamp.","excludes":["painted plate"],"key_phrase":"unpainted cloud plate"}
+{"id":"R045","domain":"shadow plates","target":"river plate","action":"mount","scene":"Mount the river plate in the shadow frame.","text":"Put the wide end at the top.","excludes":[],"key_phrase":"river plate"}
+{"id":"R046","domain":"shadow plates","target":"road plate","action":"mount","scene":"Mount the road plate in the shadow frame.","text":"Put the wide end at the bottom.","excludes":[],"key_phrase":"road plate"}
+{"id":"R047","domain":"shadow plates","target":null,"action":"mount","scene":"Mount shadow plates for a double lantern.","text":"Fit the second retaining wire.","excludes":["single lantern"],"key_phrase":"double lantern"}
+{"id":"R048","domain":"shadow plates","target":null,"action":"mount","scene":"Mount shadow plates in a travel frame.","text":"Clip the transit tag to the base.","excludes":["fixed frame"],"key_phrase":"travel frame"}
+{"id":"R049","domain":"舞台用の結び紐","target":"橋綱","action":"結ぶ","scene":"本番の橋綱を結ぶとき","text":"端に琥珀色の玉を一つ付ける。","excludes":["稽古用","縮尺試験用の綱"],"key_phrase":"本番の橋綱"}
+{"id":"R050","domain":"舞台用の結び紐","target":"橋綱","action":"結ぶ","scene":"稽古の橋綱を結ぶとき","text":"端に白い羽根を一枚付ける。","excludes":["本番用","縮尺試験用の綱"],"key_phrase":"稽古の橋綱"}
+{"id":"R051","domain":"舞台用の結び紐","target":"鐘紐","action":"結ぶ","scene":"新しい鐘紐を結ぶとき","text":"房を長く残す。","excludes":["使い込んだ紐"],"key_phrase":"新しい鐘紐"}
+{"id":"R052","domain":"舞台用の結び紐","target":"鐘紐","action":"結ぶ","scene":"古い鐘紐を結び直すとき","text":"房を短くそろえる。","excludes":["新品"],"key_phrase":"古い鐘紐"}
+{"id":"R053","domain":"舞台用の結び紐","target":"山旗紐","action":"結ぶ","scene":"山旗紐を結ぶとき","text":"輪を表に出す。","excludes":[],"key_phrase":"山旗紐"}
+{"id":"R054","domain":"舞台用の結び紐","target":"谷旗紐","action":"結ぶ","scene":"谷旗紐を結ぶとき","text":"輪を裏に隠す。","excludes":[],"key_phrase":"谷旗紐"}
+{"id":"R055","domain":"舞台用の結び紐","target":null,"action":"結ぶ","scene":"手袋操演に使う舞台紐を結ぶとき","text":"握りに布輪を加える。","excludes":["素手での操演"],"key_phrase":"手袋操演"}
+{"id":"R056","domain":"舞台用の結び紐","target":null,"action":"結ぶ","scene":"貸出巡回に出る舞台紐を結ぶとき","text":"端に貸主の札も付ける。","excludes":["自座の巡回"],"key_phrase":"貸出巡回"}
+{"id":"R057","domain":"audience benches","target":"rain bench","action":"seat","scene":"Seat guests on the rain bench by the door.","text":"Keep the aisle end free for the usher.","excludes":["bench by the window","benches set aside for maintenance"],"key_phrase":"rain bench by the door"}
+{"id":"R058","domain":"audience benches","target":"rain bench","action":"seat","scene":"Seat guests on the rain bench by the window.","text":"Keep the window end free for the lantern.","excludes":["bench by the door","benches set aside for maintenance"],"key_phrase":"rain bench by the window"}
+{"id":"R059","domain":"audience benches","target":"story bench","action":"seat","scene":"Seat guests on the morning story bench.","text":"Reserve the centre for the reader.","excludes":["afternoon session"],"key_phrase":"morning story bench"}
+{"id":"R060","domain":"audience benches","target":"story bench","action":"seat","scene":"Seat guests on the afternoon story bench.","text":"Reserve the far end for the reader.","excludes":["morning session"],"key_phrase":"afternoon story bench"}
+{"id":"R061","domain":"audience benches","target":"oak bench","action":"seat","scene":"Seat guests on the oak bench.","text":"Fill from the left end.","excludes":[],"key_phrase":"oak bench"}
+{"id":"R062","domain":"audience benches","target":"ash bench","action":"seat","scene":"Seat guests on the ash bench.","text":"Fill from the right end.","excludes":[],"key_phrase":"ash bench"}
+{"id":"R063","domain":"audience benches","target":null,"action":"seat","scene":"Seat guests on audience benches for a captioned show.","text":"Place a blue caption paddle at the front of the row.","excludes":["uncaptioned show"],"key_phrase":"captioned show"}
+{"id":"R064","domain":"audience benches","target":null,"action":"seat","scene":"Seat guests on audience benches at a ticketless preview.","text":"Hang a little wooden counter on the back of the row.","excludes":["ticketed performance"],"key_phrase":"ticketless preview"}
+{"id":"R065","domain":"舞台幕","target":"ripple drop","action":"巻き取る","scene":"Put away the ripple drop after the water scene.","text":"Roll the ripple drop around a square core.","excludes":[],"key_phrase":"ripple drop"}
+{"id":"R066","domain":"pit instruments","target":"竹笛","action":"tune","scene":"音合わせで竹笛を構えるとき","text":"竹笛は中音のラから始める。","excludes":[],"key_phrase":"竹笛"}
+{"id":"R067","domain":"人形の頭","target":"moth head","action":"包む","scene":"Wrap the moth head for ordinary storage.","text":"Place a flat wedge beneath its antennae.","excludes":[],"key_phrase":"moth head"}
+{"id":"R068","domain":"cue cards","target":"拍手札","action":"mark","scene":"拍手札に印を入れるとき","text":"札の下辺に渦を一つ描く。","excludes":[],"key_phrase":"拍手札"}
+{"id":"R069","domain":"衣装小物","target":"linen collar","action":"乾かす","scene":"Dry a linen collar after laundering.","text":"Stretch the linen collar between two reeds.","excludes":[],"key_phrase":"linen collar"}
+{"id":"R070","domain":"shadow plates","target":"霧板","action":"mount","scene":"影枠に霧板を入れるとき","text":"刻印が左に来るように差す。","excludes":[],"key_phrase":"霧板"}
+{"id":"R071","domain":"舞台用の結び紐","target":"harbour flag cord","action":"結ぶ","scene":"Tie the harbour flag cord for a performance.","text":"Leave its loop along the lower edge.","excludes":[],"key_phrase":"harbour flag cord"}
+{"id":"R072","domain":"audience benches","target":"楓の長椅子","action":"seat","scene":"楓の長椅子へ客を案内するとき","text":"中央から左右へ交互に詰める。","excludes":[],"key_phrase":"楓の長椅子"}
