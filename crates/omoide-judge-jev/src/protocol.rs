@@ -29,6 +29,7 @@ struct Situation {
 }
 #[derive(Deserialize)]
 struct Candidate {
+    kind: Option<String>,
     version_id: String,
     text: String,
     scene: Option<String>,
@@ -45,13 +46,39 @@ impl Input {
             if c.version_id.is_empty() || !versions.insert(&c.version_id) {
                 return Err("invalid candidate IDs");
             }
-            questions.insert(format!("q{index}"),json!({
-                "type":"noul",
-                "instructions":{"question":QUESTION,"rule":{"text":c.text,"scene":c.scene,"aliases":c.aliases}},
-                "criteria":{"true":YES,"false":NO}
-            }));
+            let (question, yes, no) = match c.kind.as_deref() {
+                Some("decision") => (
+                    "Does this decision concern the choice described?",
+                    "The recorded choice informs this situation, including a pending choice.",
+                    "The subject or choice differs.",
+                ),
+                Some("fact") => (
+                    "Is this factual record relevant evidence for this situation?",
+                    "The fact bears on the subject and circumstances, at its stated certainty.",
+                    "The fact concerns another subject or circumstances.",
+                ),
+                Some("experience") => (
+                    "Does this observation document relevant work for this situation?",
+                    "The observed work or outcome informs the situation within its scope and time.",
+                    "The observation concerns different work, scope or time.",
+                ),
+                _ => (QUESTION, YES, NO),
+            };
+            questions.insert(format!("q{index}"),json!({"type":"noul","instructions":{"question":question,
+                "rule":{"text":c.text,"scene":c.scene,"aliases":c.aliases}},"criteria":{"true":yes,"false":no}}));
         }
-        Ok(json!({"model":MODEL,"state":self.query,"questions":questions}))
+        let state_bytes = serde_json::to_vec(&self.query).unwrap().len();
+        if questions
+            .values()
+            .any(|q| state_bytes + q.to_string().len() > 24_000)
+        {
+            return Err("question exceeds byte budget");
+        }
+        let body = json!({"model":MODEL,"state":self.query,"questions":questions});
+        if body.to_string().len() > 48_000 {
+            return Err("request exceeds byte budget");
+        }
+        Ok(body)
     }
 
     pub fn decode(&self, bytes: &[u8]) -> Result<(Value, Usage), &'static str> {

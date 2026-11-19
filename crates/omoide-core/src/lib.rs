@@ -183,4 +183,5 @@ pub mod judge;
 
 pub mod selection;
 
+pub mod relevance;
 pub mod tiers;

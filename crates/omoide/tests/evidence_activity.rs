@@ -805,7 +805,9 @@ fn revised_decision_keeps_both_sources_and_usage_cannot_revive_old_consent() {
     *stale.last_mut().unwrap() = "stale";
     d.run(&stale, false);
     d.ok(&["used", "--version", version(&base)]);
-    assert_eq!(d.ok(&["recall", "--scene", "amber"])["state"], "none");
+    let missing = d.ok(&["recall", "--scene", "amber"]);
+    assert_eq!(missing["state"], "incomplete_search");
+    assert!(missing["results"].as_array().unwrap().is_empty());
     let h = d.ok(&["show", id(&base), "--history"]);
     assert_eq!(h["record"]["decision"], "pending");
     assert_eq!(h["history"][0]["record"]["decision"], "revised");

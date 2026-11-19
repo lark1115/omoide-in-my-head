@@ -264,3 +264,33 @@ fn distinct_candidate_content_is_bound_to_each_question_in_one_exchange() {
         json!({"answers":[{"version_id":"first","score":0.15},{"version_id":"second","score":0.85}]})
     );
 }
+
+// [REQ-JUDGE-1]
+#[test]
+fn choose_question_by_kind_and_refuse_oversize_before_transport() {
+    let make = |kind: &str, text: &str| json!({"version_id":kind,"kind":kind,"text":text});
+    let build = |items: Vec<Value>| {
+        serde_json::from_value::<Input>(json!({"query":{},"candidates":items}))
+            .unwrap()
+            .request()
+    };
+    let kinds = ["rule", "skill", "decision", "fact", "experience"];
+    let payload = build(kinds.iter().map(|k| make(k, "invented")).collect()).unwrap();
+    let q = |i| {
+        payload["questions"][format!("q{i}")]["instructions"]["question"]
+            .as_str()
+            .unwrap()
+    };
+    assert_eq!(q(0), q(1));
+    assert!(q(2).contains("decision"));
+    assert!(q(3).contains("factual"));
+    assert!(q(4).contains("observation"));
+    assert_eq!(
+        build(vec![make("fact", &"紙".repeat(9000))]).unwrap_err(),
+        "question exceeds byte budget"
+    );
+    assert_eq!(
+        build(kinds.iter().map(|k| make(k, &"a".repeat(10000))).collect()).unwrap_err(),
+        "request exceeds byte budget"
+    );
+}

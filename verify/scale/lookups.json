@@ -1,0 +1,347 @@
+{
+  "T01": [
+    {
+      "scene": "closing the showroom, final arrangement for the archway"
+    },
+    {
+      "scene": "shutting the showroom, final arrangement for the archway"
+    },
+    {
+      "target": "archway",
+      "scene": "closing showroom arrangement"
+    }
+  ],
+  "T02": [
+    {
+      "target": "笛箱",
+      "scene": "春と夏の笛箱 人手が必要な棚卸し",
+      "action": "棚卸し"
+    }
+  ],
+  "T04": [
+    {
+      "scene": "机が届いた。試食会の設営"
+    },
+    {
+      "scene": "試食会の設営 机が届いた"
+    }
+  ],
+  "T05": [
+    {
+      "scene": "little jars for indoor class, tags needed"
+    },
+    {
+      "scene": "little jars for indoor class, finishing tags"
+    },
+    {
+      "target": "indoor jars",
+      "action": "label"
+    }
+  ],
+  "T06": [
+    {
+      "scene": "石の駒を皿に分ける 予備 持出数"
+    },
+    {
+      "scene": "石の駒を皿に分ける 持出数 予備"
+    }
+  ],
+  "T07": [
+    {
+      "target": "picnic carton insert",
+      "action": "layout spaces",
+      "scene": "laying out picnic-carton insert, number of spaces to draw"
+    },
+    {
+      "target": "picnic carton insert",
+      "scene": "laying out picnic-carton insert, number of spaces/compartments"
+    }
+  ],
+  "T08": [
+    {
+      "scene": "休憩中に花輪パンを一人ずつに配る"
+    }
+  ],
+  "T10": [
+    {
+      "scene": "小さい方の窯で丸いトレーを使う工程"
+    }
+  ],
+  "T11": [
+    {
+      "target": "folding screen",
+      "action": "status"
+    }
+  ],
+  "T12": [
+    {
+      "target": "月形パイ",
+      "action": "包む",
+      "scene": "朝一番のお客さんの月形パイを梱包する"
+    },
+    {
+      "target": "月形パイ",
+      "scene": "切り売りの初回"
+    },
+    {
+      "target": "月形パイ",
+      "action": "梱包",
+      "scene": "朝一番のお客さん、包むまでの段取り"
+    }
+  ],
+  "T13": [
+    {
+      "scene": "two-tone ticket batch without borrowing equipment"
+    },
+    {
+      "scene": "two-tone ticket batch, borrowing equipment"
+    }
+  ],
+  "T14": [
+    {
+      "target": "網戸",
+      "action": "引き継ぎ"
+    }
+  ],
+  "T15": [
+    {
+      "scene": "plum drinks counter just opened, making order number one"
+    },
+    {
+      "target": "plum syrup",
+      "scene": "first pour of the day",
+      "action": "serve"
+    }
+  ],
+  "T16": [
+    {
+      "scene": "灯市二日分の焼き札 印刷係に残りを伝える"
+    },
+    {
+      "scene": "灯市二日分の焼き札、印刷係に残りを伝える"
+    }
+  ],
+  "T18": [
+    {
+      "scene": "冬市の包材表 候補の帯の色"
+    },
+    {
+      "scene": "冬市の包材表 帯の色"
+    }
+  ],
+  "T19": [
+    {
+      "scene": "double-sided wall menu proofreading, what remains"
+    }
+  ],
+  "T21": [
+    {
+      "target": "seed tin",
+      "scene": "label front wording for seed tin",
+      "action": "write label wording"
+    }
+  ],
+  "T22": [
+    {
+      "scene": "写真係に空の果実台の模型を運ぶ、包み方",
+      "action": "包む"
+    },
+    {
+      "scene": "写真係に空の果実台の模型を運ぶ。包み方",
+      "action": "梱包"
+    }
+  ],
+  "T24": [
+    {
+      "scene": "格子の模様を付ける道具の手配"
+    }
+  ],
+  "T25": [
+    {
+      "scene": "moving the indoor trolley to the wrapping bench",
+      "action": "move trolley"
+    },
+    {
+      "scene": "moving indoor trolley to the wrapping bench",
+      "action": "move trolley"
+    },
+    {
+      "target": "indoor trolley",
+      "scene": "moving trolley to wrapping bench",
+      "action": "move"
+    }
+  ],
+  "T27": [
+    {
+      "target": "trellis stencil",
+      "action": "reproduce",
+      "scene": "reproducing a stencil; whether the master must be brought in"
+    }
+  ],
+  "T28": [
+    {
+      "target": "果実輪",
+      "scene": "受取状況を売り場に伝える"
+    },
+    {
+      "scene": "果実輪の受取状況を売り場に伝える"
+    }
+  ],
+  "T29": [
+    {
+      "scene": "visitor collecting assortment to compare scents, sending out tasting flight"
+    },
+    {
+      "scene": "visitor collecting assortment of scents to compare, sending out a tasting flight",
+      "action": "pack and send"
+    }
+  ],
+  "T30": [
+    {
+      "scene": "朝市の大小の袋を今日の検品係に割り振る",
+      "action": "割り振り"
+    },
+    {
+      "scene": "朝市の大小の袋を今日の検品係に割り振る"
+    }
+  ],
+  "T31": [
+    {
+      "scene": "product note about new dial getting wet"
+    },
+    {
+      "scene": "product note about the new dial getting wet"
+    }
+  ],
+  "T32": [
+    {
+      "scene": "向こう岸行きの焼き菓子を運び手に渡す",
+      "action": "橋便の仕分け"
+    },
+    {
+      "scene": "向こう岸行きの焼き菓子を運び手に渡す 橋便"
+    }
+  ],
+  "T33": [
+    {
+      "scene": "polishing list for leaf-mould cabinets"
+    }
+  ],
+  "T35": [
+    {
+      "scene": "courtyard handbill opening line for printer"
+    },
+    {
+      "scene": "courtyard handbill opening line for the printer"
+    }
+  ],
+  "T36": [
+    {
+      "scene": "店内の味見筒の胴の仕上げ",
+      "target": "筒"
+    },
+    {
+      "scene": "店内の味見筒の胴の仕上げ",
+      "target": "味見筒"
+    }
+  ],
+  "T37": [
+    {
+      "scene": "tally line for gate rosettes, red and white counts",
+      "action": "tally"
+    },
+    {
+      "scene": "tally line for red gate rosettes and white ones, total"
+    }
+  ],
+  "T38": [
+    {
+      "scene": "夕便が来る前に案内札を用意する"
+    },
+    {
+      "target": "夕便",
+      "scene": "夕便が来る前に案内札を用意する"
+    }
+  ],
+  "T39": [
+    {
+      "scene": "stacking unfinished wooden blanks for sanding",
+      "action": "stack"
+    }
+  ],
+  "T41": [
+    {
+      "scene": "sizing reed strips; instrument to measure or order"
+    },
+    {
+      "scene": "sizing reed strips; instrument or measuring tool needed",
+      "action": "size reed strips"
+    }
+  ],
+  "T42": [
+    {
+      "scene": "紫の釉見本 仕上がり報告"
+    },
+    {
+      "scene": "紫の釉見本の仕上がり報告"
+    }
+  ],
+  "T43": [
+    {
+      "scene": "paint swatch shade confirmation"
+    }
+  ],
+  "T44": [
+    {
+      "scene": "深棚を奥に運ぶ。入口の建具を外すか",
+      "action": "建具を外す"
+    },
+    {
+      "scene": "深棚を奥に運ぶ 入口の建具を外す"
+    }
+  ],
+  "T45": [
+    {
+      "target": "lantern timer",
+      "scene": "advertising burn time of four hours"
+    },
+    {
+      "target": "lantern timer",
+      "action": "advertise runtime",
+      "scene": "advertising four hours burn time for lantern timer"
+    }
+  ],
+  "T46": [
+    {
+      "scene": "閉店後、塔のクッキーに使った道具の片付け"
+    },
+    {
+      "target": "塔形の木型",
+      "action": "収納",
+      "scene": "閉店後の通常営業、クッキー型の片付け"
+    },
+    {
+      "scene": "閉店 塔のクッキーに使った道具の片付け"
+    },
+    {
+      "target": "塔形の木型",
+      "action": "収納",
+      "scene": "閉店後の通常業務"
+    }
+  ],
+  "T47": [
+    {
+      "scene": "orchard delivery crate count",
+      "action": "assign crate count"
+    }
+  ],
+  "T48": [
+    {
+      "target": "楕円缶",
+      "scene": "楕円缶の空き四つを二台の台車に二つずつ置く"
+    },
+    {
+      "scene": "楕円缶の空き四つを二台の台車に二つずつ置く割り振り"
+    }
+  ]
+}

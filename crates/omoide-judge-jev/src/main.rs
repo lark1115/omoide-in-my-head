@@ -113,7 +113,14 @@ fn main() -> ExitCode {
         }
         Err(reason) => {
             eprintln!("{reason}");
-            ExitCode::FAILURE
+            if matches!(
+                reason.as_str(),
+                "TypeSafe request timed out" | "adapter deadline exceeded"
+            ) {
+                ExitCode::from(124)
+            } else {
+                ExitCode::FAILURE
+            }
         }
     }
 }

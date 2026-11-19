@@ -50,7 +50,7 @@ omoide recall --action ignite --target 工房
 - `rule add` の `activated` は登録済みです。`near_rules` は未登録で、近い決まり、元の発言、版の並びの要約値を返します。比較を終える手順は次節にあります。
 - 動作名・対象・適用除外は完全一致です。対象を省いた規則は全対象に使えます。対象を指定しない問い合わせは対象不明として、対象つきの規則も対象名と一緒に返します。対象を指定すると、別の対象向けの規則は返りません。適用除外の文は結果にも残るため、完全一致で除外されなかった範囲は呼び出し側が判断します。目的や除外を省くと検索時に `unknown` を返します。
 - 場面検索は NFKC と小文字化、日本語の二字組、単字の問い合わせ、英数字の語を使います。動作名に結びついた規則を先に返します。次に本文一致、利用者の確定した決定・検証済みの事実、語の一致割合、明示された使用回数（最大32）、時刻、識別子を比較します。同じ半減期では経過時間による減衰と登録時刻の新しさの順は同じです。意味だけが同じ言い換えは取りこぼすため、登録時に別の表現を `--alias` で複数添えられます。
-- `recall` は `state`（`found` / `candidates_only` / `none`）、判定器の `judge_state`（`not_configured` / `used` / `failed`）、採点対象数 `candidate_count` と一致数 `matched_count` を別々に返します。`candidates_only` は未確認候補のみを示すので、使う前に候補の版IDで `omoide show VERSION_ID` を実行し、条件と除外を確かめます。今の規則が `--scan-limit`（既定500件）以下なら場面検索で全件を採点し、超えた場合は全文索引から `--fts-limit`（既定500件）まで取得します。打ち切りは `candidates_truncated` で確認できます。動作の一致は別に取得します。
+- `recall` は `state`（`found` / `candidates_only` / `none` / `incomplete_search`）、判定器の `judge_state`（`not_configured` / `used` / `failed`）、採点対象数 `candidate_count` と一致数 `matched_count` を別々に返します。`candidates_only` は未確認候補のみを示すので、使う前に候補の版IDで `omoide show VERSION_ID` を実行し、条件と除外を確かめます。今の規則が `--scan-limit`（既定500件）以下なら場面検索で全件を採点し、超えた場合は全文索引から `--fts-limit`（既定500件）まで取得します。打ち切りは `candidates_truncated` で確認できます。動作の一致は別に取得します。
 - 問い合わせ結果は改行込みで4,000バイト以内です。続きは同じ問い合わせに `--cursor` を添えます。保存の版または使用回数の版が変わると `restarted` が真になり先頭から返します。`truncated` の本文は `show` で全体を読んでから使います。条件欄だけで上限を超える場合はエラーです。
 - 保存する文に秘密を含めないでください。機密物は安全な保管先の参照だけを登録します。装置は本文から秘密を検出しません。
 
@@ -150,7 +150,7 @@ init はマーカーがなければファイルの末尾に節を用意し、そ
 
 ### 検索結果と未確認候補
 
-`results` は適用条件を通った記録です。`candidates` は確認用の短い見出しです。候補を使う前に `omoide show VERSION_ID` で本文・場面・対象・除外を読みます。`found` は確定結果あり、`candidates_only` は未確認候補のみ、`none` は両方とも空です。両方の欄が4,000バイトを共有します。`candidates_remaining` はそのページに載らなかった未確認候補数です。
+`results` は適用条件を通った記録です。`candidates` は確認用の短い見出しです。候補を使う前に `omoide show VERSION_ID` で本文・場面・対象・除外を読みます。`found` は確定結果あり、`candidates_only` は未確認候補のみ、`none` は対象をすべて調べて両欄が空の状態です。`incomplete_search` は確定結果がなく、未調査の範囲が残る状態です。両方の欄が4,000バイトを共有します。`candidates_remaining` はそのページに載らなかった未確認候補数です。
 
 ### Jev を使う場合
 
@@ -216,3 +216,7 @@ python3 verify/hot_contract.py target/release/omoide target/fault/debug/omoide
 ```
 
 Linux では Python 3 と GNU time を用意し、`python3 verify/measure.py target/release/omoide` で規則1万件を、同じ命令に `--dataset mixed` を添えて事実・経験各5千件の計測を再実行できます。
+
+### 検索範囲を読む
+
+確定結果が空なら notice が返ります。未確認候補の原文を読み、台帳など別の情報源も探してください。found でも search.incomplete が真なら検索範囲の一部を確認できていません。search.by_kind は種類ごとに eligible（対象）、scored（語彙採点）、judged（正常判定）を返します。rule_path、evidence_path、action_index が実際の経路、rule_cap、evidence_cap、reply_cap が上限に当たった箇所です。timeout、fallback、judge_remaining で時間切れ・基本検索への復帰・要求したが未判定の件数を確認できます。
