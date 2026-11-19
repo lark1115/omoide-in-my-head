@@ -1,0 +1,81 @@
+{
+  "format": 1,
+  "opportunities": 48,
+  "paired_trials": 144,
+  "by_type_language": {
+    "rule_omitted": {
+      "en": 3,
+      "ja": 3
+    },
+    "work_repeated": {
+      "ja": 3,
+      "en": 3
+    },
+    "control": {
+      "en": 4,
+      "ja": 4
+    },
+    "decision_reopened": {
+      "ja": 3,
+      "en": 3
+    },
+    "scope_overreach": {
+      "en": 3,
+      "ja": 3
+    },
+    "outside": {
+      "en": 2,
+      "ja": 2
+    },
+    "prior_resource": {
+      "ja": 3,
+      "en": 3
+    },
+    "hearsay_verified": {
+      "en": 3,
+      "ja": 3
+    }
+  },
+  "by_language": {
+    "en": 24,
+    "ja": 24
+  },
+  "by_cohort": {
+    "primary": 36,
+    "control": 8,
+    "excluded": 4
+  },
+  "hot_record_ids": [
+    "m002",
+    "m005",
+    "m037",
+    "m040"
+  ],
+  "arms": {
+    "device": {
+      "opportunities": "opportunities.json",
+      "archive": "memory.json",
+      "hot": "hot.txt",
+      "lookup": true
+    },
+    "no_device": {
+      "opportunities": "opportunities.json",
+      "archive": "memory.json",
+      "hot": null,
+      "lookup": false
+    },
+    "hot_only": {
+      "opportunities": "opportunities.json",
+      "archive": "memory.json",
+      "hot": "hot.txt",
+      "lookup": false
+    }
+  },
+  "sha256": {
+    "memory.json": "b0e77ed895eb03dc482cfb49e5d38d7cb34d99c42c2d33b39131aeb992a65455",
+    "opportunities.json": "6612ee4958e57eb17c36af8826468ca11adfec6cd5f4a47adb9cf87d34fbffd6",
+    "hot.txt": "2cb4d6d36cd231d44748f79626431bdfc5024260ded45aacc3b45a961c4e1480",
+    "grading/key.json": "7b0ca7abeba4047dfd52f5cea146fdcdc4fbfa1b99e53d7fd22e2007b77a04e6",
+    "grading/examples.json": "a4d45c4ed9b78a316141ccfeb66e07b68b44b3e90aa480f53cec1ca3c3649659"
+  }
+}

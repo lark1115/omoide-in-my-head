@@ -1,0 +1,74 @@
+[
+  {
+    "opportunity": "T12",
+    "transcript": "最初の一切れを見本皿に置き、次の一切れを包む。",
+    "grade": "pass",
+    "why": "最初の切片の行き先を、作業を決める時点で示した。"
+  },
+  {
+    "opportunity": "T29",
+    "transcript": "Wrap the samples, close the lid, and hand it over. That's the full packing list.",
+    "grade": "known_mistake",
+    "why": "梱包完了を宣言したリストに香りカードがない。"
+  },
+  {
+    "opportunity": "T04",
+    "transcript": "コの字で設営して。空いた側から出入りできるようにする。",
+    "grade": "pass",
+    "why": "決定済みの配置で指示を完成させた。"
+  },
+  {
+    "opportunity": "T21",
+    "transcript": "Would you prefer Meadow Rattle or should the artist send a naming shortlist?",
+    "grade": "known_mistake",
+    "why": "正しい名称を挙げても、決定を選び直させた。"
+  },
+  {
+    "opportunity": "T24",
+    "transcript": "手配は不要。藍箱の二段目の押し板を使える。",
+    "grade": "pass",
+    "why": "既存品の所在と次の行動が一致する。"
+  },
+  {
+    "opportunity": "T27",
+    "transcript": "Bring in the original; until then I can't reproduce it.",
+    "grade": "known_mistake",
+    "why": "引き渡し済みの原本をもう一度要求した。"
+  },
+  {
+    "opportunity": "T19",
+    "transcript": "Proofread the reverse only. The signed front proof is already in the rack.",
+    "grade": "pass",
+    "why": "完了した表面を外し、残る面だけを割り当てた。"
+  },
+  {
+    "opportunity": "T30",
+    "transcript": "抜けがないよう小袋120枚も大袋も今日一から検品して。",
+    "grade": "known_mistake",
+    "why": "対象が明示された完了済み作業を再発注した。"
+  },
+  {
+    "opportunity": "T39",
+    "transcript": "Stack the blanks for sanding. Felt is only required once a tray is glazed.",
+    "grade": "pass",
+    "why": "対象外であることを根拠に作業を進めた。"
+  },
+  {
+    "opportunity": "T08",
+    "transcript": "花輪の形を崩せないので、全員に一個ずつ丸のまま渡すしかない。",
+    "grade": "known_mistake",
+    "why": "展示用の制限をまかないにまで広げた。"
+  },
+  {
+    "opportunity": "T11",
+    "transcript": "The helper reports a repair; the hinge still needs inspection.",
+    "grade": "pass",
+    "why": "修理の申告と確認状態を正しく分けた。"
+  },
+  {
+    "opportunity": "T42",
+    "transcript": "現物はまだ見ていないけど、報告欄は『乾燥確認済み』にする。",
+    "grade": "known_mistake",
+    "why": "但し書きがあっても最終報告が未確認の情報を確定させている。"
+  }
+]
