@@ -477,6 +477,7 @@ dependencies = [
 name = "omoide-store"
 version = "0.1.0"
 dependencies = [
+ "libc",
  "omoide-core",
  "rusqlite",
  "tempfile",

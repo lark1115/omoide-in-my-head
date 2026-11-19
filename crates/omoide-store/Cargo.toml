@@ -10,3 +10,7 @@ rusqlite={version="0.37",features=["bundled","limits","extra_check"]}
 thiserror="2"
 [dev-dependencies]
 tempfile.workspace=true
+[features]
+fault-injection=["dep:libc"]
+[target.'cfg(unix)'.dependencies]
+libc={version="0.2",optional=true}

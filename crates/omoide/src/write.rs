@@ -1,7 +1,7 @@
 use crate::{
-    args::{Command, Rule, RuleCommand},
+    args::{Command, FactCommand, Rule, RuleCommand},
     db::*,
-    search::near,
+    relations::{self, Plan},
 };
 use omoide_core::document;
 use omoide_store::lookup::{index_rule, near_query};
@@ -28,7 +28,15 @@ pub fn nonempty(text: &str) -> Result<()> {
         Ok(())
     }
 }
-fn create_rule(rule: &Rule, rid: &str, vid: &str, time: i64) -> Vec<Statement> {
+pub(crate) fn create_rule(
+    rule: &Rule,
+    rid: &str,
+    vid: &str,
+    time: i64,
+    state: &str,
+    parent: Option<&str>,
+    base: Option<&str>,
+) -> Vec<Statement> {
     let t = document(&rule.text, &rule.scene, &rule.aliases);
     let joined = |set: &std::collections::BTreeSet<String>| {
         set.iter().map(String::as_str).collect::<Vec<_>>().join(" ")
@@ -40,10 +48,11 @@ fn create_rule(rule: &Rule, rid: &str, vid: &str, time: i64) -> Vec<Statement> {
         ),
         q("DELETE FROM source_guard", vec![]),
         q(
-            "INSERT INTO rules(id,version,state,body,scene,aliases,actions,target,purpose,exclusion,source,created) VALUES(?,?,'current',?,?,?,?,?,?,?,?,?)",
+            "INSERT INTO rules(id,version,state,body,scene,aliases,actions,target,purpose,exclusion,source,created,parent_id,pending_against) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
             vec![
                 s(rid),
                 s(vid),
+                s(state),
                 s(&rule.text),
                 s(&rule.scene),
                 s(&json!(rule.aliases).to_string()),
@@ -53,14 +62,16 @@ fn create_rule(rule: &Rule, rid: &str, vid: &str, time: i64) -> Vec<Statement> {
                 opt(&rule.exclude),
                 s(&rule.source),
                 Value::Integer(time),
+                parent.map_or(Value::Null, s),
+                base.map_or(Value::Null, s),
             ],
         ),
-        index_rule(rid, &joined(&t.words), &joined(&t.singles)),
+        index_rule(vid, &joined(&t.words), &joined(&t.singles)),
     ];
     for action in &rule.actions {
         changes.push(q(
             "INSERT INTO action_links VALUES(?,?)",
-            vec![s(action), s(rid)],
+            vec![s(action), s(vid)],
         ));
     }
     changes
@@ -99,6 +110,23 @@ pub fn apply(db: &mut impl Store, command: &Command, op: &str) -> Result<Json> {
                     &json!(rule.actions).to_string(),
                 ),
             ]);
+            if let Some(version) = &rule.against {
+                queries.push(relations::conflicts(version));
+                queries.push(relations::adjacent_scopes(version));
+            }
+        }
+        Command::Fact {
+            command: FactCommand::Add {
+                source: id, text, ..
+            },
+        } => {
+            nonempty(text)?;
+            queries.push(source(id));
+        }
+        Command::Resolve { pending, .. } => {
+            queries.push(q("SELECT p.id,c.version,p.target FROM rules p JOIN rules c ON c.version=p.pending_against WHERE p.version=? AND p.state='pending' AND c.state='current'",vec![s(pending)]));
+            queries.push(relations::conflicts(pending));
+            queries.push(relations::adjacent_scopes(pending));
         }
         _ => unreachable!(),
     }
@@ -149,30 +177,36 @@ pub fn apply(db: &mut impl Store, command: &Command, op: &str) -> Result<Json> {
             ),
             Command::Rule {
                 command: RuleCommand::Add(rule),
+            } => match relations::plan(rule, &sets, op, &rid, &vid, time)? {
+                Plan::Reply(result) => return Ok(result),
+                Plan::Write(batch, result) => (batch, result),
+            },
+            Command::Resolve { pending, keep } => {
+                relations::resolve(&sets[2], &sets[3], &sets[4], pending, keep, op)?
+            }
+            Command::Fact {
+                command:
+                    FactCommand::Add {
+                        source,
+                        text,
+                        target,
+                        certainty,
+                    },
             } => {
                 required_record(&sets[2])?;
-                let t = document(&rule.text, &rule.scene, &rule.aliases);
-                let mut neighbors = Vec::new();
-                for row in &sets[3] {
-                    let r = parse(&row[0])?;
-                    if near(&r, &t, &rule.actions) {
-                        neighbors.push(json!({"record":r,"source":parse(&row[1])?}));
-                    }
-                }
-                if omoide_core::registration(!neighbors.is_empty(), None)
-                    == omoide_core::Outcome::NeedRelation
-                {
-                    let versions: Vec<_> = neighbors
-                        .iter()
-                        .map(|n| &n["record"]["version_id"])
-                        .collect();
-                    return Ok(
-                        json!({"state":"near_rules","operation_id":op,"near_digest":digest(json!(versions).to_string()),"near_rules":neighbors}),
-                    );
-                }
                 (
-                    create_rule(rule, &rid, &vid, time),
-                    json!({"state":"activated","kind":"rule","id":rid,"version_id":vid,"operation_id":op}),
+                    vec![q(
+                        "INSERT INTO facts(id,body,source,certainty,target,created) VALUES(?,?,?,?,?,?)",
+                        vec![
+                            s(&rid),
+                            s(text),
+                            s(source),
+                            s(certainty),
+                            opt(target),
+                            Value::Integer(time),
+                        ],
+                    )],
+                    json!({"state":"stored","kind":"fact","id":rid,"operation_id":op}),
                 )
             }
             _ => unreachable!(),

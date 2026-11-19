@@ -1,4 +1,9 @@
 use serde_json::{Value as Json, json};
+// JSON is followed by exactly one newline on stdout.
+fn fits(payload: &Json) -> bool {
+    payload.to_string().len() < 4000
+}
+
 pub fn page(
     cursor: Option<&str>,
     rev: i64,
@@ -42,23 +47,32 @@ pub fn page(
     let mut items = Vec::new();
     for item in &results[start..] {
         items.push(item.clone());
-        if envelope(&items, start + items.len()).to_string().len() + 1 > 4000 {
+        if !fits(&envelope(&items, start + items.len())) {
             items.pop();
             if items.is_empty() {
                 let mut short = item.clone();
                 short["text"] = json!("");
                 short["truncated"] = json!(true);
-                if envelope(&[short.clone()], start + 1).to_string().len() + 1 > 4000 {
-                    return Err(
-                        "rule conditions exceed recall output budget; retrieve by show".to_owned(),
-                    );
+                if !fits(&envelope(std::slice::from_ref(&short), start + 1)) {
+                    let mut ids = vec![item["version_id"].clone()];
+                    if let Some(pairs) = item["unresolved_conflicts"].as_array() {
+                        ids.extend(
+                            pairs
+                                .iter()
+                                .map(|pair| pair["pending"]["record"]["version_id"].clone()),
+                        );
+                    }
+                    return Err(format!(
+                        "required evidence exceeds the output budget; retrieve these versions with show: {}",
+                        json!(ids)
+                    ));
                 }
                 let body = item["text"].as_str().unwrap_or_default();
                 let mut end = 0;
                 for (i, ch) in body.char_indices().take(4000) {
                     if matches!(ch, '。' | '!' | '?' | '.' | '\n') {
                         short["text"] = json!(&body[..i + ch.len_utf8()]);
-                        if envelope(&[short.clone()], start + 1).to_string().len() + 1 > 4000 {
+                        if !fits(&envelope(std::slice::from_ref(&short), start + 1)) {
                             break;
                         }
                         end = i + ch.len_utf8();

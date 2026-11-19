@@ -32,7 +32,7 @@ def seed(path):
             db.execute("""INSERT INTO rules(rowid,id,version,state,body,scene,aliases,actions,source,created)
                           VALUES(?,?,?,'current','紙箱',?,'[]',?,'source',?)""",
                        (i + 1, identifier, f"v-{i}", word, json.dumps([action]), i))
-            db.execute("INSERT INTO action_links VALUES(?,?)", (action, identifier))
+            db.execute("INSERT INTO action_links VALUES(?,?)", (action, f"v-{i}"))
             db.execute("INSERT INTO rule_index(rowid,words,singles) VALUES(?,?,?)",
                        (i + 1, f"紙箱 {word}", "紙 箱"))
 
