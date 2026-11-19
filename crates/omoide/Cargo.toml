@@ -1,0 +1,16 @@
+[package]
+name="omoide"
+version.workspace=true
+edition.workspace=true
+rust-version.workspace=true
+license.workspace=true
+[dependencies]
+omoide-core={path="../omoide-core"}
+omoide-store={path="../omoide-store"}
+serde.workspace=true
+serde_json.workspace=true
+clap={version="4.5",features=["derive","env"]}
+sha2="0.10"
+uuid={version="1",features=["v4"]}
+[dev-dependencies]
+tempfile.workspace=true
