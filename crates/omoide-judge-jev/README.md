@@ -6,7 +6,7 @@ TypeSafe の System One API に、各候補の規則が問い合わせの状況�
 
 ```sh
 cargo install --locked --path crates/omoide-judge-jev
-omoide recall --kind rule --scene '焼き上がったパンを冷ます' --judge omoide-judge-jev --threshold 0.5
+omoide recall --kind rule --scene '焼き上がったパンを冷ます' --judge omoide-judge-jev --threshold 0.6
 ```
 
 キーは環境変数 `TYPESAFE_API_KEY` から読み取ります。継続してこの判定器を使うシェルでは `OMOIDE_JUDGE=omoide-judge-jev` も設定できます。通常のインストールやキーの存在だけで外部通信は始まりません。

@@ -139,7 +139,7 @@ init はマーカーがなければファイルの末尾に節を用意し、そ
 
 ```sh
 cargo install --locked --path crates/omoide-judge-jev
-omoide recall --kind rule --scene '焼成後のパンをどこに置くか' --judge omoide-judge-jev
+omoide recall --kind rule --scene '焼成後のパンをどこに置くか' --judge omoide-judge-jev --threshold 0.6
 ```
 
 明示的にこの判定器を使うと、共有する問い合わせの場面・動作・対象と、候補ごとの本文・場面・別表現が TypeSafe に送信されます。送信内容、期限と再現手順は[アダプターの README](crates/omoide-judge-jev/README.md)にあります。

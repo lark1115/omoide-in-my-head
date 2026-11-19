@@ -213,6 +213,34 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
         }
     });
     let mut ranked = rank(&terms, candidates);
+    let rule_triggers: BTreeMap<_, _> = ranked
+        .iter()
+        .filter(|r| pool[r.id].1["kind"] == "rule")
+        .map(|r| {
+            let record = &pool[r.id].1;
+            let identifiers = tokens(&format!(
+                "{} {}",
+                record["target"].as_str().unwrap_or_default(),
+                record["actions"]
+            ));
+            let scene = tokens(record["scene"].as_str().unwrap_or_default());
+            (
+                r.id,
+                omoide_core::selection::trigger_hits(&terms, &scene, &identifiers),
+            )
+        })
+        .collect();
+    let best = ranked
+        .iter()
+        .filter_map(|r| rule_triggers.get(r.id).map(|t| r.hits as u128 + *t as u128))
+        .max()
+        .unwrap_or(0);
+    ranked.retain(|r| {
+        r.action
+            || rule_triggers.get(r.id).is_none_or(|trigger| {
+                omoide_core::selection::covers_query(r.hits, terms.words.len(), *trigger, best)
+            })
+    });
     let mut judge_state = "not_configured";
     let mut judge_error = None;
     if query.judging.judge.is_some() {

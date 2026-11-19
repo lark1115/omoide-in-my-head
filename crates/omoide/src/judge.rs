@@ -29,10 +29,19 @@ pub fn ask(
     pool: &BTreeMap<String, (bool, Json)>,
 ) -> Result<BTreeMap<String, usize>, String> {
     let exe = config.judge.as_ref().ok_or("judge is not configured")?;
-    let candidates=pool.values().map(|(_,r)|json!({"version_id":r["version_id"],"text":r["text"],"scene":r["scene"],"aliases":r["aliases"]})).collect::<Vec<_>>();
-    let ids: BTreeSet<String> = pool
+    let action_only =
+        query["scene"].is_null() && query["target"].is_string() && query["action"].is_string();
+    let selected: Vec<_> = pool
         .values()
-        .map(|(_, r)| r["version_id"].as_str().unwrap().to_owned())
+        .filter(|(direct, record)| !action_only || record["kind"] != "rule" || *direct)
+        .map(|(_, r)| r)
+        .collect();
+    let candidates = selected.iter().map(|r| json!({
+        "version_id":r["version_id"], "text":r["text"], "scene":r["scene"], "aliases":r["aliases"]
+    })).collect::<Vec<_>>();
+    let ids: BTreeSet<String> = selected
+        .iter()
+        .map(|r| r["version_id"].as_str().unwrap().to_owned())
         .collect();
     let mut input = tempfile::tempfile().map_err(|e| e.to_string())?;
     serde_json::to_writer(&mut input, &json!({"query":query,"candidates":candidates}))

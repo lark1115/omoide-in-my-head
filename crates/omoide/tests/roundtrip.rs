@@ -260,3 +260,53 @@ fn linux_release_resource_budget() {
             .success()
     );
 }
+
+// [REQ-RECALL-1] [REQ-JUDGE-1]
+#[test]
+fn weak_lexical_match_and_structured_judge_candidates() {
+    let f = Fixture::new("Invented workshop instructions");
+    let a = f.add(
+        "wrap in paper",
+        "after drying",
+        &["--action", "pack", "--target", "tray"],
+    );
+    let b = f.add(
+        "paint with amber",
+        "before opening",
+        &["--action", "coat", "--target", "tray"],
+    );
+    assert_eq!(
+        f.recall(&[
+            "--scene",
+            "amber brass tin jade felt linen cotton oil chalk"
+        ])["state"],
+        "none"
+    );
+    let weak = f.recall(&["--scene", "amber brass tin jade felt linen cotton oil"]);
+    assert_eq!(weak["results"][0]["id"], b["id"]);
+    let path = f.path.with_file_name("judge.py");
+    std::fs::write(&path, "import json,sys\nr=json.load(sys.stdin)\nprint(json.dumps({'answers':[{'version_id':c['version_id'],'score':1} for c in r['candidates']]}))\n").unwrap();
+    let judge = ["--judge", "python3", "--judge-arg", path.to_str().unwrap()];
+    for (query, expected_count) in [
+        (vec!["--action", "pack", "--target", "tray"], 1),
+        (vec!["--action", "pack"], 2),
+        (vec!["--scene", "different", "--target", "tray"], 2),
+        (
+            vec![
+                "--scene",
+                "different",
+                "--action",
+                "pack",
+                "--target",
+                "tray",
+            ],
+            2,
+        ),
+    ] {
+        let response = f.recall(&[query.as_slice(), &judge].concat());
+        assert_eq!(response["judge_state"], "used");
+        let rows = response["results"].as_array().unwrap();
+        assert_eq!(rows.len(), expected_count);
+        assert!(rows.iter().any(|r| r["id"] == a["id"]));
+    }
+}

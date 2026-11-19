@@ -1,0 +1,9 @@
+{"params": [12, 0, 0, 1], "required": [54, 68], "forbidden": 57, "exact": 7, "none": [4, 24]}
+{"params": [15, 0, 0, 1], "required": [53, 68], "forbidden": 55, "exact": 9, "none": [4, 24]}
+{"params": [17, 0, 0, 1], "required": [51, 68], "forbidden": 53, "exact": 11, "none": [5, 24]}
+{"params": [18, 0, 0, 1], "required": [51, 68], "forbidden": 53, "exact": 11, "none": [5, 24]}
+{"params": [19, 0, 0, 1], "required": [51, 68], "forbidden": 50, "exact": 15, "none": [7, 24]}
+{"params": [10, 30, 0, 1], "required": [54, 68], "forbidden": 59, "exact": 4, "none": [2, 24]}
+{"params": [15, 30, 0, 1], "required": [53, 68], "forbidden": 55, "exact": 9, "none": [4, 24]}
+{"params": [15, 50, 0, 1], "required": [53, 68], "forbidden": 52, "exact": 12, "none": [4, 24]}
+{"params": [15, 30, 1, 1], "required": [53, 68], "forbidden": 54, "exact": 9, "none": [4, 24]}
