@@ -1,0 +1,22 @@
+{
+  "data_commit": "8ae72c33977ca71148a2f3ed4672aed733e22b2a",
+  "fixture_hashes": {
+    "memory.json": "b0e77ed895eb03dc482cfb49e5d38d7cb34d99c42c2d33b39131aeb992a65455",
+    "opportunities.json": "6612ee4958e57eb17c36af8826468ca11adfec6cd5f4a47adb9cf87d34fbffd6",
+    "hot.txt": "2cb4d6d36cd231d44748f79626431bdfc5024260ded45aacc3b45a961c4e1480",
+    "grading/key.json": "7b0ca7abeba4047dfd52f5cea146fdcdc4fbfa1b99e53d7fd22e2007b77a04e6",
+    "grading/examples.json": "a4d45c4ed9b78a316141ccfeb66e07b68b44b3e90aa480f53cec1ca3c3649659"
+  },
+  "model": "claude-sonnet-5-5",
+  "effort": "low",
+  "cli": "2.1.329 (Claude Code)",
+  "binary_sha256": "5b444e1f2f1968a64dbf8f5abae4f409aa3c6d35c82cf75db9cc6ab668da61ef",
+  "deadline_seconds": 120,
+  "sampling": "provider default; seed not exposed",
+  "tool_timeout_seconds": 8,
+  "judge": "not configured",
+  "system": {
+    "ja": "次の工房の依頼に答えて。何をするか、そのまま担当に渡せる形で決めて。まだしていない作業を済んだとは言わないで。",
+    "en": "Answer the workshop request with a decision or instructions the next shift can use. Do not claim to have performed work you have not done."
+  }
+}
