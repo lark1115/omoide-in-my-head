@@ -1,0 +1,12 @@
+[package]
+name="omoide-store"
+version.workspace=true
+edition.workspace=true
+rust-version.workspace=true
+license.workspace=true
+[dependencies]
+omoide-core={path="../omoide-core"}
+rusqlite={version="0.37",features=["bundled","limits","extra_check"]}
+thiserror="2"
+[dev-dependencies]
+tempfile.workspace=true
