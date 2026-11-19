@@ -49,15 +49,16 @@ pub fn required_record(rows: &Rows) -> Result<Json> {
 }
 pub fn show(db: &mut impl omoide_store::Store, id: &str, history: bool) -> Result<Json> {
     let family = "r.id IN (SELECT id FROM rules WHERE id=?1 OR version=?1)";
+    let origin = omoide_store::lookup::procedure_source("u");
     let versions = q(
         format!(
-            "SELECT {RULE},{SOURCE} FROM rules r JOIN utterances u ON u.id=r.source WHERE {family} ORDER BY r.rowid"
+            "SELECT {RULE},{origin} FROM rules r JOIN origins u ON u.id=r.source WHERE {family} ORDER BY r.rowid"
         ),
         vec![s(id)],
     );
     let extra = q(
         format!(
-            "SELECT r.version,{SOURCE} FROM rules r JOIN extra_sources e ON e.version=r.version JOIN utterances u ON u.id=e.source WHERE {family} ORDER BY r.rowid,u.created,u.id"
+            "SELECT r.version,{origin} FROM rules r JOIN extra_sources e ON e.version=r.version JOIN origins u ON u.id=e.source WHERE {family} ORDER BY r.rowid,u.created,u.id"
         ),
         vec![s(id)],
     );
@@ -118,7 +119,8 @@ pub fn show(db: &mut impl omoide_store::Store, id: &str, history: bool) -> Resul
         .iter()
         .find(|e| e["record"]["version_id"] == id)
         .or_else(|| entries.iter().find(|e| e["record"]["state"] == "current"))
-        .ok_or_else(|| Error::Unknown("record has no current version".into()))?;
+        .or_else(|| entries.last())
+        .unwrap();
     let mut result = entry.clone();
     if !conflicts.is_empty() {
         result["unresolved_conflicts"] = json!(conflicts);

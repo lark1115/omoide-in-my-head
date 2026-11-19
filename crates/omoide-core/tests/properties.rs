@@ -280,3 +280,43 @@ fn usage_revision_and_accounting_fields_are_in_the_actual_page_budget() {
     meta.insert("extra".into(), serde_json::json!("x".repeat(4000)));
     assert!(omoide_core::page::with_metadata(None, 1, 1, 0, false, &[], &meta).is_err());
 }
+
+// [REQ-JUDGE-1]
+#[test]
+fn judge_is_all_or_nothing_except_explicit_empty() {
+    use omoide_core::judge::scores;
+    let ids = ["a".to_owned(), "b".to_owned(), "c".to_owned()]
+        .into_iter()
+        .collect();
+    let valid=br#"{"answers":[{"version_id":"a","score":0},{"version_id":"b","score":0.5},{"version_id":"c","score":1}]}"#;
+    let selected = scores(valid, &ids, 0.5).unwrap();
+    assert!(!selected.contains_key("a"));
+    assert_eq!((selected["b"], selected["c"]), (1, 2));
+    assert!(scores(br#"{"answers":[]}"#, &ids, 1.).unwrap().is_empty());
+    for bad in [
+        r#"{"answers":[{"version_id":"a","score":0.8}]}"#,
+        r#"{"answers":[{"version_id":"a","score":1},{"version_id":"a","score":1},{"version_id":"c","score":1}]}"#,
+        r#"{"answers":[{"version_id":"other","score":0}]}"#,
+        r#"{"answers":[{"version_id":"a","score":1.01}]}"#,
+        "{}",
+        "garbage",
+    ] {
+        assert!(scores(bad.as_bytes(), &ids, 0.5).is_err());
+    }
+    assert!(scores(valid, &ids, -0.1).is_err());
+}
+
+// [REQ-JUDGE-1]
+#[test]
+fn complete_replies_still_require_unique_ids_and_each_score_in_range() {
+    use omoide_core::judge::scores;
+    let ids = ["x".to_owned()].into_iter().collect();
+    for reply in [
+        r#"{"answers":[{"version_id":"x","score":-0.01}]}"#,
+        r#"{"answers":[{"version_id":"x","score":1.01}]}"#,
+        r#"{"answers":[{"version_id":"x","score":1},{"version_id":"x","score":0.5}]}"#,
+        r#"{"answers":[{"version_id":"x","score":1},{"version_id":"y","score":0.5}]}"#,
+    ] {
+        assert!(scores(reply.as_bytes(), &ids, 0.5).is_err());
+    }
+}

@@ -227,8 +227,8 @@ fn migrate_v1_preserves_identity_index_sources_and_receipts() {
         assert_eq!(
             sets[0][0],
             [
-                Value::Integer(3),
-                Value::Integer(9),
+                Value::Integer(4),
+                Value::Integer(10),
                 Value::Integer(2),
                 Value::Text("fixture".into())
             ]
@@ -268,7 +268,7 @@ fn migrate_v2_summary_preserves_source_and_builds_search_index() {
         ]).unwrap();
         assert_eq!(
             rows[0][0],
-            [Value::Integer(3), Value::Integer(5), Value::Integer(7)]
+            [Value::Integer(4), Value::Integer(6), Value::Integer(7)]
         );
         assert_eq!(
             rows[1][0],
@@ -280,5 +280,108 @@ fn migrate_v2_summary_preserves_source_and_builds_search_index() {
             ]
         );
         assert_eq!(rows[2][0][1], Value::Text("old-result".into()));
+    }
+}
+
+// [REQ-STORE-1]
+#[test]
+fn limits_and_sql_failure_classes_preserve_retry_semantics() {
+    let stmt = |sql_bytes, vars| Statement::new("x".repeat(sql_bytes), vec![Value::Null; vars]);
+    assert!(stmt(100_000, 100).validate().is_ok());
+    assert!(stmt(100_001, 1).validate().is_err());
+    assert!(stmt(2, 101).validate().is_err());
+    let failure = |code, msg| {
+        Error::from(rusqlite::Error::SqliteFailure(
+            rusqlite::ffi::Error::new(code),
+            Some(String::from(msg)),
+        ))
+    };
+    assert!(matches!(
+        failure(rusqlite::ffi::SQLITE_FULL, "capacity"),
+        Error::Full
+    ));
+    assert!(matches!(
+        failure(
+            rusqlite::ffi::SQLITE_CONSTRAINT,
+            "NOT NULL constraint failed: source_guard.ok"
+        ),
+        Error::Input(_)
+    ));
+    assert!(matches!(
+        failure(
+            rusqlite::ffi::SQLITE_CONSTRAINT,
+            "NOT NULL constraint failed: revision_guard.ok"
+        ),
+        Error::Revision
+    ));
+}
+
+// [REQ-HOT-1]
+#[test]
+fn publish_checks_identity_and_both_revisions_before_installing() {
+    let dir = tempfile::tempdir().unwrap();
+    let mut db = setup(dir.path());
+    let mut installed = 0;
+    for (name, rev, usage, expected) in [
+        ("other", 0, 0, false),
+        ("test", 1, 0, false),
+        ("test", 0, 1, false),
+        ("test", 0, 0, true),
+    ] {
+        assert_eq!(
+            db.publish_if_current(name, rev, usage, || {
+                installed += 1;
+                Ok(())
+            })
+            .unwrap(),
+            expected
+        );
+    }
+    assert_eq!(installed, 1);
+    assert!(
+        db.publish_if_current("test", 0, 0, || Err(Error::Unknown("rename failed".into())))
+            .is_err()
+    );
+}
+
+// [REQ-STORE-1]
+#[test]
+fn read_batch_refuses_writes_hidden_behind_with() {
+    let dir = tempfile::tempdir().unwrap();
+    let mut db = setup(dir.path());
+    assert!(matches!(
+        db.read_batch(&[sql(
+            "WITH value(n) AS (VALUES (5)) UPDATE counter SET n=(SELECT n FROM value) RETURNING n"
+        )]),
+        Err(Error::Input(_))
+    ));
+    assert_eq!(
+        integer(&db.read_batch(&[sql("SELECT n FROM counter")]).unwrap()[0][0]),
+        0
+    );
+}
+
+// [REQ-STORE-1]
+#[test]
+fn busy_and_locked_are_distinct_from_unknown_errors_and_fault_points_are_exact() {
+    for code in [rusqlite::ffi::SQLITE_BUSY, rusqlite::ffi::SQLITE_LOCKED] {
+        assert!(matches!(
+            Error::from(rusqlite::Error::SqliteFailure(
+                rusqlite::ffi::Error::new(code),
+                None
+            )),
+            Error::Busy
+        ));
+    }
+    for (sql, i) in [
+        ("INSERT INTO receipts VALUES(?)", 0),
+        ("INSERT INTO calls VALUES(?)", 1),
+        ("INSERT INTO rules VALUES(?)", 2),
+    ] {
+        for receipt in [false, true] {
+            for log in [false, true] {
+                assert_eq!(stop_for_test(sql, receipt, log), [receipt, log, false][i]);
+            }
+        }
     }
 }

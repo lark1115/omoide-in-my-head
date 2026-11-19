@@ -77,7 +77,7 @@ impl Sqlite {
         conn.set_limit(Limit::SQLITE_LIMIT_LENGTH, 2_000_000)?;
         conn.set_limit(Limit::SQLITE_LIMIT_SQL_LENGTH, 100_000)?;
         conn.set_limit(Limit::SQLITE_LIMIT_VARIABLE_NUMBER, 100)?;
-        if matches!(Self::schema_version(&conn)?, Some(1 | 2)) {
+        if matches!(Self::schema_version(&conn)?, Some(1..=3)) {
             let tx = conn.transaction_with_behavior(TransactionBehavior::Immediate)?;
             if Self::schema_version(&tx)? == Some(1) {
                 tx.execute_batch(include_str!("migrate_v1_before.sql"))?;
@@ -87,9 +87,37 @@ impl Sqlite {
             if Self::schema_version(&tx)? == Some(2) {
                 evidence::migrate(&tx)?;
             }
+            if Self::schema_version(&tx)? == Some(3) {
+                tx.execute_batch(include_str!("migrate_v3.sql"))?;
+                tx.execute_batch(include_str!("schema.sql"))?;
+                tx.execute_batch(include_str!("upgrade_v4.sql"))?;
+            }
             tx.commit()?;
         }
         Ok(Self { conn })
+    }
+    /// Hold the SQLite writer reservation across the final metadata check and filesystem rename.
+    /// No database data is modified. Slow rendering and temporary-file writes happen before this.
+    pub fn publish_if_current(
+        &mut self,
+        store: &str,
+        revision: i64,
+        usage: i64,
+        install: impl FnOnce() -> Result<(), Error>,
+    ) -> Result<bool, Error> {
+        let tx = self
+            .conn
+            .transaction_with_behavior(TransactionBehavior::Immediate)?;
+        let current: bool = tx.query_row(
+            "SELECT store_id=? AND revision=? AND usage_revision=? FROM meta WHERE singleton=1",
+            rusqlite::params![store, revision, usage],
+            |r| r.get(0),
+        )?;
+        if current {
+            install()?;
+        }
+        tx.commit()?;
+        Ok(current)
     }
     fn schema_version(conn: &Connection) -> Result<Option<i64>, Error> {
         let populated: bool = conn.query_row(
@@ -105,7 +133,7 @@ impl Sqlite {
             [],
             |r| r.get(0),
         )?;
-        if !matches!(v, 1..=3) {
+        if !matches!(v, 1..=4) {
             return Err(Error::Input(format!("unsupported store schema {v}")));
         }
         Ok(Some(v))
@@ -125,7 +153,7 @@ impl Sqlite {
         }
         tx.execute_batch(include_str!("schema.sql"))?;
         tx.execute_batch(include_str!("evidence.sql"))?;
-        tx.execute("INSERT INTO meta VALUES(1,0,0,3,?)", [store_id])?;
+        tx.execute("INSERT INTO meta VALUES(1,0,0,4,?)", [store_id])?;
         for stmt in first_write {
             Self::write_statement(&tx, stmt)?;
         }
@@ -195,11 +223,11 @@ impl Sqlite {
             Self::write_statement(&tx, s)?;
             // Used only by the opt-in process interruption harness; the default build has no hook.
             #[cfg(all(unix, feature = "fault-injection"))]
-            if (s.sql.starts_with("INSERT INTO receipts")
-                && std::env::var_os("OMOIDE_TEST_STOP_BEFORE_COMMIT").is_some())
-                || (s.sql.starts_with("INSERT INTO calls")
-                    && std::env::var_os("OMOIDE_TEST_STOP_CALL_LOG").is_some())
-            {
+            if stop_for_test(
+                &s.sql,
+                std::env::var_os("OMOIDE_TEST_STOP_BEFORE_COMMIT").is_some(),
+                std::env::var_os("OMOIDE_TEST_STOP_CALL_LOG").is_some(),
+            ) {
                 // SAFETY: raise targets only this process; SIGSTOP has no signal handler.
                 unsafe {
                     libc::raise(libc::SIGSTOP);
@@ -210,6 +238,11 @@ impl Sqlite {
         tx.commit()?;
         Ok(())
     }
+}
+#[cfg(any(test, feature = "fault-injection"))]
+fn stop_for_test(sql: &str, receipt: bool, log: bool) -> bool {
+    (receipt && sql.starts_with("INSERT INTO receipts"))
+        || (log && sql.starts_with("INSERT INTO calls"))
 }
 impl Store for Sqlite {
     fn read_batch(&mut self, queries: &[Statement]) -> Result<Vec<Rows>, Error> {

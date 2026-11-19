@@ -58,10 +58,28 @@ pub enum Command {
         notice: Notice,
         #[arg(long,value_parser=["success","failure"])]
         result: String,
+        #[arg(long, env = "OMOIDE_DEMOTE_AFTER", default_value_t = 0)]
+        demote_after: u32,
     },
     Stats {
         #[arg(long,default_value_t=2,value_parser=clap::value_parser!(u32).range(1..))]
         correction_threshold: u32,
+    },
+    Hot {
+        #[command(subcommand)]
+        command: HotCommand,
+    },
+    Skill {
+        #[command(subcommand)]
+        command: SkillCommand,
+    },
+    Repeated {
+        #[arg(long,default_value_t=2,value_parser=clap::value_parser!(u32).range(2..))]
+        min: u32,
+    },
+    Eval {
+        #[command(subcommand)]
+        command: EvalCommand,
     },
     Recall(Query),
     Show {
@@ -76,6 +94,9 @@ pub enum RuleCommand {
 }
 #[derive(Args, Serialize)]
 pub struct Rule {
+    #[arg(long)]
+    #[serde(skip_serializing_if = "std::ops::Not::not")]
+    pub pinned: bool,
     #[arg(long)]
     pub source: String,
     #[arg(long)]
@@ -104,6 +125,8 @@ pub struct Rule {
 }
 #[derive(Args, Serialize)]
 pub struct Query {
+    #[command(flatten)]
+    pub judging: JudgeConfig,
     #[arg(long, required_unless_present = "action")]
     pub scene: Option<String>,
     #[arg(long, required_unless_present = "scene")]
@@ -112,7 +135,7 @@ pub struct Query {
     pub target: Option<String>,
     #[arg(long)]
     pub cursor: Option<String>,
-    #[arg(long,value_parser=["rule","decision","fact","experience"])]
+    #[arg(long,value_parser=["rule","skill","decision","fact","experience"])]
     pub kind: Option<String>,
     #[arg(long)]
     pub period: Option<String>,
@@ -231,8 +254,99 @@ impl Command {
             Self::Used(n) => Some(("used", n, None)),
             Self::Acted(n) => Some(("acted", n, None)),
             Self::Corrected(n) => Some(("corrected", n, None)),
-            Self::Outcome { notice, result } => Some(("outcome", notice, Some(result))),
+            Self::Outcome { notice, result, .. } => Some(("outcome", notice, Some(result))),
             _ => None,
         }
     }
+}
+
+#[derive(Args, Serialize)]
+pub struct HotFile {
+    pub file: PathBuf,
+    #[arg(long, env = "OMOIDE_HOT_BYTES", default_value_t = 4096)]
+    pub limit_bytes: usize,
+}
+#[derive(Subcommand, Serialize)]
+pub enum HotCommand {
+    Init(HotFile),
+    Export(HotFile),
+    Status(HotFile),
+}
+
+#[derive(Subcommand, Serialize)]
+pub enum SkillCommand {
+    Propose {
+        #[arg(long = "source", required = true)]
+        sources: Vec<String>,
+        #[arg(long)]
+        text: String,
+        #[arg(long)]
+        scene: String,
+        #[arg(long = "action")]
+        actions: Vec<String>,
+        #[arg(long)]
+        target: Option<String>,
+        #[arg(long)]
+        reference: Option<String>,
+    },
+    Confirm {
+        version: String,
+        #[arg(long,value_parser=["same","restated","exception","unrelated","unsure"],requires_all=["against","near_digest"])]
+        relation: Option<String>,
+        #[arg(long, requires = "relation")]
+        against: Option<String>,
+        #[arg(long, requires = "relation")]
+        near_digest: Option<String>,
+    },
+}
+#[derive(Subcommand, Serialize)]
+pub enum EvalCommand {
+    Run {
+        #[arg(long, default_value = "tests/scenes")]
+        scenes: PathBuf,
+        #[arg(long)]
+        binary: Option<PathBuf>,
+        #[arg(long)]
+        fault_binary: Option<PathBuf>,
+        #[arg(long)]
+        judge_fixture: Option<PathBuf>,
+        #[arg(long)]
+        aliases: Option<PathBuf>,
+        #[arg(long)]
+        oracle: bool,
+        #[arg(long)]
+        scene: Option<String>,
+        #[arg(long)]
+        trials: Option<PathBuf>,
+    },
+    Diff {
+        before: PathBuf,
+        after: PathBuf,
+        /// Compare two executable builds directly; otherwise compare saved reports.
+        #[arg(long)]
+        builds: bool,
+        #[arg(long, default_value = "tests/scenes")]
+        scenes: PathBuf,
+        #[arg(long)]
+        before_fault: Option<PathBuf>,
+        #[arg(long)]
+        after_fault: Option<PathBuf>,
+        #[arg(long)]
+        scene: Option<String>,
+        #[arg(long)]
+        allow: Option<PathBuf>,
+    },
+}
+#[derive(Args, Serialize)]
+pub struct JudgeConfig {
+    #[arg(long, env = "OMOIDE_JUDGE")]
+    pub judge: Option<PathBuf>,
+    #[arg(long = "judge-arg", allow_hyphen_values = true)]
+    pub args: Vec<String>,
+    #[arg(long, env = "OMOIDE_JUDGE_TIMEOUT_MS", default_value_t = 1000)]
+    pub timeout_ms: u64,
+    #[arg(long, env = "OMOIDE_JUDGE_OUTPUT_BYTES", default_value_t = 262144)]
+    pub output_bytes: usize,
+    #[arg(long, env = "OMOIDE_JUDGE_THRESHOLD", default_value_t = 0.5)]
+    pub threshold: f64,
 }

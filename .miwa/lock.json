@@ -86,11 +86,25 @@
       "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
       "at": "2026-11-19T19:54:53Z"
     },
+    "test-req:crates/omoide-core/tests/properties::complete_replies_still_require_unique_ids_and_each_score_in_range:REQ-JUDGE-1": {
+      "from": "sha256:b500fd25152bd8779ac17dc0bcf89126dfad62cc8e07843bbdb2fbdb523466d5",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
     "test-req:crates/omoide-core/tests/properties::japanese_windows_and_exact_words:REQ-RECALL-1": {
       "from": "sha256:23fa19d18e9bfe00c3a293fc09e6552dd36bf93e6052d04f3a91d866720f4675",
       "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
       "by": "human",
       "at": "2026-11-19T19:41:07Z"
+    },
+    "test-req:crates/omoide-core/tests/properties::judge_is_all_or_nothing_except_explicit_empty:REQ-JUDGE-1": {
+      "from": "sha256:98e69cfc025271007277204d44945f1d8f30de246331b604a93c3102cc698105",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
     },
     "test-req:crates/omoide-core/tests/properties::neighbors_by_action_or_two_distinct_terms:REQ-RULE-1": {
       "from": "sha256:771ae40ade65039b412a4e3ba98916eb2b0ccc486e2fa0bfb5c7c5ccc87bebb5",
@@ -154,6 +168,20 @@
       "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
       "at": "2026-11-19T20:31:51Z"
     },
+    "test-req:crates/omoide-store/src/evidence:tests:target_tokens_preserve_distinct_utf8_bytes:REQ-RECALL-1": {
+      "from": "sha256:ff5ecacd7f4d7bc7ac79319fecb3e2f4a8b5cd8566e70e44bcafb6a5e72194fc",
+      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide-store/src/tests::busy_and_locked_are_distinct_from_unknown_errors_and_fault_points_are_exact:REQ-STORE-1": {
+      "from": "sha256:dec330a0a0293f4620d7541fe06de240ae467542296b1736d639da6e36a09d8b",
+      "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
     "test-req:crates/omoide-store/src/tests::contention_kill_and_replay:REQ-STORE-1": {
       "from": "sha256:1832fa33cf5e78ce685f6cf0fecfb88c476372320fe996d972b957916d7403a6",
       "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
@@ -168,19 +196,26 @@
       "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
       "at": "2026-11-19T19:54:53Z"
     },
-    "test-req:crates/omoide-store/src/tests::migrate_v1_preserves_identity_index_sources_and_receipts:REQ-STORE-1": {
-      "from": "sha256:9d83d0d936cbe421911e7b1999aebe98e765ab0ce93a4ca5ac7350597a23a607",
+    "test-req:crates/omoide-store/src/tests::limits_and_sql_failure_classes_preserve_retry_semantics:REQ-STORE-1": {
+      "from": "sha256:60c89db51dbc66912135be27d9efca1c175e064463cec079100fbdc7774e795c",
       "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
       "by": "human",
-      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
-      "at": "2026-11-19T20:31:51Z"
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide-store/src/tests::migrate_v1_preserves_identity_index_sources_and_receipts:REQ-STORE-1": {
+      "from": "sha256:30b0f8cadb96de45d666547e79984c00e09728d636b15105e2c158940c682273",
+      "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
     },
     "test-req:crates/omoide-store/src/tests::migrate_v2_summary_preserves_source_and_builds_search_index:REQ-STORE-1": {
-      "from": "sha256:5393ecfdfaacdd808149332f72cf21d283cb5e536d7683c3d689b23bd1aeb3a9",
+      "from": "sha256:6db8e4b6fde8e397625cdd9b9b22450465f74864bcabb786a477ff6ebc17c792",
       "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
       "by": "human",
-      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
-      "at": "2026-11-19T20:31:51Z"
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
     },
     "test-req:crates/omoide-store/src/tests::missing_revision_fails_closed:REQ-STORE-1": {
       "from": "sha256:0120ac2bd0b742a1bccf5956cb6022f38bb94b28fbeee311cd3880b900eb775c",
@@ -203,6 +238,20 @@
       "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
       "at": "2026-11-19T19:54:53Z"
     },
+    "test-req:crates/omoide-store/src/tests::publish_checks_identity_and_both_revisions_before_installing:REQ-HOT-1": {
+      "from": "sha256:5e57adb107b003d1d9482a0e00b7c16c5e83c71b8469d39a45cf5bb8e97330a3",
+      "to": "sha256:37adbfa3f43de26aeff29bc5f6ea1dec47157d8eac631f0f7d87a41310dea10c",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide-store/src/tests::read_batch_refuses_writes_hidden_behind_with:REQ-STORE-1": {
+      "from": "sha256:ef96a0f5cc67ca7f0092680d0ae1c28a3e800471d68b7932c60922d42b203dbc",
+      "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
     "test-req:crates/omoide-store/src/tests::state_and_revision_share_one_snapshot:REQ-STORE-1": {
       "from": "sha256:1c0dcae32950d127319164876e02c3ac524033192b1984a1f2caa8d88df5f6ff",
       "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
@@ -216,6 +265,41 @@
       "by": "human",
       "reason": "Stage one: record the tested SQLite contract, lexical recall, CLI round trip and Linux verification",
       "at": "2026-11-19T19:26:44Z"
+    },
+    "test-req:crates/omoide/src/eval:tests:trials_count_uncalled_opportunities_and_unknown_order_without_credit:REQ-MEASURE-1": {
+      "from": "sha256:e9d89a04871d7a62de965f199cd52f643aa87aa0e0c0f880bfa5c9ba58045888",
+      "to": "sha256:46371975afc0f52318e2912097cf77135572b78b072b6d89482b15d3b48b9854",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/src/hot:byte_budget:optional_line_obeys_exact_utf8_budget:REQ-HOT-1": {
+      "from": "sha256:3db00d5612b849d601c147e619a805b28c4af20e2b6f5de7f128faa553620bd1",
+      "to": "sha256:37adbfa3f43de26aeff29bc5f6ea1dec47157d8eac631f0f7d87a41310dea10c",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/src/hot:hooks:interruption_is_armed_only_for_the_first_attempt:REQ-HOT-1": {
+      "from": "sha256:021cd08f3a50bcb582070658efd2157720388bf5104ca4bf6e229839533ff6b6",
+      "to": "sha256:37adbfa3f43de26aeff29bc5f6ea1dec47157d8eac631f0f7d87a41310dea10c",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/src/hot:tests:marker_offsets_cover_end_line_and_preserve_the_surrounding_text:REQ-HOT-1": {
+      "from": "sha256:13752c88c6c69380e929c4587297431a0ec4838ddce76b5914cb3b0e602b394b",
+      "to": "sha256:37adbfa3f43de26aeff29bc5f6ea1dec47157d8eac631f0f7d87a41310dea10c",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/src/judge:tests:only_transient_read_failures_can_be_retried:REQ-JUDGE-1": {
+      "from": "sha256:1380c06fca6110d41761241a0726630c8b1cb521aa7ff48a488b43f6f9231782",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
     },
     "test-req:crates/omoide/src/write:tests:command_size_and_retry_deadline_boundaries:REQ-STORE-1": {
       "from": "sha256:25a3ecc43c47cbf7a62a3d8ac295dfe258ca60adb9503faf6aa01b0beb8123f6",
@@ -446,6 +530,167 @@
       "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
       "by": "human",
       "at": "2026-11-19T19:41:07Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::cap_includes_markers_exactly_and_optional_rows_stay_searchable:REQ-HOT-1": {
+      "from": "sha256:610ede0571c53c6dbe0791c259182493d0b577ddc9d566877adceeb596bae72d",
+      "to": "sha256:37adbfa3f43de26aeff29bc5f6ea1dec47157d8eac631f0f7d87a41310dea10c",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::confirmation_and_demotion_are_bound_to_the_exact_candidate_and_policy:REQ-PROMO-1": {
+      "from": "sha256:084095484e056ab75fd60ef893a4e044bc33d6baca81ad495004f8fcc393035b",
+      "to": "sha256:c74e30beef6e8c37e8774b4363b79608eda0701043ca90a1c8d83a34c3c6ed10",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::current_skills_and_rules_obey_kind_filters_and_action_priority:REQ-RECALL-1": {
+      "from": "sha256:de9c53bbd4bdebd873aa22f04f6493c776fdc88f0690af5660a11877b7f5b770",
+      "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::demotion_occurs_at_threshold_and_preserves_legacy_notice_fingerprints:REQ-PROMO-1": {
+      "from": "sha256:5e363e3d46dc9e721bcbb8edaf0f71fb5658afe5652bd6b15784c00d44514c0f",
+      "to": "sha256:c74e30beef6e8c37e8774b4363b79608eda0701043ca90a1c8d83a34c3c6ed10",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::diff_distinguishes_missing_fields_and_context_changes:REQ-MEASURE-1": {
+      "from": "sha256:89fc2ba8023e3f9ecdce3630849013afdee6a850f1555c07c27e0475046c5ad7",
+      "to": "sha256:46371975afc0f52318e2912097cf77135572b78b072b6d89482b15d3b48b9854",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::diff_separates_exact_exceptions_from_other_changes:REQ-MEASURE-1": {
+      "from": "sha256:22d2043f643d02895fe6c771d862a4725eb17acfdac881b8533dbc552e517204",
+      "to": "sha256:46371975afc0f52318e2912097cf77135572b78b072b6d89482b15d3b48b9854",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::equivalent_registration_can_explicitly_pin_existing_rule:REQ-HOT-1": {
+      "from": "sha256:46232f03298727c061cab6ecc45994ef717d541de1fe4d73cafdbae72e784615",
+      "to": "sha256:37adbfa3f43de26aeff29bc5f6ea1dec47157d8eac631f0f7d87a41310dea10c",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::eval_run_and_paired_build_diff_use_independent_stores:REQ-MEASURE-1": {
+      "from": "sha256:5cf79f37ddc8eaece2d4ab9d73d850daa7b96840e66ad065744642720f61b222",
+      "to": "sha256:46371975afc0f52318e2912097cf77135572b78b072b6d89482b15d3b48b9854",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::experience_to_skill_to_use_to_export_and_optional_demotion:REQ-PROMO-1": {
+      "from": "sha256:a0ddb1c5c29aead975abc6a1747546b89ede51bfdbb3ddac06d13b2be00e4a62",
+      "to": "sha256:c74e30beef6e8c37e8774b4363b79608eda0701043ca90a1c8d83a34c3c6ed10",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::export_log_describes_published_bytes_and_current_rules_only_are_measured:REQ-MEASURE-1": {
+      "from": "sha256:868c6d386f1686236aaa9e480107b2d0ff6e220d66f6d118970f9d4d04a1b8a3",
+      "to": "sha256:46371975afc0f52318e2912097cf77135572b78b072b6d89482b15d3b48b9854",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::hot_rejects_reserved_markers_and_incomplete_headers_without_touching_the_file:REQ-HOT-1": {
+      "from": "sha256:d0e49a7f7bd3024dca91971e804b55f5373d27f9f5c25331aa66ca72692b7dba",
+      "to": "sha256:37adbfa3f43de26aeff29bc5f6ea1dec47157d8eac631f0f7d87a41310dea10c",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::judge_failures_return_lexical_results_and_empty_is_a_success:REQ-JUDGE-1": {
+      "from": "sha256:e2d82cd551c4602dc498d01aeaf7d7434623abcf984b42635235b66d8c26408b",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::judged_equal_scores_preserve_both_priority_arms:REQ-JUDGE-1": {
+      "from": "sha256:f584f697310b20e7c20b31f5326d02f633386c7371004b9fd4c87abc7148a1df",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::malformed_actions_and_changed_demotion_policy_cannot_be_replayed:REQ-PROMO-1": {
+      "from": "sha256:1d3608a01d4eec8cdfc019530ddda8b513271c2abd59a92863b7f5c1864654b8",
+      "to": "sha256:c74e30beef6e8c37e8774b4363b79608eda0701043ca90a1c8d83a34c3c6ed10",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::only_missing_text_files_can_be_initialized:REQ-HOT-1": {
+      "from": "sha256:ec7cc76fa12cea621a04a218c9e2a93f583e8472af47766043b3fdf41b90f710",
+      "to": "sha256:37adbfa3f43de26aeff29bc5f6ea1dec47157d8eac631f0f7d87a41310dea10c",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::pending_procedure_does_not_replace_current_show_by_record_id:REQ-RULE-1": {
+      "from": "sha256:e139fbf601c269cc8d41bef9efb5ae3fd6cac8fddb586eaec8646f000cbfa994",
+      "to": "sha256:55dabe1c257081847fa2ccbf1bb23ea3965c5797ef3e4f16dcb4f87fe123944e",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::pin_survives_restatement_but_does_not_spread_to_unrelated_neighbors:REQ-HOT-1": {
+      "from": "sha256:bc4e0779bb5a24c2a66e3cd4b53c082fca5828c9b55679a33e321ef723809287",
+      "to": "sha256:37adbfa3f43de26aeff29bc5f6ea1dec47157d8eac631f0f7d87a41310dea10c",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::proposal_requires_real_distinct_experiences:REQ-PROMO-1": {
+      "from": "sha256:da9f7bb179704df0160702587ffd7ee874f8863f891fe4dedd86a98dee36ed0d",
+      "to": "sha256:c74e30beef6e8c37e8774b4363b79608eda0701043ca90a1c8d83a34c3c6ed10",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::reply_byte_bound_is_inclusive_and_valid_scores_keep_ordering_tiers:REQ-JUDGE-1": {
+      "from": "sha256:e1d59fe892a5bf397ecabb335bbf621f683c2e8023f72d5646504a908015f9b9",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::section_is_bounded_and_preserves_surrounding_bytes:REQ-HOT-1": {
+      "from": "sha256:88e23280e417ac2de8682f97ef98ef51ba51449e2dfa0a1610211dd0abe67560",
+      "to": "sha256:37adbfa3f43de26aeff29bc5f6ea1dec47157d8eac631f0f7d87a41310dea10c",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::skill_relations_keep_experience_sources_and_reject_stale_choices:REQ-PROMO-1": {
+      "from": "sha256:a7a930fad90c73dc04e031b4f597934976c3947323743875e6b347100113be81",
+      "to": "sha256:c74e30beef6e8c37e8774b4363b79608eda0701043ca90a1c8d83a34c3c6ed10",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::timed_out_judge_cannot_leave_a_writer_behind:REQ-JUDGE-1": {
+      "from": "sha256:477ee229102673f812d125260db8bb8b893356d21085314b10d026607f5e5428",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Verify marked-section publication, judge validation, promotion and offline evaluation with linked tests",
+      "at": "2026-11-19T21:35:55Z"
+    },
+    "test-req:crates/omoide/tests/stage_four::unsure_skill_needs_resolution_and_preserves_both_origins:REQ-PROMO-1": {
+      "from": "sha256:6c81033c15c1ff930f396bed7114ed3d949ff56dd3913431e8f9d79ad7d0b422",
+      "to": "sha256:c74e30beef6e8c37e8774b4363b79608eda0701043ca90a1c8d83a34c3c6ed10",
+      "by": "human",
+      "reason": "Complete stage-four mutation, evaluation and concurrency regressions",
+      "at": "2026-11-19T21:38:52Z"
     }
   }
 }

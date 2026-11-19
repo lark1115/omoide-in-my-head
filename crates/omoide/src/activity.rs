@@ -90,7 +90,7 @@ pub fn stats(db: &mut impl Store, threshold: u32) -> Result<Json> {
       WHERE o.created>=l.began AND (r.target IS NULL OR o.target=r.target)
         AND (r.exclusion IS NULL OR r.exclusion IS NOT o.target)
         AND o.action IN (SELECT action FROM action_links WHERE version=r.version))
-    FROM rules r JOIN lifetimes l ON l.id=r.id WHERE r.state='current' ORDER BY r.id";
+    FROM rules r JOIN lifetimes l ON l.id=r.id WHERE r.state='current' AND r.kind='rule' ORDER BY r.id";
     let sets = db.read_batch(&[q(sql, vec![])])?;
     let mut rules = Vec::new();
     let mut candidates = Vec::new();
@@ -152,6 +152,17 @@ pub fn log(
             },
         ),
         Command::Show { .. } => ("show", Value::Null, Value::Null, Value::Null),
+        Command::Hot { command } => (
+            match command {
+                crate::args::HotCommand::Init(_) => "hot_init",
+                crate::args::HotCommand::Status(_) => "hot_status",
+                crate::args::HotCommand::Export(_) => "hot_export",
+            },
+            Value::Null,
+            Value::Null,
+            Value::Null,
+        ),
+        Command::Repeated { .. } => ("repeated", Value::Null, Value::Null, Value::Null),
         Command::Stats { .. } => ("stats", Value::Null, Value::Null, Value::Null),
         cmd => (
             cmd.notice().map_or("register", |(kind, _, _)| kind),
@@ -167,7 +178,11 @@ pub fn log(
             s(kind),
             Value::Integer(created),
             Value::Integer(elapsed),
-            Value::Integer(reply.to_string().len() as i64 + 1),
+            Value::Integer(
+                reply["section_bytes"]
+                    .as_i64()
+                    .unwrap_or_else(|| reply.to_string().len() as i64 + 1),
+            ),
             s(&records.to_string()),
             opt(opportunity),
             action,

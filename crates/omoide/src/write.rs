@@ -43,12 +43,12 @@ pub(crate) fn create_rule(
     };
     let mut changes = vec![
         q(
-            "INSERT INTO source_guard VALUES(CASE WHEN EXISTS(SELECT 1 FROM utterances WHERE id=?) THEN 1 ELSE NULL END)",
+            "INSERT INTO source_guard VALUES(CASE WHEN EXISTS(SELECT 1 FROM origins WHERE id=?) THEN 1 ELSE NULL END)",
             vec![s(&rule.source)],
         ),
         q("DELETE FROM source_guard", vec![]),
         q(
-            "INSERT INTO rules(id,version,state,body,scene,aliases,actions,target,purpose,exclusion,source,created,parent_id,pending_against) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            "INSERT INTO rules(id,version,state,body,scene,aliases,actions,target,purpose,exclusion,source,created,parent_id,pending_against,pinned) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
             vec![
                 s(rid),
                 s(vid),
@@ -64,6 +64,7 @@ pub(crate) fn create_rule(
                 Value::Integer(time),
                 parent.map_or(Value::Null, s),
                 base.map_or(Value::Null, s),
+                Value::Integer(i64::from(rule.pinned)),
             ],
         ),
         index_rule(vid, &joined(&t.words), &joined(&t.singles)),
@@ -101,14 +102,20 @@ pub fn apply(
     validate_size(input.len(), op.len())?;
     let notice = command.notice();
     let hash = if let Some((kind, n, outcome)) = notice {
-        digest(json!([kind, n.version, n.action, n.from_call, outcome, opportunity]).to_string())
+        let mut fields = json!([kind, n.version, n.action, n.from_call, outcome, opportunity]);
+        if let Command::Outcome { demote_after, .. } = command
+            && *demote_after > 0
+        {
+            fields.as_array_mut().unwrap().push(json!(demote_after));
+        }
+        digest(fields.to_string())
     } else {
         digest(input)
     };
     let mut queries = vec![revision(), receipt(op)];
     if let Some((_, n, _)) = notice {
         queries[0] = q("SELECT usage_revision FROM meta WHERE singleton=1", vec![]);
-        queries.push(q("SELECT target,actions FROM rules WHERE version=?1 UNION ALL SELECT target,'[]' FROM memories WHERE id=?1",vec![s(&n.version)]));
+        queries.push(q("SELECT target,actions,kind,state,failure_streak FROM rules WHERE version=?1 UNION ALL SELECT target,'[]',kind,'current',0 FROM memories WHERE id=?1",vec![s(&n.version)]));
         if let Some(from) = &n.from_call {
             queries.push(q(
                 "SELECT opportunity FROM calls WHERE id=? AND kind='recall' AND EXISTS(
@@ -117,7 +124,11 @@ pub fn apply(
             ));
         }
     }
+    if matches!(command, Command::Outcome { .. }) {
+        queries.push(revision());
+    }
     match command {
+        Command::Skill { command } => queries.extend(crate::skills::queries(command)),
         Command::Init => queries.push(q("SELECT store_id FROM meta WHERE singleton=1", vec![])),
         Command::Say { text, speaker, .. } => {
             nonempty(text)?;
@@ -163,7 +174,7 @@ pub fn apply(
         | Command::Outcome { .. }
         | Command::Corrected(_) => (),
         Command::Resolve { pending, .. } => {
-            queries.push(q("SELECT p.id,c.version,p.target FROM rules p JOIN rules c ON c.version=p.pending_against WHERE p.version=? AND p.state='pending' AND c.state='current'",vec![s(pending)]));
+            queries.push(q("SELECT p.id,c.version,p.target,c.kind,p.kind FROM rules p JOIN rules c ON c.version=p.pending_against WHERE p.version=? AND p.state='pending' AND c.state='current'",vec![s(pending)]));
             queries.push(relations::conflicts(pending));
             queries.push(relations::adjacent_scopes(pending));
         }
@@ -185,6 +196,12 @@ pub fn apply(
             return parse(&row[1]);
         }
         let (mut changes, result) = match command {
+            Command::Skill { command } => {
+                match crate::skills::plan(command, &sets, op, &rid, &vid, time)? {
+                    Plan::Reply(result) => return Ok(result),
+                    Plan::Write(batch, result) => (batch, result),
+                }
+            }
             Command::Init => {
                 let store_id = text(
                     &sets[2]
@@ -232,7 +249,12 @@ pub fn apply(
             | Command::Outcome { .. } => crate::activity::notice(
                 notice.unwrap(),
                 &sets[2],
-                sets.get(3),
+                notice
+                    .unwrap()
+                    .1
+                    .from_call
+                    .as_ref()
+                    .and_then(|_| sets.get(3)),
                 op,
                 time,
                 opportunity,
@@ -240,11 +262,37 @@ pub fn apply(
             )?,
             _ => unreachable!(),
         };
+        let mut demote = false;
+        if let Command::Outcome {
+            result: outcome,
+            demote_after,
+            ..
+        } = command
+        {
+            let record = &sets[2][0];
+            if text(&record[2])? == "skill" {
+                let streak = if outcome == "failure" {
+                    int(&record[4])? + 1
+                } else {
+                    0
+                };
+                demote = *demote_after > 0
+                    && streak >= i64::from(*demote_after)
+                    && text(&record[3])? == "current";
+                changes.push(q("UPDATE rules SET failure_streak=?,state=CASE WHEN ? THEN 'candidate' ELSE state END WHERE version=?",
+                    vec![Value::Integer(streak),Value::Integer(i64::from(demote)),s(&notice.unwrap().1.version)]));
+            }
+        }
         changes.push(save_receipt(op, &hash, &result.to_string()));
         let batch = if notice.is_some() {
             omoide_store::guarded_usage(rev, changes)
         } else {
             guarded(rev, changes)
+        };
+        let batch = if demote {
+            guarded(number(sets.last().unwrap())?, batch)
+        } else {
+            batch
         };
         match db.exec_batch(&batch) {
             Ok(()) => return Ok(result),

@@ -38,3 +38,13 @@
 | recall が target_only を返した | 記録の本文・対象・範囲・時期を照合する | 対象だけが一致している。確認済みの事実や完了範囲は個別の証拠で判断する |
 | 返された版を作業に実際に使った | used に version_id と新しい notice ID を指定する | 使用が1回記録される。同じ知らせの再送は同じ notice ID を使う |
 | 検索結果の accounting が unlogged | 返った結果を読み、計測では該当呼び出しを記録漏れとして扱う | 検索結果は利用できるが、呼び出しログは保存できていない |
+
+## 節・スキル・判定器を使うとき
+
+| 条件 | 実行すること | 結果の意味 |
+|---|---|---|
+| 指示ファイルに初めて節を用意する | `omoide hot init ファイル` を実行する | current ならマーカーとヘッダーがある |
+| 会話を始める前に節を点検する | `omoide hot status ファイル` を実行する | stale なら同じ上限で hot export を行う |
+| repeated に対象の経験が複数ある | 各経験 ID と具体的な場面・動作を添えて skill propose を実行する | candidate は未確定。利用する前に confirm が必要 |
+| skill confirm が near_rules を返す | 候補と元発言を照合して関係を指定する | unsure は、利用者が resolve するまで判断待ち |
+| 判定器つきの検索が0件を返す | judge_state と matched_count を読む | used は正常な判定、failed は障害後の基本検索、not_configured は未設定 |
