@@ -168,6 +168,76 @@
       "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
       "at": "2026-11-19T20:31:51Z"
     },
+    "test-req:crates/omoide-judge-jev/src/protocol:wire_tests:answers_must_be_a_named_object_not_an_array:REQ-JUDGE-1": {
+      "from": "sha256:ae31dba93e56da01d18a8758bdaa5b52f7bd0eab33e1acd43ce173a00117fe02",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Link offline Jev disclosure, probability mapping, timeout and failure contract tests",
+      "at": "2026-11-19T22:18:39Z"
+    },
+    "test-req:crates/omoide-judge-jev/src/tests::deadline_and_all_or_nothing_dispatch:REQ-JUDGE-1": {
+      "from": "sha256:f1a1bab6ad2ce3cceb3287c56605a45bd5edca4903efff6014d440f15ffb3d75",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Link offline Jev disclosure, probability mapping, timeout and failure contract tests",
+      "at": "2026-11-19T22:18:39Z"
+    },
+    "test-req:crates/omoide-judge-jev/src/tests::distinct_candidate_content_is_bound_to_each_question_in_one_exchange:REQ-JUDGE-1": {
+      "from": "sha256:62d0a3e338f538c91633812697744cf8a0b49e7e6b3a1f7820070fffdc1fb86c",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Link offline Jev disclosure, probability mapping, timeout and failure contract tests",
+      "at": "2026-11-19T22:18:39Z"
+    },
+    "test-req:crates/omoide-judge-jev/src/tests::http_contract_and_failures_without_network:REQ-JUDGE-1": {
+      "from": "sha256:e8c71f24497cfb3330ea7bd1ced941ff530d1205279da617b061e67eb6b92df2",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Link offline Jev disclosure, probability mapping, timeout and failure contract tests",
+      "at": "2026-11-19T22:18:39Z"
+    },
+    "test-req:crates/omoide-judge-jev/src/tests::one_question_per_rule_with_only_allowlisted_content:REQ-JUDGE-1": {
+      "from": "sha256:f80882c28d71d19f9ebc4023f21817e643be2e975661f9bc6fb426d23f0ca056",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Link offline Jev disclosure, probability mapping, timeout and failure contract tests",
+      "at": "2026-11-19T22:18:39Z"
+    },
+    "test-req:crates/omoide-judge-jev/src/tests::recorded_probability_and_usage_map_to_the_local_version:REQ-JUDGE-1": {
+      "from": "sha256:5ae5c79ff50d6316d5551681e26ffb5c9c48ca44dfe295126fc2ca20e0d0d53e",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Link offline Jev disclosure, probability mapping, timeout and failure contract tests",
+      "at": "2026-11-19T22:18:39Z"
+    },
+    "test-req:crates/omoide-judge-jev/src/tests::require_complete_typed_probabilities_and_match_names_not_response_order:REQ-JUDGE-1": {
+      "from": "sha256:d21e8dfa55a6cc8ccd4b4cb31446a6ee2f33fc14b05002d2f80340f4bb0bb18f",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Link offline Jev disclosure, probability mapping, timeout and failure contract tests",
+      "at": "2026-11-19T22:18:39Z"
+    },
+    "test-req:crates/omoide-judge-jev/src/tests::unrelated_recorded_case_is_not_rounded_to_yes_or_no:REQ-JUDGE-1": {
+      "from": "sha256:ddfa0a3edff5c875f5dc5911365c7441e201a76994a91ae7d27fd5c3f855bb45",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Link offline Jev disclosure, probability mapping, timeout and failure contract tests",
+      "at": "2026-11-19T22:18:39Z"
+    },
+    "test-req:crates/omoide-judge-jev/tests/cli::cli_failures_never_supply_scores_or_require_network:REQ-JUDGE-1": {
+      "from": "sha256:a8d5d8d6a2c264b5ab546e3a72686207ec4ed1234455f8dd3a15f9d99568341b",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Link offline Jev disclosure, probability mapping, timeout and failure contract tests",
+      "at": "2026-11-19T22:18:39Z"
+    },
+    "test-req:crates/omoide-judge-jev/tests/cli::recognizes_only_the_documented_key_and_timeout_names_offline:REQ-JUDGE-1": {
+      "from": "sha256:b1acd4a7fefb72430edea4fdf3ac0e38e421a1ce4a463804b4ccb8831339dc18",
+      "to": "sha256:a8b0bcc5a78868a371429f5d9db014a6a383c1f3eec969a5dbbbaaac770ff716",
+      "by": "human",
+      "reason": "Link offline Jev disclosure, probability mapping, timeout and failure contract tests",
+      "at": "2026-11-19T22:18:39Z"
+    },
     "test-req:crates/omoide-store/src/evidence:tests:target_tokens_preserve_distinct_utf8_bytes:REQ-RECALL-1": {
       "from": "sha256:ff5ecacd7f4d7bc7ac79319fecb3e2f4a8b5cd8566e70e44bcafb6a5e72194fc",
       "to": "sha256:a502750a80a9bbe2138e6d6a639fd49cf6b67211cbc8b9ab86e71581853b533b",

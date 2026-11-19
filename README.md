@@ -133,6 +133,17 @@ init はマーカーがなければファイルの末尾に節を用意し、そ
 
 空でない返事は各候補をちょうど一度含み、点は0〜1です。`{"answers":[]}` は正常な「該当なし」です。採用の下限は `--threshold`（既定0.5、以上を採用）。同点なら従来の優先条件で決めます。小規模なら対象に合う全現行規則・スキルを渡すため、語の重なりがなくても候補を選べます。時間・出力上限は `--timeout-ms`（既定1,000）、`--output-bytes`（既定262,144）。失敗時は `judge_state=failed` と理由を付け、元の結果を返します。正常な空結果は `judge_state=used` と `matched_count=0` です。
 
+### Jev を使う場合
+
+`omoide-judge-jev` は TypeSafe の `jev-1.14.0` を呼ぶ任意の判定器です。本体とは別にインストールし、`TYPESAFE_API_KEY` が設定された環境からコマンド名を指定します。
+
+```sh
+cargo install --locked --path crates/omoide-judge-jev
+omoide recall --kind rule --scene '焼成後のパンをどこに置くか' --judge omoide-judge-jev
+```
+
+明示的にこの判定器を使うと、共有する問い合わせの場面・動作・対象と、候補ごとの本文・場面・別表現が TypeSafe に送信されます。送信内容、期限と再現手順は[アダプターの README](crates/omoide-judge-jev/README.md)にあります。
+
 ## 経験をスキルにする
 
 ```sh

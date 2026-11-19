@@ -1,0 +1,12 @@
+[package]
+name = "omoide-judge-jev"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Optional TypeSafe Jev judge for the omoide subprocess protocol"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+ureq = { version = "3.4", default-features = false, features = ["rustls"] }

@@ -1,5 +1,6 @@
 [workspace]
-members = ["crates/omoide-core","crates/omoide-store","crates/omoide"]
+members = ["crates/omoide-core","crates/omoide-store","crates/omoide","crates/omoide-judge-jev"]
+default-members = ["crates/omoide-core","crates/omoide-store","crates/omoide"]
 resolver = "3"
 
 [workspace.package]
