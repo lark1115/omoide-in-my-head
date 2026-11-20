@@ -1,9 +1,11 @@
 mod activity;
 mod args;
+mod coverage;
 mod db;
 mod eval;
 mod hot;
 mod judge;
+mod judging;
 mod memory;
 mod relations;
 mod search;

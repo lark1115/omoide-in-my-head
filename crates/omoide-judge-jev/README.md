@@ -46,3 +46,5 @@ cargo test --locked -p omoide-judge-jev
 cargo build --release --locked -p omoide-judge-jev --example recorded
 python3 verify/jev_port.py target/release/omoide target/release/omoide-judge-jev target/release/examples/recorded
 ```
+
+大きな候補集合では本体が入力を分割し、束ごとに一度送信します。規則とスキルでは適用、決定は選択との関連、事実・経験は状況の証拠との関連を尋ねます。通常のモデル枠（要求64k、質問32k）に余裕を取り、トークン数の保守的な代用として UTF-8 の直列化バイト数を使います。要求48,000バイト、共有状態と単独質問24,000バイトを超えるペイロードは送信前に拒否します。本体は質問ごとに1,024バイトの余裕を加えて分割し、判定の全体期限を共有します。失敗時にも完了した束の判定結果を使い、未判定分だけ語彙検索に戻します。

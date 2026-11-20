@@ -264,3 +264,67 @@ fn distinct_candidate_content_is_bound_to_each_question_in_one_exchange() {
         json!({"answers":[{"version_id":"first","score":0.15},{"version_id":"second","score":0.85}]})
     );
 }
+
+// [REQ-JUDGE-1]
+#[test]
+fn choose_question_by_kind_and_refuse_oversize_before_transport() {
+    let make = |kind: &str, text: &str| json!({"version_id":kind,"kind":kind,"text":text});
+    let build = |items: Vec<Value>| {
+        serde_json::from_value::<Input>(json!({"query":{},"candidates":items}))
+            .unwrap()
+            .request()
+    };
+    let kinds = ["rule", "skill", "decision", "fact", "experience"];
+    let payload = build(kinds.iter().map(|k| make(k, "invented")).collect()).unwrap();
+    let q = |i| {
+        payload["questions"][format!("q{i}")]["instructions"]["question"]
+            .as_str()
+            .unwrap()
+    };
+    assert_eq!(q(0), q(1));
+    assert!(q(2).contains("decision"));
+    assert!(q(3).contains("factual"));
+    assert!(q(4).contains("observation"));
+    assert_eq!(
+        build(vec![make("fact", &"紙".repeat(9000))]).unwrap_err(),
+        "question exceeds byte budget"
+    );
+    assert_eq!(
+        build(kinds.iter().map(|k| make(k, &"a".repeat(10000))).collect()).unwrap_err(),
+        "request exceeds byte budget"
+    );
+}
+
+// [REQ-JUDGE-1]
+#[test]
+fn serialized_question_and_batch_fit_at_exact_byte_boundaries() {
+    let build = |texts: Vec<String>| {
+        let candidates: Vec<_> = texts
+            .into_iter()
+            .enumerate()
+            .map(|(i, t)| json!({"version_id":i.to_string(),"text":t}))
+            .collect();
+        serde_json::from_value::<Input>(json!({"query":{},"candidates":candidates}))
+            .unwrap()
+            .request()
+    };
+    let sample = build(vec![String::new()]).unwrap();
+    let fixed = sample["state"].to_string().len() + sample["questions"]["q0"].to_string().len();
+    let at = 24000 - fixed;
+    assert!(build(vec!["x".repeat(at)]).is_ok());
+    assert_eq!(
+        build(vec!["x".repeat(at + 1)]).unwrap_err(),
+        "question exceeds byte budget"
+    );
+    let fixed = build(vec![String::new(); 3]).unwrap().to_string().len();
+    let available = 48000 - fixed;
+    let widths = vec![
+        available / 3,
+        available / 3,
+        available - 2 * (available / 3),
+    ];
+    let mut texts: Vec<_> = widths.into_iter().map(|n| "a".repeat(n)).collect();
+    assert_eq!(build(texts.clone()).unwrap().to_string().len(), 48000);
+    texts[2].push('b');
+    assert_eq!(build(texts).unwrap_err(), "request exceeds byte budget");
+}

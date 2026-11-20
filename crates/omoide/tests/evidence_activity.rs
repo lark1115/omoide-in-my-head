@@ -485,6 +485,9 @@ fn independent_candidate_caps_and_structured_filters() {
         let r = only("rule");
         assert_eq!(r["candidate_count"], (i + 1).min(2));
         assert_eq!(r["candidates_truncated"], i >= 2);
+        assert_eq!(r["search"]["rule_cap"], i >= 2);
+        assert_eq!(r["search"]["evidence_cap"], false);
+        assert_eq!(r["search"]["by_kind"]["rule"]["eligible"], i + 1);
         let fact = only("fact");
         assert_eq!(fact["candidate_count"], 0);
         assert_eq!(fact["candidates_truncated"], false);
@@ -497,6 +500,9 @@ fn independent_candidate_caps_and_structured_filters() {
         let fact = only("fact");
         assert_eq!(fact["candidate_count"], i.min(2));
         assert_eq!(fact["candidates_truncated"], i > 2);
+        assert_eq!(fact["search"]["by_kind"]["fact"]["eligible"], i);
+        assert_eq!(fact["search"]["evidence_cap"], i > 2);
+        assert_eq!(fact["search"]["rule_cap"], false);
     }
     for (flag, value) in [
         ("--scope", "sheet"),
@@ -805,7 +811,9 @@ fn revised_decision_keeps_both_sources_and_usage_cannot_revive_old_consent() {
     *stale.last_mut().unwrap() = "stale";
     d.run(&stale, false);
     d.ok(&["used", "--version", version(&base)]);
-    assert_eq!(d.ok(&["recall", "--scene", "amber"])["state"], "none");
+    let missing = d.ok(&["recall", "--scene", "amber"]);
+    assert_eq!(missing["state"], "incomplete_search");
+    assert!(missing["results"].as_array().unwrap().is_empty());
     let h = d.ok(&["show", id(&base), "--history"]);
     assert_eq!(h["record"]["decision"], "pending");
     assert_eq!(h["history"][0]["record"]["decision"], "revised");
@@ -936,4 +944,241 @@ fn decided_and_verified_records_outrank_newer_reports_but_pending_decisions_do_n
         records.iter().map(id).collect::<Vec<_>>(),
         [id(&decided), id(&verified), id(&fact), id(&pending)]
     );
+}
+
+// [REQ-RECALL-1]
+#[test]
+fn eligible_counts_use_structured_scope_and_admitted_evidence_stays_with_fact() {
+    let d = Db::new();
+    let src = d.source();
+    let event = d.ok(&[
+        "event",
+        "add",
+        "--text",
+        "indigo was inspected over several different preparation and storage steps",
+        "--target",
+        "press",
+    ]);
+    let fact = d.ok(&[
+        "fact",
+        "add",
+        "--source",
+        id(&event),
+        "--evidence",
+        id(&event),
+        "--text",
+        "indigo",
+        "--target",
+        "press",
+        "--certainty",
+        "verified",
+        "--verified-how",
+        "inspected",
+    ]);
+    d.ok(&[
+        "fact",
+        "add",
+        "--source",
+        &src,
+        "--text",
+        "indigo fibers",
+        "--target",
+        "press",
+        "--period",
+        "winter",
+        "--scope",
+        "paint",
+        "--claim",
+        "entered",
+    ]);
+    let response = d.ok(&["recall", "--scene", "indigo"]);
+    let ids: Vec<_> = response["results"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(id)
+        .collect();
+    assert_eq!(&ids[..2], &[id(&fact), id(&event)]);
+    for (option, hit, miss) in [
+        ("--scope", "paint", "paper"),
+        ("--period", "winter", "spring"),
+        ("--claim", "entered", "confirmed_usable"),
+        ("--target", "press", "annex"),
+    ] {
+        for (value, n) in [(hit, if option == "--target" { 2 } else { 1 }), (miss, 0)] {
+            let q = d.ok(&[
+                "recall", "--scene", "absent", "--kind", "fact", option, value,
+            ]);
+            assert_eq!(q["search"]["by_kind"]["fact"]["eligible"], n);
+            assert_eq!(q["search"]["by_kind"]["experience"]["eligible"], 0);
+            assert_eq!(q["search"]["rule_path"], "not_requested");
+        }
+    }
+    let scoped = d.ok(&[
+        "recall", "--action", "inspect", "--target", "press", "--kind", "fact",
+    ]);
+    assert_eq!(scoped["search"]["evidence_path"], "fts");
+    assert!(
+        scoped["results"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .all(|r| r["match_basis"] == "target_only")
+    );
+    assert!(
+        scoped["results"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .all(|r| r["kind"] == "fact")
+    );
+}
+
+// [REQ-RECALL-1]
+#[test]
+fn temporal_scope_affects_strength_only_when_unmentioned() {
+    let d = Db::new();
+    let seasonal = d.ok(&["event", "add", "--text", "cobalt", "--period", "summer"]);
+    let medium = d.ok(&["event", "add", "--text", "cobalt wood"]);
+    let low = d.ok(&["event", "add", "--text", "cobalt wood wax felt linen paper"]);
+    for (scene, expected) in [
+        ("cobalt", vec![id(&medium), id(&seasonal), id(&low)]),
+        ("cobalt summer", vec![id(&seasonal), id(&medium), id(&low)]),
+    ] {
+        let r = d.ok(&["recall", "--scene", scene]);
+        assert_eq!(
+            r["results"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .map(id)
+                .collect::<Vec<_>>(),
+            expected
+        );
+    }
+}
+
+// [REQ-JUDGE-1]
+#[test]
+fn fallback_keeps_only_unjudged_lexical_and_provisional_matches() {
+    let d = Db::new();
+    let src = d.source();
+    for i in 0..3 {
+        let text = format!("dust.{} item{i}", " ".repeat(17000));
+        d.ok(&["fact", "add", "--source", &src, "--text", &text]);
+        let scene = format!("scene{i}");
+        let mut args = vec![
+            "rule", "add", "--source", &src, "--text", &text, "--scene", &scene,
+        ];
+        let near = d.ok(&args);
+        if near["state"] == "near_rules" {
+            args.extend([
+                "--relation",
+                "unrelated",
+                "--against",
+                near["near_rules"][0]["record"]["version_id"]
+                    .as_str()
+                    .unwrap(),
+                "--near-digest",
+                near["near_digest"].as_str().unwrap(),
+            ]);
+            d.ok(&args);
+        }
+    }
+    let script = d.path.with_file_name("partial.py");
+    std::fs::write(&script,"import sys,json,pathlib\nr=json.load(sys.stdin); p=pathlib.Path(sys.argv[1])\nif p.exists():sys.exit(124)\np.write_text(json.dumps([a['version_id'] for a in r['candidates']]))\nprint('{\"answers\":[]}')").unwrap();
+    for kind in ["fact", "rule"] {
+        let log = d.path.with_file_name(kind);
+        let q = d.ok(&[
+            "recall",
+            "--scene",
+            "dust ore sky reed hazel tile amber ink seal lamp",
+            "--kind",
+            kind,
+            "--judge",
+            "python3",
+            "--judge-arg",
+            script.to_str().unwrap(),
+            "--judge-arg",
+            log.to_str().unwrap(),
+            "--timeout-ms",
+            "12000",
+        ]);
+        let rejected: Vec<String> = serde_json::from_slice(&std::fs::read(log).unwrap()).unwrap();
+        assert_eq!(rejected.len(), 2);
+        assert_eq!(q["judge_state"], "failed");
+        let search = &q["search"];
+        assert_eq!(
+            search["by_kind"][kind],
+            json!({"eligible":3,"scored":3,"judged":2})
+        );
+        assert_eq!(search["judge_requested"], 3);
+        assert_eq!(search["judge_remaining"], 1);
+        assert_eq!(search["timeout"], true);
+        assert_eq!(search["fallback"], true);
+        let tier = if kind == "fact" {
+            "results"
+        } else {
+            "candidates"
+        };
+        let remaining = q[tier].as_array().unwrap();
+        assert_eq!(remaining.len(), 1);
+        assert!(
+            !rejected
+                .iter()
+                .any(|v| v == remaining[0]["version_id"].as_str().unwrap())
+        );
+    }
+}
+
+// [REQ-JUDGE-1]
+#[test]
+fn semantic_order_survives_conflicting_lexical_strength() {
+    let d = Db::new();
+    let src = d.source();
+    let high = d.ok(&["fact", "add", "--source", &src, "--text", "linen guide"]);
+    let low = d.ok(&["fact", "add", "--source", &src, "--text", "linen"]);
+    let script = d.path.with_file_name("graded.py");
+    std::fs::write(&script,"import sys,json\nr=json.load(sys.stdin)\nprint(json.dumps({'answers':[{'version_id':v['version_id'],'score':0.95 if v['text']=='linen guide' else 0.61} for v in r['candidates']]}))").unwrap();
+    let lexical = d.ok(&["recall", "--scene", "linen"]);
+    assert_eq!(lexical["results"][0]["id"], id(&low));
+    let semantic = d.ok(&[
+        "recall",
+        "--scene",
+        "linen",
+        "--judge",
+        "python3",
+        "--judge-arg",
+        script.to_str().unwrap(),
+        "--timeout-ms",
+        "5000",
+    ]);
+    assert_eq!(semantic["judge_state"], "used");
+    assert_eq!(semantic["results"][0]["id"], id(&high));
+}
+
+// [REQ-RECALL-1]
+#[test]
+fn empty_cursor_page_includes_notice_and_respects_byte_limit() {
+    let d = Db::new();
+    d.ok(&["event", "add", "--text", "linen"]);
+    let rows = d.sql("SELECT revision FROM meta WHERE singleton=1");
+    let Cell::Integer(rev) = rows[0][0] else {
+        panic!("revision must be an integer")
+    };
+    let q = d.ok(&[
+        "recall",
+        "--scene",
+        "linen",
+        "--cursor",
+        &format!("{rev}:1"),
+    ]);
+    assert_eq!(q["results"], json!([]));
+    assert!(
+        q["notice"]
+            .as_str()
+            .unwrap()
+            .contains("Search the other sources")
+    );
+    assert!(q.to_string().len() < 4000);
 }

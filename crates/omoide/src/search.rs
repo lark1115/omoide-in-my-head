@@ -57,7 +57,7 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
             query.scan_limit,
             query.fts_limit,
             query.kind.as_deref(),
-            query.judging.judge.is_some(),
+            query.judging.judge.is_some() && query.scene.is_some(),
         )
     } else {
         vec![omoide_store::revision()]
@@ -82,17 +82,20 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
             limit: query.fts_limit,
         },
     ));
+    let census_index = queries.len();
+    queries.push(crate::coverage::census(query, include_rules));
     queries.push(q(
         "SELECT usage_revision FROM meta WHERE singleton=1",
         vec![],
     ));
     let sets = db.read_batch(&queries)?;
+    let census = &sets[census_index];
     let evidence = &sets[evidence_index];
     let usage_revision = number(sets.last().unwrap())?;
     let (sets, links) = sets[..evidence_index].split_at(normal_len);
     let rev = number(&sets[0])?;
     let mut pool = BTreeMap::new();
-    let capped = sets
+    let rule_cap = sets
         .get(3)
         .is_some_and(|rows| rows.len() > query.fts_limit as usize);
     for (i, rows) in sets.iter().enumerate().skip(1) {
@@ -176,7 +179,8 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
             }
         }
     }
-    let capped = capped || evidence.len() > query.fts_limit as usize;
+    let evidence_cap = evidence.len() > query.fts_limit as usize;
+    let capped = rule_cap || evidence_cap;
     for row in evidence.iter().take(query.fts_limit as usize) {
         let mut record = parse(&row[0])?;
         record["match_basis"] = json!(if int(&row[2])? == 1 {
@@ -189,7 +193,10 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
         }
         pool.insert(record["id"].as_str().unwrap().to_owned(), (false, record));
     }
+    pool.retain(|_, (_, r)| query.kind.as_deref().is_none_or(|kind| r["kind"] == kind));
     let count = pool.len();
+    let lexical_query = omoide_core::relevance::LexicalQuery::new(&terms);
+    let mut relevance = BTreeMap::new();
     let candidates = pool.iter().map(|(id, (action, record))| {
         let mut terms = stored_tokens(record);
         if let Some(texts) = alternate_text.get(id) {
@@ -199,6 +206,16 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
                 terms.singles.extend(other.singles);
             }
         }
+        let subject = tokens(record["target"].as_str().unwrap_or_default());
+        let mut quality = lexical_query.score(&terms, &subject);
+        if query.period.is_none()
+            && record["period"]
+                .as_str()
+                .is_some_and(|period| !query.scene.as_deref().unwrap_or_default().contains(period))
+        {
+            quality /= 4;
+        }
+        relevance.insert(id.as_str(), quality);
         Candidate {
             id,
             action: *action,
@@ -243,11 +260,35 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
     });
     let mut judge_state = "not_configured";
     let mut judge_error = None;
+    let mut done = std::collections::BTreeSet::new();
+    let mut requested = 0;
+    let mut oversized = 0;
+
     if query.judging.judge.is_some() {
         let input = json!({"scene":query.scene,"action":query.action,"target":query.target});
-        match crate::judge::ask(&query.judging, &input, &pool) {
-            Ok(scores) => {
-                judge_state = "used";
+        let mut selected: Vec<_> = pool
+            .iter()
+            .filter(|(_, (direct, r))| {
+                query.action.is_none()
+                    || !matches!(r["kind"].as_str(), Some("rule" | "skill"))
+                    || *direct
+            })
+            .collect();
+        selected
+            .sort_by_key(|(id, (direct, _))| std::cmp::Reverse((*direct, relevance[id.as_str()])));
+        let selected = selected.into_iter().map(|(_, (_, r))| r).collect();
+        match crate::judging::ask(&query.judging, &input, selected) {
+            Ok(judgment) => {
+                done = judgment.done;
+                requested = judgment.requested;
+                oversized = judgment.oversized;
+                judge_error = judgment.error;
+                judge_state = if judge_error.is_some() {
+                    "failed"
+                } else {
+                    "used"
+                };
+                let scores = judgment.scores;
                 let ordered = |scores: &BTreeMap<String, usize>| {
                     pool.iter()
                         .filter_map(|(id, (action, r))| {
@@ -265,8 +306,18 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
                         })
                         .collect()
                 };
-                ranked = ordered(&scores.confirmed);
-                possible = ordered(&scores.candidates);
+                if judge_error.is_some() {
+                    ranked.retain(|r| !done.contains(pool[r.id].1["version_id"].as_str().unwrap()));
+                    possible
+                        .retain(|r| !done.contains(pool[r.id].1["version_id"].as_str().unwrap()));
+                } else {
+                    ranked.clear();
+                    possible.clear();
+                }
+                let confirmed: Vec<_> = ordered(&scores.confirmed);
+                let candidates: Vec<_> = ordered(&scores.candidates);
+                ranked.extend(confirmed);
+                possible.extend(candidates);
             }
             Err(message) => {
                 judge_state = "failed";
@@ -282,6 +333,12 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
     }
     ranked.sort();
     possible.sort();
+    if judge_state != "used" && !terms.words.is_empty() {
+        let key =
+            |r: &omoide_core::Rank| std::cmp::Reverse((r.action, !r.target_only, relevance[r.id]));
+        ranked.sort_by_key(key);
+        possible.sort_by_key(key);
+    }
     let mut candidates = Vec::new();
     let mut results = Vec::new();
     let mut visited = std::collections::BTreeSet::new();
@@ -326,8 +383,63 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
             results.push(item);
         }
     }
+    let mut evidence_by_id: BTreeMap<String, Json> = results
+        .iter()
+        .filter(|r| r["kind"] == "experience")
+        .map(|r| (r["id"].as_str().unwrap().to_owned(), r.clone()))
+        .collect();
+    let mut delivered = std::collections::BTreeSet::new();
+    let mut linked = Vec::with_capacity(results.len());
+    for record in results {
+        if !delivered.insert(record["id"].as_str().unwrap().to_owned()) {
+            continue;
+        }
+        let evidence = record["evidence"]
+            .as_str()
+            .and_then(|id| evidence_by_id.remove(id));
+        linked.push(record);
+        if let Some(source) = evidence
+            && delivered.insert(source["id"].as_str().unwrap().to_owned())
+        {
+            linked.push(source);
+        }
+    }
+    let results = linked;
     let mut meta = serde_json::Map::new();
     meta.insert("judge_state".into(), json!(judge_state));
+    let (counts, skipped, active, total) = crate::coverage::counts(census, &pool, &done)?;
+    let incomplete = capped || skipped || judge_error.is_some();
+    let rule_path = if !include_rules {
+        "not_requested"
+    } else if terms.words.is_empty() && query.judging.judge.is_none() && query.action.is_none() {
+        "no_search_terms"
+    } else if query.scene.is_none() {
+        "action_index"
+    } else if active <= query.scan_limit as usize {
+        "full_scan"
+    } else {
+        "fts"
+    };
+    let evidence_path = if matches!(query.kind.as_deref(), Some("rule" | "skill"))
+        || (query.scene.is_none() && query.target.is_none())
+    {
+        "not_requested"
+    } else {
+        "fts"
+    };
+
+    meta.insert(
+        "search".into(),
+        json!({"by_kind":counts,"incomplete":incomplete,"candidate_cap":capped,
+        "fallback":judge_error.is_some(),"timeout":judge_error.as_deref()==Some("judge timeout"),
+        "judge_requested":requested,"not_judged":total.saturating_sub(done.len()),"judge_remaining":requested.saturating_sub(done.len()),
+        "rule_path":rule_path,"action_index":include_rules && query.action.is_some(),"evidence_path":evidence_path,
+        "rule_cap":rule_cap,"evidence_cap":evidence_cap,"reply_cap":false,"judge_oversized":oversized,"judge_output_cap":judge_error.as_deref()==Some("judge output limit"),
+        "rule_scan_limit":query.scan_limit,"fts_limit":query.fts_limit}),
+    );
+    if results.is_empty() {
+        meta.insert("notice".into(), json!(crate::coverage::EMPTY));
+    }
     if let Some(err) = judge_error {
         meta.insert("judge_error".into(), json!(err));
     }
@@ -375,7 +487,9 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
     );
     // Reserve a count as wide as any representable candidate count before selecting strict rows.
     meta.insert("candidates_remaining".into(), json!(usize::MAX));
-    if results.is_empty() && !candidates.is_empty() {
+    if results.is_empty() && incomplete {
+        meta.insert("state".into(), json!("incomplete_search"));
+    } else if results.is_empty() && !candidates.is_empty() {
         meta.insert("state".into(), json!("candidates_only"));
     }
     omoide_core::page::with_metadata(
@@ -387,9 +501,25 @@ pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json>
         &results,
         &meta,
     )
-    .map(|mut page| {
+    .and_then(|mut page| {
+        if page["results"].as_array().unwrap().is_empty() && page.get("notice").is_none() {
+            page["notice"] = json!(crate::coverage::EMPTY);
+            if page.to_string().len() >= 4000 {
+                return Err("query metadata exceeds output budget".into());
+            }
+        }
         page["candidates_remaining"] = json!(candidates.len());
-        omoide_core::tiers::append(page, &candidates)
+        let mut page = omoide_core::tiers::append(page, &candidates);
+        page["search"]["reply_cap"] = json!(
+            page["remaining"] != 0
+                || page["candidates_remaining"] != 0
+                || page["results"]
+                    .as_array()
+                    .unwrap()
+                    .iter()
+                    .any(|r| r["truncated"] == true)
+        );
+        Ok(page)
     })
     .map_err(Error::Input)
 }

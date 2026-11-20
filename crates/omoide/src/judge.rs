@@ -1,7 +1,6 @@
 use crate::args::JudgeConfig;
-use serde_json::{Value as Json, json};
+use serde_json::Value as Json;
 use std::{
-    collections::{BTreeMap, BTreeSet},
     io::{Read, Seek, Write},
     os::unix::{io::AsRawFd, process::CommandExt},
     process::{Command, Stdio},
@@ -23,29 +22,19 @@ fn retry_read(kind: std::io::ErrorKind) -> Result<(), String> {
         _ => Err("judge output read failed".into()),
     }
 }
-pub fn ask(
+pub fn exchange(
     config: &JudgeConfig,
-    query: &Json,
-    pool: &BTreeMap<String, (bool, Json)>,
-) -> Result<omoide_core::judge::Tiers, String> {
+    payload: &Json,
+    start: Instant,
+    budget: Duration,
+    output_limit: usize,
+) -> Result<Vec<u8>, String> {
+    if start.elapsed() >= budget {
+        return Err("judge timeout".into());
+    }
     let exe = config.judge.as_ref().ok_or("judge is not configured")?;
-    let action_only =
-        query["scene"].is_null() && query["target"].is_string() && query["action"].is_string();
-    let selected: Vec<_> = pool
-        .values()
-        .filter(|(direct, record)| !action_only || record["kind"] != "rule" || *direct)
-        .map(|(_, r)| r)
-        .collect();
-    let candidates = selected.iter().map(|r| json!({
-        "version_id":r["version_id"], "text":r["text"], "scene":r["scene"], "aliases":r["aliases"]
-    })).collect::<Vec<_>>();
-    let ids: BTreeSet<String> = selected
-        .iter()
-        .map(|r| r["version_id"].as_str().unwrap().to_owned())
-        .collect();
     let mut input = tempfile::tempfile().map_err(|e| e.to_string())?;
-    serde_json::to_writer(&mut input, &json!({"query":query,"candidates":candidates}))
-        .map_err(|e| e.to_string())?;
+    serde_json::to_writer(&mut input, payload).map_err(|e| e.to_string())?;
     input
         .write_all(b"\n")
         .and_then(|()| input.rewind())
@@ -63,11 +52,11 @@ pub fn ask(
         let mut output = child.stdout.take().unwrap();
         let fd = output.as_raw_fd();
         nonblocking(fd)?;
-        let start = Instant::now();
+
         let mut bytes = Vec::new();
         let mut block = [0u8; 8192];
         loop {
-            if start.elapsed() >= Duration::from_millis(config.timeout_ms) {
+            if start.elapsed() >= budget {
                 return Err("judge timeout".into());
             }
             match output.read(&mut block) {
@@ -77,7 +66,7 @@ pub fn ask(
                     }
                 }
                 Ok(n) => {
-                    if n > config.output_bytes.saturating_sub(bytes.len()) {
+                    if n > output_limit.saturating_sub(bytes.len()) {
                         return Err("judge output limit".into());
                     }
                     bytes.extend_from_slice(&block[..n]);
@@ -96,10 +85,13 @@ pub fn ask(
         let _ = child.wait();
     }
     let (status, bytes) = result?;
+    if status.code() == Some(124) {
+        return Err("judge timeout".into());
+    }
     if !status.success() {
         return Err("judge exited unsuccessfully".into());
     }
-    omoide_core::judge::tiers(&bytes, &ids, config.threshold)
+    Ok(bytes)
 }
 
 #[cfg(test)]

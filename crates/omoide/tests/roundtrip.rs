@@ -188,7 +188,11 @@ fn indexed_and_scan_paths_agree_on_exact_matches_and_exclusions() {
         for term in ["板", "proofs"] {
             assert_eq!(
                 f.recall(&["--scene", term, "--scan-limit", limit])["state"],
-                "none"
+                if limit == "0" {
+                    "incomplete_search"
+                } else {
+                    "none"
+                }
             );
         }
         assert_eq!(
@@ -290,7 +294,7 @@ fn weak_lexical_match_and_structured_judge_candidates() {
     let judge = ["--judge", "python3", "--judge-arg", path.to_str().unwrap()];
     for (query, expected_count) in [
         (vec!["--action", "pack", "--target", "tray"], 1),
-        (vec!["--action", "pack"], 2),
+        (vec!["--action", "pack"], 1),
         (vec!["--scene", "different", "--target", "tray"], 2),
         (
             vec![
@@ -301,11 +305,17 @@ fn weak_lexical_match_and_structured_judge_candidates() {
                 "--target",
                 "tray",
             ],
-            2,
+            1,
         ),
     ] {
         let response = f.recall(&[query.as_slice(), &judge].concat());
         assert_eq!(response["judge_state"], "used");
+        if !query.contains(&"--scene") {
+            assert_eq!(response["search"]["by_kind"]["rule"]["eligible"], 1);
+            assert_eq!(response["search"]["by_kind"]["rule"]["scored"], 1);
+            assert_eq!(response["search"]["by_kind"]["rule"]["judged"], 1);
+            assert_eq!(response["search"]["judge_remaining"], 0);
+        }
         let rows = response["results"].as_array().unwrap();
         assert_eq!(rows.len(), expected_count);
         assert!(rows.iter().any(|r| r["id"] == a["id"]));
@@ -394,4 +404,94 @@ fn provisional_judge_scores_share_the_page_after_confirmed_rows() {
                 .all(|c| c["version_id"] != r["version_id"])
         );
     }
+}
+
+// [REQ-RECALL-1]
+#[test]
+fn coverage_distinguishes_a_complete_empty_scan_from_an_index_miss() {
+    let f = Fixture::new("Workshop record");
+    f.add(
+        "fold linen",
+        "closing",
+        &["--action", "fold", "--target", "booth"],
+    );
+    for (limit, expected, path, scored) in [
+        ("9", "none", "full_scan", 1),
+        ("0", "incomplete_search", "fts", 0),
+    ] {
+        let r = f.recall(&[
+            "--scene",
+            "amber",
+            "--scan-limit",
+            limit,
+            "--target",
+            "booth",
+        ]);
+        assert_eq!(r["state"], expected);
+        assert_eq!(r["search"]["rule_path"], path);
+        assert_eq!(
+            r["search"]["by_kind"]["rule"],
+            serde_json::json!({"eligible":1,"scored":scored,"judged":0})
+        );
+        assert_eq!(r["search"]["not_judged"], 1);
+        assert_eq!(
+            r["notice"],
+            "The device did not find a confirmed match. This is not evidence that no record exists. Search the other sources you have."
+        );
+        assert_eq!(r["search"]["incomplete"], scored == 0);
+        assert_eq!(r["search"]["timeout"], false);
+        assert_eq!(r["search"]["fallback"], false);
+        assert_eq!(r["search"]["reply_cap"], false);
+        assert!(r.to_string().len() < 4000);
+    }
+    let excluded = f.recall(&["--action", "fold", "--target", "annex"]);
+    assert_eq!(excluded["state"], "none");
+    assert_eq!(excluded["search"]["by_kind"]["rule"]["eligible"], 0);
+    let found = f.recall(&["--action", "fold"]);
+    assert_eq!(found["state"], "found");
+    assert_eq!(found["search"]["action_index"], true);
+    assert_eq!(found["search"]["evidence_path"], "not_requested");
+    assert_eq!(
+        f.recall(&["--scene", "linen", "--kind", "rule"])["search"]["evidence_path"],
+        "not_requested"
+    );
+    assert!(found.get("notice").is_none());
+}
+
+// [REQ-JUDGE-1]
+#[test]
+fn report_size_caps_separately_from_deadlines() {
+    let f = Fixture::new("Packing rule");
+    let text = format!("Use paper. {}", "a".repeat(25000));
+    f.add(&text, "wrapping", &["--action", "wrap"]);
+    let r = f.recall(&["--action", "wrap", "--judge", "nonexistent-test-judge"]);
+    assert_eq!(r["judge_error"], "judge question exceeds byte budget");
+    let flags = &r["search"];
+    assert_eq!(flags["judge_oversized"], 1);
+    assert_eq!(flags["judge_remaining"], 1);
+    assert_eq!(flags["by_kind"]["rule"]["judged"], 0);
+    assert_eq!(flags["timeout"], false);
+    assert_eq!(flags["fallback"], true);
+    assert_eq!(flags["reply_cap"], true);
+    assert_eq!(flags["judge_output_cap"], false);
+    let fresh = Fixture::new("Folding rule");
+    fresh.add("Fold the card", "folding", &["--action", "fold"]);
+    let r = fresh.recall(&[
+        "--action",
+        "fold",
+        "--judge",
+        "python3",
+        "--judge-arg",
+        "-c",
+        "--judge-arg",
+        "print('x'*200)",
+        "--output-bytes",
+        "16",
+        "--timeout-ms",
+        "5000",
+    ]);
+    assert_eq!(r["search"]["judge_output_cap"], true);
+    assert_eq!(r["search"]["timeout"], false);
+    assert_eq!(r["search"]["judge_oversized"], 0);
+    assert_eq!(r["results"].as_array().unwrap().len(), 1);
 }
