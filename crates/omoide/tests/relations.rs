@@ -556,3 +556,43 @@ fn lexical_fields_and_witnessed_target_reach_the_registration_score() {
     assert_eq!(from_alias["state"], "near_rules");
     assert_eq!(from_alias["near_rules"][0]["record"]["text"], "ink");
 }
+
+// [REQ-RULE-1]
+#[test]
+fn current_corpus_changes_score_and_reopens_the_same_displayed_version() {
+    let d = Db::new();
+    let src = d.words("Invented color instructions");
+    let args = |text: &'static str, scene: &'static str, action: &'static str| {
+        vec![
+            "rule",
+            "add",
+            "--source",
+            src.as_str(),
+            "--text",
+            text,
+            "--scene",
+            scene,
+            "--action",
+            action,
+        ]
+    };
+    let base = d.ok(&args("red common", "seed left", "pack"));
+    let proposal = args("blue common", "seed right", "pack");
+    let before = d.ok(&proposal);
+    assert_eq!(before["near_rules"][0]["near_score"], 66);
+    assert_eq!(
+        d.ok(&args("common tool", "separate", "other"))["state"],
+        "activated"
+    );
+    let after = d.ok(&finish(proposal.clone(), &before, &base, "restated"));
+    assert_eq!(after["state"], "near_rules");
+    assert_eq!(after["near_remaining"], 0);
+    assert_eq!(after["near_rules"].as_array().unwrap().len(), 1);
+    assert_eq!(
+        after["near_rules"][0]["record"]["version_id"],
+        base["version_id"]
+    );
+    assert_eq!(after["near_rules"][0]["near_score"], 41);
+    assert_ne!(after["near_digest"], before["near_digest"]);
+    assert_eq!(d.ok(&proposal)["near_digest"], after["near_digest"]);
+}

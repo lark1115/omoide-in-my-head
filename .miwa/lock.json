@@ -64,10 +64,10 @@
     },
     "doc-req:DOC-OMOIDE:REQ-RULE-1": {
       "from": "sha256:527645b23083ffcd24f5f3c9ec60f69046170c212c453239eadcd3cfe020c5ad",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "doc-req:DOC-OMOIDE:REQ-STORE-1": {
       "from": "sha256:527645b23083ffcd24f5f3c9ec60f69046170c212c453239eadcd3cfe020c5ad",
@@ -84,59 +84,94 @@
     },
     "test-req:crates/omoide-core/src/near:boundaries:an_identifier_for_either_side_cannot_supply_the_only_anchor:REQ-RULE-1": {
       "from": "sha256:0ef1e927158adb81a2697ba4a314aa624d88933accc82e50b4709f1018a14fb3",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide-core/src/near:boundaries:empty_and_multi_hit_token_only_inputs:REQ-RULE-1": {
       "from": "sha256:0e6997696ef0575a92281adb80210950278edf8f332d383bedfa2ee95f7c101d",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide-core/src/near:boundaries:extra_scope_weight_requires_a_named_subject_in_both_triggers:REQ-RULE-1": {
       "from": "sha256:e87754490175a951f0705f52f66b5118231a3cdb65f0e26d1ff5a443139d85df",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
+    },
+    "test-req:crates/omoide-core/src/near:corpus_tests:a_frequent_identical_instruction_needs_an_independent_cue:REQ-RULE-1": {
+      "from": "sha256:ff1d2eb4782c34c9c944196ce6a817ccab9e46f5b889aefe7dc3aa27ea27ec0e",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
+      "by": "human",
+      "reason": "Add rare-anchor guard for literal boilerplate with unrelated triggers",
+      "at": "2026-11-20T02:39:44Z"
+    },
+    "test-req:crates/omoide-core/src/near:corpus_tests:scene_and_document_mass_boundaries_are_inclusive:REQ-RULE-1": {
+      "from": "sha256:40605a07b0d6a5bc7f9c1e98d06f795f892be7a39d5ee0cf1b1da9ae760ef1e7",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
+      "by": "human",
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
+    },
+    "test-req:crates/omoide-core/src/near:corpus_tests:shared_boilerplate_needs_a_distinctive_scene_or_rare_explicit_alias:REQ-RULE-1": {
+      "from": "sha256:c17fd13cbd1c89ef6950989805bd01451e8010296177c64729a2c35c1f08487a",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
+      "by": "human",
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
+    },
+    "test-req:crates/omoide-core/src/near:corpus_tests:sibling_uses_the_frequency_of_its_written_subject:REQ-RULE-1": {
+      "from": "sha256:0b203a194938ebadfe2b90020a3fe3fa71295b441df7be34780a1777907ff090",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
+      "by": "human",
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
+    },
+    "test-req:crates/omoide-core/src/near:corpus_tests:weights_use_distinct_current_documents_and_independent_columns:REQ-RULE-1": {
+      "from": "sha256:83bea607b50c22ae90df69dd1e3ac7fdf8b66a35e993196eb4d64ab91771db54",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
+      "by": "human",
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide-core/src/near:tests:fraction_uses_smaller_set_and_accepts_the_boundary:REQ-RULE-1": {
       "from": "sha256:3c74360128641a520d02f83a4f698816b98203a4630731345ecd91dd9f328dc7",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide-core/src/near:tests:registration_terms_keep_content_not_grammar:REQ-RULE-1": {
       "from": "sha256:07778b9f9c0cb65c99d8ccc10406ee1b7d83e95966dd0c583dc5b3dfccbbe51e",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide-core/src/near:tests:scene_and_structured_priors_require_corroboration:REQ-RULE-1": {
       "from": "sha256:ca20badf0b4c929916c4c12b9c5bcbf4c130d4adc3264399dd8d37ba9af33f86",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide-core/src/near:tests:sibling_noun_must_be_witnessed_in_both_triggers:REQ-RULE-1": {
       "from": "sha256:278ed84d082dd640c1c38ef7c0e3c4ecdc16e83c029da96124bb18050b1ecc0f",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide-core/src/near:tests:strongest_match_includes_exact_kana_only_description:REQ-RULE-1": {
       "from": "sha256:ba6cd2197a6dfdf044a7cc54bb64f723ecd8bd86a31d7f26c3fb2ba3e3fc1a2b",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide-core/src/relevance:tests:exact_compound_stem_and_distinct_subject_contributions:REQ-RECALL-1": {
       "from": "sha256:cb5159ffe854d167ffbbf020f999c2172593ee82cd701d19285e5a860e50eb49",
@@ -189,10 +224,10 @@
     },
     "test-req:crates/omoide-core/tests/properties::coarse_action_needs_independent_content:REQ-RULE-1": {
       "from": "sha256:3992f90c9f1a39ca53166bf5f2ac53155489961d1de51c265cdb14fc0da1004c",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide-core/tests/properties::complete_replies_still_require_unique_ids_and_each_score_in_range:REQ-JUDGE-1": {
       "from": "sha256:b500fd25152bd8779ac17dc0bcf89126dfad62cc8e07843bbdb2fbdb523466d5",
@@ -238,10 +273,10 @@
     },
     "test-req:crates/omoide-core/tests/properties::registration_table:REQ-RULE-1": {
       "from": "sha256:45969828fadbaaa371cd82dabb8921a9726878f4f0b9e9e0d8b9c0c3fd8037f3",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide-core/tests/properties::shortened_records_use_the_actual_next_cursor_and_largest_fitting_sentence:REQ-RECALL-1": {
       "from": "sha256:4469a45a29899567308b73a91fd188a1ecfc0a0537c43b062cdbe0d39e972116",
@@ -362,6 +397,13 @@
       "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
       "at": "2026-11-20T00:00:10Z"
     },
+    "test-req:crates/omoide-store/src/near_counts:tests:draft_and_persisted_skill_get_current_rule_frequencies:REQ-RULE-1": {
+      "from": "sha256:9e954d86db933e970f93191e7358b6d9480110113d44cf6de039c84e8b188250",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
+      "by": "human",
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
+    },
     "test-req:crates/omoide-store/src/tests::busy_and_locked_are_distinct_from_unknown_errors_and_fault_points_are_exact:REQ-STORE-1": {
       "from": "sha256:dec330a0a0293f4620d7541fe06de240ae467542296b1736d639da6e36a09d8b",
       "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
@@ -370,11 +412,11 @@
       "at": "2026-11-19T21:35:55Z"
     },
     "test-req:crates/omoide-store/src/tests::contention_kill_and_replay:REQ-STORE-1": {
-      "from": "sha256:1832fa33cf5e78ce685f6cf0fecfb88c476372320fe996d972b957916d7403a6",
+      "from": "sha256:2807fa63e43bddb066520c4385845992955c701bc8b630e36ba6789ca2f83acf",
       "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
       "by": "human",
-      "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
-      "at": "2026-11-19T19:54:53Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide-store/src/tests::initialization_rolls_back_schema_with_first_write:REQ-STORE-1": {
       "from": "sha256:546d821f22d4797bf09e639e97d44d20dd1bd2cde6a9d8dd753f3b5527f4d581",
@@ -419,11 +461,11 @@
       "at": "2026-11-19T19:27:45Z"
     },
     "test-req:crates/omoide-store/src/tests::process_worker:REQ-STORE-1": {
-      "from": "sha256:0ea35469ae361ea910db06be5552f8fee94039a82422b9db881742084582db46",
+      "from": "sha256:80e64b6bf3af7e6af6e13005ae5c2169ef052f9404f9c7f47567e70b3daf087b",
       "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
       "by": "human",
-      "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
-      "at": "2026-11-19T19:54:53Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide-store/src/tests::publish_checks_identity_and_both_revisions_before_installing:REQ-HOT-1": {
       "from": "sha256:5e57adb107b003d1d9482a0e00b7c16c5e83c71b8469d39a45cf5bb8e97330a3",
@@ -524,11 +566,11 @@
       "at": "2026-11-19T20:31:51Z"
     },
     "test-req:crates/omoide/src/write:tests:racing_registration_rechecks_neighbors_before_activation:REQ-STORE-1": {
-      "from": "sha256:12be4ae366f091965c54bd572c172e8dff3cd7f37cb00f7415115a18c1c2a9e6",
+      "from": "sha256:9cd16464da175124f5a48ed56c6b8d963f9c346b9aa9aec71a2bcbb05f567ea6",
       "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
       "by": "human",
-      "reason": "Stage three: evidence retrieval, opportunity accounting, usage ordering, immutable decision history and rollback",
-      "at": "2026-11-19T20:31:51Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::a_reported_fact_with_evidence_is_still_unproven_for_its_own_scope:REQ-DEC-1": {
       "from": "sha256:c10ae28cac17b1ca2045d04c4f4624c4319fd5a26af2ee2b025a39572f7d0a16",
@@ -658,10 +700,10 @@
     },
     "test-req:crates/omoide/tests/relations::adoption_waits_for_other_proposals_against_that_version:REQ-RULE-1": {
       "from": "sha256:2e8026012cf2897fba3e1a823cd845d4b3432e448fe3d6b214c03b1dbb976922",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide/tests/relations::competing_restatements_do_not_apply_a_choice_to_another_version:REQ-STORE-1": {
       "from": "sha256:af405c2d35aa21d88e101500ca641a487ed9d78929c210675c029d8fceadca67",
@@ -670,26 +712,33 @@
       "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
       "at": "2026-11-19T19:54:53Z"
     },
+    "test-req:crates/omoide/tests/relations::current_corpus_changes_score_and_reopens_the_same_displayed_version:REQ-RULE-1": {
+      "from": "sha256:b2d160b6b25fccd64db021d84a5e75eac6dfb16e2139d5689432a3e45976f001",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
+      "by": "human",
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
+    },
     "test-req:crates/omoide/tests/relations::digest_and_exact_version_bind_the_choice:REQ-RULE-1": {
       "from": "sha256:1a700ada9526a011ba1b0a2a288c73ecda8a61b4896a7dcb86ab43357f484eec",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide/tests/relations::disjoint_targets_require_a_distinct_choice_from_an_open_conflict:REQ-RULE-1": {
       "from": "sha256:73ce356f9f56255b74a17ea576839b79aa7b5de75b66c9ad2084b421eca37214",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide/tests/relations::exception_cannot_expand_past_its_parent_during_revision:REQ-RULE-1": {
       "from": "sha256:8dbb4b1ea2bd95276c9b4a4f6e6fc4d348b645be0ab35247a7d0e832c75ccab7",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide/tests/relations::exception_preserves_applicable_pending_evidence:REQ-RECALL-1": {
       "from": "sha256:b3bc9a882ed99a55391290edafa834e530250c20d7e0df86fbb13066d1aab6da",
@@ -700,38 +749,38 @@
     },
     "test-req:crates/omoide/tests/relations::hidden_neighbor_invalidates_digest_and_cannot_be_selected:REQ-RULE-1": {
       "from": "sha256:01ee762de94d111e3d7f3e62499d29bd47ad8b93103e6148a852dc9e5b840b0c",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide/tests/relations::lexical_fields_and_witnessed_target_reach_the_registration_score:REQ-RULE-1": {
       "from": "sha256:97bfc7ea1738fc67da77b9ba22b084f30ea6d9568c52e13bf425b56dc2675272",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide/tests/relations::parent_and_child_scope_bounds_distinguish_global_from_named_targets:REQ-RULE-1": {
       "from": "sha256:f228ff8ca33c2fdaa03f65064c318b1fa7f83a5456fa33e8febe66fcb4075174",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide/tests/relations::pending_exposes_both_sources_and_requires_an_explicit_winner:REQ-RULE-1": {
       "from": "sha256:833a90a53ebd618d943dd8f0873144242163dd19c73028de1c087da81e36f5c6",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide/tests/relations::restatement_waits_for_open_proposal_against_that_version:REQ-RULE-1": {
       "from": "sha256:5b31a6295d18627d02f1b0f81b2de53bc938b52008cd69197c07d14099cc81b1",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide/tests/relations::same_adds_evidence_without_creating_versions:REQ-REC-1": {
       "from": "sha256:bbd54c3e982838c094226f6963a26e5982d2fbe497a8ec5434694228fa0747d2",
@@ -791,10 +840,10 @@
     },
     "test-req:crates/omoide/tests/roundtrip::near_returns_evidence_without_writing:REQ-RULE-1": {
       "from": "sha256:beaf0b880dd275e34ec1f8476d1850601d932874c5e59be4b755671459858a9a",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide/tests/roundtrip::output_budget_pages_and_restarts_after_write:REQ-RECALL-1": {
       "from": "sha256:1ba3d0cc8310c053919e8a62b770093d45e1b8618cba426f7edfd26d6a0519ae",
@@ -945,10 +994,10 @@
     },
     "test-req:crates/omoide/tests/stage_four::pending_procedure_does_not_replace_current_show_by_record_id:REQ-RULE-1": {
       "from": "sha256:e139fbf601c269cc8d41bef9efb5ae3fd6cac8fddb586eaec8646f000cbfa994",
-      "to": "sha256:aeea5814ae3083f0f42f7bd4464e48ff978825a12915d503e1b6e3bea18bae89",
+      "to": "sha256:4edc2affa0acd40d38f8b4ab4aec234cd1c7774a754f1f8c39570c0e3daafb04",
       "by": "human",
-      "reason": "Tie bounded registration review and relation checks to REQ-RULE-1",
-      "at": "2026-11-20T01:23:33Z"
+      "reason": "Trace store-aware registration checks and scene failure diagnostics",
+      "at": "2026-11-20T02:30:40Z"
     },
     "test-req:crates/omoide/tests/stage_four::pin_survives_restatement_but_does_not_spread_to_unrelated_neighbors:REQ-HOT-1": {
       "from": "sha256:bc4e0779bb5a24c2a66e3cd4b53c082fca5828c9b55679a33e321ef723809287",

@@ -17,7 +17,7 @@
 | 指示ファイルから移す決まりを選んだ | 決まりの出どころとなった元発言を確認する | 原文が見つかった決まりだけを登録する |
 | 元発言が確認できた | `omoide say --text '原文'` に本文を一字も変えずに渡す | `stored` の `id` が出どころ |
 | 出どころの ID を取得した | README の例に沿って `omoide rule add --source ID …` を実行する | `activated` は有効、`near_rules` は比較のみ |
-| `near_rules` が返った | 最大9件の元発言と `near_remaining` を確認し、元の登録引数に `--relation`、表示された版の `--against`、返った `--near-digest` を付けてもう一度登録する | 再び `near_rules` なら比較対象が変わったので、新しい並びを読んで選び直す |
+| `near_rules` が返った | 最大9件の元発言と `near_remaining` を確認し、元の登録引数に `--relation`、表示された版の `--against`、返った `--near-digest` を付けてもう一度登録する | 再び `near_rules` なら比較対象か頻度による点数が変わったので、新しい並びを読んで選び直す |
 | `unresolved_conflicts` がある | 両方の規則と両方の元発言を利用者に示す | 利用者が選ぶまで現行版が残る |
 | 利用者が採用する側を選んだ | `omoide resolve PENDING_VERSION --keep current` または `--keep pending` を実行する | 結果の `state` が `resolved` なら、`version_id` が採用された版 |
 

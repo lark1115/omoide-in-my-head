@@ -28,3 +28,40 @@ pub fn candidate(version: &str) -> Statement {
         vec![Value::Text(version.to_owned())],
     )
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use rusqlite::{Connection, params_from_iter};
+    use std::collections::BTreeMap;
+    // [REQ-RULE-1]
+    #[test]
+    fn draft_and_persisted_skill_get_current_rule_frequencies() {
+        let db = Connection::open_in_memory().unwrap();
+        db.execute_batch("CREATE TABLE rules(version TEXT,state TEXT,kind TEXT);
+            CREATE VIRTUAL TABLE rule_index USING fts5(words,singles);
+            INSERT INTO rules VALUES('a','current','rule'),('b','current','rule'),('c','pending','rule'),('d','superseded','rule'),('e','current','skill'),('f','candidate','skill');
+            INSERT INTO rule_index(words,singles) VALUES('red 雨幕','雨 幕'),('red 月幕','月 幕'),('red','幕'),('red','幕'),('red','幕'),('red wax 雨幕','幕 雨');").unwrap();
+        let read = |q: Statement| {
+            db.prepare(&q.sql)
+                .unwrap()
+                .query_map(params_from_iter(&q.args), |r| {
+                    Ok((
+                        (r.get::<_, String>(0)?, r.get::<_, String>(1)?),
+                        r.get::<_, usize>(2)?,
+                    ))
+                })
+                .unwrap()
+                .collect::<Result<BTreeMap<_, _>, _>>()
+                .unwrap()
+        };
+        let counts = read(proposal(&omoide_core::tokens("red wax 雨幕")));
+        assert_eq!(counts, read(candidate("f")));
+        assert_eq!(counts[&("total".into(), "".into())], 2);
+        assert_eq!(counts[&("words".into(), "red".into())], 2);
+        assert_eq!(counts[&("words".into(), "wax".into())], 0);
+        assert_eq!(counts[&("words".into(), "雨幕".into())], 1);
+        assert_eq!(counts[&("singles".into(), "幕".into())], 2);
+        assert_eq!(counts[&("singles".into(), "雨".into())], 1);
+    }
+}

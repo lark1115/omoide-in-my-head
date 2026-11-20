@@ -1,0 +1,2 @@
+{"helper": "original", "injected_startup_seconds": 16, "observed_sigstop": false, "error": "writer did not reach the pre-commit stop", "elapsed_ms": 15009, "utterances": 0, "receipts": 1}
+{"helper": "separate_deadlines", "injected_startup_seconds": 16, "observed_sigstop": true, "error": null, "elapsed_ms": 68549, "utterances": 0, "receipts": 1}

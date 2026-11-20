@@ -46,8 +46,8 @@ CASES = [
     ),
     (
         "hidden digest",
-        "matches.iter().map(|(strength, r, _)|",
-        "matches.iter().take(9).map(|(strength, r, _)|",
+        ".map(|(strength, r, _)|",
+        ".take(9).map(|(strength, r, _)|",
         "hidden_neighbor",
     ),
     ("score order", "b.0.cmp(&a.0)", "a.0.cmp(&b.0)", "hidden_neighbor"),

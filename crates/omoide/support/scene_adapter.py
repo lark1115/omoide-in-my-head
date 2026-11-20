@@ -390,7 +390,7 @@ class CaseResults(list):
                 os.environ.get("OMOIDE_EVAL_FAILURE_DIR", "target/omoide-eval-failures")
             )
             root.mkdir(parents=True, exist_ok=True)
-            self.archive.append(Path(tempfile.mkdtemp(prefix="run-", dir=root)))
+            self.archive.append(root / Path(tempfile.mkdtemp(prefix="run-", dir=root)).name)
         file = self.archive[0] / f"{self.side}-{len(self):04}.json"
         with file.open("x", encoding="utf-8") as f:
             json.dump(row, f, ensure_ascii=False)
@@ -413,7 +413,7 @@ def main():
     opts = parser.parse_args()
     # The reference study is deterministic even when the calling agent uses ambient settings.
     for key in tuple(os.environ):
-        if key.startswith("OMOIDE_"):
+        if key.startswith("OMOIDE_") and key not in {"OMOIDE_EVAL_FAILURE_DIR","OMOIDE_TEST_TIMING_LOG"}:
             del os.environ[key]
     judge = (
         opts.judge_fixture or opts.scenes.parent / "support" / "deterministic_judge.py"

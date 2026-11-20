@@ -350,7 +350,15 @@ impl Corpus {
     }
     pub fn score(&self, a: &RuleProfile, b: &RuleProfile) -> Option<usize> {
         let base = score(a, b)?;
-        if a.text == b.text && !a.text.is_empty() {
+        // Repeated literal boilerplate in different scenes is not an independent anchor.
+        if a.text == b.text
+            && (a.scene == b.scene
+                || a.body.iter().any(|w| {
+                    !a.identifiers.contains(w)
+                        && !b.identifiers.contains(w)
+                        && self.weight(w, false) >= 75
+                }))
+        {
             return Some(base);
         }
         if !a.cues.is_empty() && a.cues == b.cues {
@@ -387,6 +395,121 @@ impl Corpus {
             Some(base.saturating_sub(penalty / smaller).max(1))
         } else {
             None
+        }
+    }
+}
+
+#[cfg(test)]
+mod corpus_tests {
+    use super::*;
+    use proptest::prelude::*;
+
+    fn corpus() -> Corpus {
+        Corpus {
+            current: 9,
+            words: [("common".into(), 9), ("seed".into(), 2)].into(),
+            singles: [("幕".into(), 2)].into(),
+        }
+    }
+    // [REQ-RULE-1]
+    #[test]
+    fn weights_use_distinct_current_documents_and_independent_columns() {
+        let c = corpus();
+        assert_eq!(c.weight("missing", false), 100);
+        assert_eq!(c.weight("seed", false), 75);
+        assert_eq!(c.weight("common", false), 0);
+        assert_eq!(c.weight("幕", true), 75);
+        assert_eq!(c.weight("幕", false), 100);
+        assert_eq!(Corpus::default().weight("missing", false), 100);
+    }
+    // [REQ-RULE-1]
+    #[test]
+    fn shared_boilerplate_needs_a_distinctive_scene_or_rare_explicit_alias() {
+        let act = vec!["pack".into()];
+        let a = RuleProfile::new("red common", "seed left", &[], &act, None);
+        let b = RuleProfile::new("blue common", "seed right", &[], &act, None);
+        let mut c = corpus();
+        assert_eq!(c.score(&a, &b), Some(35));
+        let identified = RuleProfile::new("red common", "seed left", &[], &act, Some("common"));
+        assert_eq!(c.score(&identified, &b), Some(60));
+        assert_eq!(c.score(&b, &identified), Some(60));
+        c.words.insert("seed".into(), 3);
+        assert_eq!(c.score(&a, &b), None);
+        let alias = RuleProfile::new("blue common", "another place", &["rare".into()], &act, None);
+        let other = RuleProfile::new("red common rare", "entirely different", &[], &act, None);
+        assert!(c.score(&alias, &other).is_some());
+        assert_eq!(c.score(&other, &alias), c.score(&alias, &other));
+        c.words.insert("rare".into(), 3);
+        assert_eq!(c.score(&other, &alias), None);
+        let c1 = RuleProfile::new("red common", "床を磨く場面", &[], &act, None);
+        let c2 = RuleProfile::new("blue common", "箱を運ぶ場面", &[], &act, None);
+        assert_eq!(c.score(&c1, &c2), None);
+        let same = RuleProfile::new("different common", "床を磨く場合", &[], &act, None);
+        assert!(c.score(&c1, &same).is_some());
+        let identical_body = RuleProfile::new("red common", "entirely different", &[], &act, None);
+        assert!(c.score(&c1, &identical_body).is_some());
+    }
+    // [REQ-RULE-1]
+    #[test]
+    fn a_frequent_identical_instruction_needs_an_independent_cue() {
+        let acts = vec!["pack".into()];
+        let a = RuleProfile::new("common", "open gate", &[], &acts, None);
+        let b = RuleProfile::new("common", "weigh paper", &[], &acts, None);
+        let c = corpus();
+        assert_eq!(c.score(&a, &b), None);
+        assert_eq!(c.score(&a, &a), Some(300));
+        let named = RuleProfile::new("common", "weigh paper", &[], &acts, Some("common"));
+        assert_eq!(Corpus::default().score(&a, &named), None);
+        assert_eq!(Corpus::default().score(&named, &a), None);
+    }
+    // [REQ-RULE-1]
+    #[test]
+    fn sibling_uses_the_frequency_of_its_written_subject() {
+        let act = vec!["store".into()];
+        let a = RuleProfile::new("乾かす", "雨幕", &[], &act, Some("雨幕"));
+        let b = RuleProfile::new("巻く", "月幕", &[], &act, Some("月幕"));
+        let mut c = corpus();
+        assert_eq!(c.score(&a, &b), Some(FLOOR));
+        c.singles.insert("幕".into(), 3);
+        assert_eq!(c.score(&a, &b), None);
+    }
+    // [REQ-RULE-1]
+    #[test]
+    fn scene_and_document_mass_boundaries_are_inclusive() {
+        let act = vec!["pack".into()];
+        for (tail, passes) in [(4, true), (5, false)] {
+            let left = format!(
+                "seed {}",
+                (0..tail)
+                    .map(|i| format!("left{i}"))
+                    .collect::<Vec<_>>()
+                    .join(" ")
+            );
+            let right = left.replace("left", "right");
+            let a = RuleProfile::new("first", &left, &[], &act, None);
+            let b = RuleProfile::new("second", &right, &[], &act, None);
+            assert_eq!(Corpus::default().score(&a, &b).is_some(), passes);
+        }
+        for (n, passes) in [(22, true), (23, false)] {
+            let left = (0..n)
+                .map(|i| format!("left{i}"))
+                .collect::<Vec<_>>()
+                .join(" ");
+            let right = left.replace("left", "right");
+            let a = RuleProfile::new(&left, "seed shed north", &[], &act, Some("shed"));
+            let b = RuleProfile::new(&right, "seed shed south", &[], &act, Some("shed"));
+            assert_eq!(Corpus::default().score(&a, &b).is_some(), passes);
+        }
+    }
+    proptest! {
+        // [REQ-RULE-1]
+        #[test]
+        fn more_documents_containing_a_term_never_raise_its_weight(n in 1usize..1024, a in 0usize..1024,b in 0usize..1024){
+            let mut c=Corpus{current:n,..Default::default()};
+            c.words.insert("sample".into(),a.min(b).min(n));
+            let before=c.weight("sample",false);
+            c.words.insert("sample".into(),a.max(b).min(n));
+            prop_assert!(c.weight("sample",false)<=before);
         }
     }
 }
