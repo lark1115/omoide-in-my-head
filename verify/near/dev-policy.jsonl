@@ -1,0 +1,8 @@
+{"floor": 15, "prior": 0, "trigger": 0, "family": false, "cap": 72, "dev": [168, 20], "mean": 4.25, "maximum": 9, "ja_pos": 20, "ja_fp": 0}
+{"floor": 25, "prior": 8, "trigger": 8, "family": false, "cap": 72, "dev": [176, 10], "mean": 4.194444444444445, "maximum": 8, "ja_pos": 20, "ja_fp": 0}
+{"floor": 25, "prior": 8, "trigger": 8, "family": true, "cap": 72, "dev": [212, 10], "mean": 5.305555555555555, "maximum": 9, "ja_pos": 20, "ja_fp": 0}
+{"floor": 25, "prior": 8, "trigger": 8, "family": true, "cap": 12, "dev": [212, 10], "mean": 5.305555555555555, "maximum": 9, "ja_pos": 20, "ja_fp": 0}
+{"floor": 25, "prior": 8, "trigger": 8, "family": true, "cap": 9, "dev": [212, 10], "mean": 5.305555555555555, "maximum": 9, "ja_pos": 20, "ja_fp": 0}
+{"floor": 25, "prior": 8, "trigger": 8, "family": true, "cap": 8, "dev": [211, 10], "mean": 5.277777777777778, "maximum": 8, "ja_pos": 20, "ja_fp": 0}
+{"floor": 25, "prior": 8, "trigger": 8, "family": true, "cap": 6, "dev": [194, 5], "mean": 4.527777777777778, "maximum": 6, "ja_pos": 20, "ja_fp": 0}
+{"floor": 25, "prior": 8, "trigger": 8, "family": true, "cap": 4, "dev": [143, 5], "mean": 3.1666666666666665, "maximum": 4, "ja_pos": 20, "ja_fp": 0}

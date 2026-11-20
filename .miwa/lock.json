@@ -81,6 +81,41 @@
       "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
       "at": "2026-11-20T00:00:10Z"
     },
+    "test-req:crates/omoide-core/src/near:tests:fraction_uses_smaller_set_and_accepts_the_boundary:REQ-RULE-1": {
+      "from": "sha256:3c74360128641a520d02f83a4f698816b98203a4630731345ecd91dd9f328dc7",
+      "to": "sha256:55dabe1c257081847fa2ccbf1bb23ea3965c5797ef3e4f16dcb4f87fe123944e",
+      "by": "human",
+      "reason": "Trace informative registration evidence and capped neighbour set checks",
+      "at": "2026-11-20T01:19:29Z"
+    },
+    "test-req:crates/omoide-core/src/near:tests:registration_terms_keep_content_not_grammar:REQ-RULE-1": {
+      "from": "sha256:07778b9f9c0cb65c99d8ccc10406ee1b7d83e95966dd0c583dc5b3dfccbbe51e",
+      "to": "sha256:55dabe1c257081847fa2ccbf1bb23ea3965c5797ef3e4f16dcb4f87fe123944e",
+      "by": "human",
+      "reason": "Trace informative registration evidence and capped neighbour set checks",
+      "at": "2026-11-20T01:19:29Z"
+    },
+    "test-req:crates/omoide-core/src/near:tests:scene_and_structured_priors_require_corroboration:REQ-RULE-1": {
+      "from": "sha256:ca20badf0b4c929916c4c12b9c5bcbf4c130d4adc3264399dd8d37ba9af33f86",
+      "to": "sha256:55dabe1c257081847fa2ccbf1bb23ea3965c5797ef3e4f16dcb4f87fe123944e",
+      "by": "human",
+      "reason": "Trace informative registration evidence and capped neighbour set checks",
+      "at": "2026-11-20T01:19:29Z"
+    },
+    "test-req:crates/omoide-core/src/near:tests:sibling_noun_must_be_witnessed_in_both_triggers:REQ-RULE-1": {
+      "from": "sha256:278ed84d082dd640c1c38ef7c0e3c4ecdc16e83c029da96124bb18050b1ecc0f",
+      "to": "sha256:55dabe1c257081847fa2ccbf1bb23ea3965c5797ef3e4f16dcb4f87fe123944e",
+      "by": "human",
+      "reason": "Trace informative registration evidence and capped neighbour set checks",
+      "at": "2026-11-20T01:19:29Z"
+    },
+    "test-req:crates/omoide-core/src/near:tests:strongest_match_includes_exact_kana_only_description:REQ-RULE-1": {
+      "from": "sha256:ba6cd2197a6dfdf044a7cc54bb64f723ecd8bd86a31d7f26c3fb2ba3e3fc1a2b",
+      "to": "sha256:55dabe1c257081847fa2ccbf1bb23ea3965c5797ef3e4f16dcb4f87fe123944e",
+      "by": "human",
+      "reason": "Trace informative registration evidence and capped neighbour set checks",
+      "at": "2026-11-20T01:19:29Z"
+    },
     "test-req:crates/omoide-core/src/relevance:tests:exact_compound_stem_and_distinct_subject_contributions:REQ-RECALL-1": {
       "from": "sha256:cb5159ffe854d167ffbbf020f999c2172593ee82cd701d19285e5a860e50eb49",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
@@ -130,6 +165,13 @@
       "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
       "at": "2026-11-20T00:00:10Z"
     },
+    "test-req:crates/omoide-core/tests/properties::coarse_action_needs_independent_content:REQ-RULE-1": {
+      "from": "sha256:3992f90c9f1a39ca53166bf5f2ac53155489961d1de51c265cdb14fc0da1004c",
+      "to": "sha256:55dabe1c257081847fa2ccbf1bb23ea3965c5797ef3e4f16dcb4f87fe123944e",
+      "by": "human",
+      "reason": "Trace informative registration evidence and capped neighbour set checks",
+      "at": "2026-11-20T01:19:29Z"
+    },
     "test-req:crates/omoide-core/tests/properties::complete_replies_still_require_unique_ids_and_each_score_in_range:REQ-JUDGE-1": {
       "from": "sha256:b500fd25152bd8779ac17dc0bcf89126dfad62cc8e07843bbdb2fbdb523466d5",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
@@ -150,13 +192,6 @@
       "by": "human",
       "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
       "at": "2026-11-20T00:00:10Z"
-    },
-    "test-req:crates/omoide-core/tests/properties::neighbors_by_action_or_two_distinct_terms:REQ-RULE-1": {
-      "from": "sha256:771ae40ade65039b412a4e3ba98916eb2b0ccc486e2fa0bfb5c7c5ccc87bebb5",
-      "to": "sha256:55dabe1c257081847fa2ccbf1bb23ea3965c5797ef3e4f16dcb4f87fe123944e",
-      "by": "human",
-      "reason": "Stage two: version-bound registration, source history, scoped recall and explicit worker/rollback verification",
-      "at": "2026-11-19T19:54:53Z"
     },
     "test-req:crates/omoide-core/tests/properties::oversized_inherited_conflict_identifies_original_evidence:REQ-RECALL-1": {
       "from": "sha256:12ee41ec28fd50f09e4a543d2b54ec3d731a441fbc908cb2d29e8fd665ef3cbc",
@@ -530,11 +565,11 @@
       "at": "2026-11-19T20:31:51Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::independent_candidate_caps_and_structured_filters:REQ-RECALL-1": {
-      "from": "sha256:9ad66b07bee93bbc4402dec94005abccc8e12b8fcdc0f9b68cdb326b7f974087",
+      "from": "sha256:3af22e9f7bdeb9f7e352a1977fb46f7baa958ea4983151c1ed5ac3d6bc7fefef",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
-      "at": "2026-11-20T00:00:10Z"
+      "reason": "Trace informative registration evidence and capped neighbour set checks",
+      "at": "2026-11-20T01:19:29Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::operation_limits_and_notice_identity:REQ-STORE-1": {
       "from": "sha256:6184a81aca761d9f3d3039082a53b78e09b12d23e66db6cfa72a94a296547174",
@@ -565,11 +600,11 @@
       "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::rule_and_evidence_fts_limits_are_independent:REQ-RECALL-1": {
-      "from": "sha256:246b95a884ea0f297d73addcc87688eb2998a90a3034bfd4e9d3c48d0dcc146a",
+      "from": "sha256:79f856cb08617340a00c75470135f99eeb27eb6f894fc7046002d9d4c1584744",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
-      "at": "2026-11-20T00:00:10Z"
+      "reason": "Trace informative registration evidence and capped neighbour set checks",
+      "at": "2026-11-20T01:19:29Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::semantic_order_survives_conflicting_lexical_strength:REQ-JUDGE-1": {
       "from": "sha256:355bfae7afbe23f764e14830041dba92993039ec0a0d67e0f91fefaa09f4b9b8",
@@ -640,6 +675,13 @@
       "by": "human",
       "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
       "at": "2026-11-20T00:00:10Z"
+    },
+    "test-req:crates/omoide/tests/relations::hidden_neighbor_invalidates_digest_and_cannot_be_selected:REQ-RULE-1": {
+      "from": "sha256:01ee762de94d111e3d7f3e62499d29bd47ad8b93103e6148a852dc9e5b840b0c",
+      "to": "sha256:55dabe1c257081847fa2ccbf1bb23ea3965c5797ef3e4f16dcb4f87fe123944e",
+      "by": "human",
+      "reason": "Trace informative registration evidence and capped neighbour set checks",
+      "at": "2026-11-20T01:19:29Z"
     },
     "test-req:crates/omoide/tests/relations::parent_and_child_scope_bounds_distinguish_global_from_named_targets:REQ-RULE-1": {
       "from": "sha256:f228ff8ca33c2fdaa03f65064c318b1fa7f83a5456fa33e8febe66fcb4075174",
@@ -719,18 +761,18 @@
       "at": "2026-11-19T19:26:44Z"
     },
     "test-req:crates/omoide/tests/roundtrip::near_returns_evidence_without_writing:REQ-RULE-1": {
-      "from": "sha256:3f3a7ab35587073ac78d0b21cb1a07d3f519e6ae0c0f7b75039b1c8cc8e85bb2",
+      "from": "sha256:beaf0b880dd275e34ec1f8476d1850601d932874c5e59be4b755671459858a9a",
       "to": "sha256:55dabe1c257081847fa2ccbf1bb23ea3965c5797ef3e4f16dcb4f87fe123944e",
       "by": "human",
-      "reason": "Stage one: record the tested SQLite contract, lexical recall, CLI round trip and Linux verification",
-      "at": "2026-11-19T19:26:44Z"
+      "reason": "Trace informative registration evidence and capped neighbour set checks",
+      "at": "2026-11-20T01:19:29Z"
     },
     "test-req:crates/omoide/tests/roundtrip::output_budget_pages_and_restarts_after_write:REQ-RECALL-1": {
-      "from": "sha256:39721cb24e5070620257f506fcc00d609725f143ebb5ba905aeecb4dabe3f840",
+      "from": "sha256:1ba3d0cc8310c053919e8a62b770093d45e1b8618cba426f7edfd26d6a0519ae",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
-      "at": "2026-11-20T00:00:10Z"
+      "reason": "Trace informative registration evidence and capped neighbour set checks",
+      "at": "2026-11-20T01:19:29Z"
     },
     "test-req:crates/omoide/tests/roundtrip::provisional_judge_scores_share_the_page_after_confirmed_rows:REQ-JUDGE-1": {
       "from": "sha256:51b3f9aa92931023e156d82061eb8cab16e68c72973120b505aa75fb293987b0",

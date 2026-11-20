@@ -27,6 +27,24 @@ impl Db {
     fn ok(&self, args: &[&str]) -> Value {
         self.run(args, true)
     }
+    fn add_separate(&self, args: &[&str]) {
+        let first = self.ok(args);
+        let result = if first["state"] == "near_rules" {
+            let mut next = args.to_vec();
+            next.extend([
+                "--relation",
+                "unrelated",
+                "--against",
+                version(&first["near_rules"][0]["record"]),
+                "--near-digest",
+                first["near_digest"].as_str().unwrap(),
+            ]);
+            self.ok(&next)
+        } else {
+            first
+        };
+        assert_eq!(result["state"], "activated");
+    }
     fn sql(&self, sql: &str) -> Rows {
         Sqlite::open(&self.path, false)
             .unwrap()
@@ -479,7 +497,7 @@ fn independent_candidate_caps_and_structured_filters() {
         ])
     };
     for (i, scene) in ["one", "two", "three"].into_iter().enumerate() {
-        d.ok(&[
+        d.add_separate(&[
             "rule", "add", "--source", &src, "--text", "paper", "--scene", scene,
         ]);
         let r = only("rule");
@@ -667,7 +685,7 @@ fn rule_and_evidence_fts_limits_are_independent() {
     let d = Db::new();
     let src = d.source();
     for label in ["one", "two", "three"] {
-        d.ok(&[
+        d.add_separate(&[
             "rule", "add", "--source", &src, "--text", "paper", "--scene", label,
         ]);
     }

@@ -1,0 +1,93 @@
+"""Check the frozen fixture and, optionally, both directions through the real CLI."""
+
+import argparse
+import csv
+import hashlib
+import json
+from pathlib import Path
+import subprocess
+import tempfile
+
+HERE = Path(__file__).resolve().parent
+
+
+def data():
+    expected = json.loads((HERE / "manifest.json").read_text())
+    for name, digest in expected.items():
+        if hashlib.sha256((HERE / name).read_bytes()).hexdigest() != digest:
+            raise ValueError("fixture hash mismatch: " + name)
+
+    def read(name):
+        with (HERE / name).open(encoding="utf-8") as f:
+            return list(csv.DictReader(f, delimiter="\t"))
+
+    base = read("unrelated.tsv")
+    positive = read("related.tsv")
+    assert len(base) == len({(r["scene"], r["text"]) for r in base}) == 30
+    assert len(positive) == len({int(r["base"]) for r in positive}) == 10
+    assert all(1 <= int(r["base"]) <= len(base) for r in positive)
+    assert set(r["relation"] for r in positive) == {
+        "restated",
+        "exception",
+        "contradiction",
+    }
+    return base, positive
+
+
+def check(binary):
+    base, positives = data()
+    for reverse in (False, True):
+        with tempfile.TemporaryDirectory() as td:
+
+            def call(args, success=True):
+                p = subprocess.run(
+                    [binary, "--db", Path(td) / "near.db", *args], capture_output=True
+                )
+                assert (p.returncode == 0) == success
+                return json.loads(p.stdout)
+
+            call(["init"])
+
+            def add(r, action):
+                source = call(["say", "--text", r["text"]])["id"]
+                return [
+                    "rule",
+                    "add",
+                    "--source",
+                    source,
+                    "--action",
+                    action,
+                    "--scene",
+                    r["scene"],
+                    "--text",
+                    r["text"],
+                    "--target",
+                    "共同作業",
+                ]
+
+            ids = {}
+            for i in reversed(range(30)) if reverse else range(30):
+                result = call(add(base[i], "report"))
+                assert result["state"] == "activated", (i + 1, result["state"])
+                ids[i + 1] = result["version_id"]
+            for r in positives:
+                args = add(r, "review")
+                result = call(args)
+                assert result["state"] == "near_rules" and ids[int(r["base"])] in {
+                    n["record"]["version_id"] for n in result["near_rules"]
+                }, r
+                call(args + ["--near-digest", result["near_digest"]], False)
+    print(
+        "435 unrelated pairs in both directions; 10 required comparisons with distinct actions; relation-less finish refused"
+    )
+
+
+if __name__ == "__main__":
+    p = argparse.ArgumentParser()
+    p.add_argument("--binary", type=Path)
+    a = p.parse_args()
+    if a.binary:
+        check(a.binary.resolve())
+    else:
+        data()
+        print("30 unrelated rules and 10 related pairs verified")
