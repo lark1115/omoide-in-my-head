@@ -136,6 +136,7 @@ if __name__ == "__main__":
     p.add_argument("binary", type=Path)
     p.add_argument("output", type=Path)
     a = p.parse_args()
-    found = measure(a.binary.resolve())
-    a.output.write_text(json.dumps(found, indent=2) + "\n")
+    with a.output.open("x") as out:
+        found = measure(a.binary.resolve())
+        out.write(json.dumps(found, indent=2) + "\n")
     print(json.dumps(summary(found), indent=2))

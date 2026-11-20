@@ -36,47 +36,54 @@ def data():
 
 def check(binary):
     base, positives = data()
-    for reverse in (False, True):
-        with tempfile.TemporaryDirectory() as td:
 
-            def call(args, success=True):
-                p = subprocess.run(
-                    [binary, "--db", Path(td) / "near.db", *args], capture_output=True
-                )
-                assert (p.returncode == 0) == success
-                return json.loads(p.stdout)
+    def call(db, args, success=True):
+        proc = subprocess.run([binary, "--db", db, *args], capture_output=True)
+        assert (proc.returncode == 0) == success
+        return json.loads(proc.stdout)
 
-            call(["init"])
+    def draft(db, r, action):
+        source = call(db, ["say", "--text", r["text"]])["id"]
+        return [
+            "rule",
+            "add",
+            "--source",
+            source,
+            "--action",
+            action,
+            "--scene",
+            r["scene"],
+            "--text",
+            r["text"],
+            "--target",
+            "共同作業",
+        ]
 
-            def add(r, action):
-                source = call(["say", "--text", r["text"]])["id"]
-                return [
-                    "rule",
-                    "add",
-                    "--source",
-                    source,
-                    "--action",
-                    action,
-                    "--scene",
-                    r["scene"],
-                    "--text",
-                    r["text"],
-                    "--target",
-                    "共同作業",
-                ]
-
+    with tempfile.TemporaryDirectory() as td:
+        for reverse in (False, True):
+            db = Path(td) / f"unrelated-{reverse}.db"
+            call(db, ["init"])
             ids = {}
-            for i in reversed(range(30)) if reverse else range(30):
-                result = call(add(base[i], "report"))
+            for i in reversed(range(len(base))) if reverse else range(len(base)):
+                result = call(db, draft(db, base[i], "report"))
                 assert result["state"] == "activated", (i + 1, result["state"])
                 ids[i + 1] = result["version_id"]
             for r in positives:
-                args = add(r, "review")
-                result = call(args)
+                args = draft(db, r, "review")
+                result = call(db, args)
                 assert result["state"] == "near_rules" and ids[int(r["base"])] in {
                     n["record"]["version_id"] for n in result["near_rules"]
                 }, r
-                call(args + ["--near-digest", result["near_digest"]], False)
+                call(db, args + ["--near-digest", result["near_digest"]], False)
+        for r in positives:
+            db = Path(td) / f"reverse-{r['base']}.db"
+            call(db, ["init"])
+            first = call(db, draft(db, r, "review"))
+            assert first["state"] == "activated"
+            back = call(db, draft(db, base[int(r["base"]) - 1], "report"))
+            assert first["version_id"] in {
+                n["record"]["version_id"] for n in back["near_rules"]
+            }
     print(
         "435 unrelated pairs in both directions; 10 required comparisons with distinct actions; relation-less finish refused"
     )

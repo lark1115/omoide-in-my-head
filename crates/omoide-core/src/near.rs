@@ -278,3 +278,45 @@ mod tests {
         }
     }
 }
+
+#[cfg(test)]
+mod boundaries {
+    use super::*;
+
+    // [REQ-RULE-1]
+    #[test]
+    fn empty_and_multi_hit_token_only_inputs() {
+        assert!(!near_rule(&tokens("から"), &tokens("する"), true));
+        assert!(near_rule(
+            &tokens("oak wax tin ink red"),
+            &tokens("oak wax mud ice sun"),
+            false
+        ));
+    }
+
+    // [REQ-RULE-1]
+    #[test]
+    fn an_identifier_for_either_side_cannot_supply_the_only_anchor() {
+        let a = RuleProfile::new("blue shed", "dawn", &[], &[], Some("shed"));
+        let b = RuleProfile::new("shed", "night", &[], &[], None);
+        assert_eq!(score(&a, &b), None);
+        assert_eq!(score(&b, &a), None);
+    }
+
+    // [REQ-RULE-1]
+    #[test]
+    fn extra_scope_weight_requires_a_named_subject_in_both_triggers() {
+        let acts = vec!["pack".to_owned()];
+        let make = |target| RuleProfile::new("linen wax", "rain north", &[], &acts, target);
+        let b = RuleProfile::new("linen tin", "rain south", &[], &acts, Some("shed"));
+        // Shared linen/rain: 50 coverage + 8 for the trigger + 8 for action.
+        assert_eq!(score(&make(Some("shed")), &b), Some(66));
+        assert_eq!(
+            score(
+                &make(None),
+                &RuleProfile::new("linen tin", "rain south", &[], &acts, None)
+            ),
+            Some(66)
+        );
+    }
+}

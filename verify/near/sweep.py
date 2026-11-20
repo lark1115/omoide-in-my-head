@@ -93,10 +93,6 @@ def main():
         )
 
 
-if __name__ == "__main__":
-    main()
-
-
 def policy_report():
     rows = read_lines("rules.jsonl")
     lab = labels(rows)
@@ -152,3 +148,14 @@ def policy_report():
                 )
             )
         )
+
+
+if __name__ == "__main__":
+    import argparse
+
+    p = argparse.ArgumentParser()
+    p.add_argument("--report", action="store_true")
+    if p.parse_args().report:
+        policy_report()
+    else:
+        main()

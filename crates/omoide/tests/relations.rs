@@ -521,3 +521,38 @@ fn hidden_neighbor_invalidates_digest_and_cannot_be_selected() {
     db.run(&no_relation, false);
     assert_eq!(db.ok(&proposal)["near_digest"], stale["near_digest"]);
 }
+
+// [REQ-RULE-1]
+#[test]
+fn lexical_fields_and_witnessed_target_reach_the_registration_score() {
+    let d = Db::new();
+    let src = d.words("An invented procedure");
+    let args = |body: &'static str, scene: &'static str| {
+        vec![
+            "rule",
+            "add",
+            "--source",
+            src.as_str(),
+            "--text",
+            body,
+            "--scene",
+            scene,
+            "--target",
+            "shed",
+            "--action",
+            "pack",
+        ]
+    };
+    assert_eq!(
+        d.ok(&args("linen wax chalk", "rain shed tile"))["state"],
+        "activated"
+    );
+    let near = d.ok(&args("linen iron", "rain shed tent"));
+    assert_eq!(near["near_rules"][0]["near_score"], 84);
+    let mut alias = args("ink", "dusk");
+    alias.extend(["--alias", "quartz"]);
+    assert_eq!(d.ok(&alias)["state"], "activated");
+    let from_alias = d.ok(&args("quartz", "night"));
+    assert_eq!(from_alias["state"], "near_rules");
+    assert_eq!(from_alias["near_rules"][0]["record"]["text"], "ink");
+}
