@@ -63,6 +63,8 @@ pub struct RuleProfile<'a> {
     scene: &'a str,
     document: Terms,
     trigger: Terms,
+    cues: Terms,
+    aliases: Terms,
     body: Terms,
     identifiers: Terms,
     subject: Terms,
@@ -84,9 +86,18 @@ impl<'a> RuleProfile<'a> {
         let scene_terms = content(scene);
         let body = content(text);
         let mut document: Terms = body.union(&scene_terms).cloned().collect();
-        for alias in aliases {
-            document.extend(content(alias));
-        }
+        let aliases: Terms = aliases.iter().flat_map(|s| content(s)).collect();
+        document.extend(aliases.iter().cloned());
+        let trimmed = scene.trim_end();
+        let cue = ["場面", "場合", "とき", "時", "際"]
+            .iter()
+            .find_map(|suffix| trimmed.strip_suffix(suffix))
+            .unwrap_or(trimmed);
+        let cues = content(cue)
+            .intersection(&document)
+            .filter(|w| !identifiers.contains(*w))
+            .cloned()
+            .collect();
         let trigger = scene_terms.difference(&identifiers).cloned().collect();
         let mut subject = subject_units(scene);
         if let Some(t) = target {
@@ -98,6 +109,8 @@ impl<'a> RuleProfile<'a> {
         Self {
             document,
             trigger,
+            cues,
+            aliases,
             body,
             identifiers,
             subject,
@@ -318,5 +331,62 @@ mod boundaries {
             ),
             Some(66)
         );
+    }
+}
+
+/// Document frequencies for the proposed description in a single store snapshot.
+#[derive(Default)]
+pub struct Corpus {
+    pub current: usize,
+    pub words: std::collections::BTreeMap<String, usize>,
+    pub singles: std::collections::BTreeMap<String, usize>,
+}
+impl Corpus {
+    fn weight(&self, term: &str, single: bool) -> usize {
+        let map = if single { &self.singles } else { &self.words };
+        let df = map.get(term).copied().unwrap_or(0);
+        // The one document being compared is not evidence that its vocabulary is common.
+        100usize.saturating_sub(200 * df.saturating_sub(1) / self.current.saturating_sub(1).max(1))
+    }
+    pub fn score(&self, a: &RuleProfile, b: &RuleProfile) -> Option<usize> {
+        let base = score(a, b)?;
+        if a.text == b.text && !a.text.is_empty() {
+            return Some(base);
+        }
+        if !a.cues.is_empty() && a.cues == b.cues {
+            return Some(base);
+        }
+        let shared = a
+            .document
+            .intersection(&b.document)
+            .filter(|w| !a.identifiers.contains(*w) && !b.identifiers.contains(*w));
+        let mut mass = 0;
+        let mut penalty = 0;
+        let mut alias = false;
+        for word in shared {
+            let w = self.weight(word, false);
+            mass += w;
+            penalty += 100 - w;
+            alias |= w >= 75 && (a.aliases.contains(word) || b.aliases.contains(word));
+        }
+        let mut scene_mass = 0;
+        let mut distinctive = false;
+        for word in a.cues.intersection(&b.cues) {
+            let w = self.weight(word, false);
+            scene_mass += w;
+            distinctive |= w >= 75;
+        }
+        let sibling = !a.actions.is_disjoint(&b.actions)
+            && a.target != b.target
+            && a.subject
+                .intersection(&b.subject)
+                .any(|w| self.weight(w, !w.is_ascii()) >= 75);
+        let smaller = a.document.len().min(b.document.len()).max(1);
+        let scene_match = distinctive && scene_mass >= 20 * a.cues.len().min(b.cues.len());
+        if sibling || ((scene_match || alias) && mass >= 4 * smaller) {
+            Some(base.saturating_sub(penalty / smaller).max(1))
+        } else {
+            None
+        }
     }
 }

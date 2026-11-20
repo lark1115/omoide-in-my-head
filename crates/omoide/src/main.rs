@@ -84,6 +84,19 @@ fn run(cli: &Cli, op: &str) -> db::Result<Value> {
     Ok(result)
 }
 fn main() -> ExitCode {
+    // Private handshake for the opt-in fault runner. Normal CLI stdout remains JSON.
+    #[cfg(feature = "fault-injection")]
+    if std::env::var_os("OMOIDE_TEST_SIGNAL_START").is_some() {
+        use std::io::Write;
+        let mut out = std::io::stdout().lock();
+        if out
+            .write_all(b"OMOIDE_FAULT_READY\n")
+            .and_then(|()| out.flush())
+            .is_err()
+        {
+            return ExitCode::FAILURE;
+        }
+    }
     let cli = match Cli::try_parse() {
         Ok(c) => c,
         Err(e) => {
