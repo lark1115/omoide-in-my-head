@@ -1,0 +1,242 @@
+[
+  {
+    "id": "L01",
+    "language": "en",
+    "prompt": "We're printing tomorrow's lantern-stall breakfast tickets. Supply the start time for the ticket face."
+  },
+  {
+    "id": "L02",
+    "language": "ja",
+    "prompt": "今日は練習生が味を見て感想を出す日。焼き砂糖の花冠を取り分けて渡したい。"
+  },
+  {
+    "id": "L03",
+    "language": "en",
+    "prompt": "Write a three-line English sign for the stamp bench. Have the lines start with P, I, N, in that order."
+  },
+  {
+    "id": "L04",
+    "language": "ja",
+    "prompt": "雫瓶用の注ぎ口を一つ足したい。買い足す前にどう進める？"
+  },
+  {
+    "id": "L05",
+    "language": "en",
+    "prompt": "Can the handover board call the counter shutter operational again?"
+  },
+  {
+    "id": "L06",
+    "language": "ja",
+    "prompt": "霜棚の新札、印刷の空きが今ならあるって。版下に入れる文字を返して。"
+  },
+  {
+    "id": "L07",
+    "language": "en",
+    "prompt": "Can we start the wrapping-fold demonstration at the counter with the empty rain parcel? The special dispatch supplies haven't arrived."
+  },
+  {
+    "id": "L08",
+    "language": "ja",
+    "prompt": "答えが『湯気』になる、短いなぞなぞを一つ作って。問題文では答えを言わないで。"
+  },
+  {
+    "id": "L09",
+    "language": "en",
+    "prompt": "The carver wants the master for our lattice roller. Do I need to send another original?"
+  },
+  {
+    "id": "L10",
+    "language": "ja",
+    "prompt": "梅輪の荷を売り場で受領済みにしてよいか、状況を教えて。"
+  },
+  {
+    "id": "L11",
+    "language": "en",
+    "prompt": "A customer is waiting for the saffron spiral. Walk the wrapper through finishing its sleeve."
+  },
+  {
+    "id": "L12",
+    "language": "ja",
+    "prompt": "店頭の香り見本に煙色瓶を使う。匂いを試せる状態で並べたい。どう仕上げる？"
+  },
+  {
+    "id": "L13",
+    "language": "en",
+    "prompt": "A rail has eight hat pegs. Pegs two and seven are broken. How many working pegs remain?"
+  },
+  {
+    "id": "L14",
+    "language": "ja",
+    "prompt": "角盆をいつもの乾燥枠に入れる段取りを組みたい。別の枠が要るかな。"
+  },
+  {
+    "id": "L15",
+    "language": "en",
+    "prompt": "Write a line for the mica ticket's care card about exposure to steam."
+  },
+  {
+    "id": "L16",
+    "language": "ja",
+    "prompt": "胡桃の板菓子を引き取りに運び手が来た。受け渡しの要領をお願い。"
+  },
+  {
+    "id": "L17",
+    "language": "en",
+    "prompt": "Make up the punch list for the bronze and tin courier tokens in the present dispatch."
+  },
+  {
+    "id": "L18",
+    "language": "ja",
+    "prompt": "砂絵用の砂を一枚につき2匙使う。7枚作ってあと1匙残したい。用意する量は？"
+  },
+  {
+    "id": "L19",
+    "language": "en",
+    "prompt": "Can we draw the icing circles with our own compass, or should I ask the next stall for one?"
+  },
+  {
+    "id": "L20",
+    "language": "ja",
+    "prompt": "花筒の留め金、次の当番にどこまで済んだと伝える？"
+  },
+  {
+    "id": "L21",
+    "language": "en",
+    "prompt": "The ginger bottles are full and capped. What should the filling team do before handing them on?"
+  },
+  {
+    "id": "L22",
+    "language": "ja",
+    "prompt": "木の実市の棚布、今回の東西の分で今日ミシンにかけるのはどっち？"
+  },
+  {
+    "id": "L23",
+    "language": "en",
+    "prompt": "Put these three banner initials in reverse alphabetical order: B, H, D."
+  },
+  {
+    "id": "L24",
+    "language": "ja",
+    "prompt": "菱穴を抜きたいんだけど、道具を借りる連絡をした方がいい？"
+  },
+  {
+    "id": "L25",
+    "language": "en",
+    "prompt": "The leaflet needs a run-time claim for the crank lantern. What can I actually say about six hours?"
+  },
+  {
+    "id": "L26",
+    "language": "ja",
+    "prompt": "星窓の型で焼くのはこれで終わり。道具係に帰り支度のメモを渡して。"
+  },
+  {
+    "id": "L27",
+    "language": "en",
+    "prompt": "Both bins of festival scoops are at the scale. Divide up this season's remaining weighing job."
+  },
+  {
+    "id": "L28",
+    "language": "ja",
+    "prompt": "風鈴形の栞を二冊の帳面に交互にはさむ。最初は青の帳面、もう一冊は黄。5枚目はどっち？"
+  },
+  {
+    "id": "L29",
+    "language": "en",
+    "prompt": "Two canopies are lying beside the harvest stall. Tell the riggers which one goes up."
+  },
+  {
+    "id": "L30",
+    "language": "ja",
+    "prompt": "柚子板の仕上がりを引き継ぎ欄に一行で入れたい。乾き具合をどう書けばいい？"
+  },
+  {
+    "id": "L31",
+    "language": "en",
+    "prompt": "The first twist rolls just came out and the basket is ready. Tell the counter team how to lay them out."
+  },
+  {
+    "id": "L32",
+    "language": "ja",
+    "prompt": "今回の霧便の青封筒、校正係が待ってる。見る面を伝えて。"
+  },
+  {
+    "id": "L33",
+    "language": "en",
+    "prompt": "A strand has seven amber beads and five clay beads. Give me the total bead count."
+  },
+  {
+    "id": "L34",
+    "language": "ja",
+    "prompt": "早苗市で使う試食皿を棚から出したい。形違いが並んでるから係に指示して。"
+  },
+  {
+    "id": "L35",
+    "language": "en",
+    "prompt": "Can we stack these unpainted flour-tile blanks for the test bench? The pile of muslin is at the far end of the room."
+  },
+  {
+    "id": "L36",
+    "language": "ja",
+    "prompt": "薄氷菓の箱がいっぱいになった。売店に渡すまでの最後の手順を短く書いて。"
+  },
+  {
+    "id": "L37",
+    "language": "en",
+    "prompt": "Tell the signwriter where there's still lettering to do on the apricot tasting board for this fair."
+  },
+  {
+    "id": "L38",
+    "language": "ja",
+    "prompt": "飾り文字を左から『麦・舟・雲・月』と並べた。右から二つだけ読んで。"
+  },
+  {
+    "id": "L39",
+    "language": "en",
+    "prompt": "The packing diagram needs one outline for each roll on a braid string. How many outlines do I draw?"
+  },
+  {
+    "id": "L40",
+    "language": "ja",
+    "prompt": "空の鈴箱を寸法合わせに持っていく。麻袋が一枚しかないんだけど出発できる？"
+  },
+  {
+    "id": "L41",
+    "language": "en",
+    "prompt": "No one has listened at the side counter this minute. Can you confirm the chime is ringing there right now?"
+  },
+  {
+    "id": "L42",
+    "language": "ja",
+    "prompt": "露市の籠まわり、浅いのと深いのの敷き紙を今日の断裁表に割り付けて。"
+  },
+  {
+    "id": "L43",
+    "language": "en",
+    "prompt": "Here are twenty-four identical admission stubs. I need piles of six. How many piles?"
+  },
+  {
+    "id": "L44",
+    "language": "ja",
+    "prompt": "砂丘便の荷合わせ、早出の人が迷わないように集合案内を作って。"
+  },
+  {
+    "id": "L45",
+    "language": "en",
+    "prompt": "The sketch easel belongs to us and is going back into our cupboard. Do we need to do anything to the leg before putting it away?"
+  },
+  {
+    "id": "L46",
+    "language": "ja",
+    "prompt": "誰もまだ外を見てない。今この瞬間に風見板がどちらを向いてるか、確定できる？"
+  },
+  {
+    "id": "L47",
+    "language": "en",
+    "prompt": "The wide disc is due at the chime press. Are we blocked until we get a larger press?"
+  },
+  {
+    "id": "L48",
+    "language": "ja",
+    "prompt": "風車形の留め紙を一列に12枚置く。3枚ごとに間を空けると、まとまりはいくつ？"
+  }
+]
