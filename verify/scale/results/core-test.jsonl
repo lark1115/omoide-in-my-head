@@ -1,0 +1,186 @@
+{"size": 48, "op": "T02", "input": 0, "support": [{"id": "m033", "kind": "fact", "tier": 1}, {"id": "e033", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 15}
+{"size": 48, "op": "T02", "input": 1, "support": [{"id": "m033", "kind": "fact", "tier": 0}, {"id": "e033", "kind": "experience", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 48, "op": "T04", "input": 0, "support": [{"id": "m009", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 16}
+{"size": 48, "op": "T04", "input": 1, "support": [{"id": "m009", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 16}
+{"size": 48, "op": "T04", "input": 2, "support": [{"id": "m009", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 16}
+{"size": 48, "op": "T06", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 14}
+{"size": 48, "op": "T06", "input": 1, "support": [], "state": "found", "judge": "not_configured", "pool": 12}
+{"size": 48, "op": "T06", "input": 2, "support": [], "state": "found", "judge": "not_configured", "pool": 12}
+{"size": 48, "op": "T08", "input": 0, "support": [{"id": "m041", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 12}
+{"size": 48, "op": "T08", "input": 1, "support": [{"id": "m041", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 12}
+{"size": 48, "op": "T10", "input": 0, "support": [{"id": "m017", "kind": "fact", "tier": 0}, {"id": "e017", "kind": "experience", "tier": 0}], "state": "incomplete_search", "judge": "not_configured", "pool": 12}
+{"size": 48, "op": "T10", "input": 1, "support": [{"id": "m017", "kind": "fact", "tier": 0}, {"id": "e017", "kind": "experience", "tier": 0}], "state": "incomplete_search", "judge": "not_configured", "pool": 12}
+{"size": 48, "op": "T12", "input": 0, "support": [{"id": "m001", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 15}
+{"size": 48, "op": "T12", "input": 1, "support": [{"id": "m001", "kind": "rule", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 1}
+{"size": 48, "op": "T12", "input": 2, "support": [{"id": "m001", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 1}
+{"size": 48, "op": "T12", "input": 3, "support": [{"id": "m001", "kind": "rule", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 1}
+{"size": 48, "op": "T14", "input": 0, "support": [{"id": "m047", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 17}
+{"size": 48, "op": "T14", "input": 1, "support": [{"id": "m047", "kind": "fact", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 48, "op": "T16", "input": 0, "support": [{"id": "m029", "kind": "fact", "tier": 1}, {"id": "e029", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 16}
+{"size": 48, "op": "T16", "input": 1, "support": [{"id": "m029", "kind": "fact", "tier": 1}, {"id": "e029", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 14}
+{"size": 48, "op": "T16", "input": 2, "support": [{"id": "m029", "kind": "fact", "tier": 1}, {"id": "e029", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 14}
+{"size": 48, "op": "T18", "input": 0, "support": [{"id": "m007", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 18}
+{"size": 48, "op": "T18", "input": 1, "support": [{"id": "m007", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 15}
+{"size": 48, "op": "T18", "input": 2, "support": [{"id": "m007", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 15}
+{"size": 48, "op": "T20", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 15}
+{"size": 48, "op": "T22", "input": 0, "support": [{"id": "m039", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 13}
+{"size": 48, "op": "T22", "input": 1, "support": [{"id": "m039", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 13}
+{"size": 48, "op": "T22", "input": 2, "support": [{"id": "m039", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 13}
+{"size": 48, "op": "T24", "input": 0, "support": [{"id": "m013", "kind": "fact", "tier": 1}, {"id": "e013", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 15}
+{"size": 48, "op": "T24", "input": 1, "support": [{"id": "m013", "kind": "fact", "tier": 1}, {"id": "e013", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 14}
+{"size": 48, "op": "T26", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 21}
+{"size": 48, "op": "T28", "input": 0, "support": [{"id": "m045", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 16}
+{"size": 48, "op": "T28", "input": 1, "support": [{"id": "m045", "kind": "fact", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 48, "op": "T28", "input": 2, "support": [{"id": "m045", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 14}
+{"size": 48, "op": "T30", "input": 0, "support": [{"id": "m025", "kind": "fact", "tier": 1}, {"id": "e025", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 16}
+{"size": 48, "op": "T30", "input": 1, "support": [{"id": "m025", "kind": "fact", "tier": 1}, {"id": "e025", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 16}
+{"size": 48, "op": "T30", "input": 2, "support": [{"id": "m025", "kind": "fact", "tier": 1}, {"id": "e025", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 16}
+{"size": 48, "op": "T32", "input": 0, "support": [{"id": "m005", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 19}
+{"size": 48, "op": "T32", "input": 1, "support": [{"id": "m005", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 15}
+{"size": 48, "op": "T32", "input": 2, "support": [{"id": "m005", "kind": "rule", "tier": 2}], "state": "found", "judge": "not_configured", "pool": 15}
+{"size": 48, "op": "T34", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 13}
+{"size": 48, "op": "T36", "input": 0, "support": [{"id": "m037", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 19}
+{"size": 48, "op": "T36", "input": 1, "support": [{"id": "m037", "kind": "rule", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 48, "op": "T36", "input": 2, "support": [{"id": "m037", "kind": "rule", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 48, "op": "T38", "input": 0, "support": [{"id": "m011", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 23}
+{"size": 48, "op": "T38", "input": 1, "support": [{"id": "m011", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 14}
+{"size": 48, "op": "T38", "input": 2, "support": [{"id": "m011", "kind": "decision", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 48, "op": "T40", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 13}
+{"size": 48, "op": "T42", "input": 0, "support": [{"id": "m043", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 13}
+{"size": 48, "op": "T42", "input": 1, "support": [{"id": "m043", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 13}
+{"size": 48, "op": "T42", "input": 2, "support": [{"id": "m043", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 13}
+{"size": 48, "op": "T44", "input": 0, "support": [{"id": "m021", "kind": "fact", "tier": 0}, {"id": "e021", "kind": "experience", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 16}
+{"size": 48, "op": "T44", "input": 1, "support": [{"id": "m021", "kind": "fact", "tier": 0}, {"id": "e021", "kind": "experience", "tier": 0}], "state": "incomplete_search", "judge": "not_configured", "pool": 12}
+{"size": 48, "op": "T44", "input": 2, "support": [{"id": "m021", "kind": "fact", "tier": 0}, {"id": "e021", "kind": "experience", "tier": 0}], "state": "incomplete_search", "judge": "not_configured", "pool": 12}
+{"size": 48, "op": "T46", "input": 0, "support": [{"id": "m003", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 13}
+{"size": 48, "op": "T46", "input": 1, "support": [{"id": "m003", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 13}
+{"size": 48, "op": "T46", "input": 2, "support": [{"id": "m003", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 1}
+{"size": 48, "op": "T46", "input": 3, "support": [{"id": "m003", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 13}
+{"size": 48, "op": "T46", "input": 4, "support": [{"id": "m003", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 1}
+{"size": 48, "op": "T48", "input": 0, "support": [], "state": "incomplete_search", "judge": "not_configured", "pool": 12}
+{"size": 48, "op": "T48", "input": 1, "support": [], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 48, "op": "T48", "input": 2, "support": [], "state": "incomplete_search", "judge": "not_configured", "pool": 12}
+{"size": 500, "op": "T02", "input": 0, "support": [{"id": "m033", "kind": "fact", "tier": 1}, {"id": "e033", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 151}
+{"size": 500, "op": "T02", "input": 1, "support": [{"id": "m033", "kind": "fact", "tier": 0}, {"id": "e033", "kind": "experience", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 500, "op": "T04", "input": 0, "support": [{"id": "m009", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 197}
+{"size": 500, "op": "T04", "input": 1, "support": [{"id": "m009", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 197}
+{"size": 500, "op": "T04", "input": 2, "support": [{"id": "m009", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 197}
+{"size": 500, "op": "T06", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 304}
+{"size": 500, "op": "T06", "input": 1, "support": [], "state": "found", "judge": "not_configured", "pool": 137}
+{"size": 500, "op": "T06", "input": 2, "support": [], "state": "found", "judge": "not_configured", "pool": 137}
+{"size": 500, "op": "T08", "input": 0, "support": [{"id": "m041", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 137}
+{"size": 500, "op": "T08", "input": 1, "support": [{"id": "m041", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 137}
+{"size": 500, "op": "T10", "input": 0, "support": [{"id": "m017", "kind": "fact", "tier": 0}, {"id": "e017", "kind": "experience", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 146}
+{"size": 500, "op": "T10", "input": 1, "support": [{"id": "m017", "kind": "fact", "tier": 0}, {"id": "e017", "kind": "experience", "tier": 0}], "state": "incomplete_search", "judge": "not_configured", "pool": 137}
+{"size": 500, "op": "T12", "input": 0, "support": [{"id": "m001", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 178}
+{"size": 500, "op": "T12", "input": 1, "support": [{"id": "m001", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 6}
+{"size": 500, "op": "T12", "input": 2, "support": [{"id": "m001", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 6}
+{"size": 500, "op": "T12", "input": 3, "support": [{"id": "m001", "kind": "rule", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 6}
+{"size": 500, "op": "T14", "input": 0, "support": [{"id": "m047", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 151}
+{"size": 500, "op": "T14", "input": 1, "support": [{"id": "m047", "kind": "fact", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 500, "op": "T16", "input": 0, "support": [{"id": "m029", "kind": "fact", "tier": 1}, {"id": "e029", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 182}
+{"size": 500, "op": "T16", "input": 1, "support": [{"id": "m029", "kind": "fact", "tier": 1}, {"id": "e029", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 180}
+{"size": 500, "op": "T16", "input": 2, "support": [{"id": "m029", "kind": "fact", "tier": 1}, {"id": "e029", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 180}
+{"size": 500, "op": "T18", "input": 0, "support": [{"id": "m007", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 208}
+{"size": 500, "op": "T18", "input": 1, "support": [{"id": "m007", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 149}
+{"size": 500, "op": "T18", "input": 2, "support": [{"id": "m007", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 149}
+{"size": 500, "op": "T20", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 189}
+{"size": 500, "op": "T22", "input": 0, "support": [{"id": "m039", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 138}
+{"size": 500, "op": "T22", "input": 1, "support": [{"id": "m039", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 138}
+{"size": 500, "op": "T22", "input": 2, "support": [{"id": "m039", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 138}
+{"size": 500, "op": "T24", "input": 0, "support": [{"id": "m013", "kind": "fact", "tier": 1}, {"id": "e013", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 140}
+{"size": 500, "op": "T24", "input": 1, "support": [{"id": "m013", "kind": "fact", "tier": 1}, {"id": "e013", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 139}
+{"size": 500, "op": "T26", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 181}
+{"size": 500, "op": "T28", "input": 0, "support": [{"id": "m045", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 146}
+{"size": 500, "op": "T28", "input": 1, "support": [{"id": "m045", "kind": "fact", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 500, "op": "T28", "input": 2, "support": [{"id": "m045", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 144}
+{"size": 500, "op": "T30", "input": 0, "support": [{"id": "m025", "kind": "fact", "tier": 1}, {"id": "e025", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 209}
+{"size": 500, "op": "T30", "input": 1, "support": [{"id": "m025", "kind": "fact", "tier": 1}, {"id": "e025", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 186}
+{"size": 500, "op": "T30", "input": 2, "support": [{"id": "m025", "kind": "fact", "tier": 1}, {"id": "e025", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 186}
+{"size": 500, "op": "T32", "input": 0, "support": [{"id": "m005", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 188}
+{"size": 500, "op": "T32", "input": 1, "support": [{"id": "m005", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 144}
+{"size": 500, "op": "T32", "input": 2, "support": [{"id": "m005", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 144}
+{"size": 500, "op": "T34", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 193}
+{"size": 500, "op": "T36", "input": 0, "support": [{"id": "m037", "kind": "rule", "tier": 2}], "state": "found", "judge": "not_configured", "pool": 181}
+{"size": 500, "op": "T36", "input": 1, "support": [{"id": "m037", "kind": "rule", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 500, "op": "T36", "input": 2, "support": [{"id": "m037", "kind": "rule", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 500, "op": "T38", "input": 0, "support": [{"id": "m011", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 224}
+{"size": 500, "op": "T38", "input": 1, "support": [{"id": "m011", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 143}
+{"size": 500, "op": "T38", "input": 2, "support": [{"id": "m011", "kind": "decision", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 500, "op": "T40", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 142}
+{"size": 500, "op": "T42", "input": 0, "support": [{"id": "m043", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 154}
+{"size": 500, "op": "T42", "input": 1, "support": [{"id": "m043", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 154}
+{"size": 500, "op": "T42", "input": 2, "support": [{"id": "m043", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 157}
+{"size": 500, "op": "T44", "input": 0, "support": [{"id": "m021", "kind": "fact", "tier": 0}, {"id": "e021", "kind": "experience", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 157}
+{"size": 500, "op": "T44", "input": 1, "support": [{"id": "m021", "kind": "fact", "tier": 0}, {"id": "e021", "kind": "experience", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 141}
+{"size": 500, "op": "T44", "input": 2, "support": [{"id": "m021", "kind": "fact", "tier": 0}, {"id": "e021", "kind": "experience", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 141}
+{"size": 500, "op": "T46", "input": 0, "support": [{"id": "m003", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 178}
+{"size": 500, "op": "T46", "input": 1, "support": [{"id": "m003", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 178}
+{"size": 500, "op": "T46", "input": 2, "support": [{"id": "m003", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 2}
+{"size": 500, "op": "T46", "input": 3, "support": [{"id": "m003", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 178}
+{"size": 500, "op": "T46", "input": 4, "support": [{"id": "m003", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 2}
+{"size": 500, "op": "T48", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 178}
+{"size": 500, "op": "T48", "input": 1, "support": [], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 500, "op": "T48", "input": 2, "support": [], "state": "found", "judge": "not_configured", "pool": 171}
+{"size": 3048, "op": "T02", "input": 0, "support": [{"id": "m033", "kind": "fact", "tier": 1}, {"id": "e033", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 59}
+{"size": 3048, "op": "T02", "input": 1, "support": [{"id": "m033", "kind": "fact", "tier": 0}, {"id": "e033", "kind": "experience", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 3048, "op": "T04", "input": 0, "support": [{"id": "m009", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 383}
+{"size": 3048, "op": "T04", "input": 1, "support": [{"id": "m009", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 383}
+{"size": 3048, "op": "T04", "input": 2, "support": [{"id": "m009", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 383}
+{"size": 3048, "op": "T06", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 982}
+{"size": 3048, "op": "T06", "input": 1, "support": [], "state": "found", "judge": "not_configured", "pool": 26}
+{"size": 3048, "op": "T06", "input": 2, "support": [], "state": "found", "judge": "not_configured", "pool": 26}
+{"size": 3048, "op": "T08", "input": 0, "support": [{"id": "m041", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 25}
+{"size": 3048, "op": "T08", "input": 1, "support": [{"id": "m041", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 25}
+{"size": 3048, "op": "T10", "input": 0, "support": [{"id": "m017", "kind": "fact", "tier": 0}, {"id": "e017", "kind": "experience", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 36}
+{"size": 3048, "op": "T10", "input": 1, "support": [{"id": "m017", "kind": "fact", "tier": 0}, {"id": "e017", "kind": "experience", "tier": 0}], "state": "incomplete_search", "judge": "not_configured", "pool": 0}
+{"size": 3048, "op": "T12", "input": 0, "support": [{"id": "m001", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 335}
+{"size": 3048, "op": "T12", "input": 1, "support": [{"id": "m001", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 12}
+{"size": 3048, "op": "T12", "input": 2, "support": [{"id": "m001", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 1}
+{"size": 3048, "op": "T12", "input": 3, "support": [{"id": "m001", "kind": "rule", "tier": 0}], "state": "incomplete_search", "judge": "not_configured", "pool": 0}
+{"size": 3048, "op": "T14", "input": 0, "support": [{"id": "m047", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 42}
+{"size": 3048, "op": "T14", "input": 1, "support": [{"id": "m047", "kind": "fact", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 3048, "op": "T16", "input": 0, "support": [{"id": "m029", "kind": "fact", "tier": 1}, {"id": "e029", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 315}
+{"size": 3048, "op": "T16", "input": 1, "support": [{"id": "m029", "kind": "fact", "tier": 1}, {"id": "e029", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 313}
+{"size": 3048, "op": "T16", "input": 2, "support": [{"id": "m029", "kind": "fact", "tier": 1}, {"id": "e029", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 313}
+{"size": 3048, "op": "T18", "input": 0, "support": [{"id": "m007", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 449}
+{"size": 3048, "op": "T18", "input": 1, "support": [{"id": "m007", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 43}
+{"size": 3048, "op": "T18", "input": 2, "support": [{"id": "m007", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 43}
+{"size": 3048, "op": "T20", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 378}
+{"size": 3048, "op": "T22", "input": 0, "support": [{"id": "m039", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 147}
+{"size": 3048, "op": "T22", "input": 1, "support": [{"id": "m039", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 148}
+{"size": 3048, "op": "T22", "input": 2, "support": [{"id": "m039", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 147}
+{"size": 3048, "op": "T24", "input": 0, "support": [{"id": "m013", "kind": "fact", "tier": 1}, {"id": "e013", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 419}
+{"size": 3048, "op": "T24", "input": 1, "support": [{"id": "m013", "kind": "fact", "tier": 1}, {"id": "e013", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 417}
+{"size": 3048, "op": "T26", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 324}
+{"size": 3048, "op": "T28", "input": 0, "support": [{"id": "m045", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 36}
+{"size": 3048, "op": "T28", "input": 1, "support": [{"id": "m045", "kind": "fact", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 3048, "op": "T28", "input": 2, "support": [{"id": "m045", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 34}
+{"size": 3048, "op": "T30", "input": 0, "support": [{"id": "m025", "kind": "fact", "tier": 1}, {"id": "e025", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 442}
+{"size": 3048, "op": "T30", "input": 1, "support": [{"id": "m025", "kind": "fact", "tier": 1}, {"id": "e025", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 334}
+{"size": 3048, "op": "T30", "input": 2, "support": [{"id": "m025", "kind": "fact", "tier": 1}, {"id": "e025", "kind": "experience", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 334}
+{"size": 3048, "op": "T32", "input": 0, "support": [{"id": "m005", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 334}
+{"size": 3048, "op": "T32", "input": 1, "support": [{"id": "m005", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 59}
+{"size": 3048, "op": "T32", "input": 2, "support": [{"id": "m005", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 60}
+{"size": 3048, "op": "T34", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 445}
+{"size": 3048, "op": "T36", "input": 0, "support": [{"id": "m037", "kind": "rule", "tier": 2}], "state": "found", "judge": "not_configured", "pool": 445}
+{"size": 3048, "op": "T36", "input": 1, "support": [{"id": "m037", "kind": "rule", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 3048, "op": "T36", "input": 2, "support": [{"id": "m037", "kind": "rule", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 3048, "op": "T38", "input": 0, "support": [{"id": "m011", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 502}
+{"size": 3048, "op": "T38", "input": 1, "support": [{"id": "m011", "kind": "decision", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 25}
+{"size": 3048, "op": "T38", "input": 2, "support": [{"id": "m011", "kind": "decision", "tier": 0}], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 3048, "op": "T40", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 45}
+{"size": 3048, "op": "T42", "input": 0, "support": [{"id": "m043", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 242}
+{"size": 3048, "op": "T42", "input": 1, "support": [{"id": "m043", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 242}
+{"size": 3048, "op": "T42", "input": 2, "support": [{"id": "m043", "kind": "fact", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 263}
+{"size": 3048, "op": "T44", "input": 0, "support": [{"id": "m021", "kind": "fact", "tier": 0}, {"id": "e021", "kind": "experience", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 228}
+{"size": 3048, "op": "T44", "input": 1, "support": [{"id": "m021", "kind": "fact", "tier": 0}, {"id": "e021", "kind": "experience", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 18}
+{"size": 3048, "op": "T44", "input": 2, "support": [{"id": "m021", "kind": "fact", "tier": 0}, {"id": "e021", "kind": "experience", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 18}
+{"size": 3048, "op": "T46", "input": 0, "support": [{"id": "m003", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 566}
+{"size": 3048, "op": "T46", "input": 1, "support": [{"id": "m003", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 541}
+{"size": 3048, "op": "T46", "input": 2, "support": [{"id": "m003", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 13}
+{"size": 3048, "op": "T46", "input": 3, "support": [{"id": "m003", "kind": "rule", "tier": 0}], "state": "found", "judge": "not_configured", "pool": 541}
+{"size": 3048, "op": "T46", "input": 4, "support": [{"id": "m003", "kind": "rule", "tier": 1}], "state": "found", "judge": "not_configured", "pool": 13}
+{"size": 3048, "op": "T48", "input": 0, "support": [], "state": "found", "judge": "not_configured", "pool": 332}
+{"size": 3048, "op": "T48", "input": 1, "support": [], "state": "none", "judge": "not_configured", "pool": 0}
+{"size": 3048, "op": "T48", "input": 2, "support": [], "state": "found", "judge": "not_configured", "pool": 294}

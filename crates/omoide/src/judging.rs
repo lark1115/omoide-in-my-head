@@ -157,4 +157,60 @@ print(json.dumps({'answers':[{'version_id':v['version_id'],'score':0.61+int(v['v
         assert!(result.done.is_empty());
         assert_eq!(result.oversized, 1);
     }
+    // [REQ-JUDGE-1]
+    #[test]
+    fn honor_both_inclusive_input_bounds_and_one_output_limit() {
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("echo.py");
+        let log = dir.path().join("lengths");
+        fs::write(&path,"import json,sys\nr=json.load(sys.stdin)\nwith open(sys.argv[1],'a') as f: print(len(r['candidates']),file=f)\nprint('{\"answers\":[]}')").unwrap();
+        let mut cfg = JudgeConfig {
+            judge: Some(PathBuf::from("python3")),
+            args: vec![
+                path.to_string_lossy().into_owned(),
+                log.to_string_lossy().into_owned(),
+            ],
+            timeout_ms: 5000,
+            output_bytes: 500,
+            threshold: 0.6,
+        };
+        let base = 1024 + 2; // serialized empty query, plus framing
+        let fixed = 1024 + record(0, 0).to_string().len();
+        let exact = record(0, 24000 - base - fixed);
+        assert_eq!(ask(&cfg, &json!({}), vec![&exact]).unwrap().done.len(), 1);
+        let over = record(0, 24001 - base - fixed);
+        assert_eq!(ask(&cfg, &json!({}), vec![&over]).unwrap().oversized, 1);
+        let available = 48000 - base - 3 * fixed;
+        for (extra, expected) in [(0, "3\n"), (1, "2\n1\n")] {
+            fs::write(&log, "").unwrap();
+            let rows = [
+                record(0, available / 3),
+                record(1, available / 3),
+                record(2, available - 2 * (available / 3) + extra),
+            ];
+            assert!(
+                ask(&cfg, &json!({}), rows.iter().collect())
+                    .unwrap()
+                    .error
+                    .is_none()
+            );
+            assert_eq!(fs::read_to_string(&log).unwrap(), expected);
+        }
+        let rows = [
+            record(0, 18000),
+            record(1, 18000),
+            record(2, 18000),
+            record(3, 18000),
+        ];
+        let reply_bytes = b"{\"answers\":[]}\n".len();
+        for (cap, expected, error) in [
+            (2 * reply_bytes, 4, None),
+            (2 * reply_bytes - 1, 2, Some("judge output limit")),
+        ] {
+            cfg.output_bytes = cap;
+            let result = ask(&cfg, &json!({}), rows.iter().collect()).unwrap();
+            assert_eq!(result.done.len(), expected);
+            assert_eq!(result.error.as_deref(), error);
+        }
+    }
 }

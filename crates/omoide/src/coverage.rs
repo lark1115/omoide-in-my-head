@@ -53,3 +53,40 @@ pub fn counts(
     let active = eligible.remove("_current_rules").unwrap_or_default();
     Ok((Json::Object(out), skipped, active, eligible.values().sum()))
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    // [REQ-RECALL-1]
+    #[test]
+    fn compare_tallies_by_version_and_kind() {
+        let rows = vec![
+            vec![s("_current_rules"), 4.into()],
+            vec![s("rule"), 3.into()],
+            vec![s("experience"), 1.into()],
+        ];
+        let pool = BTreeMap::from([
+            ("a".into(), (true, json!({"kind":"rule","version_id":"av"}))),
+            (
+                "b".into(),
+                (false, json!({"kind":"rule","version_id":"bv"})),
+            ),
+            (
+                "e".into(),
+                (false, json!({"kind":"experience","version_id":"ev"})),
+            ),
+        ]);
+        let done = std::collections::BTreeSet::from(["av".into(), "ev".into()]);
+        let (by_kind, skipped, active, total) = counts(&rows, &pool, &done).unwrap();
+        assert!(skipped);
+        assert_eq!((active, total), (4, 4));
+        assert_eq!(by_kind["rule"], json!({"eligible":3,"scored":2,"judged":1}));
+        assert_eq!(
+            by_kind["experience"],
+            json!({"eligible":1,"scored":1,"judged":1})
+        );
+        for k in ["skill", "decision", "fact"] {
+            assert_eq!(by_kind[k], json!({"eligible":0,"scored":0,"judged":0}));
+        }
+    }
+}

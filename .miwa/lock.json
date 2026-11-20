@@ -270,6 +270,13 @@
       "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
       "at": "2026-11-20T00:00:10Z"
     },
+    "test-req:crates/omoide-judge-jev/src/tests::serialized_question_and_batch_fit_at_exact_byte_boundaries:REQ-JUDGE-1": {
+      "from": "sha256:7219f44833bcf701e0aed936f32483f5814cb8d498f06f591a5d743bb98e8f17",
+      "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
+      "by": "human",
+      "reason": "Exercise scope counts, time relevance, evidence adjacency and bounded batch failures",
+      "at": "2026-11-20T00:08:44Z"
+    },
     "test-req:crates/omoide-judge-jev/src/tests::unrelated_recorded_case_is_not_rounded_to_yes_or_no:REQ-JUDGE-1": {
       "from": "sha256:ddfa0a3edff5c875f5dc5911365c7441e201a76994a91ae7d27fd5c3f855bb45",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
@@ -389,6 +396,13 @@
       "reason": "Stage one: record the tested SQLite contract, lexical recall, CLI round trip and Linux verification",
       "at": "2026-11-19T19:26:44Z"
     },
+    "test-req:crates/omoide/src/coverage:tests:compare_tallies_by_version_and_kind:REQ-RECALL-1": {
+      "from": "sha256:c6d05c20c783de57bae0d53b37fae23e13caf6106a91ced950143d5e9868832e",
+      "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
+      "by": "human",
+      "reason": "Exercise scope counts, time relevance, evidence adjacency and bounded batch failures",
+      "at": "2026-11-20T00:08:44Z"
+    },
     "test-req:crates/omoide/src/eval:tests:trials_count_uncalled_opportunities_and_unknown_order_without_credit:REQ-MEASURE-1": {
       "from": "sha256:e9d89a04871d7a62de965f199cd52f643aa87aa0e0c0f880bfa5c9ba58045888",
       "to": "sha256:46371975afc0f52318e2912097cf77135572b78b072b6d89482b15d3b48b9854",
@@ -430,6 +444,13 @@
       "by": "human",
       "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
       "at": "2026-11-20T00:00:10Z"
+    },
+    "test-req:crates/omoide/src/judging:tests:honor_both_inclusive_input_bounds_and_one_output_limit:REQ-JUDGE-1": {
+      "from": "sha256:becccf308d1376d2c6508894b40468613b442fcaf3ebb0f9bb6551b670e190ce",
+      "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
+      "by": "human",
+      "reason": "Exercise scope counts, time relevance, evidence adjacency and bounded batch failures",
+      "at": "2026-11-20T00:08:44Z"
     },
     "test-req:crates/omoide/src/judging:tests:oversized_question_never_starts_a_judge:REQ-JUDGE-1": {
       "from": "sha256:aa1eaac074aaa49d40cacbf659211112121cb42efa7f93ba11575fe3151f9c4a",
@@ -481,11 +502,25 @@
       "at": "2026-11-19T20:45:42Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::eligible_counts_use_structured_scope_and_admitted_evidence_stays_with_fact:REQ-RECALL-1": {
-      "from": "sha256:bab6af66a418994ef1f700b7422129a343edda0415550bd7676acdbbb2950c11",
+      "from": "sha256:af62a1967783e94feeb4676b93288e3a79033a3e5379df5538474f43c0676592",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
-      "at": "2026-11-20T00:00:10Z"
+      "reason": "Exercise scope counts, time relevance, evidence adjacency and bounded batch failures",
+      "at": "2026-11-20T00:08:44Z"
+    },
+    "test-req:crates/omoide/tests/evidence_activity::empty_cursor_page_includes_notice_and_respects_byte_limit:REQ-RECALL-1": {
+      "from": "sha256:4797be81b06f07eac011af4414fe29b7b5a2cd50974345dddadddfe794b19238",
+      "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
+      "by": "human",
+      "reason": "Exercise scope counts, time relevance, evidence adjacency and bounded batch failures",
+      "at": "2026-11-20T00:08:44Z"
+    },
+    "test-req:crates/omoide/tests/evidence_activity::fallback_keeps_only_unjudged_lexical_and_provisional_matches:REQ-JUDGE-1": {
+      "from": "sha256:30809e98417c45aa06d5cc609272dea93c2c8aa39b90ec70ae3effeb0bd0d119",
+      "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
+      "by": "human",
+      "reason": "Exercise scope counts, time relevance, evidence adjacency and bounded batch failures",
+      "at": "2026-11-20T00:08:44Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::feedback_on_prior_versions_and_pending_only_actions_preserves_applicability:REQ-PROMO-1": {
       "from": "sha256:1ae88cabe3b240daea7a1ffe612abac1bcaed94100918180548c1dac510a5cfe",
@@ -535,6 +570,20 @@
       "by": "human",
       "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
       "at": "2026-11-20T00:00:10Z"
+    },
+    "test-req:crates/omoide/tests/evidence_activity::semantic_order_survives_conflicting_lexical_strength:REQ-JUDGE-1": {
+      "from": "sha256:355bfae7afbe23f764e14830041dba92993039ec0a0d67e0f91fefaa09f4b9b8",
+      "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
+      "by": "human",
+      "reason": "Exercise scope counts, time relevance, evidence adjacency and bounded batch failures",
+      "at": "2026-11-20T00:08:44Z"
+    },
+    "test-req:crates/omoide/tests/evidence_activity::temporal_scope_affects_strength_only_when_unmentioned:REQ-RECALL-1": {
+      "from": "sha256:fe2d107920ea642cb608d0298df711e032daeee06b0ed7df396ce369fabfbd24",
+      "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
+      "by": "human",
+      "reason": "Exercise scope counts, time relevance, evidence adjacency and bounded batch failures",
+      "at": "2026-11-20T00:08:44Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::uncertain_target_or_period_does_not_turn_scoped_proof_into_global_confirmation:REQ-DEC-1": {
       "from": "sha256:1f1e87cac27db55b7f723924b72701367cf3c4acbe5d11f10e420da501c2d5d4",
@@ -635,11 +684,11 @@
       "at": "2026-11-19T19:54:53Z"
     },
     "test-req:crates/omoide/tests/roundtrip::coverage_distinguishes_a_complete_empty_scan_from_an_index_miss:REQ-RECALL-1": {
-      "from": "sha256:28c47c70681467240d35f8047207af8bec48c3133464eb8f35994b61b4b0d7c9",
+      "from": "sha256:6294ece2e16c3a51fe3273e30eae7262b9e1cc09d97d39d248d960632625cbe7",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
-      "at": "2026-11-20T00:00:10Z"
+      "reason": "Exercise scope counts, time relevance, evidence adjacency and bounded batch failures",
+      "at": "2026-11-20T00:08:44Z"
     },
     "test-req:crates/omoide/tests/roundtrip::fresh_process_round_trip_preserves_source:REQ-INTEG-1": {
       "from": "sha256:6ccd695b5aa847bc741040c8da2cfb5f16fb188dca1fca3878e9ca58a98cd106",
@@ -690,6 +739,13 @@
       "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
       "at": "2026-11-20T00:00:10Z"
     },
+    "test-req:crates/omoide/tests/roundtrip::report_size_caps_separately_from_deadlines:REQ-JUDGE-1": {
+      "from": "sha256:1a36c5f318d3f0d46e6f30481c5acf49e2ff11e1c4cc7309636ef3d215a7dbf5",
+      "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
+      "by": "human",
+      "reason": "Verify metadata distinguishes question, output, reply and time limits",
+      "at": "2026-11-20T00:09:28Z"
+    },
     "test-req:crates/omoide/tests/roundtrip::strongest_qualifying_rule_survives_its_own_relative_cut:REQ-RECALL-1": {
       "from": "sha256:e749a73b9021c491ad95e7d5898b519065670d36f93ada4ccc1a84242bda53a9",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
@@ -705,11 +761,11 @@
       "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/roundtrip::weak_lexical_match_and_structured_judge_candidates:REQ-JUDGE-1": {
-      "from": "sha256:680a40d292e62c4f978e92b1ff67cda6550f8245b50db03c0cbee9d5e22207ee",
+      "from": "sha256:06c23f88b6324dae44387afb8d6e84e929affd3face183bd36e789a821e816b2",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
-      "at": "2026-11-20T00:00:10Z"
+      "reason": "Exercise scope counts, time relevance, evidence adjacency and bounded batch failures",
+      "at": "2026-11-20T00:08:44Z"
     },
     "test-req:crates/omoide/tests/stage_four::cap_includes_markers_exactly_and_optional_rows_stay_searchable:REQ-HOT-1": {
       "from": "sha256:610ede0571c53c6dbe0791c259182493d0b577ddc9d566877adceeb596bae72d",
