@@ -66,7 +66,7 @@ omoide recall --action ignite --target 工房
 
 ## 登録の続きと履歴
 
-近い決まりは、本文・場面・別表現の内容語で比べます。動作名だけ、またはひらがなの助詞・語尾だけの一致では登録を止めません。
+近い決まりは、本文・場面・別表現の内容語で比べます。保存先の現行規則に広く現れる語の重みを下げ、作業の定型文だけが似ていても、場面を裏付ける独立した語があるかを調べます。動作名だけ、またはひらがなの助詞・語尾だけの一致では登録を止めません。
 
 `near_rules` は根拠の強い順に最大9件です。`near_score` は比較順の点数、`near_remaining` は表示枠の外にある近い決まりの件数です。各要素の `record.version_id` と `source.text` を確認します。最初と同じ登録引数に次の3つを足してください。
 
@@ -84,7 +84,7 @@ omoide recall --action ignite --target 工房
 | unrelated | 独立した現行規則を登録する |
 | unsure | 現行版を残し、同じ記録に判断待ちの版を作る |
 
-表示外を含む全候補の版の並びが比較後に変わると、新しい `near_rules` を返します。登録の確定後に返事を失った場合は、同じ操作 ID と同じ引数で送り直してください。
+表示外を含む全候補の版・点数の並びが比較後に変わると、新しい `near_rules` を返します。登録の確定後に返事を失った場合は、同じ操作 ID と同じ引数で送り直してください。
 
 `pending` の返事と、該当する問い合わせ結果の `unresolved_conflicts` には、現行版と提案版の各規則・元発言があります。両方を利用者に示し、判断後に `omoide resolve PENDING_VERSION --keep current` または `--keep pending` を実行します。並行した別の判断待ちがある場合は、その判断を先に確定してから現行版を置き換えます。対象が分からないときは元の規則も対象つきの例外も表示します。元の規則にすでに対象があれば、例外はその範囲内に登録します。
 
@@ -230,3 +230,5 @@ Linux では Python 3 と GNU time を用意し、`python3 verify/measure.py tar
 ### 検索範囲を読む
 
 確定結果が空なら notice が返ります。未確認候補の原文を読み、台帳など別の情報源も探してください。found でも search.incomplete が真なら検索範囲の一部を確認できていません。search.by_kind は種類ごとに eligible（対象）、scored（語彙採点）、judged（正常判定）を返します。rule_path、evidence_path、action_index が実際の経路、rule_cap、evidence_cap、reply_cap が上限に当たった箇所です。timeout、fallback、judge_remaining で時間切れ・基本検索への復帰・要求したが未判定の件数を確認できます。
+
+場面評価の未達・未実施は、各ケースの JSON を自動的に `target/omoide-eval-failures/run-*/` に保存します。返答の `failure_directory` がその実行の保存先です。保存先は `OMOIDE_EVAL_FAILURE_DIR` でも指定できます。

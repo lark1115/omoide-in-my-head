@@ -52,6 +52,7 @@ pub fn queries(cmd: &SkillCommand) -> Vec<Statement> {
             if let Some(v) = against {
                 queries.extend([relations::conflicts(v), relations::adjacent_scopes(v)]);
             }
+            queries.push(omoide_store::near_counts::candidate(version));
             queries
         }
     }

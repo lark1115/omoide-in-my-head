@@ -292,3 +292,5 @@ pub fn save_receipt(op: &str, digest: &str, result: &str) -> Statement {
 }
 #[cfg(test)]
 mod tests;
+
+pub mod near_counts;

@@ -9,3 +9,5 @@ python3 tests/near/validate.py
 cargo build --release --locked -p omoide
 python3 tests/near/validate.py --binary target/release/omoide
 ```
+
+追加の store-context.tsv は、別々の場面で別々の手引きを読む10件、頻出語を含む独立した15件、指定した手引きの言い直し・例外・矛盾5件を含む。ラベルは store-context.md に従う。全25件の順次登録と、ほかの24件がすでにある保存先への登録を区別する。検査器は各独立規則の提示が2件以下であること、正例5組が出ること、正例に無関係な追加候補がないことを検査する。誤提示が1件でもあれば生データには誤りとして残る。既に確かめた実行の JSON を再検査するときは --context-result を使える。

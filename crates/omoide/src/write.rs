@@ -147,17 +147,16 @@ pub fn apply(
                     return Err(Error::Input("duplicate action".into()));
                 }
             }
+            let terms = document(&rule.text, &rule.scene, &rule.aliases);
             queries.extend([
                 source(&rule.source),
-                near_query(
-                    &document(&rule.text, &rule.scene, &rule.aliases),
-                    &json!(rule.actions).to_string(),
-                ),
+                near_query(&terms, &json!(rule.actions).to_string()),
             ]);
             if let Some(version) = &rule.against {
                 queries.push(relations::conflicts(version));
                 queries.push(relations::adjacent_scopes(version));
             }
+            queries.push(omoide_store::near_counts::proposal(&terms));
         }
         Command::Fact {
             command: FactCommand::Add { source: id, .. },
@@ -363,7 +362,7 @@ mod tests {
             fn read_batch(&mut self, queries: &[Statement]) -> Result<Vec<Rows>> {
                 let snapshot = self.reader.read_batch(queries)?;
                 // Each registration decision must read the receipt, source, neighbors and revision together.
-                assert_eq!(queries.len(), 4);
+                assert_eq!(queries.len(), 5);
                 if !self.injected {
                     self.injected = true;
                     assert_eq!(

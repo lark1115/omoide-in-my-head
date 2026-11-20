@@ -64,6 +64,9 @@ fn process_worker() {
     let path = std::env::var("OMOIDE_TEST_DIR").expect("run through contention_kill_and_replay");
     let dir = Path::new(&path);
     let worker = std::env::var("OMOIDE_TEST_WORKER").unwrap();
+    if worker == "kill" {
+        fs::write(dir.join("worker-ready"), b"ready").unwrap();
+    }
     let mut db = Sqlite::open(&dir.join("test.db"), false).unwrap();
     for idx in 0..20 {
         let op = format!("{worker}-{idx}");
@@ -114,12 +117,31 @@ fn contention_kill_and_replay() {
             .unwrap()
     };
     let mut victim = spawn("kill");
-    let mut workers: Vec<_> = ["a", "b", "c", "d"].map(spawn).into_iter().collect();
-    let start = Instant::now();
+    let launch = Instant::now();
+    let mut started = None;
     while !dir.path().join("in-transaction").exists() {
-        assert!(start.elapsed() < Duration::from_secs(15));
+        if let Some(status) = victim.try_wait().unwrap() {
+            panic!("fault worker exited before transaction marker: {status}");
+        }
+        if started.is_none() && dir.path().join("worker-ready").exists() {
+            started = Some(Instant::now());
+        }
+        let expired = match started {
+            Some(at) => at.elapsed() >= Duration::from_secs(15),
+            None => launch.elapsed() >= Duration::from_secs(120),
+        };
+        if expired {
+            victim.kill().unwrap();
+            victim.wait().unwrap();
+            panic!(
+                "fault worker missed transaction marker; entered test: {}",
+                started.is_some()
+            );
+        }
         thread::sleep(Duration::from_millis(5));
     }
+    // Launch competing writers while the victim still owns its uncommitted batch.
+    let mut workers: Vec<_> = ["a", "b", "c", "d"].map(spawn).into_iter().collect();
     victim.kill().unwrap();
     assert!(!victim.wait().unwrap().success());
     for w in &mut workers {

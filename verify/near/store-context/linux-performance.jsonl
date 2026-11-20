@@ -1,0 +1,6 @@
+{"size": 48, "build": "original", "runs": 21, "median_ms": 12.63, "p95_ms": 28.54, "max_rss_kib": 12864}
+{"size": 48, "build": "selected", "runs": 21, "median_ms": 9.94, "p95_ms": 14.76, "max_rss_kib": 12864}
+{"size": 500, "build": "original", "runs": 21, "median_ms": 13.01, "p95_ms": 22.16, "max_rss_kib": 12864}
+{"size": 500, "build": "selected", "runs": 21, "median_ms": 11.66, "p95_ms": 17.22, "max_rss_kib": 12864}
+{"size": 3048, "build": "original", "runs": 21, "median_ms": 11.44, "p95_ms": 25.16, "max_rss_kib": 13248}
+{"size": 3048, "build": "selected", "runs": 21, "median_ms": 12.31, "p95_ms": 17.7, "max_rss_kib": 13248}

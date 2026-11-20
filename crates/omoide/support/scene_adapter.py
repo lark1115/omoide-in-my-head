@@ -373,6 +373,30 @@ def evaluate(case, rows, meta, ids, recorded_times):
     return errors, sorted(found), observations
 
 
+class CaseResults(list):
+    """Retain a complete non-pass row immediately, even if stdout is piped into a counter."""
+
+    def __init__(self, side, archive):
+        super().__init__()
+        self.side = side
+        self.archive = archive
+
+    def append(self, row):
+        super().append(row)
+        if row["status"] == "pass":
+            return
+        if not self.archive:
+            root = Path(
+                os.environ.get("OMOIDE_EVAL_FAILURE_DIR", "target/omoide-eval-failures")
+            )
+            root.mkdir(parents=True, exist_ok=True)
+            self.archive.append(root / Path(tempfile.mkdtemp(prefix="run-", dir=root)).name)
+        file = self.archive[0] / f"{self.side}-{len(self):04}.json"
+        with file.open("x", encoding="utf-8") as f:
+            json.dump(row, f, ensure_ascii=False)
+            f.write("\n")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("binary", type=Path)
@@ -389,15 +413,16 @@ def main():
     opts = parser.parse_args()
     # The reference study is deterministic even when the calling agent uses ambient settings.
     for key in tuple(os.environ):
-        if key.startswith("OMOIDE_"):
+        if key.startswith("OMOIDE_") and key not in {"OMOIDE_EVAL_FAILURE_DIR","OMOIDE_TEST_TIMING_LOG"}:
             del os.environ[key]
     judge = (
         opts.judge_fixture or opts.scenes.parent / "support" / "deterministic_judge.py"
     ).resolve()
     oracle = opts.oracle_table.resolve() if opts.oracle_table else None
     aliases = json.loads(opts.aliases.read_text()) if opts.aliases else {}
-    report = []
-    compared = []
+    archive = []
+    report = CaseResults("before", archive)
+    compared = CaseResults("after", archive)
     binary = opts.binary.resolve()
     manifest_bytes = (opts.scenes / "manifest.json").read_bytes()
     manifest = json.loads(manifest_bytes)
@@ -579,6 +604,10 @@ def main():
 
     if not report:
         raise ValueError("no matching cases")
+    if archive:
+        config["failure_directory"] = str(archive[0])
+        if not opts.json:
+            print("未達の記録:", archive[0], file=sys.stderr)
     if opts.json:
         if opts.compare_binary:
             print(

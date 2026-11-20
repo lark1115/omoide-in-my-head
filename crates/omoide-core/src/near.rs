@@ -63,6 +63,8 @@ pub struct RuleProfile<'a> {
     scene: &'a str,
     document: Terms,
     trigger: Terms,
+    cues: Terms,
+    aliases: Terms,
     body: Terms,
     identifiers: Terms,
     subject: Terms,
@@ -84,9 +86,18 @@ impl<'a> RuleProfile<'a> {
         let scene_terms = content(scene);
         let body = content(text);
         let mut document: Terms = body.union(&scene_terms).cloned().collect();
-        for alias in aliases {
-            document.extend(content(alias));
-        }
+        let aliases: Terms = aliases.iter().flat_map(|s| content(s)).collect();
+        document.extend(aliases.iter().cloned());
+        let trimmed = scene.trim_end();
+        let cue = ["場面", "場合", "とき", "時", "際"]
+            .iter()
+            .find_map(|suffix| trimmed.strip_suffix(suffix))
+            .unwrap_or(trimmed);
+        let cues = content(cue)
+            .intersection(&document)
+            .filter(|w| !identifiers.contains(*w))
+            .cloned()
+            .collect();
         let trigger = scene_terms.difference(&identifiers).cloned().collect();
         let mut subject = subject_units(scene);
         if let Some(t) = target {
@@ -98,6 +109,8 @@ impl<'a> RuleProfile<'a> {
         Self {
             document,
             trigger,
+            cues,
+            aliases,
             body,
             identifiers,
             subject,
@@ -318,5 +331,185 @@ mod boundaries {
             ),
             Some(66)
         );
+    }
+}
+
+/// Document frequencies for the proposed description in a single store snapshot.
+#[derive(Default)]
+pub struct Corpus {
+    pub current: usize,
+    pub words: std::collections::BTreeMap<String, usize>,
+    pub singles: std::collections::BTreeMap<String, usize>,
+}
+impl Corpus {
+    fn weight(&self, term: &str, single: bool) -> usize {
+        let map = if single { &self.singles } else { &self.words };
+        let df = map.get(term).copied().unwrap_or(0);
+        // The one document being compared is not evidence that its vocabulary is common.
+        100usize.saturating_sub(200 * df.saturating_sub(1) / self.current.saturating_sub(1).max(1))
+    }
+    pub fn score(&self, a: &RuleProfile, b: &RuleProfile) -> Option<usize> {
+        let base = score(a, b)?;
+        // Repeated literal boilerplate in different scenes is not an independent anchor.
+        if a.text == b.text
+            && (a.scene == b.scene
+                || a.body.iter().any(|w| {
+                    !a.identifiers.contains(w)
+                        && !b.identifiers.contains(w)
+                        && self.weight(w, false) >= 75
+                }))
+        {
+            return Some(base);
+        }
+        if !a.cues.is_empty() && a.cues == b.cues {
+            return Some(base);
+        }
+        let shared = a
+            .document
+            .intersection(&b.document)
+            .filter(|w| !a.identifiers.contains(*w) && !b.identifiers.contains(*w));
+        let mut mass = 0;
+        let mut penalty = 0;
+        let mut alias = false;
+        for word in shared {
+            let w = self.weight(word, false);
+            mass += w;
+            penalty += 100 - w;
+            alias |= w >= 75 && (a.aliases.contains(word) || b.aliases.contains(word));
+        }
+        let mut scene_mass = 0;
+        let mut distinctive = false;
+        for word in a.cues.intersection(&b.cues) {
+            let w = self.weight(word, false);
+            scene_mass += w;
+            distinctive |= w >= 75;
+        }
+        let sibling = !a.actions.is_disjoint(&b.actions)
+            && a.target != b.target
+            && a.subject
+                .intersection(&b.subject)
+                .any(|w| self.weight(w, !w.is_ascii()) >= 75);
+        let smaller = a.document.len().min(b.document.len()).max(1);
+        let scene_match = distinctive && scene_mass >= 20 * a.cues.len().min(b.cues.len());
+        if sibling || ((scene_match || alias) && mass >= 4 * smaller) {
+            Some(base.saturating_sub(penalty / smaller).max(1))
+        } else {
+            None
+        }
+    }
+}
+
+#[cfg(test)]
+mod corpus_tests {
+    use super::*;
+    use proptest::prelude::*;
+
+    fn corpus() -> Corpus {
+        Corpus {
+            current: 9,
+            words: [("common".into(), 9), ("seed".into(), 2)].into(),
+            singles: [("幕".into(), 2)].into(),
+        }
+    }
+    // [REQ-RULE-1]
+    #[test]
+    fn weights_use_distinct_current_documents_and_independent_columns() {
+        let c = corpus();
+        assert_eq!(c.weight("missing", false), 100);
+        assert_eq!(c.weight("seed", false), 75);
+        assert_eq!(c.weight("common", false), 0);
+        assert_eq!(c.weight("幕", true), 75);
+        assert_eq!(c.weight("幕", false), 100);
+        assert_eq!(Corpus::default().weight("missing", false), 100);
+    }
+    // [REQ-RULE-1]
+    #[test]
+    fn shared_boilerplate_needs_a_distinctive_scene_or_rare_explicit_alias() {
+        let act = vec!["pack".into()];
+        let a = RuleProfile::new("red common", "seed left", &[], &act, None);
+        let b = RuleProfile::new("blue common", "seed right", &[], &act, None);
+        let mut c = corpus();
+        assert_eq!(c.score(&a, &b), Some(35));
+        let identified = RuleProfile::new("red common", "seed left", &[], &act, Some("common"));
+        assert_eq!(c.score(&identified, &b), Some(60));
+        assert_eq!(c.score(&b, &identified), Some(60));
+        c.words.insert("seed".into(), 3);
+        assert_eq!(c.score(&a, &b), None);
+        let alias = RuleProfile::new("blue common", "another place", &["rare".into()], &act, None);
+        let other = RuleProfile::new("red common rare", "entirely different", &[], &act, None);
+        assert!(c.score(&alias, &other).is_some());
+        assert_eq!(c.score(&other, &alias), c.score(&alias, &other));
+        c.words.insert("rare".into(), 3);
+        assert_eq!(c.score(&other, &alias), None);
+        let c1 = RuleProfile::new("red common", "床を磨く場面", &[], &act, None);
+        let c2 = RuleProfile::new("blue common", "箱を運ぶ場面", &[], &act, None);
+        assert_eq!(c.score(&c1, &c2), None);
+        let same = RuleProfile::new("different common", "床を磨く場合", &[], &act, None);
+        assert!(c.score(&c1, &same).is_some());
+        let identical_body = RuleProfile::new("red common", "entirely different", &[], &act, None);
+        assert!(c.score(&c1, &identical_body).is_some());
+    }
+    // [REQ-RULE-1]
+    #[test]
+    fn a_frequent_identical_instruction_needs_an_independent_cue() {
+        let acts = vec!["pack".into()];
+        let a = RuleProfile::new("common", "open gate", &[], &acts, None);
+        let b = RuleProfile::new("common", "weigh paper", &[], &acts, None);
+        let c = corpus();
+        assert_eq!(c.score(&a, &b), None);
+        assert_eq!(c.score(&a, &a), Some(300));
+        let named = RuleProfile::new("common", "weigh paper", &[], &acts, Some("common"));
+        assert_eq!(Corpus::default().score(&a, &named), None);
+        assert_eq!(Corpus::default().score(&named, &a), None);
+    }
+    // [REQ-RULE-1]
+    #[test]
+    fn sibling_uses_the_frequency_of_its_written_subject() {
+        let act = vec!["store".into()];
+        let a = RuleProfile::new("乾かす", "雨幕", &[], &act, Some("雨幕"));
+        let b = RuleProfile::new("巻く", "月幕", &[], &act, Some("月幕"));
+        let mut c = corpus();
+        assert_eq!(c.score(&a, &b), Some(FLOOR));
+        c.singles.insert("幕".into(), 3);
+        assert_eq!(c.score(&a, &b), None);
+    }
+    // [REQ-RULE-1]
+    #[test]
+    fn scene_and_document_mass_boundaries_are_inclusive() {
+        let act = vec!["pack".into()];
+        for (tail, passes) in [(4, true), (5, false)] {
+            let left = format!(
+                "seed {}",
+                (0..tail)
+                    .map(|i| format!("left{i}"))
+                    .collect::<Vec<_>>()
+                    .join(" ")
+            );
+            let right = left.replace("left", "right");
+            let a = RuleProfile::new("first", &left, &[], &act, None);
+            let b = RuleProfile::new("second", &right, &[], &act, None);
+            assert_eq!(Corpus::default().score(&a, &b).is_some(), passes);
+        }
+        for (n, passes) in [(22, true), (23, false)] {
+            let left = (0..n)
+                .map(|i| format!("left{i}"))
+                .collect::<Vec<_>>()
+                .join(" ");
+            let right = left.replace("left", "right");
+            let a = RuleProfile::new(&left, "seed shed north", &[], &act, Some("shed"));
+            let b = RuleProfile::new(&right, "seed shed south", &[], &act, Some("shed"));
+            assert_eq!(Corpus::default().score(&a, &b).is_some(), passes);
+        }
+    }
+    proptest! {
+        // [REQ-RULE-1]
+        #[test]
+        fn more_documents_containing_a_term_never_raise_its_weight(n in 1usize..1024, a in 0usize..1024,b in 0usize..1024){
+            let mut c=Corpus{current:n,..Default::default()};
+            c.words.insert("sample".into(),a.min(b).min(n));
+            let before=c.weight("sample",false);
+            c.words.insert("sample".into(),a.max(b).min(n));
+            prop_assert!(c.weight("sample",false)<=before);
+        }
     }
 }

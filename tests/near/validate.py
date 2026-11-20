@@ -1,5 +1,6 @@
 """Check the frozen fixture and, optionally, both directions through the real CLI."""
 
+import context_check
 import argparse
 import csv
 import hashlib
@@ -92,9 +93,30 @@ def check(binary):
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("--binary", type=Path)
+    p.add_argument(
+        "--context-result",
+        type=Path,
+        help="validate the saved independent confirmation instead of repeating it",
+    )
     a = p.parse_args()
+    context_check.data()
     if a.binary:
         check(a.binary.resolve())
+        result = (
+            json.loads(a.context_result.read_text())
+            if a.context_result
+            else context_check.run(a.binary.resolve())
+        )
+        assert result["required"] == 5 and result["positive_extras"] == 0
+        assert (
+            max(
+                result["manual"]["maximum"],
+                result["common"]["maximum"],
+                result["sequential_max"],
+            )
+            <= 2
+        )
+        print("追加ファイルの手引き・頻出語の誤提示と必須5組を検査済み")
     else:
         data()
         print("30 unrelated rules and 10 related pairs verified")

@@ -1,5 +1,5 @@
 use crate::{args::Rule, db::*, write::create_rule};
-use omoide_core::{Outcome, Relation, RuleProfile, near::score, registration};
+use omoide_core::{Outcome, Relation, RuleProfile, near::Corpus, registration};
 use omoide_store::{Error, Rows, Statement};
 use serde_json::{Value as Json, json};
 
@@ -77,6 +77,24 @@ pub fn plan(
         &rule.actions,
         rule.target.as_deref(),
     );
+    let mut corpus = Corpus::default();
+    for row in sets.last().unwrap() {
+        let count = int(&row[2])? as usize;
+        match text(&row[0])? {
+            "total" => corpus.current = count,
+            "words" => {
+                corpus.words.insert(text(&row[1])?.to_owned(), count);
+            }
+            "singles" => {
+                corpus.singles.insert(text(&row[1])?.to_owned(), count);
+            }
+            _ => {
+                return Err(Error::Unknown(
+                    "unexpected registration frequency column".into(),
+                ));
+            }
+        }
+    }
     let mut matches = Vec::new();
     for row in &sets[3] {
         let record = parse(&row[0])?;
@@ -91,7 +109,7 @@ pub fn plan(
             &actions,
             record["target"].as_str(),
         );
-        if let Some(score) = score(&proposal, &current) {
+        if let Some(score) = corpus.score(&proposal, &current) {
             matches.push((score, record, &row[1]));
         }
     }
@@ -101,7 +119,10 @@ pub fn plan(
             .then_with(|| a.1["text"].as_str().cmp(&b.1["text"].as_str()))
             .then_with(|| a.1["version_id"].as_str().cmp(&b.1["version_id"].as_str()))
     });
-    let versions: Vec<_> = matches.iter().map(|(_, r, _)| &r["version_id"]).collect();
+    let versions: Vec<_> = matches
+        .iter()
+        .map(|(strength, r, _)| (&r["version_id"], strength))
+        .collect();
     let hash = digest(json!(versions).to_string());
     const MAX_NEIGHBORS: usize = 9;
     let omitted = matches.len().saturating_sub(MAX_NEIGHBORS);
