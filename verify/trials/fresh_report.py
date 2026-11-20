@@ -37,7 +37,7 @@ def diagnostics(trial, receipts, required, index):
                 ledger_times.append(e["at"])
         if e["type"] != "delivery" or e["id"] not in calls:
             continue
-        name, log = calls[e["id"]]
+        name, log = calls.pop(e["id"])
         if name != "recall":
             continue
         v = e["content"]
@@ -128,6 +128,32 @@ def diagnostics(trial, receipts, required, index):
                 else "incomplete"
                 if incomplete
                 else "neither"
+            )
+    for name, log in calls.values():
+        if name == "recall":
+            queries.append(
+                dict(
+                    call=len(queries) + 1,
+                    reply_state=None,
+                    category="unobservable",
+                    failure=True,
+                    before_action=None,
+                    prior_ledger=None,
+                    later_ledger_before_action=None,
+                    tool_timeout=False,
+                    judge=None,
+                    judged=None,
+                    not_judged=None,
+                    judge_requested=None,
+                    judge_remaining=None,
+                    fallback=None,
+                    batches=[
+                        {k: b[k] for k in ("candidates", "status", "error", "usage")}
+                        for b in receipts.get(log["trace"], [])
+                    ]
+                    if log
+                    else [],
+                )
             )
     return queries
 

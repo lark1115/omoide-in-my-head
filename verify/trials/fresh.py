@@ -195,7 +195,13 @@ def materialize(study, binary, adapter, claude):
     }
     with tempfile.TemporaryDirectory(dir=study) as td:
         db = Path(td) / "seed.db"
-        index = populate(binary, rows, db, expected_count=len(rows))
+        index = populate(
+            binary,
+            rows,
+            db,
+            expected_count=len(rows),
+            default_fact_speaker="unspecified",
+        )
         with sqlite3.connect(db) as c:
             counts = dict(c.execute("SELECT kind,count(*) FROM memories GROUP BY kind"))
             counts["rule"] = c.execute(

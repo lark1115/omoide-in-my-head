@@ -5,7 +5,9 @@ from datetime import datetime
 import subprocess
 
 
-def populate(binary, records, db, *, expected_count=48):
+def populate(
+    binary, records, db, *, expected_count=48, default_fact_speaker="workshop owner"
+):
     def cli(args):
         p = subprocess.run(
             [binary, "--db", db, *args], text=True, capture_output=True, check=True
@@ -61,11 +63,11 @@ def populate(binary, records, db, *, expected_count=48):
             if r.get("evidence"):
                 source = by_id[r["evidence"]]
             else:
-                speaker = (
-                    "user"
-                    if r.get("source_role", "workshop owner") == "workshop owner"
-                    else r["source_role"]
+                role = r.get(
+                    "source_role",
+                    default_fact_speaker if r["kind"] == "fact" else "workshop owner",
                 )
+                speaker = "user" if role in ("owner", "workshop owner") else role
                 source = add(
                     cli(
                         ["say", "--speaker", speaker, "--text", r["text"], *at, *target]

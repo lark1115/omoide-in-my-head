@@ -146,7 +146,7 @@ def summarize(
     )
     text += [
         "",
-        f"Frozen primary decision: **{verdict(net, over, fewer)}**. Net passes {net:+d}, net control overapplications {over:+d}, reduction in known mistakes on 36 target opportunities {fewer:+d}.",
+        f"Frozen {core} primary decision: **{verdict(net, over, fewer)}**. Net passes {net:+d}, net control overapplications {over:+d}, reduction in known mistakes on 36 target opportunities {fewer:+d}.",
     ]
     (out / "large-summary.md").write_text("\n".join(text) + "\n")
 
