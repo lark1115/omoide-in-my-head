@@ -1,0 +1,746 @@
+[
+  {
+    "opportunity": "L01",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L02",
+    "arm": "device_core",
+    "status": "neither"
+  },
+  {
+    "opportunity": "L03",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": false
+  },
+  {
+    "opportunity": "L04",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L05",
+    "arm": "device_core",
+    "status": "neither"
+  },
+  {
+    "opportunity": "L06",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L07",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L08",
+    "arm": "device_core",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L09",
+    "arm": "device_core",
+    "status": "neither"
+  },
+  {
+    "opportunity": "L10",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L11",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L12",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L13",
+    "arm": "device_core",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L14",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L15",
+    "arm": "device_core",
+    "status": "neither"
+  },
+  {
+    "opportunity": "L16",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L17",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L18",
+    "arm": "device_core",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L19",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L20",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": true
+  },
+  {
+    "opportunity": "L21",
+    "arm": "device_core",
+    "status": "neither"
+  },
+  {
+    "opportunity": "L22",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": true
+  },
+  {
+    "opportunity": "L23",
+    "arm": "device_core",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L24",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L25",
+    "arm": "device_core",
+    "status": "neither"
+  },
+  {
+    "opportunity": "L26",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L27",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L28",
+    "arm": "device_core",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L29",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L30",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L31",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L32",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L33",
+    "arm": "device_core",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L34",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L35",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L36",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "both",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": false
+  },
+  {
+    "opportunity": "L37",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L38",
+    "arm": "device_core",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L39",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L40",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L41",
+    "arm": "device_core",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L42",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L43",
+    "arm": "device_core",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L44",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L45",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L46",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L47",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L48",
+    "arm": "device_core",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": false
+  },
+  {
+    "opportunity": "L01",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "both",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L02",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L03",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "both",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L04",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L05",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L06",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L07",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L08",
+    "arm": "device_jev",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L09",
+    "arm": "device_jev",
+    "status": "neither"
+  },
+  {
+    "opportunity": "L10",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": true
+  },
+  {
+    "opportunity": "L11",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L12",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "both",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": true
+  },
+  {
+    "opportunity": "L13",
+    "arm": "device_jev",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L14",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": true
+  },
+  {
+    "opportunity": "L15",
+    "arm": "device_jev",
+    "status": "neither"
+  },
+  {
+    "opportunity": "L16",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": false
+  },
+  {
+    "opportunity": "L17",
+    "arm": "device_jev",
+    "status": "neither"
+  },
+  {
+    "opportunity": "L18",
+    "arm": "device_jev",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L19",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L20",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L21",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "both",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L22",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L23",
+    "arm": "device_jev",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L24",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L25",
+    "arm": "device_jev",
+    "status": "neither"
+  },
+  {
+    "opportunity": "L26",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": true
+  },
+  {
+    "opportunity": "L27",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L28",
+    "arm": "device_jev",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L29",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L30",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L31",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": true
+  },
+  {
+    "opportunity": "L32",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L33",
+    "arm": "device_jev",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L34",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L35",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "both",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L36",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L37",
+    "arm": "device_jev",
+    "status": "neither"
+  },
+  {
+    "opportunity": "L38",
+    "arm": "device_jev",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L39",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "both",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L40",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "both",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L41",
+    "arm": "device_jev",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L42",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": false,
+    "returned": true
+  },
+  {
+    "opportunity": "L43",
+    "arm": "device_jev",
+    "status": "no recall"
+  },
+  {
+    "opportunity": "L44",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L45",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "no confirmed match",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": true
+  },
+  {
+    "opportunity": "L46",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "both",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L47",
+    "arm": "device_jev",
+    "status": "qualifying",
+    "category": "incomplete",
+    "first_call": 1,
+    "prior_ledger": true,
+    "returned": false
+  },
+  {
+    "opportunity": "L48",
+    "arm": "device_jev",
+    "status": "no recall"
+  }
+]

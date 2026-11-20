@@ -93,8 +93,8 @@ def diagnostics(trial, receipts, required, index):
                     {k: b[k] for k in ("candidates", "status", "error", "usage")}
                     for b in batches
                 ],
-                input_tokens=sum(u["input_tokens"] for u in tokens),
-                output_tokens=sum(u["output_tokens"] for u in tokens),
+                reported_input_tokens=sum(u["input_tokens"] for u in tokens),
+                reported_output_tokens=sum(u["output_tokens"] for u in tokens),
                 required_full=sorted(ids("results") & required),
                 required_short=sorted(ids("candidates") & required),
                 before_action=e["at"] < action if action is not None else None,
@@ -172,6 +172,11 @@ def summarize_fresh(study, out, binary):
         hot_ids=hot_ids,
         variants=ARMS,
     )
+    return instrument(study, out)
+
+
+def instrument(study, out):
+    out.mkdir(parents=True, exist_ok=True)
     keys = {r["id"]: set(r["memory"]) for r in read(FIXTURE / "grading/key.json")}
     index = read(study / "id-map.json")
     receipts = defaultdict(list)

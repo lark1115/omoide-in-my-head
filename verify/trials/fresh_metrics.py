@@ -94,6 +94,37 @@ def summarize(out):
         lines.append(
             f"| {arm} | {counts['qualifying']} | {counts['returned', True] + counts['returned', False]} | {counts['returned', True]}/{counts['eligible', True]} | {counts['returned', False]}/{counts['eligible', False]} | {counts['no recall']} | {counts['neither']} | {counts['unobservable']} |"
         )
+    lines += [
+        "",
+        "| First qualifying response | device_core returned / eligible | device_jev returned / eligible |",
+        "|---|---:|---:|",
+    ]
+    for category in ("no confirmed match", "incomplete", "both"):
+        fractions = []
+        for arm in ARMS[2:]:
+            group = [
+                r
+                for r in per_session
+                if r["arm"] == arm and r.get("category") == category
+            ]
+            fractions.append(
+                f"{sum(r['returned'] for r in group)}/{len(group)}"
+                if group
+                else "unmeasured (0 eligible)"
+            )
+        lines.append("| " + " | ".join([category] + fractions) + " |")
+    lines += [
+        "",
+        "| Primary targets only | Called / 36 | Full supporting record before action / 36 | Pass with delivery | Pass without delivery |",
+        "|---|---:|---:|---:|---:|",
+    ]
+    for arm in ARMS[2:]:
+        group = [r for r in observed if r["arm"] == arm and r["cohort"] == "primary"]
+        timely = [r for r in group if r["device_related_before_action"]]
+        others = [r for r in group if not r["device_related_before_action"]]
+        lines.append(
+            f"| {arm} | {sum(r['called'] for r in group)}/{len(group)} | {len(timely)}/{len(group)} | {sum(r['label'] == 'pass' for r in timely)}/{len(timely)} | {sum(r['label'] == 'pass' for r in others)}/{len(others)} |"
+        )
     write(out / "ledger-return.json", per_session)
     (out / "endpoints.md").write_text("\n".join(lines) + "\n")
 

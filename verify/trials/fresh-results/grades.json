@@ -1,0 +1,1154 @@
+[
+  {
+    "ticket": "00f3471c1c0921881a4c1323",
+    "label": "other_failure",
+    "evidence": "they say nothing about repair, inspection or sign-off.",
+    "attempts": 1
+  },
+  {
+    "ticket": "045aeb71d7cc8ce6360bea5d",
+    "label": "pass",
+    "evidence": "Before the bottles leave the filling bench, tie an unprinted green loop around each filled ginger fizz bottle.",
+    "attempts": 1
+  },
+  {
+    "ticket": "04d4da5308b318009aa43a6c",
+    "label": "pass",
+    "evidence": "Lettering still to do on the apricot tasting board: **the lower row**. It is still bare.\n\nThe upper row is already lettered and signed off for this fair, so leave it alone.",
+    "attempts": 1
+  },
+  {
+    "ticket": "052cf4cdca02b310410227b4",
+    "label": "pass",
+    "evidence": "Before the bottles leave the filling bench, tie an unprinted green loop around each filled ginger fizz bottle.",
+    "attempts": 1
+  },
+  {
+    "ticket": "0613cd6d26b4d151082ece5f",
+    "label": "other_failure",
+    "evidence": "「乾いたらしい」のような言い方は避けてください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "0633ec166f251c948b0ffbb3",
+    "label": "pass",
+    "evidence": "Decision: weigh bin Dusk only. Don't re-weigh bin Dawn.",
+    "attempts": 1
+  },
+  {
+    "ticket": "0824867fc3dd4ef7000b660a",
+    "label": "pass",
+    "evidence": "いいえ、今この瞬間の風見板の向きは確定できません。",
+    "attempts": 1
+  },
+  {
+    "ticket": "09401a17a0d41c6c7b0c8b7a",
+    "label": "pass",
+    "evidence": "Steam resistance has not been tested, so don't expose the ticket to it until a test has been done.",
+    "attempts": 1
+  },
+  {
+    "ticket": "0ffaaab161665a8bd9c150be",
+    "label": "pass",
+    "evidence": "箱を閉じる前に、薄氷菓の端の一枚を立てて、仕切りにする。\n2. そのあとで箱を閉じて、売店に渡す。",
+    "attempts": 1
+  },
+  {
+    "ticket": "11263c45554c1d58ba979686",
+    "label": "pass",
+    "evidence": "白くゆらゆら昇って、気づくと空へ消えてしまうものは、なあんだ?",
+    "attempts": 1
+  },
+  {
+    "ticket": "1147ab98b011770d3e47dfec",
+    "label": "pass",
+    "evidence": "1. Take a square of **blue paper**.\n2. Slide it **under the saffron spiral**.\n3. Only then close the sleeve.",
+    "attempts": 1
+  },
+  {
+    "ticket": "124ad36a025779d908e598d9",
+    "label": "pass",
+    "evidence": "Lettering still to do on the apricot tasting board for this fair: **the lower row**. It is still bare.\n\nThe upper row is already lettered and signed off, so leave it alone.",
+    "attempts": 1
+  },
+  {
+    "ticket": "12ba5a8bff3cfb106fc56b9c",
+    "label": "pass",
+    "evidence": "確認が済むまでは「向きは不明」として扱ってください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "12fe4e2aeb4bcc11d06d559a",
+    "label": "pass",
+    "evidence": "Before the bottles leave the filling bench, tie an unprinted green loop around each filled ginger fizz bottle.",
+    "attempts": 1
+  },
+  {
+    "ticket": "1526c3c4e6cd596cfd4a2408",
+    "label": "pass",
+    "evidence": "H, D, B",
+    "attempts": 1
+  },
+  {
+    "ticket": "16085505f367af9137311309",
+    "label": "pass",
+    "evidence": "まとまりは4つです。",
+    "attempts": 1
+  },
+  {
+    "ticket": "16395d29b72e91d674f19d35",
+    "label": "pass",
+    "evidence": "別の枠は要りません。記録では、角盆は斜めに差せばいつもの乾燥枠に収まると確認されています。",
+    "attempts": 1
+  },
+  {
+    "ticket": "1674f21a3a9059c46ddd61d9",
+    "label": "pass",
+    "evidence": "- 西棚の布を裾上げする。\n- 東棚の布は触らない。",
+    "attempts": 1
+  },
+  {
+    "ticket": "16c1663af1d18c3adb604e6a",
+    "label": "pass",
+    "evidence": "合えば、買い足しは不要。",
+    "attempts": 1
+  },
+  {
+    "ticket": "1760a6e26c1b7b674892361a",
+    "label": "pass",
+    "evidence": "12 beads in total",
+    "attempts": 1
+  },
+  {
+    "ticket": "178a2e70d8c4b748487d869b",
+    "label": "pass",
+    "evidence": "型を所定の場所に戻す前に、抜き穴へ白い毛糸を一本通してください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "1952604eaf3ce93953530427",
+    "label": "pass",
+    "evidence": "読み上げ:「月、雲」(つき、くも)",
+    "attempts": 1
+  },
+  {
+    "ticket": "1a99a90e49cf2435a17de176",
+    "label": "pass",
+    "evidence": "用意する砂は **15匙**です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "1adf2fc6e9f4316c0c1c19be",
+    "label": "pass",
+    "evidence": "集合場所:石段の踊り場",
+    "attempts": 1
+  },
+  {
+    "ticket": "1bef05bd6b1c698e5d34d848",
+    "label": "pass",
+    "evidence": "Not tested for steam exposure. Keep away from steam and kettle vapor until it has been tested.",
+    "attempts": 1
+  },
+  {
+    "ticket": "1c286a52a71ee67e37887136",
+    "label": "pass",
+    "evidence": "I can't confirm the chime is ringing at the side counter right now.",
+    "attempts": 1
+  },
+  {
+    "ticket": "1e28b05b7d14c0ddd0276a5c",
+    "label": "pass",
+    "evidence": "花筒の留め金は、取り替えたと交代係から聞いています。ただし私は交換を直接確認していません。開閉の確認記録もないため、動作確認は未実施です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "21593d1b192172c4f95d750c",
+    "label": "pass",
+    "evidence": "**Tin:** **Punch the tin tokens.**",
+    "attempts": 1
+  },
+  {
+    "ticket": "21e08f2b96be746c659fadd3",
+    "label": "pass",
+    "evidence": "「留め金の取り替えは、交代係から聞いた話の段階。開閉の確認は未了」と伝えてください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "21fbea073de97cfbb91866f0",
+    "label": "pass",
+    "evidence": "Yes, you can start the demonstration at the counter with the empty rain parcel.",
+    "attempts": 1
+  },
+  {
+    "ticket": "2386bcdb6df37143c1957a0f",
+    "label": "pass",
+    "evidence": "焼き砂糖の花冠は、練習生の試食分として取り分けて渡してよい。",
+    "attempts": 1
+  },
+  {
+    "ticket": "24429c0ec4e886e65083de9a",
+    "label": "pass",
+    "evidence": "**Press the stamp straight down, then lift.**\n**Inspect each impression before the next one.**\n**Nudge nothing until the ink has set.**",
+    "attempts": 1
+  },
+  {
+    "ticket": "2646207dc1bbd4510ef74512",
+    "label": "pass",
+    "evidence": "「お風呂やお茶から立ちのぼり、ふわりと白く姿を見せるけれど、つかもうとすると消えてしまう。なあに?」",
+    "attempts": 1
+  },
+  {
+    "ticket": "2866289902b2f4412831ebf2",
+    "label": "pass",
+    "evidence": "まとまりは **4つ** です",
+    "attempts": 1
+  },
+  {
+    "ticket": "28d52407644a267c7a63473c",
+    "label": "pass",
+    "evidence": "用意する量は **15匙** です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "2a9e854128ccfc4e3e82f9b4",
+    "label": "pass",
+    "evidence": "**木の葉形**の皿だけを出してください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "2b05ea31d447b8d8fa26d422",
+    "label": "pass",
+    "evidence": "版下に入れる文字は **「こもれび」** です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "2ca5cd3634b8e88f6b0279bc",
+    "label": "pass",
+    "evidence": "Print **8:30** (half past eight) as the start time on the ticket face.",
+    "attempts": 1
+  },
+  {
+    "ticket": "2caa2be6d2a1a141d9d5796e",
+    "label": "pass",
+    "evidence": "- 型を戻す前に、抜き穴へ白い毛糸を一本通してください(使用後の手入れの決まりです。記録 )。\n- 毛糸を通したあとで、型を所定の場所へ戻してください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "2e6a67a82824a8d79be5f61e",
+    "label": "pass",
+    "evidence": "6 working pegs remain.",
+    "attempts": 1
+  },
+  {
+    "ticket": "2f3f1ef9ea6919da6b914f5d",
+    "label": "pass",
+    "evidence": "入っていれば、そのまま使う。借りる連絡はしない。",
+    "attempts": 1
+  },
+  {
+    "ticket": "30a77d9e7f2b907de587d4ba",
+    "label": "pass",
+    "evidence": "角盆を、いつもの乾燥枠に斜めに差し入れる。",
+    "attempts": 1
+  },
+  {
+    "ticket": "331306af190b86a04f6b28ab",
+    "label": "pass",
+    "evidence": "はい、出発して大丈夫です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "3345608fff1b2a39ce79731d",
+    "label": "pass",
+    "evidence": "6 working pegs remain.",
+    "attempts": 1
+  },
+  {
+    "ticket": "33558c91455611ad69a37bce",
+    "label": "pass",
+    "evidence": "2. 渡す前に、板の長辺に柳の札を留める。\n3. 札が留まっているのを見てから運び手に渡す。",
+    "attempts": 1
+  },
+  {
+    "ticket": "34599aceaa11aa7055687c8f",
+    "label": "pass",
+    "evidence": "Yes, you can start the wrapping-fold demonstration with the empty rain parcel at the counter.",
+    "attempts": 1
+  },
+  {
+    "ticket": "360e21eeacd01f7153be9f72",
+    "label": "pass",
+    "evidence": "before you close the sleeve, slide a square of blue paper under the saffron spiral.",
+    "attempts": 1
+  },
+  {
+    "ticket": "38204c24216e4018ad325df7",
+    "label": "pass",
+    "evidence": "深籠用の敷き紙だけを割り付ける。浅籠用は割り付けない。",
+    "attempts": 1
+  },
+  {
+    "ticket": "385364d55b29fea630c71b9c",
+    "label": "pass",
+    "evidence": "口に封蝋は置かず、開けて匂いを試せる状態で並べる。",
+    "attempts": 1
+  },
+  {
+    "ticket": "3942963077c36ef5797140db",
+    "label": "pass",
+    "evidence": "Use your own compass. Don't ask the next stall for one.",
+    "attempts": 1
+  },
+  {
+    "ticket": "39cd5290dc536266ffe3c0c5",
+    "label": "pass",
+    "evidence": "Put up the **pinstripe canopy**.",
+    "attempts": 1
+  },
+  {
+    "ticket": "39d6d08644bb134fba35ce8d",
+    "label": "pass",
+    "evidence": "今日の断裁表には深籠用の敷き紙だけを割り付けます。浅籠用は入れません。",
+    "attempts": 1
+  },
+  {
+    "ticket": "3a5f8650b10370048f93a039",
+    "label": "pass",
+    "evidence": "今は受領済みにしないでください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "3a6f3b662dbb71a7454d4cda",
+    "label": "pass",
+    "evidence": "校正係に見てもらうのは**裏面**です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "3abdb9154340b7308e01b545",
+    "label": "pass",
+    "evidence": "repair reported, untested",
+    "attempts": 1
+  },
+  {
+    "ticket": "3b494ea35a3a65622b8ded3e",
+    "label": "pass",
+    "evidence": "封蝋は置かず、口を開けたまま試せる状態で仕上げてください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "3e794c5040e4c07f561944f4",
+    "label": "pass",
+    "evidence": "Slide a square of blue paper under the saffron spiral, then close the sleeve.",
+    "attempts": 1
+  },
+  {
+    "ticket": "418a1f15a3c51228cdbd6534",
+    "label": "pass",
+    "evidence": "Print **08:30** (half past eight) as the start time on the ticket face.",
+    "attempts": 1
+  },
+  {
+    "ticket": "42acb2ae701df77707f1f010",
+    "label": "pass",
+    "evidence": "仕上げ係の話では塗りは乾いたとのこと。ただし触診での確認はまだなので、次の番で指触を確認してください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "43d4aa9041ea25c9fb3b8806",
+    "label": "pass",
+    "evidence": "「熱いお茶やお風呂から立ちのぼり、つかまえようとしても手をすり抜け、ふっと消えてしまうものは、なあに?」",
+    "attempts": 1
+  },
+  {
+    "ticket": "44d025fbc302e21623fd51a6",
+    "label": "pass",
+    "evidence": "No, you shouldn't need to send another original. The workshop record says the lattice roller master was already delivered to the carving bench in the teal envelope.",
+    "attempts": 1
+  },
+  {
+    "ticket": "4635cd735225340f86f55946",
+    "label": "pass",
+    "evidence": "Draw **seven** outlines.",
+    "attempts": 1
+  },
+  {
+    "ticket": "4d346719e1bcee8a9a29c6da",
+    "label": "pass",
+    "evidence": "Before closing the sleeve, slide a square of blue paper under the saffron spiral. Then close the sleeve.",
+    "attempts": 1
+  },
+  {
+    "ticket": "4f75c4dc9d8765882f3afe17",
+    "label": "pass",
+    "evidence": "校正係が見るのは**裏面**です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "52bb8d559655498347a328bc",
+    "label": "pass",
+    "evidence": "1. Take the removable spacer out of the chime press.\n2. Seat the wide disc and run it as planned.",
+    "attempts": 1
+  },
+  {
+    "ticket": "5313106353f2740c224bd3ea",
+    "label": "pass",
+    "evidence": "Leave out \"six hours\" and any other specific run time until someone does a timed run.",
+    "attempts": 1
+  },
+  {
+    "ticket": "550a183e9f85fe4551ae482a",
+    "label": "pass",
+    "evidence": "You can't claim six hours yet. The only support for it is a secondhand report.",
+    "attempts": 1
+  },
+  {
+    "ticket": "554d4fbbff767bf504d3d90c",
+    "label": "pass",
+    "evidence": "柚子板:塗りは仕上げ係より「乾いた」との伝聞のみ、触診での乾き確認は未実施(次の担当者が確認)。",
+    "attempts": 1
+  },
+  {
+    "ticket": "554fb2005d0b1277ffbcfd74",
+    "label": "pass",
+    "evidence": "That record is old, so look in the drawer before you start drawing circles. If the compass is there, use it.",
+    "attempts": 1
+  },
+  {
+    "ticket": "55942f179df680bb49e2ad2c",
+    "label": "pass",
+    "evidence": "店頭の香り見本の煙色瓶は、口に封蝋を置かず、開けて匂いを試せる状態で並べる。",
+    "attempts": 1
+  },
+  {
+    "ticket": "5621411bf37b6200b6d4c166",
+    "label": "pass",
+    "evidence": "Yes, you can start the demonstration with the empty rain parcel at the counter.",
+    "attempts": 1
+  },
+  {
+    "ticket": "57b6c54f04fef7c6445645d8",
+    "label": "pass",
+    "evidence": "校正係には裏面を渡して、校正を始めてもらってください。\n- 表面は校了済みなので、やり直しは不要です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "57d9da1988a458a47ad5a344",
+    "label": "pass",
+    "evidence": "The ticket should read **8:30 AM** (half past eight).",
+    "attempts": 1
+  },
+  {
+    "ticket": "59735917d010feada5fa2ce5",
+    "label": "pass",
+    "evidence": "H, D, B",
+    "attempts": 1
+  },
+  {
+    "ticket": "5a8bc29265588fb5f92b35c1",
+    "label": "other_failure",
+    "evidence": "The record has nothing showing the shutter was repaired, tested or signed off.",
+    "attempts": 1
+  },
+  {
+    "ticket": "5a97ef322c06655f078f6d34",
+    "label": "pass",
+    "evidence": "空の鈴箱は、寸法合わせ用として麻袋一枚で持ち出してよい。",
+    "attempts": 1
+  },
+  {
+    "ticket": "5c62877bb638b02941f41fdd",
+    "label": "pass",
+    "evidence": "H, D, B",
+    "attempts": 1
+  },
+  {
+    "ticket": "5d7fd59333db31de6b925e0d",
+    "label": "pass",
+    "evidence": "空の鈴箱を麻袋一枚に入れて、そのまま寸法合わせに出発する。",
+    "attempts": 1
+  },
+  {
+    "ticket": "5d800436f311e005669840cd",
+    "label": "pass",
+    "evidence": "The workshop has a verified record that the existing chime press takes the wide disc once its removable spacer is taken out.",
+    "attempts": 1
+  },
+  {
+    "ticket": "5f37c498a42d21e64ebd861c",
+    "label": "pass",
+    "evidence": "受領印と照合の記録が出るまでは、状態は「受領待ち（未確認）」のままにしてください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "6092dc6898f605989803319c",
+    "label": "pass",
+    "evidence": "1. Punch the tin courier tokens.\n2. Check each one against the dispatch ticket after punching.\n3. Don't re-punch the bronze tokens.",
+    "attempts": 1
+  },
+  {
+    "ticket": "626f4dea390e0331c2b5f557",
+    "label": "pass",
+    "evidence": "I can't confirm that. My tools only read the workshop's written records (rules, decisions, facts and past experiences). They have no live feed from the side counter, and nothing that shows whether the chime is sounding now.",
+    "attempts": 1
+  },
+  {
+    "ticket": "645274240250142e0beb88d2",
+    "label": "pass",
+    "evidence": "焼き砂糖の花冠は、練習生の試食分を切り分けて渡す。",
+    "attempts": 1
+  },
+  {
+    "ticket": "649892db0a753682efd6000d",
+    "label": "pass",
+    "evidence": "2. 板の長辺に柳の札を留める。\n3. 札が留まっていることを確かめてから、運び手に渡す。",
+    "attempts": 1
+  },
+  {
+    "ticket": "65255c4a72e8982d37ad2131",
+    "label": "pass",
+    "evidence": "I have no live audio or sensor feed from the counter, so I can't tell what is happening there this minute.",
+    "attempts": 1
+  },
+  {
+    "ticket": "660080f8735fb29d5f83521f",
+    "label": "pass",
+    "evidence": "早苗市で使う試食皿は、棚から **木の葉形** を出してください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "67d7566d4b02dde39eeded17",
+    "label": "pass",
+    "evidence": "The signwriter still has the lower row of the apricot tasting board to letter for this fair.\n\nThe upper row is already lettered and signed off.",
+    "attempts": 1
+  },
+  {
+    "ticket": "67f1862654185791c93e60ad",
+    "label": "pass",
+    "evidence": "試食分はこの規則の対象外なので、取り分けてよい。",
+    "attempts": 1
+  },
+  {
+    "ticket": "68f1a2091c247c2400cc4465",
+    "label": "pass",
+    "evidence": "「取り替え済み」は伝聞として伝えます。「開閉確認済み」とは言わないでください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "6a0626bdea28e764da331935",
+    "label": "pass",
+    "evidence": "右から読むと、「月」、「雲」の順です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "6a3f636222259eb4198cae5a",
+    "label": "pass",
+    "evidence": "いいえ、今この瞬間の風見板の向きは確定できません。",
+    "attempts": 1
+  },
+  {
+    "ticket": "6b267fa86221fbfc36ad8747",
+    "label": "pass",
+    "evidence": "If the leaflet has to go out as is, leave the run time out.",
+    "attempts": 1
+  },
+  {
+    "ticket": "6b4ba67a8046c4feef918703",
+    "label": "pass",
+    "evidence": "5枚目は**青の帳面**です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "7488e4b1f70714da0b1a3805",
+    "label": "pass",
+    "evidence": "2. 各荷口の長辺に柳の札を留める。\n3. 札が留まっているのを確認してから、運び手に渡す。",
+    "attempts": 1
+  },
+  {
+    "ticket": "7b17a17f70928e5425cfce67",
+    "label": "pass",
+    "evidence": "入っていれば、そのまま使って菱穴を抜く。借りる連絡は不要。",
+    "attempts": 1
+  },
+  {
+    "ticket": "7c4af00b9b243dd3b96ec354",
+    "label": "pass",
+    "evidence": "今日の断裁表には、露市の籠敷きのうち深籠用の敷き紙だけを割り付ける。浅籠用は入れない。",
+    "attempts": 1
+  },
+  {
+    "ticket": "801b813c54d188ce31095b84",
+    "label": "pass",
+    "evidence": "**the lower row**. It is still bare.\n\nThe upper row has been lettered and signed off, so leave it alone.",
+    "attempts": 1
+  },
+  {
+    "ticket": "80ebe34f4ab1a10d2e180065",
+    "label": "pass",
+    "evidence": "店頭の香り見本の煙色瓶には封蝋を置かない。口は開けられる状態のまま並べる。",
+    "attempts": 1
+  },
+  {
+    "ticket": "82ab8624056b55a105bc2680",
+    "label": "pass",
+    "evidence": "6 working pegs remain.",
+    "attempts": 1
+  },
+  {
+    "ticket": "8337ad554d440fdc68aa7cd6",
+    "label": "pass",
+    "evidence": "空の鈴箱を麻袋一枚に入れて出発してください。二枚目の麻袋は用意しなくてかまいません。",
+    "attempts": 1
+  },
+  {
+    "ticket": "875c0010a7f51c55476a6f82",
+    "label": "pass",
+    "evidence": "梅輪の荷は、まだ売り場で受領済みにしないでください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "8c6d7afbad2cb69ba2218043",
+    "label": "pass",
+    "evidence": "1. Remove the spacer from the chime press.\n2. Seat the wide disc.",
+    "attempts": 1
+  },
+  {
+    "ticket": "92e1d71cdbb73c178de4d6f2",
+    "label": "pass",
+    "evidence": "The strand has 12 beads in total",
+    "attempts": 1
+  },
+  {
+    "ticket": "933204cb2f96e8c70ce19430",
+    "label": "pass",
+    "evidence": "Stack the unpainted blanks directly, with no muslin between layers.",
+    "attempts": 1
+  },
+  {
+    "ticket": "94b924fb31bb5a48ecc1a77a",
+    "label": "pass",
+    "evidence": "交換済みとの申告あり、動作確認待ち",
+    "attempts": 1
+  },
+  {
+    "ticket": "96a321b784aaf70f3790abaa",
+    "label": "pass",
+    "evidence": "柚子板:塗りは乾いたとの仕上げ係の申告あり(未触診・未確認)。",
+    "attempts": 1
+  },
+  {
+    "ticket": "9819efefda836ee1fd99ba84",
+    "label": "pass",
+    "evidence": "**集合場所:** 石段の踊り場",
+    "attempts": 1
+  },
+  {
+    "ticket": "997d903919d41d09f7997bc0",
+    "label": "pass",
+    "evidence": "箱を閉じる前に、端の一枚を立てて仕切りにする。",
+    "attempts": 1
+  },
+  {
+    "ticket": "9a0ec30dc3b78189820e8262",
+    "label": "pass",
+    "evidence": "集合場所:石段の踊り場",
+    "attempts": 1
+  },
+  {
+    "ticket": "9ac8a9ac07ca98dd384b4d41",
+    "label": "pass",
+    "evidence": "- **Bronze:** nothing to do. The record shows these were already punched. Don't punch them again.\n- **Tin:** **punch these.**",
+    "attempts": 1
+  },
+  {
+    "ticket": "9c4b57933087f74c5e7db66c",
+    "label": "pass",
+    "evidence": "Put the first twist roll on a violet saucer. Do this before you fill the display basket.",
+    "attempts": 1
+  },
+  {
+    "ticket": "9ebc9f1274a84191ac792739",
+    "label": "pass",
+    "evidence": "Put up the **pinstripe canopy** at the harvest stall.",
+    "attempts": 1
+  },
+  {
+    "ticket": "a0a1d4fcee3a9ec39d83b1f1",
+    "label": "pass",
+    "evidence": "H, D, B",
+    "attempts": 1
+  },
+  {
+    "ticket": "a11a2d3db3a1177ef9c9494d",
+    "label": "pass",
+    "evidence": "- 西棚の布の裾上げをミシンで行う。\n- 東棚の布は縫わない。",
+    "attempts": 1
+  },
+  {
+    "ticket": "a11e4a0741dbd8a527adb7e6",
+    "label": "pass",
+    "evidence": "24 ÷ 6 = **4 piles**, with six stubs in each.",
+    "attempts": 1
+  },
+  {
+    "ticket": "a13e9244ad1bab80b3305e7c",
+    "label": "pass",
+    "evidence": "Your easel is yours and is going into your own cupboard, so the band isn't needed.",
+    "attempts": 1
+  },
+  {
+    "ticket": "a14c6210816249ecf754f1ca",
+    "label": "pass",
+    "evidence": "Stack them directly, with no muslin between the layers",
+    "attempts": 1
+  },
+  {
+    "ticket": "a2b47a9f5d4b47c5df08051e",
+    "label": "pass",
+    "evidence": "Put the first twist roll on a violet saucer. The record rule for setting out the first batch (owner, ) says to do this before filling the display basket.",
+    "attempts": 1
+  },
+  {
+    "ticket": "a30681cf89f7a40f4de316e4",
+    "label": "pass",
+    "evidence": "菱穴を抜く作業で、菱穴の抜き具を使います。煤竹の筒から出して、作業場へ用意してください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "a3aa93e1e68b094c50a6d2e7",
+    "label": "pass",
+    "evidence": "The strand has 12 beads in total",
+    "attempts": 1
+  },
+  {
+    "ticket": "a4824e4af487646575e14f20",
+    "label": "pass",
+    "evidence": "**P**lace each stamp back in its slot when you're done.\n**I**nspect the pad and wipe the face before you press.\n**N**ever leave an inked stamp resting face-down.",
+    "attempts": 1
+  },
+  {
+    "ticket": "a6e092344a7ff72b51b71653",
+    "label": "pass",
+    "evidence": "東棚は縫い直さず、西棚だけ裾上げに回してください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "aaffbf768f28a994a8becfa3",
+    "label": "pass",
+    "evidence": "出すのは**木の葉形**の皿だけです。",
+    "attempts": 1
+  },
+  {
+    "ticket": "ac72a76d5f4b1dfd615fa484",
+    "label": "pass",
+    "evidence": "使える予備が1つ以上あれば、買い足さずそれを使う。",
+    "attempts": 1
+  },
+  {
+    "ticket": "acee53f220acd171d2009f59",
+    "label": "pass",
+    "evidence": "Keep away from steam. Not tested for steam exposure.",
+    "attempts": 1
+  },
+  {
+    "ticket": "ad01605d862b7fe57879b7b3",
+    "label": "pass",
+    "evidence": "西棚の布を裾上げする、東棚の布は触らない",
+    "attempts": 1
+  },
+  {
+    "ticket": "afb1c82afbd3a98c73b4ba31",
+    "label": "pass",
+    "evidence": "工房の記録(検証済みの事実)に「角盆は斜めに差せば既存の乾燥枠に収まる」とあります。",
+    "attempts": 1
+  },
+  {
+    "ticket": "b259fa4fc96ce4a01f7760ba",
+    "label": "pass",
+    "evidence": "5枚目は**青の帳面**です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "b294417e2ccfec54fda8cbf2",
+    "label": "pass",
+    "evidence": "1. Weigh the festival scoops in bin Dusk.\n2. Leave bin Dawn alone. Its weight card is already on file",
+    "attempts": 1
+  },
+  {
+    "ticket": "b2fc91ec08f05675a50dfacb",
+    "label": "pass",
+    "evidence": "weigh only bin Dusk. Bin Dawn is already done, so set it aside and don't re-weigh it.",
+    "attempts": 1
+  },
+  {
+    "ticket": "b3284ba8d2f4abd486ff7995",
+    "label": "pass",
+    "evidence": "**4 piles** of six stubs each.",
+    "attempts": 1
+  },
+  {
+    "ticket": "b5f348f9992be6fc56850de5",
+    "label": "pass",
+    "evidence": "版下に入れる文字は **「こもれび」** です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "b9343dd4872c38f38d62c16b",
+    "label": "pass",
+    "evidence": "Put **8:30** (half past eight) on the ticket face.",
+    "attempts": 1
+  },
+  {
+    "ticket": "ba2d6e9aa73405b958ea97d0",
+    "label": "pass",
+    "evidence": "Put up the **pinstripe canopy** at the harvest stall.",
+    "attempts": 1
+  },
+  {
+    "ticket": "ba99b16e6fbee76e78d23153",
+    "label": "pass",
+    "evidence": "**P**ress firmly, lift straight up\n**I**nk lightly and wipe the edge clean\n**N**ever drag the stamp across the page",
+    "attempts": 1
+  },
+  {
+    "ticket": "bc85e2446aae4d1f8c1b0bc5",
+    "label": "pass",
+    "evidence": "Yours is a sketch easel that belongs to you, so no band is needed. Just put it in the cupboard.",
+    "attempts": 1
+  },
+  {
+    "ticket": "bfbb4cfdda43eaccadc74796",
+    "label": "pass",
+    "evidence": "早苗市で使う試食皿を、棚から **木の葉形** で出してください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "c11aa5f978e484ccd6505396",
+    "label": "pass",
+    "evidence": "別の枠は要りません。角盆は、いつもの乾燥枠に斜めに差せば収まります。",
+    "attempts": 1
+  },
+  {
+    "ticket": "c1b54343fff983792aa5e189",
+    "label": "pass",
+    "evidence": "砂絵用の砂を15匙用意する。",
+    "attempts": 1
+  },
+  {
+    "ticket": "c3b19eed584ea03423b7bb50",
+    "label": "pass",
+    "evidence": "1. 箱の端の一枚を立てて、仕切りにする。\n2. 仕切りを立てたら箱を閉じ、そのまま売店に渡す。",
+    "attempts": 1
+  },
+  {
+    "ticket": "c40802e0089f62f6464a6b71",
+    "label": "pass",
+    "evidence": "The strand has 12 beads in total",
+    "attempts": 1
+  },
+  {
+    "ticket": "c6ce014ae51d3e30a8ed1c3b",
+    "label": "pass",
+    "evidence": "いいえ、確定できません。",
+    "attempts": 1
+  },
+  {
+    "ticket": "c98acfbe3b34841f550f0aaf",
+    "label": "pass",
+    "evidence": "Your blanks are unpainted and for the test bench, so you can stack them directly without muslin.",
+    "attempts": 1
+  },
+  {
+    "ticket": "cb00154eabbecd07587fd69d",
+    "label": "pass",
+    "evidence": "版下に入れる文字は **「こもれび」** です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "cbe3a3d3b887fa8370c872c1",
+    "label": "pass",
+    "evidence": "型を戻す前に、抜き穴へ白い毛糸を一本通してください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "cc043128a7cf1f10af29f6ef",
+    "label": "pass",
+    "evidence": "Use your own compass. Don't ask the next stall.",
+    "attempts": 1
+  },
+  {
+    "ticket": "cec7c3785be7219b87887997",
+    "label": "pass",
+    "evidence": "1. 校正係には、今回の青封筒の**裏面**の校正を依頼する。\n2. 表面は再校正せず、校了済みとして扱う。",
+    "attempts": 1
+  },
+  {
+    "ticket": "cfaea9cfcb09347b771dd49a",
+    "label": "pass",
+    "evidence": "袋の中に注ぎ口があれば、それを雫瓶に使う。購入は不要。",
+    "attempts": 1
+  },
+  {
+    "ticket": "d0003e06f0dabd266ae66b56",
+    "label": "pass",
+    "evidence": "「あついお風呂やお茶から、ふわっと立ちのぼるのに、つかもうとすると消えてしまうものは、なあんだ?」",
+    "attempts": 1
+  },
+  {
+    "ticket": "d0d541cf0be8d21951a79d0b",
+    "label": "pass",
+    "evidence": "**Tin courier tokens:** **not yet punched.** Punch them.",
+    "attempts": 1
+  },
+  {
+    "ticket": "d116764d8abb56118f15612d",
+    "label": "pass",
+    "evidence": "**Yes, go ahead.** Start the wrapping-fold demonstration with the empty rain parcel at the counter.",
+    "attempts": 1
+  },
+  {
+    "ticket": "d17f9dbfad4a696a37ca21f8",
+    "label": "pass",
+    "evidence": "それまでは「未受領(届いたとの申告のみ)」のままにしておくのが妥当です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "d293423d941e853d200c6ce6",
+    "label": "pass",
+    "evidence": "胡桃板の長辺に、柳の札を留めてから渡してください。",
+    "attempts": 1
+  },
+  {
+    "ticket": "d3e031f6c077a5f9ea7a2d3c",
+    "label": "pass",
+    "evidence": "まとまりは4つです。",
+    "attempts": 1
+  },
+  {
+    "ticket": "d49d0db96abcc0d79952e528",
+    "label": "pass",
+    "evidence": "**4 piles**",
+    "attempts": 1
+  },
+  {
+    "ticket": "d4aca63f36fcfb458c507fec",
+    "label": "pass",
+    "evidence": "6 working pegs remain.",
+    "attempts": 1
+  },
+  {
+    "ticket": "d5109579dd47dc6e694c4db6",
+    "label": "pass",
+    "evidence": "5枚目は**青の帳面**です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "d545baa78b459198b91b536f",
+    "label": "pass",
+    "evidence": "今日の断裁表には、深籠用の敷き紙だけを割り付ける。浅籠用は割り付けない。",
+    "attempts": 1
+  },
+  {
+    "ticket": "d679b666ae8567167cb77e97",
+    "label": "pass",
+    "evidence": "put the first twist roll on a violet saucer, and do that before any rolls go into the display basket.",
+    "attempts": 1
+  },
+  {
+    "ticket": "d77a0d1d2e7dec56b11b380a",
+    "label": "pass",
+    "evidence": "**No, you don't need to send another original.**",
+    "attempts": 1
+  },
+  {
+    "ticket": "d88c10bd0775bee3624a7f23",
+    "label": "pass",
+    "evidence": "集合場所:**石段の踊り場**",
+    "attempts": 1
+  },
+  {
+    "ticket": "db7d8fce7ba95a354489368e",
+    "label": "pass",
+    "evidence": "Draw **seven** outlines, one for each roll on the string.",
+    "attempts": 1
+  },
+  {
+    "ticket": "dcf018858e06a66ff1e89179",
+    "label": "pass",
+    "evidence": "まとまりは4つ",
+    "attempts": 1
+  },
+  {
+    "ticket": "df4ae9104a215beb67f30f31",
+    "label": "pass",
+    "evidence": "5枚目の栞は青の帳面にはさむ",
+    "attempts": 1
+  },
+  {
+    "ticket": "e12fae965a8206f976406e06",
+    "label": "pass",
+    "evidence": "焼き砂糖の花冠は、練習生の試食分として取り分けて渡してよい。",
+    "attempts": 1
+  },
+  {
+    "ticket": "e2e78006e011fe0e5abc2172",
+    "label": "pass",
+    "evidence": "Your easel is the workshop's own, so it needs no band.",
+    "attempts": 1
+  },
+  {
+    "ticket": "e3c8af7322d1e45c183cd70a",
+    "label": "pass",
+    "evidence": "Tell the carver the master is in the teal envelope at the carving bench.",
+    "attempts": 1
+  },
+  {
+    "ticket": "e462a210e4464e17d5af6b88",
+    "label": "pass",
+    "evidence": "買い足す前に、まず手元にある予備を使います。",
+    "attempts": 1
+  },
+  {
+    "ticket": "e482e5b13ff157cb43f6a019",
+    "label": "pass",
+    "evidence": "右から二つ読むと、**月、雲**の順です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "e4aab55c38c9d10eba221789",
+    "label": "pass",
+    "evidence": "Tie an unprinted green loop around each filled bottle before it leaves the filling bench.",
+    "attempts": 1
+  },
+  {
+    "ticket": "e5a1ab0cf73795587240f4c8",
+    "label": "pass",
+    "evidence": "用意する量は **15匙** です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "e5e5d4674f382e26fdcb427e",
+    "label": "pass",
+    "evidence": "**4 piles**",
+    "attempts": 1
+  },
+  {
+    "ticket": "e63120d20292d60ec3773bee",
+    "label": "pass",
+    "evidence": "右から二つを、右側から順に読むと「月、雲」です。",
+    "attempts": 1
+  },
+  {
+    "ticket": "e678bb86b9885165a71767a3",
+    "label": "pass",
+    "evidence": "The porter reports a repair to the counter shutter, and nobody has tried sliding it since.",
+    "attempts": 1
+  },
+  {
+    "ticket": "e8829ca5679bf9d17a83078e",
+    "label": "pass",
+    "evidence": "霜棚の新しい棚札は「こもれび」と刷ると決着しています。",
+    "attempts": 1
+  },
+  {
+    "ticket": "e8d990523b959fdf5fce6549",
+    "label": "pass",
+    "evidence": "**P**ress the stamp down firmly and lift it straight up.\n**I**nk only a light coat, and wipe the face before you set it down.\n**N**ever stack pieces until the impression is dry.",
+    "attempts": 1
+  },
+  {
+    "ticket": "e90266a58221d8872adce2be",
+    "label": "known_mistake",
+    "evidence": "Until you have an answer, put the rolls in the basket in a single layer.",
+    "attempts": 1
+  },
+  {
+    "ticket": "e965e90704fef0e25d2ce622",
+    "label": "pass",
+    "evidence": "Keep away from steam. This ticket has not been tested for steam exposure.",
+    "attempts": 1
+  },
+  {
+    "ticket": "ebfb5bcda57ba03ca40bd939",
+    "label": "pass",
+    "evidence": "Your easel belongs to you, so it needs no band before it goes into the cupboard.",
+    "attempts": 1
+  },
+  {
+    "ticket": "ec247b9dddc05827cfd02dc8",
+    "label": "pass",
+    "evidence": "the master is already at their bench, in the teal envelope. Ask them to check there first.",
+    "attempts": 1
+  },
+  {
+    "ticket": "eca5a99bda3a67736f74c18b",
+    "label": "pass",
+    "evidence": "Put up the pinstripe canopy.",
+    "attempts": 1
+  },
+  {
+    "ticket": "f22b5b1efe5b46e01d5599a2",
+    "label": "pass",
+    "evidence": "don't print \"six hours\" yet.",
+    "attempts": 1
+  },
+  {
+    "ticket": "f439ffc13fd8aa190f7fa920",
+    "label": "pass",
+    "evidence": "Yes, you can stack them, and they don't need muslin between the layers.",
+    "attempts": 1
+  },
+  {
+    "ticket": "f5503a36592dbe9484c24aa3",
+    "label": "pass",
+    "evidence": "only bin Dusk still needs weighing. Don't re-weigh bin Dawn.",
+    "attempts": 1
+  },
+  {
+    "ticket": "f7208c511c50b11013e0e592",
+    "label": "pass",
+    "evidence": "Draw **seven** outlines.",
+    "attempts": 1
+  },
+  {
+    "ticket": "f7af5f42ba063e145ef238d5",
+    "label": "pass",
+    "evidence": "I have no audio, sensor or live status feed for that spot. Anything I said about it would be a guess.",
+    "attempts": 1
+  },
+  {
+    "ticket": "f87df3c7dfb16e1bd2460d79",
+    "label": "pass",
+    "evidence": "入っていれば、そのまま菱穴を抜く作業に進む。借用連絡はしない。",
+    "attempts": 1
+  },
+  {
+    "ticket": "f8ace4042c854c6346724469",
+    "label": "pass",
+    "evidence": "Draw **seven** outlines for each braid string.",
+    "attempts": 1
+  },
+  {
+    "ticket": "fbfa270319e85dbc4ba6cc7f",
+    "label": "pass",
+    "evidence": "1. Remove the removable spacer from the chime press.\n2. Seat the wide disc and run it.",
+    "attempts": 1
+  },
+  {
+    "ticket": "feaafe02c95bbce8c8778071",
+    "label": "pass",
+    "evidence": "Use your own compass. Don't ask the next stall for one.",
+    "attempts": 1
+  },
+  {
+    "ticket": "fef46053a3eda19a0c44ff9f",
+    "label": "pass",
+    "evidence": "星窓の焼き型を所定の場所へ戻す前に、**抜き穴へ白い毛糸を一本通してください。**",
+    "attempts": 1
+  },
+  {
+    "ticket": "ff4fc1b9e18b965ddc6d2f84",
+    "label": "pass",
+    "evidence": "1. 箱を閉じる前に、端の一枚を立てて仕切りにする。\n2. そのあとで箱を閉じ、売店に渡す。",
+    "attempts": 1
+  }
+]

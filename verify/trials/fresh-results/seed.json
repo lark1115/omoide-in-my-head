@@ -1,0 +1,11 @@
+{
+  "rows": 3048,
+  "kinds": {
+    "decision": 627,
+    "experience": 717,
+    "fact": 819,
+    "rule": 885
+  },
+  "revised": 36,
+  "sha256": "5774065c0788d7ce086cf67f49c00577c45f5b0754ce7f2d975e85ba2b482dd4"
+}

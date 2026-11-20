@@ -1,0 +1,1065 @@
+[
+  {
+    "opportunity": "L01",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 5813
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L02",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 3804
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L03",
+    "attempts": [
+      {
+        "state": "failed",
+        "judged": 0,
+        "ms": 6557
+      },
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 3857
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": -1,
+        "error": "bridge deadline exceeded",
+        "usage": null
+      },
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L04",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 4162
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L05",
+    "attempts": [
+      {
+        "state": "failed",
+        "judged": 0,
+        "ms": 6553
+      },
+      {
+        "state": "failed",
+        "judged": 0,
+        "ms": 6572
+      },
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 997
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": -1,
+        "error": "bridge deadline exceeded",
+        "usage": null
+      },
+      {
+        "candidates": 1,
+        "status": -1,
+        "error": "bridge deadline exceeded",
+        "usage": null
+      },
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L06",
+    "attempts": [
+      {
+        "state": "failed",
+        "judged": 0,
+        "ms": 6574
+      },
+      {
+        "state": "failed",
+        "judged": 0,
+        "ms": 6567
+      },
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 3947
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": -1,
+        "error": "bridge deadline exceeded",
+        "usage": null
+      },
+      {
+        "candidates": 1,
+        "status": -1,
+        "error": "bridge deadline exceeded",
+        "usage": null
+      },
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L07",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 252
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L08",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 210
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L09",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 224
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L10",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 247
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L11",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 194
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L12",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 212
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L13",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 246
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L14",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 288
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L15",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 214
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L16",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 219
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L17",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 257
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L18",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 209
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L19",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 220
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L20",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 207
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L21",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 218
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L22",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 208
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L23",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 221
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L24",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 204
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L25",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 206
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L26",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 213
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L27",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 212
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L28",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 216
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L29",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 209
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L30",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 221
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L31",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 228
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L32",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 230
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L33",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 224
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L34",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 251
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L35",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 229
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L36",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 209
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L37",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 212
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L38",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 212
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L39",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 229
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L40",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 260
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L41",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 212
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L42",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 280
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L43",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 202
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L44",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 294
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L45",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 244
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L46",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 240
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L47",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 296
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  },
+  {
+    "opportunity": "L48",
+    "attempts": [
+      {
+        "state": "used",
+        "judged": 1,
+        "ms": 214
+      }
+    ],
+    "batches": [
+      {
+        "candidates": 1,
+        "status": 0,
+        "error": null,
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 21
+        }
+      }
+    ]
+  }
+]
