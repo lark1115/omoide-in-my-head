@@ -179,3 +179,43 @@ class EditorialReview(unittest.TestCase):
             self.assertEqual(updated["answer"], "Use the blue pan.")
             blind(study)
             self.assertEqual(read(study / "blind.json"), [updated])
+
+
+class FreshTrial(unittest.TestCase):
+    def test_followup_counts_only_calls_launched_after_delivery(self):
+        from fresh_report import diagnostics
+        import json
+
+        def call(name, id, at):
+            return dict(type="call", name="workshop__" + name, id=id, args={}, at=at)
+
+        def delivery(id, at):
+            return dict(
+                type="delivery",
+                id=id,
+                at=at,
+                content=json.dumps(
+                    {
+                        "state": "incomplete_search",
+                        "notice": "Read another source",
+                        "search": {
+                            "incomplete": True,
+                            "by_kind": {"rule": {"judged": 2}},
+                            "not_judged": 3,
+                        },
+                    }
+                ),
+                error=False,
+            )
+
+        first = [call("recall", "a", 1), call("ledger_list", "b", 2), delivery("a", 3)]
+        for later, expected in [([], False), ([call("ledger_search", "c", 4)], True)]:
+            t = dict(
+                events=first + later + [dict(type="text", at=5, text="Decide")],
+                answer="Decide",
+                server_events=[],
+            )
+            result = diagnostics(t, {}, set(), {})[0]
+            self.assertEqual(result["later_ledger_before_action"], expected)
+            self.assertEqual(result["judged"], 2)
+            self.assertEqual(result["not_judged"], 3)

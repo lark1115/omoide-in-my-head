@@ -23,6 +23,8 @@ def host(adapter, stats):
         def handle(self):
             request = self.rfile.read()
             value = json.loads(request)
+            trace = value.pop("_trial_trace", None)
+            request = json.dumps(value).encode()
             query_digest = hashlib.sha256(
                 json.dumps(value["query"], ensure_ascii=False, sort_keys=True).encode()
             ).hexdigest()
@@ -54,6 +56,7 @@ def host(adapter, stats):
                 print(
                     json.dumps(
                         dict(
+                            trace=trace,
                             candidates=len(value["candidates"]),
                             query_digest=query_digest,
                             error=(
@@ -88,7 +91,10 @@ if __name__ == "__main__":
     with socket.socket(socket.AF_UNIX) as peer:
         peer.settimeout(6.5)
         peer.connect(sys.argv[1])
-        peer.sendall(sys.stdin.buffer.read())
+        value = json.load(sys.stdin)
+        if len(sys.argv) > 2:
+            value["_trial_trace"] = sys.argv[2]
+        peer.sendall(json.dumps(value).encode())
         peer.shutdown(socket.SHUT_WR)
         response = peer.makefile("rb").read()
         if not response:

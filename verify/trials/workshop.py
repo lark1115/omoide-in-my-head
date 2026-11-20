@@ -69,7 +69,7 @@ def serve(*, ledger_tools=LEDGER, ledger_call=None):
     tools = ledger_tools + (DEVICE if "TRIAL_DB" in os.environ else [])
     definitions = {t["name"]: t for t in tools}
 
-    def call(name, args):
+    def call(name, args, trace):
         spec = definitions[name]["inputSchema"]
         if (
             not isinstance(args, dict)
@@ -104,6 +104,8 @@ def serve(*, ledger_tools=LEDGER, ledger_call=None):
                 str(Path(__file__).with_name("jev_bridge.py")),
                 "--judge-arg",
                 os.environ["TRIAL_JUDGE_SOCKET"],
+                "--judge-arg",
+                trace,
                 "--timeout-ms",
                 "6800",
                 "--threshold",
@@ -140,7 +142,10 @@ def serve(*, ledger_tools=LEDGER, ledger_call=None):
             p = req["params"]
             began = time.monotonic_ns()
             try:
-                raw = call(p["name"], p.get("arguments", {}))
+                import uuid
+
+                trace = uuid.uuid4().hex
+                raw = call(p["name"], p.get("arguments", {}), trace)
                 error = False
             except subprocess.TimeoutExpired:
                 raw = compact({"error": "lookup exceeded the eight-second tool budget"})
@@ -154,6 +159,7 @@ def serve(*, ledger_tools=LEDGER, ledger_call=None):
                     compact(
                         {
                             "tool": p["name"],
+                            "trace": trace,
                             "args": p.get("arguments", {}),
                             "text": raw,
                             "error": error,
