@@ -1,0 +1,434 @@
+[
+  {
+    "id": "L01",
+    "arms": [
+      "no_device",
+      "hot_only",
+      "device_core",
+      "device_jev"
+    ]
+  },
+  {
+    "id": "L02",
+    "arms": [
+      "no_device",
+      "hot_only",
+      "device_jev",
+      "device_core"
+    ]
+  },
+  {
+    "id": "L03",
+    "arms": [
+      "no_device",
+      "device_core",
+      "hot_only",
+      "device_jev"
+    ]
+  },
+  {
+    "id": "L04",
+    "arms": [
+      "no_device",
+      "device_core",
+      "device_jev",
+      "hot_only"
+    ]
+  },
+  {
+    "id": "L05",
+    "arms": [
+      "no_device",
+      "device_jev",
+      "hot_only",
+      "device_core"
+    ]
+  },
+  {
+    "id": "L06",
+    "arms": [
+      "no_device",
+      "device_jev",
+      "device_core",
+      "hot_only"
+    ]
+  },
+  {
+    "id": "L07",
+    "arms": [
+      "hot_only",
+      "no_device",
+      "device_core",
+      "device_jev"
+    ]
+  },
+  {
+    "id": "L08",
+    "arms": [
+      "hot_only",
+      "no_device",
+      "device_jev",
+      "device_core"
+    ]
+  },
+  {
+    "id": "L09",
+    "arms": [
+      "hot_only",
+      "device_core",
+      "no_device",
+      "device_jev"
+    ]
+  },
+  {
+    "id": "L10",
+    "arms": [
+      "hot_only",
+      "device_core",
+      "device_jev",
+      "no_device"
+    ]
+  },
+  {
+    "id": "L11",
+    "arms": [
+      "hot_only",
+      "device_jev",
+      "no_device",
+      "device_core"
+    ]
+  },
+  {
+    "id": "L12",
+    "arms": [
+      "hot_only",
+      "device_jev",
+      "device_core",
+      "no_device"
+    ]
+  },
+  {
+    "id": "L13",
+    "arms": [
+      "device_core",
+      "no_device",
+      "hot_only",
+      "device_jev"
+    ]
+  },
+  {
+    "id": "L14",
+    "arms": [
+      "device_core",
+      "no_device",
+      "device_jev",
+      "hot_only"
+    ]
+  },
+  {
+    "id": "L15",
+    "arms": [
+      "device_core",
+      "hot_only",
+      "no_device",
+      "device_jev"
+    ]
+  },
+  {
+    "id": "L16",
+    "arms": [
+      "device_core",
+      "hot_only",
+      "device_jev",
+      "no_device"
+    ]
+  },
+  {
+    "id": "L17",
+    "arms": [
+      "device_core",
+      "device_jev",
+      "no_device",
+      "hot_only"
+    ]
+  },
+  {
+    "id": "L18",
+    "arms": [
+      "device_core",
+      "device_jev",
+      "hot_only",
+      "no_device"
+    ]
+  },
+  {
+    "id": "L19",
+    "arms": [
+      "device_jev",
+      "no_device",
+      "hot_only",
+      "device_core"
+    ]
+  },
+  {
+    "id": "L20",
+    "arms": [
+      "device_jev",
+      "no_device",
+      "device_core",
+      "hot_only"
+    ]
+  },
+  {
+    "id": "L21",
+    "arms": [
+      "device_jev",
+      "hot_only",
+      "no_device",
+      "device_core"
+    ]
+  },
+  {
+    "id": "L22",
+    "arms": [
+      "device_jev",
+      "hot_only",
+      "device_core",
+      "no_device"
+    ]
+  },
+  {
+    "id": "L23",
+    "arms": [
+      "device_jev",
+      "device_core",
+      "no_device",
+      "hot_only"
+    ]
+  },
+  {
+    "id": "L24",
+    "arms": [
+      "device_jev",
+      "device_core",
+      "hot_only",
+      "no_device"
+    ]
+  },
+  {
+    "id": "L25",
+    "arms": [
+      "no_device",
+      "hot_only",
+      "device_core",
+      "device_jev"
+    ]
+  },
+  {
+    "id": "L26",
+    "arms": [
+      "no_device",
+      "hot_only",
+      "device_jev",
+      "device_core"
+    ]
+  },
+  {
+    "id": "L27",
+    "arms": [
+      "no_device",
+      "device_core",
+      "hot_only",
+      "device_jev"
+    ]
+  },
+  {
+    "id": "L28",
+    "arms": [
+      "no_device",
+      "device_core",
+      "device_jev",
+      "hot_only"
+    ]
+  },
+  {
+    "id": "L29",
+    "arms": [
+      "no_device",
+      "device_jev",
+      "hot_only",
+      "device_core"
+    ]
+  },
+  {
+    "id": "L30",
+    "arms": [
+      "no_device",
+      "device_jev",
+      "device_core",
+      "hot_only"
+    ]
+  },
+  {
+    "id": "L31",
+    "arms": [
+      "hot_only",
+      "no_device",
+      "device_core",
+      "device_jev"
+    ]
+  },
+  {
+    "id": "L32",
+    "arms": [
+      "hot_only",
+      "no_device",
+      "device_jev",
+      "device_core"
+    ]
+  },
+  {
+    "id": "L33",
+    "arms": [
+      "hot_only",
+      "device_core",
+      "no_device",
+      "device_jev"
+    ]
+  },
+  {
+    "id": "L34",
+    "arms": [
+      "hot_only",
+      "device_core",
+      "device_jev",
+      "no_device"
+    ]
+  },
+  {
+    "id": "L35",
+    "arms": [
+      "hot_only",
+      "device_jev",
+      "no_device",
+      "device_core"
+    ]
+  },
+  {
+    "id": "L36",
+    "arms": [
+      "hot_only",
+      "device_jev",
+      "device_core",
+      "no_device"
+    ]
+  },
+  {
+    "id": "L37",
+    "arms": [
+      "device_core",
+      "no_device",
+      "hot_only",
+      "device_jev"
+    ]
+  },
+  {
+    "id": "L38",
+    "arms": [
+      "device_core",
+      "no_device",
+      "device_jev",
+      "hot_only"
+    ]
+  },
+  {
+    "id": "L39",
+    "arms": [
+      "device_core",
+      "hot_only",
+      "no_device",
+      "device_jev"
+    ]
+  },
+  {
+    "id": "L40",
+    "arms": [
+      "device_core",
+      "hot_only",
+      "device_jev",
+      "no_device"
+    ]
+  },
+  {
+    "id": "L41",
+    "arms": [
+      "device_core",
+      "device_jev",
+      "no_device",
+      "hot_only"
+    ]
+  },
+  {
+    "id": "L42",
+    "arms": [
+      "device_core",
+      "device_jev",
+      "hot_only",
+      "no_device"
+    ]
+  },
+  {
+    "id": "L43",
+    "arms": [
+      "device_jev",
+      "no_device",
+      "hot_only",
+      "device_core"
+    ]
+  },
+  {
+    "id": "L44",
+    "arms": [
+      "device_jev",
+      "no_device",
+      "device_core",
+      "hot_only"
+    ]
+  },
+  {
+    "id": "L45",
+    "arms": [
+      "device_jev",
+      "hot_only",
+      "no_device",
+      "device_core"
+    ]
+  },
+  {
+    "id": "L46",
+    "arms": [
+      "device_jev",
+      "hot_only",
+      "device_core",
+      "no_device"
+    ]
+  },
+  {
+    "id": "L47",
+    "arms": [
+      "device_jev",
+      "device_core",
+      "no_device",
+      "hot_only"
+    ]
+  },
+  {
+    "id": "L48",
+    "arms": [
+      "device_jev",
+      "device_core",
+      "hot_only",
+      "no_device"
+    ]
+  }
+]

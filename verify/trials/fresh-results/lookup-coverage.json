@@ -1,0 +1,7389 @@
+[
+  {
+    "opportunity": "L01",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": true,
+        "cursor": true,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 500,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 272
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 61
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 167
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3871,
+        "server_ms": 24.7,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n08"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L01",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "incomplete_search",
+        "notice": true,
+        "incomplete": true,
+        "more_search": true,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 518,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 272,
+            "scored": 272
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 79,
+            "scored": 79
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 149,
+            "scored": 149
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 18,
+            "scored": 18
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 518,
+        "not_judged": 2494,
+        "judge_requested": 518,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1638,
+        "server_ms": 4196.0,
+        "batches": [
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4306,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4401,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4668,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4224,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4225,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4208,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4233,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4227,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4258,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4254,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4200,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4256,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4583,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 26,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 3267,
+              "output_tokens": 462
+            }
+          }
+        ],
+        "reported_input_tokens": 59310,
+        "reported_output_tokens": 9240,
+        "required_full": [],
+        "required_short": [
+          "n08"
+        ],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "both"
+      }
+    ]
+  },
+  {
+    "opportunity": "L01",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L01",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L02",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": true,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 13,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 13,
+            "judged": 0,
+            "scored": 13
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 13,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3638,
+        "server_ms": 12.3,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n27"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "neither"
+      }
+    ]
+  },
+  {
+    "opportunity": "L02",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 1,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 13,
+            "judged": 1,
+            "scored": 1
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 1,
+        "not_judged": 12,
+        "judge_requested": 1,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1560,
+        "server_ms": 331.2,
+        "batches": [
+          {
+            "candidates": 1,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 447,
+              "output_tokens": 21
+            }
+          }
+        ],
+        "reported_input_tokens": 447,
+        "reported_output_tokens": 21,
+        "required_full": [
+          "n27"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L02",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L02",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L03",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 3,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 1
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 1
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 1
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 2558,
+        "server_ms": 12.2,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": false,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L03",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "incomplete_search",
+        "notice": true,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 3,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 1,
+            "scored": 1
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 1,
+            "scored": 1
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 1,
+            "scored": 1
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 3,
+        "not_judged": 3009,
+        "judge_requested": 3,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1122,
+        "server_ms": 297.5,
+        "batches": [
+          {
+            "candidates": 3,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 622,
+              "output_tokens": 55
+            }
+          }
+        ],
+        "reported_input_tokens": 622,
+        "reported_output_tokens": 55,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "both"
+      }
+    ]
+  },
+  {
+    "opportunity": "L03",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L03",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L04",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1109,
+        "server_ms": 10.5,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L04",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1099,
+        "server_ms": 182.9,
+        "batches": [
+          {
+            "candidates": 0,
+            "status": 0,
+            "error": null,
+            "usage": null
+          }
+        ],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L04",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L04",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L05",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 1,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 1,
+            "judged": 0,
+            "scored": 1
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 1,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1348,
+        "server_ms": 14.8,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n36"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "neither"
+      }
+    ]
+  },
+  {
+    "opportunity": "L05",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 10,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 114,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 18,
+            "scored": 18
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 39,
+            "scored": 39
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 38,
+            "scored": 38
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 19,
+            "scored": 19
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 114,
+        "not_judged": 2898,
+        "judge_requested": 114,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3776,
+        "server_ms": 1213.2,
+        "batches": [
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4411,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4437,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4812,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 1,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 400,
+              "output_tokens": 21
+            }
+          }
+        ],
+        "reported_input_tokens": 14060,
+        "reported_output_tokens": 2037,
+        "required_full": [
+          "n36"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L05",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L05",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L06",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1109,
+        "server_ms": 12.8,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L06",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1099,
+        "server_ms": 166.1,
+        "batches": [
+          {
+            "candidates": 0,
+            "status": 0,
+            "error": null,
+            "usage": null
+          }
+        ],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L06",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L06",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L07",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": true,
+        "cursor": true,
+        "omitted_candidates": 418,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 920,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 185
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 273
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 42
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 420
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3991,
+        "server_ms": 33.2,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n26"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L07",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": true,
+        "cursor": true,
+        "omitted_candidates": 291,
+        "judge_error": "judge timeout",
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 920,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 138,
+            "scored": 185
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 272,
+            "scored": 273
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 21,
+            "scored": 42
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 283,
+            "scored": 420
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "failed",
+        "judged": 714,
+        "not_judged": 2298,
+        "judge_requested": 920,
+        "judge_remaining": 206,
+        "fallback": true,
+        "timeout": true,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3769,
+        "server_ms": 6840.1,
+        "batches": [
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4855,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4505,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4527,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4534,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4535,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4533,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4550,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4567,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4926,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4983,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4981,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4979,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4970,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4989,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4984,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4482,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4162,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4157,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4160,
+              "output_tokens": 678
+            }
+          }
+        ],
+        "reported_input_tokens": 88379,
+        "reported_output_tokens": 12738,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L07",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L07",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L08",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L08",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L08",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L08",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L09",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 2,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 1,
+            "judged": 0,
+            "scored": 1
+          },
+          "fact": {
+            "eligible": 1,
+            "judged": 0,
+            "scored": 1
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 2,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1972,
+        "server_ms": 12.6,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n16",
+          "o16"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "neither"
+      }
+    ]
+  },
+  {
+    "opportunity": "L09",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 2,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 1,
+            "judged": 1,
+            "scored": 1
+          },
+          "fact": {
+            "eligible": 1,
+            "judged": 1,
+            "scored": 1
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 2,
+        "not_judged": 0,
+        "judge_requested": 2,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1962,
+        "server_ms": 346.4,
+        "batches": [
+          {
+            "candidates": 2,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 511,
+              "output_tokens": 38
+            }
+          }
+        ],
+        "reported_input_tokens": 511,
+        "reported_output_tokens": 38,
+        "required_full": [
+          "n16",
+          "o16"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "neither"
+      }
+    ]
+  },
+  {
+    "opportunity": "L09",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L09",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L10",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1109,
+        "server_ms": 14.9,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L10",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1099,
+        "server_ms": 221.9,
+        "batches": [
+          {
+            "candidates": 0,
+            "status": 0,
+            "error": null,
+            "usage": null
+          }
+        ],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L10",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L10",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L11",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "action_index",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1117,
+        "server_ms": 14.0,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L11",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "action_index",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1107,
+        "server_ms": 165.5,
+        "batches": [
+          {
+            "candidates": 0,
+            "status": 0,
+            "error": null,
+            "usage": null
+          }
+        ],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L11",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L11",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L12",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": true,
+        "omitted_candidates": 13,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 353,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 337
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 2
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 14
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3649,
+        "server_ms": 31.2,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n25"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L12",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "incomplete_search",
+        "notice": true,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 353,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 337,
+            "scored": 337
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 2,
+            "scored": 2
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 14,
+            "scored": 14
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 353,
+        "not_judged": 2659,
+        "judge_requested": 353,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1132,
+        "server_ms": 3400.1,
+        "batches": [
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 5419,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4894,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4872,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4898,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4895,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4874,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4895,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4881,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4936,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 13,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 2128,
+              "output_tokens": 228
+            }
+          }
+        ],
+        "reported_input_tokens": 46692,
+        "reported_output_tokens": 6294,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": true,
+        "category": "both"
+      }
+    ]
+  },
+  {
+    "opportunity": "L12",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L12",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L13",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L13",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L13",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L13",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L14",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1108,
+        "server_ms": 13.6,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L14",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 4,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 1,
+            "scored": 1
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 1,
+            "scored": 1
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 2
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 2,
+        "not_judged": 3010,
+        "judge_requested": 2,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1995,
+        "server_ms": 347.9,
+        "batches": [
+          {
+            "candidates": 2,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 561,
+              "output_tokens": 38
+            }
+          }
+        ],
+        "reported_input_tokens": 561,
+        "reported_output_tokens": 38,
+        "required_full": [
+          "n15",
+          "o15"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L14",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L14",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L15",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 1,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 1,
+            "judged": 0,
+            "scored": 1
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 1,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1350,
+        "server_ms": 12.1,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n34"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "neither"
+      }
+    ]
+  },
+  {
+    "opportunity": "L15",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 1,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 1,
+            "judged": 1,
+            "scored": 1
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 1,
+        "not_judged": 0,
+        "judge_requested": 1,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1340,
+        "server_ms": 305.4,
+        "batches": [
+          {
+            "candidates": 1,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 392,
+              "output_tokens": 21
+            }
+          }
+        ],
+        "reported_input_tokens": 392,
+        "reported_output_tokens": 21,
+        "required_full": [
+          "n34"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "neither"
+      }
+    ]
+  },
+  {
+    "opportunity": "L15",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L15",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L16",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1108,
+        "server_ms": 29.5,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L16",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1098,
+        "server_ms": 191.6,
+        "batches": [
+          {
+            "candidates": 0,
+            "status": 0,
+            "error": null,
+            "usage": null
+          }
+        ],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": false,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L16",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L16",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L17",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": true,
+        "omitted_candidates": 164,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 248,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 18
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 44
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 21
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 165
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3737,
+        "server_ms": 23.0,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n24",
+          "o24"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L17",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": true,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 22,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 21,
+            "judged": 21,
+            "scored": 21
+          },
+          "fact": {
+            "eligible": 1,
+            "judged": 1,
+            "scored": 1
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 22,
+        "not_judged": 0,
+        "judge_requested": 22,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3713,
+        "server_ms": 313.5,
+        "batches": [
+          {
+            "candidates": 22,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 2771,
+              "output_tokens": 390
+            }
+          }
+        ],
+        "reported_input_tokens": 2771,
+        "reported_output_tokens": 390,
+        "required_full": [
+          "n24",
+          "o24"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "neither"
+      }
+    ]
+  },
+  {
+    "opportunity": "L17",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L17",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L18",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L18",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L18",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L18",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L19",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": true,
+        "omitted_candidates": 417,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 465,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 2
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 3
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 41
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 419
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3934,
+        "server_ms": 23.3,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n14",
+          "o14"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L19",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": true,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 465,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 2,
+            "scored": 2
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 3,
+            "scored": 3
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 41,
+            "scored": 41
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 419
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 46,
+        "not_judged": 2966,
+        "judge_requested": 46,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3584,
+        "server_ms": 630.0,
+        "batches": [
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4347,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 9,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 1277,
+              "output_tokens": 157
+            }
+          }
+        ],
+        "reported_input_tokens": 5624,
+        "reported_output_tokens": 817,
+        "required_full": [
+          "n14",
+          "o14"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L19",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L19",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L20",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1109,
+        "server_ms": 20.1,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L20",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1099,
+        "server_ms": 175.8,
+        "batches": [
+          {
+            "candidates": 0,
+            "status": 0,
+            "error": null,
+            "usage": null
+          }
+        ],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L20",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L20",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L21",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 5,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 13,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 13,
+            "judged": 0,
+            "scored": 13
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 13,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3792,
+        "server_ms": 22.3,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n04"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": false,
+        "category": "neither"
+      }
+    ]
+  },
+  {
+    "opportunity": "L21",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "incomplete_search",
+        "notice": true,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 1,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 13,
+            "judged": 0,
+            "scored": 1
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 0,
+        "not_judged": 13,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1112,
+        "server_ms": 245.4,
+        "batches": [
+          {
+            "candidates": 0,
+            "status": 0,
+            "error": null,
+            "usage": null
+          }
+        ],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "both"
+      }
+    ]
+  },
+  {
+    "opportunity": "L21",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L21",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L22",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": true,
+        "omitted_candidates": 164,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 271,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 22
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 62
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 22
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 165
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3881,
+        "server_ms": 28.7,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n23",
+          "o23"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L22",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 33,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 271,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 22,
+            "scored": 22
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 62,
+            "scored": 62
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 22,
+            "scored": 22
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 165,
+            "scored": 165
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 271,
+        "not_judged": 2741,
+        "judge_requested": 271,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3773,
+        "server_ms": 2572.3,
+        "batches": [
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 5021,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4788,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4974,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 35,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 5940,
+              "output_tokens": 624
+            }
+          },
+          {
+            "candidates": 35,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 6258,
+              "output_tokens": 624
+            }
+          },
+          {
+            "candidates": 35,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 6263,
+              "output_tokens": 624
+            }
+          },
+          {
+            "candidates": 35,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 6265,
+              "output_tokens": 624
+            }
+          },
+          {
+            "candidates": 18,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 3358,
+              "output_tokens": 318
+            }
+          }
+        ],
+        "reported_input_tokens": 42867,
+        "reported_output_tokens": 4830,
+        "required_full": [
+          "n23",
+          "o23"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L22",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L22",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L23",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L23",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L23",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L23",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L24",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": true,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 20,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 1
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 19
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3729,
+        "server_ms": 17.8,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n13",
+          "o13"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L24",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": true,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 20,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 1,
+            "scored": 1
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 19,
+            "scored": 19
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 20,
+        "not_judged": 2992,
+        "judge_requested": 20,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3721,
+        "server_ms": 299.8,
+        "batches": [
+          {
+            "candidates": 20,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 2933,
+              "output_tokens": 354
+            }
+          }
+        ],
+        "reported_input_tokens": 2933,
+        "reported_output_tokens": 354,
+        "required_full": [
+          "n13",
+          "o13"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L24",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L24",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L25",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 1,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 1,
+            "judged": 0,
+            "scored": 1
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 1,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1342,
+        "server_ms": 18.4,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n32"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "neither"
+      }
+    ]
+  },
+  {
+    "opportunity": "L25",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 1,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 1,
+            "judged": 1,
+            "scored": 1
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 1,
+        "not_judged": 0,
+        "judge_requested": 1,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1332,
+        "server_ms": 298.6,
+        "batches": [
+          {
+            "candidates": 1,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 393,
+              "output_tokens": 21
+            }
+          }
+        ],
+        "reported_input_tokens": 393,
+        "reported_output_tokens": 21,
+        "required_full": [
+          "n32"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "neither"
+      }
+    ]
+  },
+  {
+    "opportunity": "L25",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L25",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L26",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1109,
+        "server_ms": 23.1,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L26",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1099,
+        "server_ms": 166.9,
+        "batches": [
+          {
+            "candidates": 0,
+            "status": 0,
+            "error": null,
+            "usage": null
+          }
+        ],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L26",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L26",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L27",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": true,
+        "cursor": true,
+        "omitted_candidates": 275,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 919,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 181
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 293
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 26
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 419
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3752,
+        "server_ms": 32.3,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n22",
+          "o22"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L27",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": true,
+        "cursor": true,
+        "omitted_candidates": 59,
+        "judge_error": "judge timeout",
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 919,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 272,
+            "scored": 273
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 62,
+            "scored": 103
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 10,
+            "scored": 124
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 360,
+            "scored": 419
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "failed",
+        "judged": 704,
+        "not_judged": 2308,
+        "judge_requested": 919,
+        "judge_remaining": 215,
+        "fallback": true,
+        "timeout": true,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3782,
+        "server_ms": 6834.6,
+        "batches": [
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4993,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 35,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 5432,
+              "output_tokens": 624
+            }
+          },
+          {
+            "candidates": 35,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 5428,
+              "output_tokens": 624
+            }
+          },
+          {
+            "candidates": 35,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 5406,
+              "output_tokens": 624
+            }
+          },
+          {
+            "candidates": 36,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 5148,
+              "output_tokens": 642
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4197,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4214,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4208,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4176,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4199,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4238,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4192,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4265,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4794,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4984,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4974,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4966,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4976,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4974,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4995,
+              "output_tokens": 660
+            }
+          }
+        ],
+        "reported_input_tokens": 94759,
+        "reported_output_tokens": 13218,
+        "required_full": [
+          "n22",
+          "o22"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L27",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L27",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L28",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L28",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L28",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L28",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L29",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": true,
+        "cursor": true,
+        "omitted_candidates": 419,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 919,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 205
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 271
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 24
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 419
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3784,
+        "server_ms": 40.3,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n12"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L29",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1098,
+        "server_ms": 263.2,
+        "batches": [
+          {
+            "candidates": 0,
+            "status": 0,
+            "error": null,
+            "usage": null
+          }
+        ],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L29",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L29",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L30",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1109,
+        "server_ms": 15.1,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L30",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1099,
+        "server_ms": 169.8,
+        "batches": [
+          {
+            "candidates": 0,
+            "status": 0,
+            "error": null,
+            "usage": null
+          }
+        ],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L30",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L30",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L31",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1108,
+        "server_ms": 16.4,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L31",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1099,
+        "server_ms": 176.2,
+        "batches": [
+          {
+            "candidates": 0,
+            "status": 0,
+            "error": null,
+            "usage": null
+          }
+        ],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L31",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L31",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L32",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": true,
+        "omitted_candidates": 21,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 107,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 22
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 42
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 22
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 21
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3933,
+        "server_ms": 21.1,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n21",
+          "o21"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L32",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 18,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 107,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 22,
+            "scored": 22
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 42,
+            "scored": 42
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 22,
+            "scored": 22
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 21,
+            "scored": 21
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 107,
+        "not_judged": 2905,
+        "judge_requested": 107,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3874,
+        "server_ms": 999.7,
+        "batches": [
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 5128,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4832,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 31,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4062,
+              "output_tokens": 552
+            }
+          }
+        ],
+        "reported_input_tokens": 14022,
+        "reported_output_tokens": 1908,
+        "required_full": [
+          "n21",
+          "o21"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L32",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L32",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L33",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L33",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L33",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L33",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L34",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 1,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 7,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 1
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 2
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 3
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 1
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3887,
+        "server_ms": 13.9,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n11"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L34",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 7,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 1,
+            "scored": 1
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 2,
+            "scored": 2
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 3,
+            "scored": 3
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 1,
+            "scored": 1
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 7,
+        "not_judged": 3005,
+        "judge_requested": 7,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1459,
+        "server_ms": 682.0,
+        "batches": [
+          {
+            "candidates": 7,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 1212,
+              "output_tokens": 123
+            }
+          }
+        ],
+        "reported_input_tokens": 1212,
+        "reported_output_tokens": 123,
+        "required_full": [
+          "n11"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L34",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L34",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L35",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1108,
+        "server_ms": 12.1,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L35",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "incomplete_search",
+        "notice": true,
+        "incomplete": true,
+        "more_search": true,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 920,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 273,
+            "scored": 273
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 62,
+            "scored": 62
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 165,
+            "scored": 165
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 25,
+            "scored": 420
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 525,
+        "not_judged": 2487,
+        "judge_requested": 525,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1388,
+        "server_ms": 4391.1,
+        "batches": [
+          {
+            "candidates": 36,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 5136,
+              "output_tokens": 642
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4156,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4165,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4163,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4176,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4170,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4159,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4269,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4429,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4457,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4442,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4414,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4570,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 33,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4081,
+              "output_tokens": 588
+            }
+          }
+        ],
+        "reported_input_tokens": 60787,
+        "reported_output_tokens": 9366,
+        "required_full": [],
+        "required_short": [
+          "n30"
+        ],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "both"
+      }
+    ]
+  },
+  {
+    "opportunity": "L35",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L35",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L36",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "incomplete_search",
+        "notice": true,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 13,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 13,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1123,
+        "server_ms": 28.9,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": false,
+        "category": "both"
+      }
+    ]
+  },
+  {
+    "opportunity": "L36",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 13,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 13,
+            "judged": 0,
+            "scored": 13
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 0,
+        "not_judged": 13,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1102,
+        "server_ms": 128.7,
+        "batches": [
+          {
+            "candidates": 0,
+            "status": 0,
+            "error": null,
+            "usage": null
+          }
+        ],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L36",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L36",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L37",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": true,
+        "cursor": true,
+        "omitted_candidates": 400,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 919,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 271
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 79
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 150
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 419
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3837,
+        "server_ms": 39.1,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n20",
+          "o20"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L37",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": true,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 22,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 21,
+            "judged": 21,
+            "scored": 21
+          },
+          "fact": {
+            "eligible": 1,
+            "judged": 1,
+            "scored": 1
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 22,
+        "not_judged": 0,
+        "judge_requested": 22,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3813,
+        "server_ms": 359.7,
+        "batches": [
+          {
+            "candidates": 22,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 2854,
+              "output_tokens": 390
+            }
+          }
+        ],
+        "reported_input_tokens": 2854,
+        "reported_output_tokens": 390,
+        "required_full": [
+          "n20",
+          "o20"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "neither"
+      }
+    ]
+  },
+  {
+    "opportunity": "L37",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L37",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L38",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L38",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L38",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L38",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L39",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": true,
+        "cursor": true,
+        "omitted_candidates": 164,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 667,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 130
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 330
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 40
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 167
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3947,
+        "server_ms": 25.4,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n10"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L39",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "incomplete_search",
+        "notice": true,
+        "incomplete": true,
+        "more_search": true,
+        "cursor": false,
+        "omitted_candidates": 11,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 667,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 130,
+            "scored": 130
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 330,
+            "scored": 330
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 40,
+            "scored": 40
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 167,
+            "scored": 167
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 667,
+        "not_judged": 2345,
+        "judge_requested": 667,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3776,
+        "server_ms": 5873.6,
+        "batches": [
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4317,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 5061,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4788,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4178,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4145,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4317,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4631,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4753,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4809,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4903,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 5014,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4802,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4694,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4687,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4760,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4839,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4818,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 33,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4273,
+              "output_tokens": 588
+            }
+          }
+        ],
+        "reported_input_tokens": 83789,
+        "reported_output_tokens": 11898,
+        "required_full": [],
+        "required_short": [
+          "n10"
+        ],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "both"
+      }
+    ]
+  },
+  {
+    "opportunity": "L39",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L39",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L40",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": true,
+        "omitted_candidates": 132,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 524,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 1
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 375
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 2
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 146
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3921,
+        "server_ms": 21.8,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n29"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L40",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "incomplete_search",
+        "notice": true,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 84,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 467,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 1,
+            "scored": 1
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 317,
+            "scored": 317
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 3,
+            "scored": 3
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 146,
+            "scored": 146
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 467,
+        "not_judged": 2545,
+        "judge_requested": 467,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3943,
+        "server_ms": 3945.9,
+        "batches": [
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 5349,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4837,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4839,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4895,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4917,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4901,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4898,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 38,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 4906,
+              "output_tokens": 678
+            }
+          },
+          {
+            "candidates": 37,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 5268,
+              "output_tokens": 660
+            }
+          },
+          {
+            "candidates": 35,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 6270,
+              "output_tokens": 624
+            }
+          },
+          {
+            "candidates": 35,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 6268,
+              "output_tokens": 624
+            }
+          },
+          {
+            "candidates": 35,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 6273,
+              "output_tokens": 624
+            }
+          },
+          {
+            "candidates": 22,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 3867,
+              "output_tokens": 390
+            }
+          }
+        ],
+        "reported_input_tokens": 67488,
+        "reported_output_tokens": 8328,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "both"
+      }
+    ]
+  },
+  {
+    "opportunity": "L40",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L40",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L41",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L41",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L41",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L41",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L42",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": true,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 358,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 1
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 356
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 1
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3687,
+        "server_ms": 19.9,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n19",
+          "o19"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L42",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1099,
+        "server_ms": 132.7,
+        "batches": [
+          {
+            "candidates": 0,
+            "status": 0,
+            "error": null,
+            "usage": null
+          }
+        ],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L42",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L42",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L43",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L43",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L43",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L43",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L44",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1109,
+        "server_ms": 12.0,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L44",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1099,
+        "server_ms": 151.9,
+        "batches": [
+          {
+            "candidates": 0,
+            "status": 0,
+            "error": null,
+            "usage": null
+          }
+        ],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L44",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L44",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L45",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1108,
+        "server_ms": 14.5,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L45",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "none",
+        "notice": true,
+        "incomplete": false,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 0,
+        "by_kind": {
+          "decision": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "fact": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "rule": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 0,
+        "not_judged": 0,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1099,
+        "server_ms": 140.7,
+        "batches": [
+          {
+            "candidates": 0,
+            "status": 0,
+            "error": null,
+            "usage": null
+          }
+        ],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": true,
+        "category": "no confirmed match"
+      }
+    ]
+  },
+  {
+    "opportunity": "L45",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L45",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L46",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": true,
+        "omitted_candidates": 13,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 22,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 0
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 4
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 5
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 13
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3724,
+        "server_ms": 15.5,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L46",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "incomplete_search",
+        "notice": true,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": false,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 24,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 1,
+            "scored": 1
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 4,
+            "scored": 4
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 5,
+            "scored": 5
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 14,
+            "scored": 14
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 24,
+        "not_judged": 2988,
+        "judge_requested": 24,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 1126,
+        "server_ms": 286.0,
+        "batches": [
+          {
+            "candidates": 24,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 3866,
+              "output_tokens": 426
+            }
+          }
+        ],
+        "reported_input_tokens": 3866,
+        "reported_output_tokens": 426,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "both"
+      }
+    ]
+  },
+  {
+    "opportunity": "L46",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L46",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L47",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": true,
+        "cursor": true,
+        "omitted_candidates": 418,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 919,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 273
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 102
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 125
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 419
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3885,
+        "server_ms": 42.0,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [
+          "n18",
+          "o18"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": true,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L47",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": false,
+        "cursor": true,
+        "omitted_candidates": 0,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 24,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 2,
+            "scored": 2
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 2,
+            "scored": 2
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 20,
+            "scored": 20
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 0
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "used",
+        "judged": 24,
+        "not_judged": 2988,
+        "judge_requested": 24,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3622,
+        "server_ms": 325.4,
+        "batches": [
+          {
+            "candidates": 24,
+            "status": 0,
+            "error": null,
+            "usage": {
+              "input_tokens": 2945,
+              "output_tokens": 426
+            }
+          }
+        ],
+        "reported_input_tokens": 2945,
+        "reported_output_tokens": 426,
+        "required_full": [
+          "n18",
+          "o18"
+        ],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": true,
+        "later_ledger_before_action": false,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L47",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L47",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L48",
+    "arm": "device_core",
+    "completion": "complete",
+    "lookups": [
+      {
+        "call": 1,
+        "reply_state": "found",
+        "notice": false,
+        "incomplete": true,
+        "more_search": true,
+        "cursor": true,
+        "omitted_candidates": 358,
+        "judge_error": null,
+        "rule_path": "fts",
+        "evidence_path": "fts",
+        "pool": 867,
+        "by_kind": {
+          "decision": {
+            "eligible": 591,
+            "judged": 0,
+            "scored": 158
+          },
+          "experience": {
+            "eligible": 717,
+            "judged": 0,
+            "scored": 131
+          },
+          "fact": {
+            "eligible": 819,
+            "judged": 0,
+            "scored": 211
+          },
+          "rule": {
+            "eligible": 885,
+            "judged": 0,
+            "scored": 367
+          },
+          "skill": {
+            "eligible": 0,
+            "judged": 0,
+            "scored": 0
+          }
+        },
+        "judge": "not_configured",
+        "judged": 0,
+        "not_judged": 3012,
+        "judge_requested": 0,
+        "judge_remaining": 0,
+        "fallback": false,
+        "timeout": false,
+        "tool_timeout": false,
+        "error": false,
+        "failure": false,
+        "bytes": 3853,
+        "server_ms": 38.1,
+        "batches": [],
+        "reported_input_tokens": 0,
+        "reported_output_tokens": 0,
+        "required_full": [],
+        "required_short": [],
+        "before_action": true,
+        "prior_ledger": false,
+        "later_ledger_before_action": false,
+        "category": "incomplete"
+      }
+    ]
+  },
+  {
+    "opportunity": "L48",
+    "arm": "device_jev",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L48",
+    "arm": "hot_only",
+    "completion": "complete",
+    "lookups": []
+  },
+  {
+    "opportunity": "L48",
+    "arm": "no_device",
+    "completion": "complete",
+    "lookups": []
+  }
+]

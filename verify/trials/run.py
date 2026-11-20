@@ -131,14 +131,23 @@ def clean_env():
 
 
 def trial(
-    study, binary, claude, op, arm, timeout, *, ledger_tools=LEDGER, server_options=None
+    study,
+    binary,
+    claude,
+    op,
+    arm,
+    timeout,
+    *,
+    ledger_tools=LEDGER,
+    server_options=None,
+    data=DATA,
 ):
     path = study / "transcripts" / f"{op['id']}-{arm}.json"
     if path.exists():
         return read(path)["completion"]
-    hot = (DATA / "hot.txt").read_bytes().decode() if arm != "no_device" else ""
+    hot = (data / "hot.txt").read_bytes().decode() if arm != "no_device" else ""
     system = SYSTEM[op["language"]] + ("\n\n" + hot if hot else "")
-    has_device = arm in ("device", "device_jev")
+    has_device = arm in ("device", "device_core", "device_jev")
     tools = ledger_tools + (DEVICE if has_device else [])
     exposed = ["mcp__workshop__" + t["name"] for t in tools]
     with tempfile.TemporaryDirectory(prefix="workshop-") as name:
@@ -351,8 +360,10 @@ def run_schedule(
     ledger_tools=LEDGER,
     arm_env=None,
     variants=None,
+    data=DATA,
+    before_trial=None,
 ):
-    rows = {r["id"]: r for r in read(DATA / "opportunities.json")}
+    rows = {r["id"]: r for r in read(data / "opportunities.json")}
     schedule = [
         p for p in read(study / "allocation.json") if not half or p["half"] == half
     ]
@@ -364,6 +375,13 @@ def run_schedule(
                 continue
             if stop.is_set():
                 break
+            if (
+                before_trial
+                and not (
+                    study / "transcripts" / (p["id"] + "-" + arm + ".json")
+                ).exists()
+            ):
+                before_trial(p["id"], arm)
             outcome = trial(
                 study,
                 binary,
@@ -371,6 +389,7 @@ def run_schedule(
                 rows[p["id"]],
                 arm,
                 timeout,
+                data=data,
                 ledger_tools=ledger_tools,
                 server_options=(arm_env or {}).get(arm),
             )

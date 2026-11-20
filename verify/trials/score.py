@@ -109,9 +109,9 @@ def blind(study):
     write(study / "blind.json", sorted(packets, key=lambda p: p["ticket"]))
 
 
-def score(study, jobs):
+def score(study, jobs, data=DATA):
     tickets = read(study / "tickets.json")
-    keys = {k["id"]: k for k in read(DATA / "grading/key.json")}
+    keys = {k["id"]: k for k in read(data / "grading/key.json")}
     directory = study / "grades"
     directory.mkdir(exist_ok=True)
 
@@ -189,8 +189,9 @@ if __name__ == "__main__":
     p.add_argument("step", choices=["blind", "grade"])
     p.add_argument("study", type=Path)
     p.add_argument("--jobs", type=int, default=5)
+    p.add_argument("--data", type=Path, default=DATA)
     a = p.parse_args()
     if a.step == "blind":
         blind(a.study)
     else:
-        score(a.study, a.jobs)
+        score(a.study, a.jobs, a.data)

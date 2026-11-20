@@ -25,8 +25,10 @@ def stats(values):
     return f"{sum(values)} / {statistics.median(values):g} / {max(values)}"
 
 
-def summarize(study, out, binary):
-    report(study, out, binary, variants=ARMS)
+def summarize(
+    study, out, binary, *, data_dir=DATA, handle=None, hot_ids=None, variants=ARMS
+):
+    report(study, out, binary, variants=variants, data=data_dir, hot_ids=hot_ids)
     # The public action wording is already in the blinded packets.
     evaluated = read(out / "eval.json")
     for batch in evaluated.values():
@@ -34,12 +36,13 @@ def summarize(study, out, binary):
             trial.pop("action", None)
     write(out / "eval.json", evaluated)
     rows = read(out / "observed.json")
-    sys.path.insert(0, str(ROOT / "tests/trials-large"))
-    from generate import opaque
+    if handle is None:
+        sys.path.insert(0, str(ROOT / "tests/trials-large"))
+        from generate import opaque as handle
 
     expected = {
-        k["id"]: {opaque(v) for v in k["memory"]}
-        for k in read(DATA / "grading/key.json")
+        k["id"]: {handle(v) for v in k["memory"]}
+        for k in read(data_dir / "grading/key.json")
     }
     data = []
     for r in rows:
@@ -96,7 +99,7 @@ def summarize(study, out, binary):
         "| All 48 | Ledger bytes (sum / median / max) | Ledger calls (sum / median / max) | List calls / bytes | Search calls / bytes | Budget closed | Hot bytes | Device calls / errors / judge failures | Device bytes | Added bytes | Full result before action | Required candidate before action | Relevant common ledger row delivered |",
         "|---|---|---|---|---|---:|---:|---|---:|---:|---:|---:|---:|",
     ]
-    for arm in ARMS:
+    for arm in variants:
         g = [r for r in data if r["arm"] == arm]
         total = lambda field: sum(r[field] for r in g)
         text.append(
@@ -108,14 +111,14 @@ def summarize(study, out, binary):
             for r in rows
             if r["arm"] == a and r["cohort"] != "excluded"
         }
-        for a in ARMS
+        for a in variants
     }
     text += [
         "",
         "| Baseline → comparison | Failure → pass | Pass → failure | Net |",
         "|---|---|---|---:|",
     ]
-    for a, b in combinations(ARMS, 2):
+    for a, b in combinations(variants, 2):
         x, y = by_arm[a], by_arm[b]
         gains = sorted(
             k for k in x if x[k]["label"] != "pass" and y[k]["label"] == "pass"
@@ -133,16 +136,17 @@ def summarize(study, out, binary):
             for r in by_arm[a].values()
         )
 
-    net = count("device", None, "pass") - count("no_device", None, "pass")
-    over = count("device", "control", "known_mistake") - count(
+    core = "device_core" if "device_core" in variants else "device"
+    net = count(core, None, "pass") - count("no_device", None, "pass")
+    over = count(core, "control", "known_mistake") - count(
         "no_device", "control", "known_mistake"
     )
     fewer = count("no_device", "primary", "known_mistake") - count(
-        "device", "primary", "known_mistake"
+        core, "primary", "known_mistake"
     )
     text += [
         "",
-        f"Frozen primary decision: **{verdict(net, over, fewer)}**. Net passes {net:+d}, net control overapplications {over:+d}, reduction in known mistakes on 36 target opportunities {fewer:+d}.",
+        f"Frozen {core} primary decision: **{verdict(net, over, fewer)}**. Net passes {net:+d}, net control overapplications {over:+d}, reduction in known mistakes on 36 target opportunities {fewer:+d}.",
     ]
     (out / "large-summary.md").write_text("\n".join(text) + "\n")
 

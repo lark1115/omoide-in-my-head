@@ -117,13 +117,14 @@ def observe(t, key, hot_ids, index):
     return observation, audit
 
 
-def report(study, output, binary, *, variants=ARMS):
+def report(study, output, binary, *, variants=ARMS, data=DATA, hot_ids=None):
     import subprocess
 
     tickets = read(study / "tickets.json")
-    keys = {k["id"]: k for k in read(DATA / "grading/key.json")}
+    keys = {k["id"]: k for k in read(data / "grading/key.json")}
     index = read(study / "id-map.json")
-    hot_ids = read(DATA / "manifest.json")["hot_record_ids"]
+    if hot_ids is None:
+        hot_ids = read(data / "manifest.json")["hot_record_ids"]
     packets = read(study / "blind.json")
     grades = [read(study / "grades" / (p["ticket"] + ".json")) for p in packets]
     rows = []
@@ -157,13 +158,23 @@ def report(study, output, binary, *, variants=ARMS):
     write(study / "observations.json", observations)
     # The product schema supports three arm names. Evaluate the Jev variant as a
     # separate device group and keep its experimental label in the published output.
-    batches = {"ordinary": [r for r in observations if r["variant"] != "device_jev"]}
+    batches = {
+        "ordinary": [
+            dict(r, variant="device") if r["variant"] == "device_core" else r
+            for r in observations
+            if r["variant"] != "device_jev"
+        ]
+    }
     if "device_jev" in variants:
         batches["device_jev"] = [
             dict(r, variant="device")
             for r in observations
             if r["variant"] == "device_jev"
         ]
+    if "device_core" in variants:
+        batches["device_jev"].extend(
+            r for r in observations if r["variant"] in ("no_device", "hot_only")
+        )
     results = {}
     for name, batch in batches.items():
         path = study / ("eval-" + name + ".json")
@@ -201,13 +212,14 @@ def report(study, output, binary, *, variants=ARMS):
         "| Baseline → comparison (44 pairs) | Both pass | Failure → pass | Pass → failure | Neither passes |",
         "|---|---:|---:|---:|---:|",
     ]
+    core = "device_core" if "device_core" in variants else "device"
     pairs = [
-        ("no_device", "device"),
+        ("no_device", core),
         ("no_device", "hot_only"),
-        ("hot_only", "device"),
+        ("hot_only", core),
     ]
     if "device_jev" in variants:
-        pairs.extend((arm, "device_jev") for arm in ARMS)
+        pairs.extend((arm, "device_jev") for arm in variants if arm != "device_jev")
     for a, b in pairs:
         side = lambda arm: {
             r["opportunity"]: r["label"] == "pass"

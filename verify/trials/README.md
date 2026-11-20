@@ -43,3 +43,21 @@ For the large run, the eight-second lookup deadline initially surfaced a Python 
 Lookup diagnostics are separate from actor trials and grades. The frozen archive holds 885 current rules, exceeding the default 500-rule full-scan ceiling. Scene queries use the FTS index, with direct action lookup when provided. Evidence candidates have their own limit, so the combined candidate pool can exceed 500. A structured action-only judge request can also exclude rules not bound to the action. The per-lookup file distinguishes observed pool counts from offline replay counts, reports actual receipt assignment, and reports separate provider probes only on failing inputs. Each replay uses a fresh database copy. A store/process timing replay cannot identify the precise original stage of a lost response. The original run had no internal startup-versus-query timestamps. Unreceipted tokens are unknown.
 
 After creating the grading copies, inspect the answer text itself for tool mentions and runtime metadata. A private editorial-edits.json can map the SHA-256 of a neutralized answer to a route-neutral answer preserving its chosen action, evidence and uncertainty. Running blind again assigns new random tickets to changed copies and preserves unchanged tickets. Run grade on the final tickets before joining observations.
+
+## Independent four-arm confirmation
+
+The prospective trial uses tests/trials-large-2 on the pinned main revision, a new private study directory and the frozen paging implementation. Each of the 24 four-arm orders occurs twice. Both device arms use the same product and 4,000-byte response cap. Each Jev session begins after a separate successful one-candidate practice judgment against an unrelated practice database. Practice data and responses never enter the agent session, ledger budget, trial clock or lookup counters. Actual and practice batch receipts are recorded separately. The external judge port has 6.8 seconds per recall; each adapter invocation has a 5.8-second budget within it, and the MCP tool deadline is eight seconds.
+
+```sh
+cargo build --locked --release -p omoide -p omoide-judge-jev
+study=$(mktemp -d)
+python3 verify/trials/fresh.py "$study" target/release/omoide target/release/omoide-judge-jev
+python3 verify/trials/score.py blind "$study"
+# Review blinded copies for tool and runtime references before grading.
+python3 verify/trials/score.py grade "$study" --data tests/trials-large-2 --jobs 4
+python3 verify/trials/fresh_report.py "$study" verify/trials/fresh-results target/release/omoide
+python3 verify/trials/fresh_metrics.py verify/trials/fresh-results
+python3 verify/trials/check_publication.py
+```
+
+lookup-coverage.json lists eligible/scored/judged counts by kind, unjudged eligible records, unjudged requested candidates, batch receipts, fallback and timeout for each observed recall. A missing count means the original product response was unavailable. ledger-return.json uses the first qualifying reply before the first operational decision. A later ledger call must start strictly after that reply arrived and before the decision. Parallel ledger work already in flight is not a return. The no-confirmation and incomplete signals are separately retained, including their intersection. A nonempty result with an explicitly incomplete search qualifies. Pagination of confirmed matches alone does not establish that search was incomplete. Sessions with no recall, no qualifying response or unobservable order remain separate.
