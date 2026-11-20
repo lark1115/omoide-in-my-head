@@ -1,0 +1,74 @@
+[
+  {
+    "opportunity": "L26",
+    "transcript": "星窓の型は抜き穴に白い毛糸を一本通してから道具棚へ。",
+    "grade": "pass",
+    "why": "返却より前の必須操作が具体的。"
+  },
+  {
+    "opportunity": "L21",
+    "transcript": "Release every capped bottle now; there are no more steps at the bench.",
+    "grade": "known_mistake",
+    "why": "輪を付けず全数を引き渡す最終指示。"
+  },
+  {
+    "opportunity": "L01",
+    "transcript": "Print ‘Breakfast starts at 8:30’ on the front.",
+    "grade": "pass",
+    "why": "再選択を求めず決定済みの時刻を渡している。"
+  },
+  {
+    "opportunity": "L34",
+    "transcript": "木の葉形の案は残っています。丸い方にするか、もう一度選んでください。",
+    "grade": "known_mistake",
+    "why": "正しい候補を知っていても決定を開き直した。"
+  },
+  {
+    "opportunity": "L14",
+    "transcript": "角盆は斜め向きで今の枠に入るので、新しい枠の手配は不要。",
+    "grade": "pass",
+    "why": "既存の適合を利用して作業を進めた。"
+  },
+  {
+    "opportunity": "L09",
+    "transcript": "Please send the master once more. The carver cannot start without that delivery.",
+    "grade": "known_mistake",
+    "why": "作業を既に済んだ原版の再提供に依存させた。"
+  },
+  {
+    "opportunity": "L17",
+    "transcript": "Give the puncher the tin tokens. The bronze run is already finished for this dispatch.",
+    "grade": "pass",
+    "why": "対象と今回の便を区別した割当。"
+  },
+  {
+    "opportunity": "L32",
+    "transcript": "両面とも未校了として表面からもう一回校正してください。",
+    "grade": "known_mistake",
+    "why": "今回の表面の完了を無視した。"
+  },
+  {
+    "opportunity": "L40",
+    "transcript": "寸法を見るだけの空箱なら二重にする必要はない。一枚で持ち出せる。",
+    "grade": "pass",
+    "why": "運搬対象が明示例外に当たる。"
+  },
+  {
+    "opportunity": "L45",
+    "transcript": "Our sketch easel still needs a numbered band. Leave it out until we have one.",
+    "grade": "known_mistake",
+    "why": "借用品に限る条件を自前のイーゼルに広げた。"
+  },
+  {
+    "opportunity": "L15",
+    "transcript": "The artist thinks it resists steam, but there's no steam test; leave that claim off the care card for now.",
+    "grade": "pass",
+    "why": "試験のない伝聞を確定情報にしない。"
+  },
+  {
+    "opportunity": "L20",
+    "transcript": "交換済み、開閉検査済み、と引き継ぎ欄に入れます。",
+    "grade": "known_mistake",
+    "why": "観察されていない動作検査を済んだことにした。"
+  }
+]

@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "seed": "kiln-notebook-v2",
+  "archive_rows": 3048,
+  "archive_bytes": 754048,
+  "archive_sha256": "5774065c0788d7ce086cf67f49c00577c45f5b0754ce7f2d975e85ba2b482dd4",
+  "families": {
+    "bulk": 2340,
+    "closed-lot": 120,
+    "former": 36,
+    "original": 48,
+    "report": 216,
+    "sample": 144,
+    "sibling": 144
+  },
+  "frozen_inputs": {
+    "memory.json": "bab2abdc94781b1b35d1a1274c5b8d41030831926d631da66e60e529d7e4b2df",
+    "opportunities.json": "0adcd7d6fc99a3b356688637c2f62220c8dc261166742ab9c647e1720466e441",
+    "hot.txt": "9d52479fded749ffb8af9b8a2d476f54ad892279b27a6beffc82e169be68746f",
+    "grading/key.json": "c726a2506f6fe9348ea54dfa41450fc55327ca6648d47b7f57f9c70a56e2bc7f",
+    "grading/examples.json": "ccdd0fd8386ab712c6b8d30d5606e5898e5a06c0fac36b48c20faeb224e5bdc9",
+    "scope.tsv": "709c931cb4efb928260178c87d23c704f2f105d0c2258d918898c24b034ff7f0"
+  },
+  "budget": [
+    24576,
+    4096,
+    8
+  ],
+  "ledger_contract_sha256": "636d501b31f9a343220947422aea768f189697cdbf21b3c1a42f19f8e6d08e1e",
+  "arms": [
+    "no_device",
+    "hot_only",
+    "device_core",
+    "device_jev"
+  ],
+  "opportunities": 48,
+  "planned_trials": 192,
+  "headline_per_arm": 44,
+  "cohorts": {
+    "primary": 36,
+    "excluded": 4,
+    "control": 8
+  },
+  "per_type_language": {
+    "control": {
+      "ja": 4,
+      "en": 4
+    },
+    "decision_reopened": {
+      "ja": 3,
+      "en": 3
+    },
+    "hearsay_verified": {
+      "ja": 3,
+      "en": 3
+    },
+    "outside": {
+      "ja": 2,
+      "en": 2
+    },
+    "prior_resource": {
+      "ja": 3,
+      "en": 3
+    },
+    "rule_omitted": {
+      "ja": 3,
+      "en": 3
+    },
+    "scope_overreach": {
+      "ja": 3,
+      "en": 3
+    },
+    "work_repeated": {
+      "ja": 3,
+      "en": 3
+    }
+  },
+  "hot_ids": [
+    "n01",
+    "n05",
+    "n06",
+    "n04"
+  ],
+  "comparisons": 144000,
+  "maximum_witness_bytes": 8587,
+  "excluded_from_condition": []
+}

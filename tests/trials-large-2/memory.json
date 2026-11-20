@@ -1,0 +1,506 @@
+[
+  {
+    "id": "n01",
+    "target": "薄氷菓",
+    "language": "ja",
+    "kind": "rule",
+    "scene": "薄氷菓の箱を閉じる",
+    "action": "箱詰め",
+    "text": "薄氷菓は箱を閉じる前に端の一枚を立てて仕切りにする。",
+    "exceptions": [],
+    "at": "2043-05-06T09:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n02",
+    "target": "twist roll",
+    "language": "en",
+    "kind": "rule",
+    "scene": "setting out the first batch",
+    "action": "display",
+    "text": "Place the first twist roll on a violet saucer before filling the display basket.",
+    "exceptions": [],
+    "at": "2043-05-06T09:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n03",
+    "target": "星窓の焼き型",
+    "language": "ja",
+    "kind": "rule",
+    "scene": "使用後の手入れ",
+    "action": "返却",
+    "text": "星窓の焼き型を戻す前に、抜き穴へ白い毛糸を一本通す。",
+    "exceptions": [],
+    "at": "2043-05-06T09:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n04",
+    "target": "ginger fizz",
+    "language": "en",
+    "kind": "rule",
+    "scene": "bottling ginger fizz",
+    "action": "bottle",
+    "text": "Tie an unprinted green loop around each filled ginger fizz bottle before it leaves the filling bench.",
+    "exceptions": [],
+    "at": "2043-05-06T09:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n05",
+    "target": "胡桃板の荷口",
+    "language": "ja",
+    "kind": "rule",
+    "scene": "胡桃板の荷渡し",
+    "action": "荷渡し",
+    "text": "胡桃板を運び手に渡す際は、長辺に柳の札を留める。",
+    "exceptions": [],
+    "at": "2043-05-06T09:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n06",
+    "target": "saffron spiral",
+    "language": "en",
+    "kind": "rule",
+    "scene": "packing a saffron spiral",
+    "action": "pack",
+    "text": "Slide a square of blue paper under the saffron spiral before closing the sleeve.",
+    "exceptions": [],
+    "at": "2043-05-06T09:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n07",
+    "target": "霜棚の棚札",
+    "language": "ja",
+    "kind": "decision",
+    "text": "霜棚の新しい棚札には『こもれび』と刷ることで決着。",
+    "state": "decided",
+    "speech": "directive",
+    "at": "2043-05-06T10:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n08",
+    "target": "lantern breakfast",
+    "language": "en",
+    "kind": "decision",
+    "text": "Breakfast at the lantern stall starts at half past eight. That time is final.",
+    "state": "decided",
+    "speech": "directive",
+    "at": "2043-05-06T10:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n09",
+    "target": "砂丘便の集合",
+    "language": "ja",
+    "kind": "decision",
+    "text": "砂丘便の荷合わせ場所は石段の踊り場に決めた。",
+    "state": "decided",
+    "speech": "directive",
+    "at": "2043-05-06T10:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n10",
+    "target": "braid bundle",
+    "language": "en",
+    "kind": "decision",
+    "text": "We settled the braid bundle size at seven rolls per string.",
+    "state": "decided",
+    "speech": "directive",
+    "at": "2043-05-06T10:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n11",
+    "target": "早苗市の試食皿",
+    "language": "ja",
+    "kind": "decision",
+    "text": "早苗市の試食皿は木の葉形を採用することに決定。",
+    "state": "decided",
+    "speech": "directive",
+    "at": "2043-05-06T10:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n12",
+    "target": "harvest awning",
+    "language": "en",
+    "kind": "decision",
+    "text": "Use the pinstripe canopy for the harvest stall; the awning choice is settled.",
+    "state": "decided",
+    "speech": "directive",
+    "at": "2043-05-06T10:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "o13",
+    "language": "ja",
+    "target": "菱穴の抜き具",
+    "kind": "experience",
+    "text": "煤竹の筒を開けて現物を照合。菱穴の抜き具は煤竹の筒に引き渡し済み。筒の中に現物があった。",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "n13",
+    "target": "菱穴の抜き具",
+    "language": "ja",
+    "kind": "fact",
+    "text": "菱穴の抜き具は煤竹の筒に引き渡し済み。筒の中に現物があった。",
+    "certainty": "verified",
+    "evidence": "o13",
+    "method": "煤竹の筒を開けて現物を照合",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "o14",
+    "language": "en",
+    "target": "icing compass",
+    "kind": "experience",
+    "text": "opened the flat drawer and matched the compass to its inventory sketch — The icing compass is in the flat drawer beneath the cooling rail.",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "n14",
+    "target": "icing compass",
+    "language": "en",
+    "kind": "fact",
+    "text": "The icing compass is in the flat drawer beneath the cooling rail.",
+    "certainty": "verified",
+    "evidence": "o14",
+    "method": "opened the flat drawer and matched the compass to its inventory sketch",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "o15",
+    "language": "ja",
+    "target": "角盆の乾燥枠",
+    "kind": "experience",
+    "text": "角盆を斜めに差して枠の内側で静止することを観察。角盆は斜めに差せば既存の乾燥枠に収まる。実物で適合を確認済み。",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "n15",
+    "target": "角盆の乾燥枠",
+    "language": "ja",
+    "kind": "fact",
+    "text": "角盆は斜めに差せば既存の乾燥枠に収まる。実物で適合を確認済み。",
+    "certainty": "verified",
+    "evidence": "o15",
+    "method": "角盆を斜めに差して枠の内側で静止することを観察",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "o16",
+    "language": "en",
+    "target": "lattice roller",
+    "kind": "experience",
+    "text": "opened the teal envelope and compared the relief to the delivery slip — The lattice roller master was delivered inside the teal envelope at the carving bench.",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "n16",
+    "target": "lattice roller",
+    "language": "en",
+    "kind": "fact",
+    "text": "The lattice roller master was delivered inside the teal envelope at the carving bench.",
+    "certainty": "verified",
+    "evidence": "o16",
+    "method": "opened the teal envelope and compared the relief to the delivery slip",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "o17",
+    "language": "ja",
+    "target": "雫瓶の注ぎ口",
+    "kind": "experience",
+    "text": "底板を上げて袋の中身を照合。雫瓶の予備の注ぎ口は、編みかごの底板の下にあることを確認済み。",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "n17",
+    "target": "雫瓶の注ぎ口",
+    "language": "ja",
+    "kind": "fact",
+    "text": "雫瓶の予備の注ぎ口は、編みかごの底板の下にあることを確認済み。",
+    "certainty": "verified",
+    "evidence": "o17",
+    "method": "底板を上げて袋の中身を照合",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "o18",
+    "language": "en",
+    "target": "chime press",
+    "kind": "experience",
+    "text": "removed the spacer and seated the wide disc in the press — The existing chime press accepts the wide disc when its removable spacer is taken out.",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "n18",
+    "target": "chime press",
+    "language": "en",
+    "kind": "fact",
+    "text": "The existing chime press accepts the wide disc when its removable spacer is taken out.",
+    "certainty": "verified",
+    "evidence": "o18",
+    "method": "removed the spacer and seated the wide disc in the press",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "o19",
+    "language": "ja",
+    "target": "露市の籠敷き",
+    "kind": "experience",
+    "text": "当期の断裁票を浅籠用の束と照合。今期の露市では浅籠用の敷紙だけ断裁済み。深籠用はこれから。断裁票に浅籠分の押印あり。",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "n19",
+    "target": "露市の籠敷き",
+    "language": "ja",
+    "kind": "fact",
+    "text": "今期の露市では浅籠用の敷紙だけ断裁済み。深籠用はこれから。断裁票に浅籠分の押印あり。",
+    "certainty": "verified",
+    "evidence": "o19",
+    "method": "当期の断裁票を浅籠用の束と照合",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "o20",
+    "language": "en",
+    "target": "apricot tasting board",
+    "kind": "experience",
+    "text": "compared the two rows with the lettering slip — For this fair, the upper row of the apricot tasting board was lettered and signed off; the lower row is still bare.",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "n20",
+    "target": "apricot tasting board",
+    "language": "en",
+    "kind": "fact",
+    "text": "For this fair, the upper row of the apricot tasting board was lettered and signed off; the lower row is still bare.",
+    "certainty": "verified",
+    "evidence": "o20",
+    "method": "compared the two rows with the lettering slip",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "o21",
+    "language": "ja",
+    "target": "霧便の青封筒",
+    "kind": "experience",
+    "text": "今回の表面校了票で版を照合。今回の霧便の青封筒は表面を校了。裏面は校正待ち。表面の校了印を確認した。",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "n21",
+    "target": "霧便の青封筒",
+    "language": "ja",
+    "kind": "fact",
+    "text": "今回の霧便の青封筒は表面を校了。裏面は校正待ち。表面の校了印を確認した。",
+    "certainty": "verified",
+    "evidence": "o21",
+    "method": "今回の表面校了票で版を照合",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "o22",
+    "language": "en",
+    "target": "festival scoops",
+    "kind": "experience",
+    "text": "read the dated Dawn weight card and checked the Dusk queue — This season's festival scoops from bin Dawn have been weighed; those in bin Dusk still need weighing.",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "n22",
+    "target": "festival scoops",
+    "language": "en",
+    "kind": "fact",
+    "text": "This season's festival scoops from bin Dawn have been weighed; those in bin Dusk still need weighing.",
+    "certainty": "verified",
+    "evidence": "o22",
+    "method": "read the dated Dawn weight card and checked the Dusk queue",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "o23",
+    "language": "ja",
+    "target": "木の実市の棚布",
+    "kind": "experience",
+    "text": "両方の棚と仕立票で裾を確認。今回の木の実市では東棚の布だけ裾上げ済み。西棚は未処理。裾上げ票あり。",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "n23",
+    "target": "木の実市の棚布",
+    "language": "ja",
+    "kind": "fact",
+    "text": "今回の木の実市では東棚の布だけ裾上げ済み。西棚は未処理。裾上げ票あり。",
+    "certainty": "verified",
+    "evidence": "o23",
+    "method": "両方の棚と仕立票で裾を確認",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "o24",
+    "language": "en",
+    "target": "courier tokens",
+    "kind": "experience",
+    "text": "checked the punch impression and the dispatch ticket — For the present dispatch, the bronze courier tokens were punched; the tin ones have not been punched.",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "n24",
+    "target": "courier tokens",
+    "language": "en",
+    "kind": "fact",
+    "text": "For the present dispatch, the bronze courier tokens were punched; the tin ones have not been punched.",
+    "certainty": "verified",
+    "evidence": "o24",
+    "method": "checked the punch impression and the dispatch ticket",
+    "at": "2043-05-07T09:00:00Z"
+  },
+  {
+    "id": "n25",
+    "target": "売約済みの煙色瓶",
+    "language": "ja",
+    "kind": "rule",
+    "scene": "瓶の封緘",
+    "action": "封じる",
+    "text": "売約済みの煙色瓶は口に封蝋を置く。店頭の香り見本は除く。",
+    "exceptions": [
+      "店頭の香り見本"
+    ],
+    "at": "2043-05-06T09:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n26",
+    "target": "rain parcel",
+    "language": "en",
+    "kind": "rule",
+    "scene": "wrapping a dispatch",
+    "action": "wrap",
+    "text": "Rain parcels going by open cart need oiled wrapping. The empty counter demonstration parcel is exempt.",
+    "exceptions": [
+      "empty counter demonstration parcel"
+    ],
+    "at": "2043-05-06T09:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n27",
+    "target": "焼き砂糖の花冠",
+    "language": "ja",
+    "kind": "rule",
+    "scene": "花冠を扱う",
+    "action": "分ける",
+    "text": "展示用の焼き砂糖の花冠は一輪のまま残す。練習生の試食分は対象外。",
+    "exceptions": [
+      "練習生の試食分"
+    ],
+    "at": "2043-05-06T09:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n28",
+    "target": "loaned easel",
+    "language": "en",
+    "kind": "rule",
+    "scene": "returning an easel",
+    "action": "return",
+    "text": "Put a numbered band on the leg of a loaned easel. The workshop's own sketch easel is exempt.",
+    "exceptions": [
+      "workshop sketch easel"
+    ],
+    "at": "2043-05-06T09:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n29",
+    "target": "配達用の鈴箱",
+    "language": "ja",
+    "kind": "rule",
+    "scene": "運搬前の梱包",
+    "action": "包む",
+    "text": "配達用の鈴箱は二重の麻袋に入れる。中身のない寸法見本には適用しない。",
+    "exceptions": [
+      "空の寸法見本"
+    ],
+    "at": "2043-05-06T09:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n30",
+    "target": "painted flour tiles",
+    "language": "en",
+    "kind": "rule",
+    "scene": "storing tiles",
+    "action": "stack",
+    "text": "Painted flour tiles are stored with muslin between layers. Unpainted test blanks are exempt.",
+    "exceptions": [
+      "unpainted test blanks"
+    ],
+    "at": "2043-05-06T09:00:00Z",
+    "source_role": "owner"
+  },
+  {
+    "id": "n31",
+    "target": "柚子板の乾き",
+    "language": "ja",
+    "kind": "fact",
+    "text": "仕上げ係によれば柚子板の塗りが乾いたらしい。触って確認した人はいない。",
+    "certainty": "reported",
+    "source_role": "shift handover"
+  },
+  {
+    "id": "n32",
+    "target": "crank lantern",
+    "language": "en",
+    "kind": "fact",
+    "text": "A courier heard that the crank lantern now lasts six hours. There is no timed run.",
+    "certainty": "reported",
+    "source_role": "shift handover"
+  },
+  {
+    "id": "n33",
+    "target": "花筒の留め金",
+    "language": "ja",
+    "kind": "fact",
+    "text": "花筒の留め金を取り替えたと交代係から聞いた。開閉の確認記録はない。",
+    "certainty": "reported",
+    "source_role": "shift handover"
+  },
+  {
+    "id": "n34",
+    "target": "mica ticket",
+    "language": "en",
+    "kind": "fact",
+    "text": "The ticket artist believes the mica ticket will resist steam; it has never had a steam test.",
+    "certainty": "reported",
+    "source_role": "shift handover"
+  },
+  {
+    "id": "n35",
+    "target": "梅輪の受領",
+    "language": "ja",
+    "kind": "fact",
+    "text": "運び手は梅輪を届けたと思うと話した。受領印も現地の照合もまだ。",
+    "certainty": "reported",
+    "source_role": "shift handover"
+  },
+  {
+    "id": "n36",
+    "target": "counter shutter",
+    "language": "en",
+    "kind": "fact",
+    "text": "The porter reports a repair to the counter shutter. Nobody has tried sliding it since.",
+    "certainty": "reported",
+    "source_role": "shift handover"
+  }
+]
