@@ -66,7 +66,9 @@ omoide recall --action ignite --target 工房
 
 ## 登録の続きと履歴
 
-`near_rules` の各要素の `record.version_id` と `source.text` を確認します。最初と同じ登録引数に次の3つを足してください。
+近い決まりは、本文・場面・別表現の内容語で比べます。動作名だけ、またはひらがなの助詞・語尾だけの一致では登録を止めません。
+
+`near_rules` は根拠の強い順に最大9件です。`near_score` は比較順の点数、`near_remaining` は表示枠の外にある近い決まりの件数です。各要素の `record.version_id` と `source.text` を確認します。最初と同じ登録引数に次の3つを足してください。
 
 ```text
 --relation same|restated|exception|unrelated|unsure
@@ -82,7 +84,7 @@ omoide recall --action ignite --target 工房
 | unrelated | 独立した現行規則を登録する |
 | unsure | 現行版を残し、同じ記録に判断待ちの版を作る |
 
-比較後に現行版の並びが変わると、新しい `near_rules` を返します。登録の確定後に返事を失った場合は、同じ操作 ID と同じ引数で送り直してください。
+表示外を含む全候補の版の並びが比較後に変わると、新しい `near_rules` を返します。登録の確定後に返事を失った場合は、同じ操作 ID と同じ引数で送り直してください。
 
 `pending` の返事と、該当する問い合わせ結果の `unresolved_conflicts` には、現行版と提案版の各規則・元発言があります。両方を利用者に示し、判断後に `omoide resolve PENDING_VERSION --keep current` または `--keep pending` を実行します。並行した別の判断待ちがある場合は、その判断を先に確定してから現行版を置き換えます。対象が分からないときは元の規則も対象つきの例外も表示します。元の規則にすでに対象があれば、例外はその範囲内に登録します。
 

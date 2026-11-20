@@ -1,5 +1,5 @@
-use crate::{args::Rule, db::*, search::near, write::create_rule};
-use omoide_core::{Outcome, Relation, document, registration};
+use crate::{args::Rule, db::*, write::create_rule};
+use omoide_core::{Outcome, Relation, RuleProfile, near::score, registration};
 use omoide_store::{Error, Rows, Statement};
 use serde_json::{Value as Json, json};
 
@@ -70,19 +70,45 @@ pub fn plan(
 ) -> Result<Plan> {
     use Outcome::*;
     let utterance = required_record(&sets[2])?;
-    let terms = document(&rule.text, &rule.scene, &rule.aliases);
-    let mut neighbors = Vec::new();
+    let proposal = RuleProfile::new(
+        &rule.text,
+        &rule.scene,
+        &rule.aliases,
+        &rule.actions,
+        rule.target.as_deref(),
+    );
+    let mut matches = Vec::new();
     for row in &sets[3] {
         let record = parse(&row[0])?;
-        if near(&record, &terms, &rule.actions) {
-            neighbors.push(json!({"record":record,"source":parse(&row[1])?}));
+        let aliases: Vec<String> = serde_json::from_value(record["aliases"].clone())
+            .map_err(|e| Error::Unknown(e.to_string()))?;
+        let actions: Vec<String> = serde_json::from_value(record["actions"].clone())
+            .map_err(|e| Error::Unknown(e.to_string()))?;
+        let current = RuleProfile::new(
+            record["text"].as_str().unwrap(),
+            record["scene"].as_str().unwrap(),
+            &aliases,
+            &actions,
+            record["target"].as_str(),
+        );
+        if let Some(score) = score(&proposal, &current) {
+            matches.push((score, record, &row[1]));
         }
     }
-    let versions: Vec<_> = neighbors
-        .iter()
-        .map(|n| &n["record"]["version_id"])
-        .collect();
+    matches.sort_by(|a, b| {
+        b.0.cmp(&a.0)
+            .then_with(|| a.1["scene"].as_str().cmp(&b.1["scene"].as_str()))
+            .then_with(|| a.1["text"].as_str().cmp(&b.1["text"].as_str()))
+            .then_with(|| a.1["version_id"].as_str().cmp(&b.1["version_id"].as_str()))
+    });
+    let versions: Vec<_> = matches.iter().map(|(_, r, _)| &r["version_id"]).collect();
     let hash = digest(json!(versions).to_string());
+    const MAX_NEIGHBORS: usize = 9;
+    let omitted = matches.len().saturating_sub(MAX_NEIGHBORS);
+    let mut neighbors = Vec::new();
+    for (score, record, source) in matches.into_iter().take(MAX_NEIGHBORS) {
+        neighbors.push(json!({"record":record,"source":parse(source)?,"near_score":score}));
+    }
     let outcome = registration(!neighbors.is_empty(), relation(rule.relation.as_deref())?);
     if outcome == NeedRelation
         || rule
@@ -91,7 +117,7 @@ pub fn plan(
             .is_some_and(|previous| previous != &hash)
     {
         return Ok(Plan::Reply(
-            json!({"state":"near_rules","operation_id":op,"near_digest":hash,"near_rules":neighbors}),
+            json!({"state":"near_rules","operation_id":op,"near_digest":hash,"near_rules":neighbors,"near_remaining":omitted}),
         ));
     }
     let selected = match rule.against.as_deref() {

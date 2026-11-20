@@ -131,7 +131,7 @@ fn near_returns_evidence_without_writing() {
             &["--action", "inventory", "--operation-id", "first"]
         )
     );
-    for (text, action) in [("unrelated terms", "inventory"), ("鉛筆 倉庫", "other")] {
+    for (text, action) in [("鉛筆 倉庫", "inventory"), ("鉛筆 倉庫", "other")] {
         let near = f.add(
             text,
             "different",
@@ -214,7 +214,25 @@ fn output_budget_pages_and_restarts_after_write() {
     let f = Fixture::new("Preserve samples.");
     let large = "保管。".repeat(1200);
     f.add(&large, "amber", &["--action", "a"]);
-    f.add("second", "amber", &["--action", "b"]);
+    let second = f.add("second", "amber", &["--action", "b"]);
+    assert_eq!(second["state"], "near_rules");
+    f.add(
+        "second",
+        "amber",
+        &[
+            "--action",
+            "b",
+            "--relation",
+            "unrelated",
+            "--against",
+            second["near_rules"][0]["record"]["version_id"]
+                .as_str()
+                .unwrap(),
+            "--near-digest",
+            second["near_digest"].as_str().unwrap(),
+        ],
+    );
+
     let r = f.recall(&["--action", "b", "--scene", "amber"]);
     assert!(r.to_string().len() < 4000);
     let cursor = r["cursor"].as_str().unwrap();

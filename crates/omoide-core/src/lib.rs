@@ -140,9 +140,8 @@ pub fn document(text: &str, scene: &str, aliases: &[String]) -> Tokens {
     )
 }
 
-pub fn near_rule(query: &Tokens, record: &Tokens, action_overlap: bool) -> bool {
-    action_overlap || hits(query, record) >= 2
-}
+pub mod near;
+pub use near::{RuleProfile, near_rule};
 
 pub struct Candidate<'a> {
     pub id: &'a str,

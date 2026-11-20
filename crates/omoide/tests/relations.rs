@@ -462,3 +462,97 @@ fn disjoint_targets_require_a_distinct_choice_from_an_open_conflict() {
         "replaced"
     );
 }
+
+// [REQ-RULE-1]
+#[test]
+fn hidden_neighbor_invalidates_digest_and_cannot_be_selected() {
+    let db = Db::new();
+    let source = db.words("Label the packing carton.");
+    let proposal = Db::rule(&source, "carton seal");
+    let base = db.ok(&proposal);
+    let mut versions = vec![field(&base, "version_id").to_owned()];
+    for _ in 1..10 {
+        let preview = db.ok(&proposal);
+        let pick = &preview["near_rules"][0]["record"];
+        let next = db.ok(&finish(proposal.clone(), &preview, pick, "unrelated"));
+        versions.push(field(&next, "version_id").to_owned());
+    }
+    versions.sort();
+    let shown = db.ok(&proposal);
+    let neighbors = shown["near_rules"].as_array().unwrap();
+    assert_eq!(neighbors.len(), 9);
+    assert_eq!(shown["near_remaining"], 1);
+    assert_eq!(
+        neighbors
+            .iter()
+            .map(|v| field(&v["record"], "version_id"))
+            .collect::<Vec<_>>(),
+        versions[..9]
+    );
+    assert!(
+        neighbors
+            .iter()
+            .all(|v| v["near_score"] == 300 && v["source"]["text"] == "Label the packing carton.")
+    );
+    let mut hidden = finish(proposal.clone(), &shown, &neighbors[0]["record"], "same");
+    let at = hidden.iter().position(|v| *v == "--against").unwrap() + 1;
+    hidden[at] = &versions[9];
+    db.run(&hidden, false);
+    let weak = Db::rule(&source, "carton seal spare tag");
+    let weak_preview = db.ok(&weak);
+    db.ok(&finish(
+        weak,
+        &weak_preview,
+        &weak_preview["near_rules"][0]["record"],
+        "unrelated",
+    ));
+    let stale = db.ok(&finish(
+        proposal.clone(),
+        &shown,
+        &neighbors[0]["record"],
+        "restated",
+    ));
+    assert_eq!(stale["state"], "near_rules");
+    assert_eq!(stale["near_rules"], shown["near_rules"]);
+    assert_eq!(stale["near_remaining"], 2);
+    assert_ne!(stale["near_digest"], shown["near_digest"]);
+    let mut no_relation = proposal.clone();
+    no_relation.extend(["--near-digest", field(&stale, "near_digest")]);
+    db.run(&no_relation, false);
+    assert_eq!(db.ok(&proposal)["near_digest"], stale["near_digest"]);
+}
+
+// [REQ-RULE-1]
+#[test]
+fn lexical_fields_and_witnessed_target_reach_the_registration_score() {
+    let d = Db::new();
+    let src = d.words("An invented procedure");
+    let args = |body: &'static str, scene: &'static str| {
+        vec![
+            "rule",
+            "add",
+            "--source",
+            src.as_str(),
+            "--text",
+            body,
+            "--scene",
+            scene,
+            "--target",
+            "shed",
+            "--action",
+            "pack",
+        ]
+    };
+    assert_eq!(
+        d.ok(&args("linen wax chalk", "rain shed tile"))["state"],
+        "activated"
+    );
+    let near = d.ok(&args("linen iron", "rain shed tent"));
+    assert_eq!(near["near_rules"][0]["near_score"], 84);
+    let mut alias = args("ink", "dusk");
+    alias.extend(["--alias", "quartz"]);
+    assert_eq!(d.ok(&alias)["state"], "activated");
+    let from_alias = d.ok(&args("quartz", "night"));
+    assert_eq!(from_alias["state"], "near_rules");
+    assert_eq!(from_alias["near_rules"][0]["record"]["text"], "ink");
+}

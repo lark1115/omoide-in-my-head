@@ -80,16 +80,10 @@ fn character_channel_and_field_boundaries() {
 
 // [REQ-RULE-1]
 #[test]
-fn neighbors_by_action_or_two_distinct_terms() {
-    let candidate = tokens("red paper");
-    for (query, action, expected) in [
-        ("blue", false, false),
-        ("red red", false, false),
-        ("red paper", false, true),
-        ("blue", true, true),
-    ] {
-        assert_eq!(near_rule(&tokens(query), &candidate, action), expected);
-    }
+fn coarse_action_needs_independent_content() {
+    let a = tokens("red paper");
+    assert!(!near_rule(&a, &tokens("blue metal"), true));
+    assert!(near_rule(&a, &tokens("red paper"), false));
 }
 
 // [REQ-RECALL-1]

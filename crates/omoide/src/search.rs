@@ -1,5 +1,5 @@
 use crate::{args::Query, db::*};
-use omoide_core::{Candidate, Tokens, document, near_rule, rank, tokens};
+use omoide_core::{Candidate, Tokens, document, rank, tokens};
 use omoide_store::{Error, Store};
 use serde_json::{Value as Json, json};
 use std::collections::BTreeMap;
@@ -17,15 +17,6 @@ fn stored_tokens(r: &Json) -> Tokens {
         r["scene"].as_str().unwrap_or_default(),
         &aliases,
     )
-}
-pub fn near(r: &Json, t: &Tokens, actions: &[String]) -> bool {
-    let doc = stored_tokens(r);
-    let action_overlap = r["actions"]
-        .as_array()
-        .into_iter()
-        .flatten()
-        .any(|a| actions.iter().any(|x| a.as_str() == Some(x)));
-    near_rule(t, &doc, action_overlap)
 }
 pub fn recall(db: &mut impl Store, query: &Query, call_id: &str) -> Result<Json> {
     if query.scene.as_deref().unwrap_or_default().trim().is_empty()
