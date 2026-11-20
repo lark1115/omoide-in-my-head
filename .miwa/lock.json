@@ -2,154 +2,154 @@
   "edges": {
     "desc:doc:DOC-OMOIDE": {
       "from": "sha256:5e04475af4698fb4434a93c95cb9f33d6966432ca5fde0bce0f022c5dcb88cd3",
-      "to": "sha256:c1014929f7820c1fcbab0647bace705999852ad96ac0098bdc0b06086732beb5",
+      "to": "sha256:527645b23083ffcd24f5f3c9ec60f69046170c212c453239eadcd3cfe020c5ad",
       "by": "human",
-      "at": "2026-11-19T23:38:54Z"
+      "at": "2026-11-19T23:42:09Z"
     },
     "doc-req:DOC-OMOIDE:REQ-DEC-1": {
-      "from": "sha256:c1014929f7820c1fcbab0647bace705999852ad96ac0098bdc0b06086732beb5",
+      "from": "sha256:527645b23083ffcd24f5f3c9ec60f69046170c212c453239eadcd3cfe020c5ad",
       "to": "sha256:4d5d103eb65cd508b1fa8af24e58857857a098cbceb722a29f207b28febc84cb",
       "by": "human",
-      "at": "2026-11-19T23:38:54Z"
+      "at": "2026-11-19T23:42:09Z"
     },
     "doc-req:DOC-OMOIDE:REQ-HOT-1": {
-      "from": "sha256:c1014929f7820c1fcbab0647bace705999852ad96ac0098bdc0b06086732beb5",
+      "from": "sha256:527645b23083ffcd24f5f3c9ec60f69046170c212c453239eadcd3cfe020c5ad",
       "to": "sha256:37adbfa3f43de26aeff29bc5f6ea1dec47157d8eac631f0f7d87a41310dea10c",
       "by": "human",
-      "at": "2026-11-19T23:38:54Z"
+      "at": "2026-11-19T23:42:09Z"
     },
     "doc-req:DOC-OMOIDE:REQ-INTEG-1": {
-      "from": "sha256:c1014929f7820c1fcbab0647bace705999852ad96ac0098bdc0b06086732beb5",
+      "from": "sha256:527645b23083ffcd24f5f3c9ec60f69046170c212c453239eadcd3cfe020c5ad",
       "to": "sha256:41d486bea025bda0b949504da4d23f3c061155cda9cbdfebd060c2cbc72470f8",
       "by": "human",
-      "at": "2026-11-19T23:38:54Z"
+      "at": "2026-11-19T23:42:09Z"
     },
     "doc-req:DOC-OMOIDE:REQ-JUDGE-1": {
-      "from": "sha256:c1014929f7820c1fcbab0647bace705999852ad96ac0098bdc0b06086732beb5",
+      "from": "sha256:527645b23083ffcd24f5f3c9ec60f69046170c212c453239eadcd3cfe020c5ad",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "doc-req:DOC-OMOIDE:REQ-MEASURE-1": {
-      "from": "sha256:c1014929f7820c1fcbab0647bace705999852ad96ac0098bdc0b06086732beb5",
+      "from": "sha256:527645b23083ffcd24f5f3c9ec60f69046170c212c453239eadcd3cfe020c5ad",
       "to": "sha256:46371975afc0f52318e2912097cf77135572b78b072b6d89482b15d3b48b9854",
       "by": "human",
-      "at": "2026-11-19T23:38:54Z"
+      "at": "2026-11-19T23:42:09Z"
     },
     "doc-req:DOC-OMOIDE:REQ-PROMO-1": {
-      "from": "sha256:c1014929f7820c1fcbab0647bace705999852ad96ac0098bdc0b06086732beb5",
+      "from": "sha256:527645b23083ffcd24f5f3c9ec60f69046170c212c453239eadcd3cfe020c5ad",
       "to": "sha256:c74e30beef6e8c37e8774b4363b79608eda0701043ca90a1c8d83a34c3c6ed10",
       "by": "human",
-      "at": "2026-11-19T23:38:54Z"
+      "at": "2026-11-19T23:42:09Z"
     },
     "doc-req:DOC-OMOIDE:REQ-REC-1": {
-      "from": "sha256:c1014929f7820c1fcbab0647bace705999852ad96ac0098bdc0b06086732beb5",
+      "from": "sha256:527645b23083ffcd24f5f3c9ec60f69046170c212c453239eadcd3cfe020c5ad",
       "to": "sha256:b9b311a040834880363422784c8ea5dda1fac3dbaaad42d7d2851fd010a7dee4",
       "by": "human",
-      "at": "2026-11-19T23:38:54Z"
+      "at": "2026-11-19T23:42:09Z"
     },
     "doc-req:DOC-OMOIDE:REQ-RECALL-1": {
-      "from": "sha256:c1014929f7820c1fcbab0647bace705999852ad96ac0098bdc0b06086732beb5",
+      "from": "sha256:527645b23083ffcd24f5f3c9ec60f69046170c212c453239eadcd3cfe020c5ad",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "doc-req:DOC-OMOIDE:REQ-RES-1": {
-      "from": "sha256:c1014929f7820c1fcbab0647bace705999852ad96ac0098bdc0b06086732beb5",
+      "from": "sha256:527645b23083ffcd24f5f3c9ec60f69046170c212c453239eadcd3cfe020c5ad",
       "to": "sha256:935718492eaa69c7b07e9935999a0ab45aced13d4e35510d432f26fc56d19c45",
       "by": "human",
-      "at": "2026-11-19T23:38:54Z"
+      "at": "2026-11-19T23:42:09Z"
     },
     "doc-req:DOC-OMOIDE:REQ-RULE-1": {
-      "from": "sha256:c1014929f7820c1fcbab0647bace705999852ad96ac0098bdc0b06086732beb5",
+      "from": "sha256:527645b23083ffcd24f5f3c9ec60f69046170c212c453239eadcd3cfe020c5ad",
       "to": "sha256:55dabe1c257081847fa2ccbf1bb23ea3965c5797ef3e4f16dcb4f87fe123944e",
       "by": "human",
-      "at": "2026-11-19T23:38:54Z"
+      "at": "2026-11-19T23:42:09Z"
     },
     "doc-req:DOC-OMOIDE:REQ-STORE-1": {
-      "from": "sha256:c1014929f7820c1fcbab0647bace705999852ad96ac0098bdc0b06086732beb5",
+      "from": "sha256:527645b23083ffcd24f5f3c9ec60f69046170c212c453239eadcd3cfe020c5ad",
       "to": "sha256:48bfc48adff5d3b0df723554d281c17f3731d688a9899d5cb3b7b159b1695aec",
       "by": "human",
-      "at": "2026-11-19T23:38:54Z"
+      "at": "2026-11-19T23:42:09Z"
     },
     "test-req:crates/omoide-core/src/judge:tier_tests:both_closed_lower_bounds_and_disjoint_membership:REQ-JUDGE-1": {
       "from": "sha256:730ce08dba1e2f4569610d85842ad592a5f3cb90329830b97d18477d7c98affc",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-core/src/relevance:tests:exact_compound_stem_and_distinct_subject_contributions:REQ-RECALL-1": {
       "from": "sha256:cb5159ffe854d167ffbbf020f999c2172593ee82cd701d19285e5a860e50eb49",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-core/src/selection:tests:both_boundaries_are_inclusive:REQ-RECALL-1": {
       "from": "sha256:e076bc3c89004a62ebfd7371c5e6e72d9b387e8c114fb8e178a3c023ad557282",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-core/src/selection:tests:trigger_excludes_shared_words_and_single_characters:REQ-RECALL-1": {
       "from": "sha256:01d4ccc7864ac2862bb2d51ebcaf8ad0481e5b5fd7131d0b37d2c597cdc981a4",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-core/src/tiers:tests:only_identifiers_trigger_and_first_sentence:REQ-RECALL-1": {
       "from": "sha256:2b7ecdbdfa50c591b8bbec7fb5340231c34d623304e7e417934d0149857d567d",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-core/src/tiers:tests:summaries_fit_exactly_with_newline_or_stay_unreturned:REQ-RECALL-1": {
       "from": "sha256:72be0ff5ad4700f12bc3be80f653823f7735c5c8bb46776b4b31d40a8f765a0f",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-core/tests/properties::additional_candidate_preserves_pair_order:REQ-RECALL-1": {
       "from": "sha256:4b4f466bb9819a29b4142109f649caf5687bdacbe90dac7338e54913fee26cf2",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-core/tests/properties::character_channel_and_field_boundaries:REQ-RECALL-1": {
       "from": "sha256:3af5164e3af88efd8addadeed3384caca581b76a1995285802c5239e831368b9",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-core/tests/properties::complete_replies_still_require_unique_ids_and_each_score_in_range:REQ-JUDGE-1": {
       "from": "sha256:b500fd25152bd8779ac17dc0bcf89126dfad62cc8e07843bbdb2fbdb523466d5",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-core/tests/properties::japanese_windows_and_exact_words:REQ-RECALL-1": {
       "from": "sha256:23fa19d18e9bfe00c3a293fc09e6552dd36bf93e6052d04f3a91d866720f4675",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-core/tests/properties::judge_is_all_or_nothing_except_explicit_empty:REQ-JUDGE-1": {
       "from": "sha256:98e69cfc025271007277204d44945f1d8f30de246331b604a93c3102cc698105",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-core/tests/properties::neighbors_by_action_or_two_distinct_terms:REQ-RULE-1": {
       "from": "sha256:771ae40ade65039b412a4e3ba98916eb2b0ccc486e2fa0bfb5c7c5ccc87bebb5",
@@ -162,22 +162,22 @@
       "from": "sha256:12ee41ec28fd50f09e4a543d2b54ec3d731a441fbc908cb2d29e8fd665ef3cbc",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-core/tests/properties::pages_keep_offsets_byte_budget_and_complete_sentences:REQ-RECALL-1": {
       "from": "sha256:8b1bb1d7a39dcf2bde67408c5ff53e8db13a9a03216779e02c67adf6531caeec",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-core/tests/properties::rank_orders_actions_then_coverage_and_breaks_ties:REQ-RECALL-1": {
       "from": "sha256:52ba37766139bf0470ae595866857652e83f619cad4e3cc3268e48f3d58ed6e7",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-core/tests/properties::registration_table:REQ-RULE-1": {
       "from": "sha256:45969828fadbaaa371cd82dabb8921a9726878f4f0b9e9e0d8b9c0c3fd8037f3",
@@ -190,8 +190,8 @@
       "from": "sha256:4469a45a29899567308b73a91fd188a1ecfc0a0537c43b062cdbe0d39e972116",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-core/tests/properties::target_evidence_priority_and_capped_usage_respect_applicability:REQ-PROMO-1": {
       "from": "sha256:add778a0b16160468be66e7b946ff8f4972605374f43dbb99bf70c8b444d0f02",
@@ -204,99 +204,99 @@
       "from": "sha256:83ea5ea4f2c6de200260d51946231624105f258a40186ece626e225feb6e3bce",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-core/tests/properties::usage_revision_and_accounting_fields_are_in_the_actual_page_budget:REQ-RECALL-1": {
       "from": "sha256:278a2e29194418ab76fac1e86882ed08bc4de2fbe228ba2f18c78a7b0956648e",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-judge-jev/src/protocol:wire_tests:answers_must_be_a_named_object_not_an_array:REQ-JUDGE-1": {
       "from": "sha256:ae31dba93e56da01d18a8758bdaa5b52f7bd0eab33e1acd43ce173a00117fe02",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-judge-jev/src/tests::choose_question_by_kind_and_refuse_oversize_before_transport:REQ-JUDGE-1": {
       "from": "sha256:81f444e069e822813c13d602a63a50730846b081a27fc5a9e6b59227552e8e64",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-judge-jev/src/tests::deadline_and_all_or_nothing_dispatch:REQ-JUDGE-1": {
       "from": "sha256:f1a1bab6ad2ce3cceb3287c56605a45bd5edca4903efff6014d440f15ffb3d75",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-judge-jev/src/tests::distinct_candidate_content_is_bound_to_each_question_in_one_exchange:REQ-JUDGE-1": {
       "from": "sha256:62d0a3e338f538c91633812697744cf8a0b49e7e6b3a1f7820070fffdc1fb86c",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-judge-jev/src/tests::http_contract_and_failures_without_network:REQ-JUDGE-1": {
       "from": "sha256:e8c71f24497cfb3330ea7bd1ced941ff530d1205279da617b061e67eb6b92df2",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-judge-jev/src/tests::one_question_per_rule_with_only_allowlisted_content:REQ-JUDGE-1": {
       "from": "sha256:f80882c28d71d19f9ebc4023f21817e643be2e975661f9bc6fb426d23f0ca056",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-judge-jev/src/tests::recorded_probability_and_usage_map_to_the_local_version:REQ-JUDGE-1": {
       "from": "sha256:5ae5c79ff50d6316d5551681e26ffb5c9c48ca44dfe295126fc2ca20e0d0d53e",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-judge-jev/src/tests::require_complete_typed_probabilities_and_match_names_not_response_order:REQ-JUDGE-1": {
       "from": "sha256:d21e8dfa55a6cc8ccd4b4cb31446a6ee2f33fc14b05002d2f80340f4bb0bb18f",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-judge-jev/src/tests::unrelated_recorded_case_is_not_rounded_to_yes_or_no:REQ-JUDGE-1": {
       "from": "sha256:ddfa0a3edff5c875f5dc5911365c7441e201a76994a91ae7d27fd5c3f855bb45",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-judge-jev/tests/cli::cli_failures_never_supply_scores_or_require_network:REQ-JUDGE-1": {
       "from": "sha256:a8d5d8d6a2c264b5ab546e3a72686207ec4ed1234455f8dd3a15f9d99568341b",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-judge-jev/tests/cli::recognizes_only_the_documented_key_and_timeout_names_offline:REQ-JUDGE-1": {
       "from": "sha256:b1acd4a7fefb72430edea4fdf3ac0e38e421a1ce4a463804b4ccb8831339dc18",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-store/src/evidence:tests:target_tokens_preserve_distinct_utf8_bytes:REQ-RECALL-1": {
       "from": "sha256:ff5ecacd7f4d7bc7ac79319fecb3e2f4a8b5cd8566e70e44bcafb6a5e72194fc",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide-store/src/tests::busy_and_locked_are_distinct_from_unknown_errors_and_fault_points_are_exact:REQ-STORE-1": {
       "from": "sha256:dec330a0a0293f4620d7541fe06de240ae467542296b1736d639da6e36a09d8b",
@@ -421,22 +421,22 @@
       "from": "sha256:1380c06fca6110d41761241a0726630c8b1cb521aa7ff48a488b43f6f9231782",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/src/judging:tests:bounded_batches_keep_cross_batch_order_and_only_complete_answers:REQ-JUDGE-1": {
       "from": "sha256:631a02afce0ad0bbf9a6a502e5f639febb0b15a210e78e0ec9e734eeaa898636",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/src/judging:tests:oversized_question_never_starts_a_judge:REQ-JUDGE-1": {
-      "from": "sha256:6d02f4b8679684c004f96cfa5408061f30f5884a12ccef27bf30580ed3e2b6cc",
+      "from": "sha256:aa1eaac074aaa49d40cacbf659211112121cb42efa7f93ba11575fe3151f9c4a",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/src/write:tests:command_size_and_retry_deadline_boundaries:REQ-STORE-1": {
       "from": "sha256:25a3ecc43c47cbf7a62a3d8ac295dfe258ca60adb9503faf6aa01b0beb8123f6",
@@ -480,6 +480,13 @@
       "reason": "Verify reported-only scope and cross-kind owner decision ranking with deterministic CLI examples",
       "at": "2026-11-19T20:45:42Z"
     },
+    "test-req:crates/omoide/tests/evidence_activity::eligible_counts_use_structured_scope_and_admitted_evidence_stays_with_fact:REQ-RECALL-1": {
+      "from": "sha256:bab6af66a418994ef1f700b7422129a343edda0415550bd7676acdbbb2950c11",
+      "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
+      "by": "human",
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
+    },
     "test-req:crates/omoide/tests/evidence_activity::feedback_on_prior_versions_and_pending_only_actions_preserves_applicability:REQ-PROMO-1": {
       "from": "sha256:1ae88cabe3b240daea7a1ffe612abac1bcaed94100918180548c1dac510a5cfe",
       "to": "sha256:c74e30beef6e8c37e8774b4363b79608eda0701043ca90a1c8d83a34c3c6ed10",
@@ -488,11 +495,11 @@
       "at": "2026-11-19T20:31:51Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::independent_candidate_caps_and_structured_filters:REQ-RECALL-1": {
-      "from": "sha256:deb68aea075f4440060338986c37952254f90afb0b0230a670a11eea680ef506",
+      "from": "sha256:9ad66b07bee93bbc4402dec94005abccc8e12b8fcdc0f9b68cdb326b7f974087",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::operation_limits_and_notice_identity:REQ-STORE-1": {
       "from": "sha256:6184a81aca761d9f3d3039082a53b78e09b12d23e66db6cfa72a94a296547174",
@@ -505,8 +512,8 @@
       "from": "sha256:8d1031dc1f49bbc1fccbb93a17194a0db00e9c22a24317b7ff2cffb6d756f945",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::reported_use_only_changes_order_within_applicable_records:REQ-PROMO-1": {
       "from": "sha256:3a4ddbef95b62f583518cbd90edad9b85f3a6fd80e7863dc2cbd4f2a8e1ca656",
@@ -519,15 +526,15 @@
       "from": "sha256:abc153d72adafdb75e4fa3e8577f5e237295a83c3b539a7db3821252ee7ba6ba",
       "to": "sha256:4d5d103eb65cd508b1fa8af24e58857857a098cbceb722a29f207b28febc84cb",
       "by": "human",
-      "reason": "Trace search coverage and bounded judgment to BR-21 and BR-22",
-      "at": "2026-11-19T23:55:04Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::rule_and_evidence_fts_limits_are_independent:REQ-RECALL-1": {
       "from": "sha256:246b95a884ea0f297d73addcc87688eb2998a90a3034bfd4e9d3c48d0dcc146a",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/evidence_activity::uncertain_target_or_period_does_not_turn_scoped_proof_into_global_confirmation:REQ-DEC-1": {
       "from": "sha256:1f1e87cac27db55b7f723924b72701367cf3c4acbe5d11f10e420da501c2d5d4",
@@ -582,8 +589,8 @@
       "from": "sha256:b3bc9a882ed99a55391290edafa834e530250c20d7e0df86fbb13066d1aab6da",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/relations::parent_and_child_scope_bounds_distinguish_global_from_named_targets:REQ-RULE-1": {
       "from": "sha256:f228ff8ca33c2fdaa03f65064c318b1fa7f83a5456fa33e8febe66fcb4075174",
@@ -617,8 +624,8 @@
       "from": "sha256:edd30df54592c9c33c8c17b277f27971ebc75cf30bccae97ff65bd52817fa24d",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/relations::summary_fact_defaults_to_unknown_and_keeps_full_source:REQ-DEC-1": {
       "from": "sha256:ffaea3a043dd8758538a0831946d2bed87492b3e6c2b0ec9763e34fd28bfcc8b",
@@ -631,8 +638,8 @@
       "from": "sha256:28c47c70681467240d35f8047207af8bec48c3133464eb8f35994b61b4b0d7c9",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/roundtrip::fresh_process_round_trip_preserves_source:REQ-INTEG-1": {
       "from": "sha256:6ccd695b5aa847bc741040c8da2cfb5f16fb188dca1fca3878e9ca58a98cd106",
@@ -652,8 +659,8 @@
       "from": "sha256:77f36695ca971bc8974726ebb6f3164a4fe7840314565660a7e1e39c508da030",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/roundtrip::linux_release_resource_budget:REQ-RES-1": {
       "from": "sha256:0a98296da060b98f9df2632c994cbe6cc41277a97e9f709026393c18f8fe5b0c",
@@ -673,36 +680,36 @@
       "from": "sha256:39721cb24e5070620257f506fcc00d609725f143ebb5ba905aeecb4dabe3f840",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/roundtrip::provisional_judge_scores_share_the_page_after_confirmed_rows:REQ-JUDGE-1": {
       "from": "sha256:51b3f9aa92931023e156d82061eb8cab16e68c72973120b505aa75fb293987b0",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/roundtrip::strongest_qualifying_rule_survives_its_own_relative_cut:REQ-RECALL-1": {
       "from": "sha256:e749a73b9021c491ad95e7d5898b519065670d36f93ada4ccc1a84242bda53a9",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/roundtrip::target_and_action_words_do_not_supply_extra_trigger_evidence:REQ-RECALL-1": {
       "from": "sha256:bc9ae0d3bb98a8a35e173dd81edbed32598af4f494b9e0aaa7dc4894d40eeaa4",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/roundtrip::weak_lexical_match_and_structured_judge_candidates:REQ-JUDGE-1": {
       "from": "sha256:680a40d292e62c4f978e92b1ff67cda6550f8245b50db03c0cbee9d5e22207ee",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/stage_four::cap_includes_markers_exactly_and_optional_rows_stay_searchable:REQ-HOT-1": {
       "from": "sha256:610ede0571c53c6dbe0791c259182493d0b577ddc9d566877adceeb596bae72d",
@@ -722,8 +729,8 @@
       "from": "sha256:de9c53bbd4bdebd873aa22f04f6493c776fdc88f0690af5660a11877b7f5b770",
       "to": "sha256:246bcb8cfc3e4ca2956667f505aceb83f0850e837af49b20938bcb1e97e8e6c5",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/stage_four::demotion_occurs_at_threshold_and_preserves_legacy_notice_fingerprints:REQ-PROMO-1": {
       "from": "sha256:5e363e3d46dc9e721bcbb8edaf0f71fb5658afe5652bd6b15784c00d44514c0f",
@@ -785,15 +792,15 @@
       "from": "sha256:e2d82cd551c4602dc498d01aeaf7d7434623abcf984b42635235b66d8c26408b",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/stage_four::judged_equal_scores_preserve_both_priority_arms:REQ-JUDGE-1": {
       "from": "sha256:f584f697310b20e7c20b31f5326d02f633386c7371004b9fd4c87abc7148a1df",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/stage_four::malformed_actions_and_changed_demotion_policy_cannot_be_replayed:REQ-PROMO-1": {
       "from": "sha256:1d3608a01d4eec8cdfc019530ddda8b513271c2abd59a92863b7f5c1864654b8",
@@ -834,8 +841,8 @@
       "from": "sha256:e1d59fe892a5bf397ecabb335bbf621f683c2e8023f72d5646504a908015f9b9",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/stage_four::section_is_bounded_and_preserves_surrounding_bytes:REQ-HOT-1": {
       "from": "sha256:88e23280e417ac2de8682f97ef98ef51ba51449e2dfa0a1610211dd0abe67560",
@@ -855,8 +862,8 @@
       "from": "sha256:477ee229102673f812d125260db8bb8b893356d21085314b10d026607f5e5428",
       "to": "sha256:b18d4db506caecc6d3b696c62fcca8ffe3699043f58fcfba39349afc71fe9f1d",
       "by": "human",
-      "reason": "Record explicit scale and incomplete search requirements",
-      "at": "2026-11-19T23:55:32Z"
+      "reason": "Combine corrected BR numbers with scale coverage requirements and tests",
+      "at": "2026-11-20T00:00:10Z"
     },
     "test-req:crates/omoide/tests/stage_four::unsure_skill_needs_resolution_and_preserves_both_origins:REQ-PROMO-1": {
       "from": "sha256:6c81033c15c1ff930f396bed7114ed3d949ff56dd3913431e8f9d79ad7d0b422",
